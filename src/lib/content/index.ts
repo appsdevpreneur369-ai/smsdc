@@ -79,6 +79,7 @@ const needImage = (id: string | null | undefined, where: string) => {
 };
 needDoctor(clinic.clinicHead, 'clinic.json clinicHead');
 needDoctor(booking.defaultDoctor, 'booking.json defaultDoctor');
+booking.generalOption.doctors.forEach((d) => needDoctor(d, 'booking.json generalOption'));
 categories.forEach((c) => {
   c.doctors.forEach((d) => needDoctor(d, `services.json ${c.slug}`));
   c.subTreatments.forEach((s) => s.doctors?.forEach((d) => needDoctor(d, `services.json ${c.slug}/${s.slug}`)));
@@ -115,10 +116,6 @@ export const clinicHead = getDoctor(clinic.clinicHead);
 export function categoriesForDoctor(slug: string): Category[] {
   return categories.filter((c) => c.doctors.includes(slug) || c.subTreatments.some((s) => s.doctors?.includes(slug)));
 }
-
-/** Booking mode actually in effect: clinicflow needs a URL, otherwise WhatsApp. */
-export const effectiveBookingMode: 'clinicflow' | 'whatsapp' =
-  booking.mode === 'clinicflow' && booking.clinicflowBookingUrl.trim() ? 'clinicflow' : 'whatsapp';
 
 export const showPlaceholderBadges = process.env.NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES === 'true';
 

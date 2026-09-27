@@ -1,19 +1,44 @@
 {
   "status": "placeholder",
-  "_note": "mode 'clinicflow' opens clinicflowBookingUrl (the ClinicFlow247 public booking page, e.g. https://<frontend>/book/<clinic-slug>). If clinicflowBookingUrl is empty the site falls back to 'whatsapp'. clinicflowDoctorParam: as of 27 Sep 2026 the ClinicFlow /book/[slug] page does not read any doctor pre-select query parameter, so this is null; set it (e.g. 'doctorId') once core supports it — each doctor's clinicflowDoctorId in doctors.json is then appended.",
-  "mode": "whatsapp",
-  "clinicflowBookingUrl": "",
-  "clinicflowDoctorParam": null,
+  "_note": "Booking popup + form. See docs/BOOKING.md. mode = preferred mode; the site falls back automatically clinicflow → enquiry → whatsapp when a mode is unavailable (clinic not found on ClinicFlow247, CORS not allowed, API down). It never shows a success the API did not return.",
+  "mode": "clinicflow",
+  "clinicflow": {
+    "_note": "apiBaseUrl / clinicSlug / clinicId can be overridden at build time with NEXT_PUBLIC_CLINICFLOW_API_URL, NEXT_PUBLIC_CLINICFLOW_CLINIC_SLUG, NEXT_PUBLIC_CLINICFLOW_CLINIC_ID. clinicId is optional: it is looked up from the slug.",
+    "apiBaseUrl": "https://api.clinicflow247.com/api/v1",
+    "clinicSlug": "suhasini-dental-clinic-and-implant-centre",
+    "clinicId": ""
+  },
+  "advanceDays": 30,
+  "otpResendSeconds": 30,
   "allowDirectSpecialistBooking": true,
   "defaultDoctor": "dr-suhasini",
+  "generalOption": {
+    "label": { "en": "Not sure – general check-up", "te": "తెలియదు – సాధారణ చెకప్" },
+    "doctors": ["dr-suhasini"]
+  },
+  "popup": {
+    "_note": "Auto-opens once per browsing session after delaySeconds, never on page load, never on excludedPaths. On mobile it is a full-height sheet (Google penalises intrusive mobile interstitials — keep it delayed and once-only).",
+    "enabled": true,
+    "delaySeconds": 8,
+    "oncePerSession": true,
+    "showOnMobile": true,
+    "excludedPaths": ["/book", "/privacy", "/terms", "/disclaimer", "/cookies"]
+  },
+  "consent": {
+    "en": "I agree to be contacted about this appointment by WhatsApp, SMS, call or email.",
+    "te": "ఈ అపాయింట్‌మెంట్ గురించి వాట్సాప్, SMS, కాల్ లేదా ఈమెయిల్ ద్వారా నన్ను సంప్రదించడానికి నేను అంగీకరిస్తున్నాను."
+  },
   "whatsappMessage": {
-    "en": "Hello {{clinic}}, I'd like to book an appointment.\nName: {{name}}\nConcern: {{problem}}\nPreferred doctor: {{doctor}}\nPreferred day: {{day}}\n(Sent from the website)"
+    "en": "Hello {{clinic}}, I'd like to book an appointment.\nName: {{name}}\nPhone: {{phone}}\nEmail: {{email}}\nTreatment: {{problem}}\nPreferred doctor: {{doctor}}\nPreferred date: {{day}}\nPreferred time: {{time}}\n(Sent from the website)"
+  },
+  "enquiryMessage": {
+    "en": "Appointment request from the website.\nTreatment: {{problem}}\nPreferred doctor: {{doctor}}\nPreferred date: {{day}}\nPreferred time: {{time}}"
   },
   "generalWhatsappMessage": {
     "en": "Hello {{clinic}}, I have a question."
   },
   "note": {
-    "en": "Your request is confirmed only when the clinic replies. For severe pain or swelling, please call.",
-    "te": "క్లినిక్ సమాధానం ఇచ్చిన తర్వాతే మీ అపాయింట్‌మెంట్ ఖరారవుతుంది. తీవ్రమైన నొప్పి లేదా వాపు ఉంటే దయచేసి కాల్ చేయండి."
+    "en": "For severe pain or swelling, please call the clinic.",
+    "te": "తీవ్రమైన నొప్పి లేదా వాపు ఉంటే దయచేసి క్లినిక్‌కు కాల్ చేయండి."
   }
 }

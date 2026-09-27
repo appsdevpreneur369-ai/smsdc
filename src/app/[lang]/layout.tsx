@@ -8,6 +8,8 @@ import { clinicJsonLd } from '@/lib/jsonld';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { FloatingActions, Footer, SiteHeader, TopBar } from '@/components/layout/chrome';
 import { RevealObserver } from '@/components/ui/RevealObserver';
+import { BookingProvider } from '@/components/booking/BookingProvider';
+import { bookingClientConfig } from '@/lib/booking/clientConfig';
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -56,6 +58,7 @@ export default function LangLayout({ children, params }: { children: React.React
         >
           {t(dict, 'nav.skip')}
         </a>
+        <BookingProvider config={bookingClientConfig(lang)}>
         <TopBar lang={lang} />
         <SiteHeader lang={lang} />
         <main id="main" tabIndex={-1} className="outline-none">
@@ -63,6 +66,7 @@ export default function LangLayout({ children, params }: { children: React.React
         </main>
         <Footer lang={lang} />
         <FloatingActions lang={lang} />
+        </BookingProvider>
         <RevealObserver />
         <JsonLd data={clinicJsonLd(lang)} />
       </body>

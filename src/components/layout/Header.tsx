@@ -38,6 +38,11 @@ export function Header(props: HeaderProps) {
   }, []);
 
   useEffect(() => setOpen(false), [pathname]);
+  // The booking modal asks the menu to close before it opens (it is a separate dialog).
+  useEffect(() => {
+    window.addEventListener('smsdc:close-menu', close);
+    return () => window.removeEventListener('smsdc:close-menu', close);
+  }, [close]);
 
   const bare = stripLang(pathname);
   const altHref = localePath(langSwitch.target, bare);

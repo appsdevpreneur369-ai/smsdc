@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CalendarClock, HandCoins, Stethoscope, Users } from 'lucide-react';
-import { categories, getCategory, getDoctor, routing, services } from '@/lib/content';
+import { categories, getCategory, getDoctor, services } from '@/lib/content';
 import { getDict, locales, localePath, t, tx, type Lang } from '@/lib/i18n';
 import { pageMetadata } from '@/lib/seo';
 import { faqJsonLd } from '@/lib/jsonld';
@@ -38,8 +38,7 @@ export default function CategoryPage({ params: { lang, category } }: { params: P
   const dict = getDict(lang);
   const title = tx(c.title, lang);
   const lead = c.doctors.map(getDoctor);
-  const problem = routing.problems.find((p) => p.service === c.slug);
-  const bookHref = problem ? `/book?problem=${problem.id}` : '/book';
+  const bookHref = `/book?treatment=${c.slug}`;
   const faqItems = c.faqs.map((f) => ({ q: tx(f.q, lang), a: tx(f.a, lang) }));
 
   return (

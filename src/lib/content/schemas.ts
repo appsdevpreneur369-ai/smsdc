@@ -166,12 +166,23 @@ export const RoutingSchema = z.object({
 
 export const BookingSchema = z.object({
   status: Status,
-  mode: z.enum(['clinicflow', 'whatsapp']),
-  clinicflowBookingUrl: z.string(),
-  clinicflowDoctorParam: z.string().nullable(),
+  mode: z.enum(['clinicflow', 'enquiry', 'whatsapp']),
+  clinicflow: z.object({ apiBaseUrl: z.string(), clinicSlug: z.string(), clinicId: z.string() }),
+  advanceDays: z.number().int().min(1).max(180),
+  otpResendSeconds: z.number().int().min(10).max(300),
   allowDirectSpecialistBooking: z.boolean().default(true),
   defaultDoctor: Slug,
+  generalOption: z.object({ label: Loc, doctors: z.array(Slug).min(1) }),
+  popup: z.object({
+    enabled: z.boolean(),
+    delaySeconds: z.number().min(1).max(600),
+    oncePerSession: z.boolean(),
+    showOnMobile: z.boolean(),
+    excludedPaths: z.array(z.string().startsWith('/')),
+  }),
+  consent: Loc,
   whatsappMessage: Loc,
+  enquiryMessage: Loc,
   generalWhatsappMessage: Loc,
   note: Loc,
 });
