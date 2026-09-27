@@ -1,11 +1,13 @@
-import { Manrope, Poppins, Inter } from 'next/font/google';
+import { Manrope, Poppins, Inter, Noto_Sans_Telugu } from 'next/font/google';
 import { brand } from './content';
 
 // next/font must be declared statically. brand.json picks from this registry by name;
 // to use a new font, add it here once (see docs/EDITING.md).
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], variable: '--font-poppins', display: 'swap' });
 const manrope = Manrope({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-manrope', display: 'swap' });
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap', preload: false });
+// Telugu glyphs: unicode-range limited, so English pages never download it.
+const telugu = Noto_Sans_Telugu({ subsets: ['telugu'], weight: ['400', '600', '700'], variable: '--font-telugu', display: 'swap', preload: false });
 
 const registry: Record<string, { variable: string; cssVar: string }> = {
   Poppins: { variable: poppins.variable, cssVar: '--font-poppins' },
@@ -27,9 +29,9 @@ const hexToRgb = (hex: string) => {
 const heading = font(brand.fonts.heading);
 const body = font(brand.fonts.body);
 
-export const fontClassNames = [heading.variable, body.variable].join(' ');
+export const fontClassNames = [heading.variable, body.variable, telugu.variable].join(' ');
 
-/** :root CSS variables generated from brand.json. Telugu glyphs fall back to the system Telugu font. */
+/** :root CSS variables generated from brand.json. Telugu glyphs fall through to Noto Sans Telugu. */
 export const themeCss = `:root{${Object.entries(brand.colors)
   .map(([k, v]) => `--c-${k}:${hexToRgb(v)};`)
-  .join('')}--radius:${brand.radius};--font-heading:var(${heading.cssVar}),'Noto Sans Telugu','Nirmala UI';--font-body:var(${body.cssVar}),'Noto Sans Telugu','Nirmala UI';}`;
+  .join('')}--radius:${brand.radius};--font-heading:var(${heading.cssVar}),var(--font-telugu),'Nirmala UI';--font-body:var(${body.cssVar}),var(--font-telugu),'Nirmala UI';}`;

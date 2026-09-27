@@ -15,6 +15,11 @@
     @apply font-heading text-ink;
     text-wrap: balance;
   }
+  /* Telugu script needs more vertical room for stacked vowel signs and conjuncts. */
+  html[lang^='te'] :is(h1, h2, h3) {
+    line-height: 1.35 !important;
+    letter-spacing: 0 !important;
+  }
   :focus-visible {
     outline: 3px solid rgb(var(--c-primary));
     outline-offset: 3px;

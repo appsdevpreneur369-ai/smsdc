@@ -101,7 +101,7 @@ export default function BookPage({ params: { lang } }: { params: { lang: Lang } 
               </p>
               <p className="mt-4 flex gap-3">
                 <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden />
-                <a href={telHref} className="font-semibold text-white hover:text-accent">
+                <a href={telHref} className="inline-flex min-h-[44px] items-center font-semibold text-white hover:text-accent">
                   {t(dict, 'cta.callUs')}: {clinic.phone.display}
                 </a>
               </p>
