@@ -30,7 +30,7 @@ export function ServiceCard({ category, lang, headingLevel = 'h3' }: { category:
         </span>
         <H className="flex items-center gap-2 text-xl font-semibold text-white">
           {tx(category.title, lang)}
-          <DraftBadge status={category.status} lang={lang} />
+          <DraftBadge status={category.status} lang={lang} onDark />
         </H>
         <p className="mt-1.5 line-clamp-2 text-sm text-on-dark-muted">{tx(category.summary, lang)}</p>
         <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent">

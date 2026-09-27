@@ -206,7 +206,7 @@ export function Footer({ lang }: { lang: Lang }) {
         </div>
         {(showPlaceholderBadges || lang === 'te') && (
           <div className="container pb-6 text-xs">
-            <DraftBadge status="placeholder" lang={lang} className="mr-2" />
+            <DraftBadge status="placeholder" lang={lang} className="mr-2" onDark />
             {showPlaceholderBadges && t(dict, 'footer.placeholderNote')} {lang === 'te' && t(dict, 'lang.draftNote')}
           </div>
         )}

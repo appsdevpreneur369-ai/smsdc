@@ -12,18 +12,19 @@ import { buttonClass, type Variant } from './primitives-client';
 export { buttonClass };
 
 /** Small "Draft" pill on placeholder content. Hidden unless NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES=true. */
-export function DraftBadge({ status, lang, className }: { status: Status | undefined; lang: Lang; className?: string }) {
+export function DraftBadge({ status, lang, className, onDark }: { status: Status | undefined; lang: Lang; className?: string; onDark?: boolean }) {
   if (!showPlaceholderBadges || status !== 'placeholder') return null;
   const dict = getDict(lang);
   return (
     <span
       title={t(dict, 'common.draftTitle')}
       className={cn(
-        'inline-flex select-none items-center gap-1 rounded-full border border-dashed border-accent-text/60 bg-accent/15 px-2 py-0.5 align-middle font-body text-[0.65rem] font-bold uppercase tracking-wider text-accent-text',
+        'inline-flex select-none items-center gap-1 rounded-full border border-dashed px-2 py-0.5 align-middle font-body text-[0.65rem] font-bold uppercase tracking-wider',
+        onDark ? 'border-accent/70 bg-dark/70 text-accent' : 'border-accent-text/60 bg-accent/15 text-accent-text',
         className,
       )}
     >
-      <span className="h-1.5 w-1.5 rounded-full bg-accent-text" aria-hidden />
+      <span className={cn('h-1.5 w-1.5 rounded-full', onDark ? 'bg-accent' : 'bg-accent-text')} aria-hidden />
       {t(dict, 'common.draft')}
     </span>
   );

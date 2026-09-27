@@ -290,7 +290,7 @@ export function ArticleCard({ article, lang, featured }: { article: ReturnType<t
       </span>
       <h3 className={cn('mt-5 flex flex-wrap items-center gap-2 text-xl font-semibold', featured && 'text-white')}>
         {title}
-        <DraftBadge status={m.status} lang={lang} />
+        <DraftBadge status={m.status} lang={lang} onDark={featured} />
       </h3>
       <p className={cn('mt-2 flex-1', featured ? 'text-on-dark-muted' : 'text-ink-muted')}>{m.summary}</p>
       <span className={cn('mt-5 inline-flex items-center gap-2 text-sm font-semibold', featured ? 'text-accent' : 'text-primary')}>
