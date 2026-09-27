@@ -18,7 +18,7 @@ The clinic has not approved any content. **No content string, colour, image path
 
 ## Stack
 
-Matches `clinicflow-frontend` so components can merge later: Next.js 14 App Router, TypeScript strict, Tailwind, next/font (Poppins + Manrope), next/image, framer-motion, lucide-react, zod. No backend, database or auth in this repo.
+Matches `clinicflow-frontend` so components can merge later: Next.js 14 App Router, TypeScript strict, Tailwind, next/font (Poppins + Manrope), next/image, framer-motion, lucide-react, zod. No backend or database in this repo; patient sign-in is ClinicFlow's (below).
 
 - Routing: all pages live in `src/app/[lang]/`. `src/middleware.ts` rewrites root paths to `/en/*` (English at `/about`) and serves Telugu at `/te/*`. `/en/*` redirects to the root.
 - Server components read content directly. **Client components must not import `src/lib/content`** (it would ship zod + all JSON to the browser); pass resolved strings as props.
@@ -33,6 +33,8 @@ Popup + form connected to ClinicFlow247 — see `docs/BOOKING.md`. Config: `cont
 - POSTs (OTP send/resend, guest-book, leads) go **straight from the browser** — never proxy them: guest-book is rate-limited 5/15 min per IP. They need this site's origin in the API's CORS list (`APP_CORS_ALLOWEDORIGINS` env on the API, see docs/BOOKING.md).
 - Health check + automatic fallback clinicflow → enquiry → whatsapp; never a fake success; no mock service in `src/` (mocks only in `tests/` and `scripts/harness/`).
 - `verifyOtp` is a format check only: guest-book verifies the OTP itself (like ClinicFlow's own /book page); calling /auth/otp/verify first could consume the code.
+- Patient accounts (ClinicFlow PATIENT logins): `src/lib/account/*`, `src/components/account/*`, `/account`. Guest (OTP) or signed-in (slot lock + `POST /appointments`, no OTP). Tokens only in `sessionStorage` and the `Authorization` header — never log them, never proxy them, never put them in URLs. Staff logins are refused.
+- Don't pin `clinicflowDoctorId` in `doctors.json` with staging IDs: the file feeds production builds too (name matching works).
 - Tests: `npm test` (vitest, pure rules + stubbed fetch). End-to-end against a production build + test-only mock API: `scripts/harness/mock-clinicflow.mjs` + `scripts/harness/e2e-booking.mjs` (see docs/BOOKING.md).
 
 ## How content maps to ClinicFlow247 (`walkwell.json` tenant schema)
@@ -67,7 +69,8 @@ Manual, same approach as ClinicFlow247 (no CI/CD): build the image locally, push
 | Image | `asia-south1-docker.pkg.dev/sincere-stock-499113-f1/clinicflow/smsdc-frontend:<git short SHA>` |
 | Staging service | `smsdc-frontend-staging` — 256Mi, 1 CPU, min-instances 0, unauthenticated |
 | Staging URL | https://smsdc-frontend-staging-1071497363324.asia-south1.run.app |
-| Staging build args | `NEXT_PUBLIC_SITE_ENV=staging` (X-Robots-Tag noindex, robots Disallow: /, meta noindex), `NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES=true`, `NEXT_PUBLIC_NOINDEX=true`, `NEXT_PUBLIC_SITE_URL=<staging URL>` |
+| Staging build args | `NEXT_PUBLIC_SITE_ENV=staging` (X-Robots-Tag noindex, robots Disallow: /, meta noindex), `NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES=true`, `NEXT_PUBLIC_NOINDEX=true`, `NEXT_PUBLIC_SITE_URL=<staging URL>`, `NEXT_PUBLIC_CLINICFLOW_API_URL=<staging API>`, `NEXT_PUBLIC_BOOKING_OTP_HINT=123456` (staging only) |
+| ClinicFlow staging API | `clinicflow-api-staging` rev `00064-nw2`: this origin in `APP_CORS_ALLOWEDORIGINS`, `EMAIL_ENABLED=true`, SMS/WhatsApp off (OTP 123456). Suhasini clinic onboarded + ACTIVE (SMSDC_PendingItems 10). Changing its env needs the owner's explicit yes; always `--update-env-vars`. |
 
 History (staging):
 
@@ -76,7 +79,8 @@ History (staging):
 | 2026-09-27 | `4978932` | `smsdc-frontend-staging-00001-25d` | First deploy. `/og` returned 500 (self-fetch). |
 | 2026-09-27 | `7eb8958` | `smsdc-frontend-staging-00002-wkz` | OG logo embedded at build time. |
 | 2026-09-27 | `afc693e` | `smsdc-frontend-staging-00003-sql` | Draft badge readable on dark cards. |
-| 2026-09-27 | `d01b828` | `smsdc-frontend-staging-00004-mgs` | Booking popup + ClinicFlow integration; built against the staging API → falls back to WhatsApp until the clinic is onboarded and CORS allows this origin (SMSDC_PendingItems 9.1/9.2). **Current.** |
+| 2026-09-27 | `d01b828` | `smsdc-frontend-staging-00004-mgs` | Booking popup + ClinicFlow integration; built against the staging API → falls back to WhatsApp until the clinic is onboarded and CORS allows this origin (SMSDC_PendingItems 9.1/9.2). |
+| 2026-09-27 | `433f9cf` | `smsdc-frontend-staging-00005-92t` | Patient accounts (sign up/in, book without OTP, My appointments, cancel) + OTP hint. Live-verified against the staging API: guest + patient bookings CONFIRMED, confirmation emails logged as sent. **Current.** |
 
 Redeploy staging (all NEXT_PUBLIC_* values are baked in at build time):
 
@@ -89,9 +93,10 @@ docker build \
   --build-arg NEXT_PUBLIC_NOINDEX=true \
   --build-arg NEXT_PUBLIC_SITE_URL=https://smsdc-frontend-staging-1071497363324.asia-south1.run.app \
   --build-arg NEXT_PUBLIC_CLINICFLOW_API_URL=https://clinicflow-api-staging-znvqdsvqkq-el.a.run.app/api/v1 \
+  --build-arg NEXT_PUBLIC_BOOKING_OTP_HINT=123456 \
   -t $IMG .
 docker push $IMG
 gcloud run deploy smsdc-frontend-staging --project sincere-stock-499113-f1 --region asia-south1 --image $IMG
 ```
 
-Then: curl `/`, `/doctors`, `/treatments` (308 → `/services`), `/book`, `/contact`, `/og?title=x` and check zero ERROR logs for the new revision.
+Then: curl `/`, `/doctors`, `/treatments` (308 → `/services`), `/book`, `/account`, `/contact`, `/og?title=x` and check zero ERROR logs for the new revision.

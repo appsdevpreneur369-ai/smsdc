@@ -45,13 +45,13 @@ Everything is in `content/booking.json` (full technical detail: [`docs/BOOKING.m
   - On phones it is a full-height sheet. Google penalises pop-ups that cover the page on mobile ("intrusive interstitials"), which is why it waits 8 seconds and only appears once — keep `delaySeconds` ≥ 8 and `oncePerSession: true`.
 - **Every "Book Appointment" button** opens the same form. Doctor pages pre-select that doctor, treatment pages pre-select that treatment. `/book` shows the same form as a full page.
 - **Mode** (`mode`): what happens on submit.
-  - `"clinicflow"` — real booking in ClinicFlow247: live time slots, a 6-digit code sent to the patient's phone, then the appointment is created. Needs the clinic onboarded in ClinicFlow (`clinicflow.clinicSlug`) and this website's address allowed by the ClinicFlow API (CORS).
+  - `"clinicflow"` — real booking in ClinicFlow247 with live time slots. The patient chooses **Book as guest** (a 6-digit code is sent to their phone, then the appointment is created) or **Sign in / Create account** (a ClinicFlow patient account: sign up once, then sign in and book without a code; they can see and cancel their bookings on **My account**, `/account`). Needs the clinic onboarded in ClinicFlow (`clinicflow.clinicSlug`) and this website's address allowed by the ClinicFlow API (CORS).
   - `"enquiry"` — sends the details to ClinicFlow as a lead; the patient sees "Request received — we'll call you to confirm a time".
   - `"whatsapp"` — no online system: opens WhatsApp with the details typed in; the patient sees "Continue on WhatsApp".
   - If the chosen mode isn't available (clinic not found, API down, website not allowed), the site **falls back automatically** clinicflow → enquiry → whatsapp. It never shows a booking as done unless ClinicFlow confirmed it.
 - **Treatments and doctors**: the Treatment list and which doctor(s) each one is booked with come from `routing.json` ("What's troubling you?" options), `services.json` (categories and sub-treatments, with each one's doctors) and `booking.json → generalOption` ("Not sure – general check-up"). If a treatment has several doctors, their times are shown together with each doctor's name.
 - **Dates** come from each doctor's `consultation` days in `doctors.json` (and, in ClinicFlow mode, the live slots). `advanceDays` (30) is how far ahead patients can book.
-- **Wording**: consent text (`consent`), the WhatsApp message (`whatsappMessage`), the enquiry message (`enquiryMessage`) and the note under the form (`note`). Form labels and messages are in `content/i18n/en.json` / `te.json` → `bookingForm`.
+- **Wording**: consent text (`consent`), the WhatsApp message (`whatsappMessage`), the enquiry message (`enquiryMessage`) and the note under the form (`note`). Form labels and messages are in `content/i18n/en.json` / `te.json` → `bookingForm`; sign in / sign up / My account wording → `account` (appointment status names are `status_CONFIRMED` etc.). The My account page's heading and intro are in `pages.json → account`.
 - `allowDirectSpecialistBooking: false` books every treatment with `defaultDoctor` (Dr. Suhasini) first.
 - **Linking a doctor to ClinicFlow**: doctors are matched to ClinicFlow by first (and last) name automatically. If a name differs in ClinicFlow, set that doctor's `clinicflowDoctorId` in `doctors.json`.
 
@@ -63,6 +63,7 @@ Everything is in `content/booking.json` (full technical detail: [`docs/BOOKING.m
 | `NEXT_PUBLIC_SITE_URL` | Public address used in canonical links, sitemap and share cards. Defaults to `clinic.json → siteUrl`. |
 | `NEXT_PUBLIC_NOINDEX=true` | Asks search engines not to index a preview deployment. |
 | `NEXT_PUBLIC_CLINICFLOW_API_URL` | ClinicFlow API for booking (e.g. the staging API). Defaults to `booking.json → clinicflow.apiBaseUrl`. Also `NEXT_PUBLIC_CLINICFLOW_CLINIC_SLUG` / `NEXT_PUBLIC_CLINICFLOW_CLINIC_ID`. |
+| `NEXT_PUBLIC_BOOKING_OTP_HINT` | **Staging/demo only.** Shows "Demo: … enter 123456" on the phone-code step while ClinicFlow's SMS is switched off. Never set it for the live site. |
 | `NEXT_PUBLIC_SITE_ENV=staging` | Staging: never indexed by search engines. |
 
 These are read when the site is built, so rebuild (or restart `npm run dev`) after changing them.
