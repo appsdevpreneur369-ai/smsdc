@@ -1,0 +1,41 @@
+{
+  "status": "placeholder",
+  "_note": "Proposed rebrand (replaces the blue/red of the current banners). Colours become CSS variables that feed the Tailwind theme. Gold and aqua fail WCAG AA as text on light backgrounds: use them for decoration, or on the dark colours. accentText is the AA-safe gold for text on light backgrounds.",
+  "colors": {
+    "primary": "#087F8C",
+    "primaryHover": "#066A75",
+    "primaryDark": "#05545C",
+    "secondary": "#56C5C0",
+    "secondarySoft": "#E3F4F2",
+    "accent": "#E7B85C",
+    "accentText": "#8A6116",
+    "background": "#F8FBFA",
+    "surface": "#FFFFFF",
+    "text": "#263238",
+    "textSecondary": "#55666D",
+    "border": "#DCE8E6",
+    "dark": "#0A2E33",
+    "darkSoft": "#12424A",
+    "onDark": "#FFFFFF",
+    "onDarkMuted": "#B7D3D1",
+    "success": "#157F3C",
+    "danger": "#B42318",
+    "whatsapp": "#167A40",
+    "whatsappHover": "#11632F"
+  },
+  "fonts": {
+    "heading": "Poppins",
+    "body": "Manrope"
+  },
+  "logo": {
+    "horizontal": "logo-horizontal",
+    "horizontalWhite": "logo-horizontal-white",
+    "icon": "logo-icon",
+    "iconWhite": "logo-icon-white"
+  },
+  "radius": "1.25rem",
+  "wordmark": {
+    "primary": "Suhasini",
+    "secondary": "Dental Clinic & Implant Centre"
+  }
+}

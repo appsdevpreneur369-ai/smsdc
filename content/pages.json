@@ -1,0 +1,100 @@
+{
+  "status": "placeholder",
+  "_note": "Per-page SEO title/description and page header (eyebrow, heading, intro). {{area}} = clinic.serviceAreas.primary, {{nearby}} = nearby areas, {{clinic}} = display name.",
+  "home": {
+    "title": { "en": "Dentist in {{area}} | {{clinic}}" },
+    "description": { "en": "{{clinic}} in {{area}}, Andhra Pradesh: check-ups, root canal treatment, implants, braces & aligners, gum care, dentures and oral surgery by MDS specialists. Serving {{area}} and nearby areas including {{nearby}}." }
+  },
+  "about": {
+    "title": { "en": "About Us" },
+    "description": { "en": "Meet {{clinic}} in {{area}} — led by Dr. Suhasini, MDS, with a team of dental specialists." },
+    "eyebrow": { "en": "About us", "te": "మా గురించి" },
+    "heading": { "en": "Dentistry with patience, precision and care", "te": "ఓర్పు, ఖచ్చితత్వం, సంరక్షణతో దంత వైద్యం" },
+    "intro": { "en": "A neighbourhood dental clinic and implant centre in {{area}}, bringing specialist care close to home." },
+    "story": [
+      { "en": "Suhasini Dental Clinic and Implant Centre was built around a simple idea: people should be able to get complete, specialist dental care close to home, from a team that listens and explains." },
+      { "en": "The clinic is led by Dr. Suhasini, MDS, who has over 20 years of clinical experience across preventive, restorative, cosmetic and surgical dentistry. She works alongside MDS specialists in gum care, root canal treatment, oral and maxillofacial surgery, implants and dentures, and orthodontics — so most treatment can be planned and completed in one familiar place." },
+      { "en": "We welcome patients from {{area}} and nearby areas including {{nearby}}, and we're happy to talk with you in English or Telugu." }
+    ],
+    "values": [
+      { "icon": "heart-handshake", "title": { "en": "Gentle" }, "text": { "en": "Comfort comes first — we take our time and explain each step." } },
+      { "icon": "shield-check", "title": { "en": "Ethical" }, "text": { "en": "We recommend only what you need, and explain costs before we begin." } },
+      { "icon": "sparkles", "title": { "en": "Modern" }, "text": { "en": "We keep up with advances in dentistry so treatment is precise and predictable." } }
+    ]
+  },
+  "doctors": {
+    "title": { "en": "Our Doctors" },
+    "description": { "en": "The dental specialists at {{clinic}}, {{area}}: periodontist, endodontist, oral & maxillofacial surgeons, prosthodontist and orthodontist." },
+    "eyebrow": { "en": "Our specialists", "te": "మా నిపుణులు" },
+    "heading": { "en": "Meet the doctors", "te": "మా డాక్టర్లను కలవండి" },
+    "intro": { "en": "An MDS specialist for every part of your smile, led by Dr. Suhasini." }
+  },
+  "services": {
+    "title": { "en": "Dental Treatments" },
+    "description": { "en": "Dental treatments at {{clinic}}, {{area}}: general dentistry, root canals, implants, braces & aligners, oral surgery, cleaning, dentures, cosmetic dentistry and gum care." },
+    "eyebrow": { "en": "Treatments", "te": "చికిత్సలు" },
+    "heading": { "en": "Everything your smile needs", "te": "మీ చిరునవ్వుకు కావలసినవన్నీ" },
+    "intro": { "en": "Explore our treatments. Each is led by the specialist best suited to it, and every plan begins with a consultation." }
+  },
+  "whyUs": {
+    "title": { "en": "Why Choose Us" },
+    "description": { "en": "Why patients in {{area}} choose {{clinic}}: specialists under one roof, clear explanations and gentle care." },
+    "eyebrow": { "en": "Why choose us", "te": "మమ్మల్ని ఎందుకు ఎంచుకోవాలి" },
+    "heading": { "en": "Specialist care that feels personal", "te": "వ్యక్తిగత శ్రద్ధతో నిపుణుల సంరక్షణ" },
+    "intro": { "en": "What you can expect when you visit us." }
+  },
+  "gallery": {
+    "title": { "en": "Gallery" },
+    "description": { "en": "A look inside {{clinic}} in {{area}}." },
+    "eyebrow": { "en": "Gallery", "te": "గ్యాలరీ" },
+    "heading": { "en": "Inside the clinic", "te": "క్లినిక్ లోపల" },
+    "intro": { "en": "Photos of the clinic and team will appear here soon." }
+  },
+  "reviews": {
+    "title": { "en": "Patient Reviews" },
+    "description": { "en": "Read patient reviews of {{clinic}}, {{area}}, on Google." },
+    "eyebrow": { "en": "Reviews", "te": "సమీక్షలు" },
+    "heading": { "en": "What our patients say", "te": "మా రోగులు ఏమంటారు" },
+    "intro": { "en": "We only show genuine reviews, straight from Google." }
+  },
+  "education": {
+    "title": { "en": "Patient Education" },
+    "description": { "en": "Easy-to-read guides from {{clinic}}: gum health, aftercare after extraction and root canal treatment, caring for braces and dentures, and dental emergencies." },
+    "eyebrow": { "en": "Patient education", "te": "రోగుల అవగాహన" },
+    "heading": { "en": "Guides for a healthier smile", "te": "ఆరోగ్యకరమైన చిరునవ్వుకు మార్గదర్శకాలు" },
+    "intro": { "en": "Practical advice written for patients. Always follow the specific instructions your dentist gives you." }
+  },
+  "faqs": {
+    "title": { "en": "FAQs" },
+    "description": { "en": "Answers to common questions about appointments, costs, timings and treatments at {{clinic}}, {{area}}." },
+    "eyebrow": { "en": "FAQs", "te": "ప్రశ్నలు" },
+    "heading": { "en": "Frequently asked questions", "te": "తరచుగా అడిగే ప్రశ్నలు" },
+    "intro": { "en": "Can't find your answer? Call or WhatsApp us." }
+  },
+  "book": {
+    "title": { "en": "Book an Appointment" },
+    "description": { "en": "Book a dental appointment at {{clinic}}, {{area}}. Tell us what's troubling you and we'll suggest the right specialist." },
+    "eyebrow": { "en": "Book an appointment", "te": "అపాయింట్‌మెంట్" },
+    "heading": { "en": "Let's find the right doctor for you", "te": "మీకు సరైన డాక్టర్‌ను కనుగొందాం" },
+    "intro": { "en": "Three quick steps. It takes less than a minute." }
+  },
+  "contact": {
+    "title": { "en": "Contact & Timings" },
+    "description": { "en": "Address, phone, WhatsApp, map and timings for {{clinic}}, Aravinda High School Road, {{area}}." },
+    "eyebrow": { "en": "Contact", "te": "సంప్రదించండి" },
+    "heading": { "en": "We'd love to see you", "te": "మిమ్మల్ని కలవడానికి ఎదురుచూస్తున్నాం" },
+    "intro": { "en": "Call, WhatsApp or drop in during clinic hours." }
+  },
+  "emergency": {
+    "title": { "en": "Dental Emergency" },
+    "description": { "en": "What to do for toothache, a knocked-out tooth, a broken tooth or facial swelling — and how to reach {{clinic}}, {{area}}." },
+    "eyebrow": { "en": "Dental emergency", "te": "అత్యవసరం" },
+    "heading": { "en": "In pain? Here's what to do", "te": "నొప్పిగా ఉందా? ఇలా చేయండి" },
+    "intro": { "en": "Simple first-aid steps while you get in touch with us." }
+  },
+  "notFound": {
+    "title": { "en": "Page not found" },
+    "heading": { "en": "This page seems to be missing a tooth", "te": "ఈ పేజీ కనబడలేదు" },
+    "intro": { "en": "The page you're looking for doesn't exist or has moved.", "te": "మీరు వెతుకుతున్న పేజీ లేదు." }
+  }
+}

@@ -1,0 +1,496 @@
+{
+  "_note": "Prices are NOT published (owner's instruction); the site shows pricingNote instead. 'sittings' are typical ranges and are always shown as 'usually'. doctors = slugs from doctors.json; a sub-treatment's doctors override the category's.",
+  "pricingNote": {
+    "en": "Consultation required — we'll explain costs before starting.",
+    "te": "సంప్రదింపు అవసరం — చికిత్స ప్రారంభించే ముందు ఖర్చు వివరిస్తాము."
+  },
+  "categories": [
+    {
+      "slug": "general-dentistry",
+      "status": "placeholder",
+      "title": { "en": "General Dentistry", "te": "సాధారణ దంత వైద్యం" },
+      "bannerName": "Dental Treatment",
+      "icon": "stethoscope",
+      "image": "service-general",
+      "summary": { "en": "Check-ups, fillings, sensitivity care and same-day help for toothache." },
+      "intro": {
+        "en": "Most dental problems are easier, quicker and more comfortable to treat when they are found early. General dentistry is where care starts: a thorough check-up, a clear explanation of what we see, and simple treatment for everyday problems. Every new patient is first seen by Dr. Suhasini, who plans any specialist care you may need."
+      },
+      "doctors": ["dr-suhasini"],
+      "subTreatments": [
+        {
+          "slug": "consultation-check-up",
+          "title": { "en": "Dental consultation & check-up" },
+          "description": { "en": "A careful examination of your teeth, gums, bite and mouth, with X-rays when needed, followed by a plain-language explanation of any findings and your options." },
+          "whoFor": { "en": "Everyone — especially if it has been more than six months since your last visit, or something feels different." },
+          "sittings": { "en": "1 visit" }
+        },
+        {
+          "slug": "tooth-coloured-fillings",
+          "title": { "en": "Tooth-coloured fillings" },
+          "description": { "en": "Decayed or chipped areas are cleaned and rebuilt with composite material shaded to match your natural tooth." },
+          "whoFor": { "en": "Small to moderate cavities, worn edges or minor chips." },
+          "sittings": { "en": "1 visit" }
+        },
+        {
+          "slug": "sensitivity-treatment",
+          "title": { "en": "Tooth sensitivity treatment" },
+          "description": { "en": "We look for the cause of the twinge — worn enamel, exposed roots or a cracked filling — and treat it with desensitising agents, protective coatings or restorations." },
+          "whoFor": { "en": "People who feel sharp pain with cold, hot or sweet food and drinks." },
+          "sittings": { "en": "1–2 visits" }
+        },
+        {
+          "slug": "emergency-toothache-care",
+          "title": { "en": "Emergency toothache care" },
+          "description": { "en": "Prompt assessment and relief for sudden pain, swelling or a broken tooth, followed by a plan to treat the underlying cause." },
+          "whoFor": { "en": "Anyone in dental pain. Please call ahead so we can fit you in." },
+          "sittings": { "en": "Same day" }
+        },
+        {
+          "slug": "childrens-check-ups",
+          "title": { "en": "Children's dental check-ups" },
+          "description": { "en": "Gentle, unhurried check-ups that help children feel at ease, with advice for parents on brushing, diet and habits." },
+          "whoFor": { "en": "Children from their first tooth onwards." },
+          "sittings": { "en": "1 visit" }
+        }
+      ],
+      "faqs": [
+        { "q": { "en": "How often should I have a dental check-up?" }, "a": { "en": "For most people, once every six months is a good routine. Your dentist may suggest a different interval depending on your gum health, past treatment and risk of decay." } },
+        { "q": { "en": "Are tooth-coloured fillings strong enough for back teeth?" }, "a": { "en": "Modern composite fillings are suitable for many back-tooth cavities. For very large cavities, a crown or inlay may be a better option; we'll explain why at your visit." } },
+        { "q": { "en": "Can sensitivity go away on its own?" }, "a": { "en": "Mild sensitivity sometimes settles, but it can also be an early sign of decay, gum recession or a crack. It's worth having it checked rather than waiting." } }
+      ]
+    },
+    {
+      "slug": "root-canal-treatment",
+      "status": "placeholder",
+      "title": { "en": "Root Canal Treatment", "te": "రూట్ కెనాల్ చికిత్స" },
+      "bannerName": "Root Canal Treatment",
+      "icon": "tooth-root",
+      "image": "service-root-canal",
+      "summary": { "en": "Save an infected or badly decayed tooth instead of removing it." },
+      "intro": {
+        "en": "When decay or injury reaches the soft pulp inside a tooth, it can cause severe pain, swelling or an abscess. Root canal treatment removes the infected pulp, cleans and disinfects the canals, and seals them, so you can keep your natural tooth. With local anaesthesia, most patients find the procedure is similar to having a filling."
+      },
+      "doctors": ["dr-naveen-kumar"],
+      "subTreatments": [
+        {
+          "slug": "root-canal",
+          "title": { "en": "Root canal treatment" },
+          "description": { "en": "The infected pulp is removed, the canals are shaped and disinfected, then sealed to prevent re-infection." },
+          "whoFor": { "en": "Teeth with deep decay, lingering pain, swelling or an abscess." },
+          "sittings": { "en": "Usually 1–3 sittings" }
+        },
+        {
+          "slug": "re-root-canal",
+          "title": { "en": "Re-root canal treatment" },
+          "description": { "en": "A previously treated tooth that has become painful or infected again is reopened, cleaned and resealed." },
+          "whoFor": { "en": "Teeth with an older root canal that is causing trouble." },
+          "sittings": { "en": "2–3 sittings" }
+        },
+        {
+          "slug": "pulp-therapy-children",
+          "title": { "en": "Pulp therapy for children's teeth" },
+          "description": { "en": "Treatment for infected milk teeth so they can stay in place until the adult tooth is ready to come through." },
+          "whoFor": { "en": "Children with deep decay or pain in a milk tooth." },
+          "sittings": { "en": "1–2 sittings" }
+        },
+        {
+          "slug": "crown-after-root-canal",
+          "title": { "en": "Crown after root canal" },
+          "description": { "en": "A custom crown protects the treated tooth from cracking and restores its shape for chewing." },
+          "whoFor": { "en": "Most back teeth after root canal treatment." },
+          "sittings": { "en": "Usually 2 sittings" },
+          "doctors": ["dr-phani"]
+        }
+      ],
+      "faqs": [
+        { "q": { "en": "Is root canal treatment painful?" }, "a": { "en": "The procedure is done under local anaesthesia, so most people feel little more than pressure. Mild soreness for a few days afterwards is common and usually eased with the medicines your dentist advises." } },
+        { "q": { "en": "Why do I need a crown after a root canal?" }, "a": { "en": "A treated tooth, especially a back tooth, can become brittle. A crown helps protect it from cracking and may help it last longer." } },
+        { "q": { "en": "Is it better to remove the tooth instead?" }, "a": { "en": "Keeping your natural tooth is usually preferable when it can be saved. Removing it may later need an implant, bridge or denture to fill the gap. We'll discuss both options with you." } }
+      ]
+    },
+    {
+      "slug": "dental-implants",
+      "status": "placeholder",
+      "title": { "en": "Dental Implants", "te": "డెంటల్ ఇంప్లాంట్స్" },
+      "bannerName": "Dental Implants",
+      "icon": "implant",
+      "image": "service-implants",
+      "summary": { "en": "Fixed, natural-looking replacements for one, several or all missing teeth." },
+      "intro": {
+        "en": "A dental implant is a small titanium post placed in the jawbone to act like a tooth root. Once it has bonded with the bone, a crown, bridge or denture is fixed on top. Implants are planned by our prosthodontist, with surgical site work by our oral and maxillofacial surgeons when bone grafting or a sinus lift is needed."
+      },
+      "doctors": ["dr-phani", "dr-varun-krishna", "dr-preethi"],
+      "subTreatments": [
+        {
+          "slug": "single-tooth-implant",
+          "title": { "en": "Single-tooth implant" },
+          "description": { "en": "One implant and crown replaces a single missing tooth without cutting down the neighbouring teeth." },
+          "whoFor": { "en": "Adults with one missing tooth and healthy gums." },
+          "sittings": { "en": "Usually 2–3 stages over 3–6 months" },
+          "doctors": ["dr-phani"]
+        },
+        {
+          "slug": "implant-bridge",
+          "title": { "en": "Multiple implants / implant-supported bridge" },
+          "description": { "en": "Two or more implants support a fixed bridge to replace several teeth in a row." },
+          "whoFor": { "en": "People missing two or more neighbouring teeth." },
+          "sittings": { "en": "Usually 2–3 stages over 3–6 months" },
+          "doctors": ["dr-phani"]
+        },
+        {
+          "slug": "full-arch-implants",
+          "title": { "en": "Full-arch implant solutions" },
+          "description": { "en": "A complete fixed set of teeth supported by a small number of implants in the upper or lower jaw." },
+          "whoFor": { "en": "People who have lost most or all teeth in a jaw and want a fixed alternative to dentures." },
+          "sittings": { "en": "Several stages; planned at consultation" },
+          "doctors": ["dr-phani"]
+        },
+        {
+          "slug": "implant-supported-dentures",
+          "title": { "en": "Implant-supported dentures" },
+          "description": { "en": "A removable denture that clips onto implants, giving far better grip than a conventional denture." },
+          "whoFor": { "en": "Denture wearers troubled by loose or slipping lower dentures." },
+          "sittings": { "en": "Several stages; planned at consultation" },
+          "doctors": ["dr-phani"]
+        },
+        {
+          "slug": "bone-grafting-sinus-lift",
+          "title": { "en": "Bone grafting & sinus lift" },
+          "description": { "en": "Where there isn't enough bone to hold an implant, bone is rebuilt first so the implant has a stable foundation." },
+          "whoFor": { "en": "Patients whose jawbone has thinned after tooth loss." },
+          "sittings": { "en": "1 procedure + healing time" },
+          "doctors": ["dr-varun-krishna", "dr-preethi"]
+        }
+      ],
+      "faqs": [
+        { "q": { "en": "Am I suitable for dental implants?" }, "a": { "en": "Most healthy adults with enough jawbone can have implants. Uncontrolled diabetes, smoking and gum disease can affect healing, so we assess these at consultation, usually with a scan." } },
+        { "q": { "en": "How long does the implant process take?" }, "a": { "en": "A single implant usually takes three to six months from placement to the final crown, because the bone needs time to bond with the implant. Grafting can add to this." } },
+        { "q": { "en": "How do I look after implants?" }, "a": { "en": "Brush and clean between them just like natural teeth, and keep regular check-ups. Healthy gums around an implant are important for its long-term success." } }
+      ]
+    },
+    {
+      "slug": "orthodontics",
+      "status": "placeholder",
+      "title": { "en": "Orthodontics — Braces & Aligners", "te": "బ్రేసెస్ & అలైనర్స్" },
+      "bannerName": "Orthodontics",
+      "icon": "braces",
+      "image": "service-orthodontics",
+      "summary": { "en": "Straighten crooked or protruding teeth with braces or clear aligners." },
+      "intro": {
+        "en": "Straighter teeth are easier to clean and can improve your bite as well as your smile. Our orthodontist offers metal braces, tooth-coloured ceramic braces and clear aligners, and will recommend the option that suits your teeth, lifestyle and age."
+      },
+      "doctors": ["dr-praveen"],
+      "subTreatments": [
+        {
+          "slug": "metal-braces",
+          "title": { "en": "Metal braces" },
+          "description": { "en": "Reliable, time-tested brackets and wires that gradually guide teeth into position." },
+          "whoFor": { "en": "Children, teens and adults with mild to complex alignment problems." },
+          "sittings": { "en": "Reviews every 4–6 weeks, usually 12–24 months" }
+        },
+        {
+          "slug": "ceramic-braces",
+          "title": { "en": "Ceramic (tooth-coloured) braces" },
+          "description": { "en": "Work like metal braces but use tooth-coloured brackets that are less noticeable." },
+          "whoFor": { "en": "Teens and adults who want a more discreet fixed brace." },
+          "sittings": { "en": "Reviews every 4–6 weeks, usually 12–24 months" }
+        },
+        {
+          "slug": "clear-aligners",
+          "title": { "en": "Clear aligners" },
+          "description": { "en": "A series of removable, nearly invisible trays, each moving the teeth a small step." },
+          "whoFor": { "en": "Adults and older teens with suitable cases who can wear the trays for most of the day." },
+          "sittings": { "en": "Periodic reviews; length depends on the case" }
+        },
+        {
+          "slug": "retainers",
+          "title": { "en": "Retainers" },
+          "description": { "en": "Fixed or removable retainers hold teeth in their new position after braces or aligners." },
+          "whoFor": { "en": "Everyone finishing orthodontic treatment." },
+          "sittings": { "en": "1–2 visits" }
+        },
+        {
+          "slug": "early-orthodontic-check",
+          "title": { "en": "Early orthodontic check for children" },
+          "description": { "en": "An assessment of jaw growth and incoming teeth, so problems can be spotted early and treated at the right time." },
+          "whoFor": { "en": "Children from about 7 years of age." },
+          "sittings": { "en": "1 visit" }
+        }
+      ],
+      "faqs": [
+        { "q": { "en": "Am I too old for braces?" }, "a": { "en": "There's no upper age limit as long as your teeth and gums are healthy. Many adults choose ceramic braces or clear aligners." } },
+        { "q": { "en": "Do braces hurt?" }, "a": { "en": "Teeth often feel tender for a few days after braces are fitted or adjusted. Soft food and the pain relief your orthodontist advises usually help." } },
+        { "q": { "en": "Why do I need a retainer?" }, "a": { "en": "Teeth tend to drift back towards their old positions. Wearing a retainer as advised helps keep your result." } }
+      ]
+    },
+    {
+      "slug": "oral-surgery",
+      "status": "placeholder",
+      "title": { "en": "Oral & Dental Surgery", "te": "నోటి శస్త్రచికిత్స" },
+      "bannerName": "Dental Surgery",
+      "icon": "surgery",
+      "image": "service-oral-surgery",
+      "summary": { "en": "Wisdom teeth, complex extractions, minor oral surgery and jaw problems." },
+      "intro": {
+        "en": "Our oral and maxillofacial surgeons treat problems that need surgical care: impacted wisdom teeth, difficult extractions, cysts and jaw or facial-bone injuries. Procedures are carefully planned, performed under local anaesthesia, and followed by clear aftercare instructions."
+      },
+      "doctors": ["dr-varun-krishna", "dr-preethi", "dr-suhasini"],
+      "subTreatments": [
+        {
+          "slug": "wisdom-tooth-removal",
+          "title": { "en": "Wisdom tooth removal" },
+          "description": { "en": "Removal of wisdom teeth that are impacted, decayed or causing repeated gum infections." },
+          "whoFor": { "en": "Anyone with pain, swelling or infection around a wisdom tooth." },
+          "sittings": { "en": "1 visit + review" }
+        },
+        {
+          "slug": "surgical-extractions",
+          "title": { "en": "Surgical & complex extractions" },
+          "description": { "en": "Careful removal of broken-down, fractured or awkwardly placed teeth that can't be removed simply." },
+          "whoFor": { "en": "Teeth that cannot be saved and need a surgical approach." },
+          "sittings": { "en": "1 visit + review" }
+        },
+        {
+          "slug": "minor-oral-surgery",
+          "title": { "en": "Minor oral surgery (cysts, biopsies)" },
+          "description": { "en": "Removal of cysts and small growths, and biopsies to investigate changes in the mouth." },
+          "whoFor": { "en": "Patients with a lump, ulcer or patch that needs investigation." },
+          "sittings": { "en": "1 visit + review" }
+        },
+        {
+          "slug": "jaw-facial-injury",
+          "title": { "en": "Jaw & facial bone injury management" },
+          "description": { "en": "Assessment and management of injuries to the jaw and facial bones, with referral to hospital care when needed." },
+          "whoFor": { "en": "People who have had an accident or blow to the face or jaw." },
+          "sittings": { "en": "Depends on the injury" },
+          "doctors": ["dr-varun-krishna", "dr-preethi"]
+        },
+        {
+          "slug": "tmj-consultation",
+          "title": { "en": "Jaw joint (TMJ) pain consultation" },
+          "description": { "en": "Evaluation of jaw pain, clicking or difficulty opening the mouth, and a plan to manage it." },
+          "whoFor": { "en": "People with jaw pain, clicking, locking or headaches linked to clenching." },
+          "sittings": { "en": "1 visit + follow-up" },
+          "doctors": ["dr-varun-krishna", "dr-preethi"]
+        }
+      ],
+      "faqs": [
+        { "q": { "en": "Do all wisdom teeth need to be removed?" }, "a": { "en": "No. Wisdom teeth that are healthy and fully through may be left alone. Removal is usually advised when they are impacted, decayed or repeatedly infected." } },
+        { "q": { "en": "How long does recovery take after an extraction?" }, "a": { "en": "Most people feel better within a few days. Some swelling is normal after surgical extractions and usually settles within a week. Follow your aftercare instructions closely." } },
+        { "q": { "en": "Will I be awake during oral surgery?" }, "a": { "en": "Most procedures at the clinic are done under local anaesthesia, so you are awake but the area is numb. We'll explain everything before we start." } }
+      ]
+    },
+    {
+      "slug": "oral-hygiene",
+      "status": "placeholder",
+      "title": { "en": "Oral Hygiene & Prevention", "te": "నోటి పరిశుభ్రత" },
+      "bannerName": "Oral Hygiene",
+      "icon": "toothbrush-sparkles",
+      "image": "service-hygiene",
+      "summary": { "en": "Professional cleaning, fluoride, sealants and fresh-breath care." },
+      "intro": {
+        "en": "Prevention is the kindest dentistry. Regular professional cleaning removes the hardened deposits that brushing can't, and simple protective treatments help children's teeth resist decay. We'll also show you easy habits that make the biggest difference at home."
+      },
+      "doctors": ["dr-suhasini"],
+      "subTreatments": [
+        {
+          "slug": "scaling-polishing",
+          "title": { "en": "Scaling & polishing" },
+          "description": { "en": "Removal of plaque, tartar and surface stains, leaving teeth smooth and easier to keep clean." },
+          "whoFor": { "en": "Everyone, typically every six months." },
+          "sittings": { "en": "1 visit" }
+        },
+        {
+          "slug": "fluoride-application",
+          "title": { "en": "Fluoride application" },
+          "description": { "en": "A quick fluoride varnish that may help strengthen enamel and reduce the risk of decay." },
+          "whoFor": { "en": "Children, and adults at higher risk of cavities." },
+          "sittings": { "en": "1 visit" }
+        },
+        {
+          "slug": "pit-fissure-sealants",
+          "title": { "en": "Pit & fissure sealants for children" },
+          "description": { "en": "A thin protective coating over the grooves of back teeth, where decay often starts." },
+          "whoFor": { "en": "Children, soon after their permanent back teeth come through." },
+          "sittings": { "en": "1 visit" }
+        },
+        {
+          "slug": "bad-breath-care",
+          "title": { "en": "Bad-breath (halitosis) care & hygiene counselling" },
+          "description": { "en": "We look for the causes of bad breath — gum problems, tongue coating, decay or dry mouth — and give you a practical plan." },
+          "whoFor": { "en": "Anyone worried about persistent bad breath." },
+          "sittings": { "en": "1–2 visits" }
+        }
+      ],
+      "faqs": [
+        { "q": { "en": "Does scaling damage or loosen teeth?" }, "a": { "en": "No. Scaling removes deposits from the tooth surface. Teeth can feel slightly different or sensitive afterwards because the tartar that covered them is gone; this usually settles quickly." } },
+        { "q": { "en": "How often should I have my teeth cleaned?" }, "a": { "en": "Every six months suits most people. If you have gum disease, your dentist may recommend more frequent cleaning." } },
+        { "q": { "en": "Are sealants safe for children?" }, "a": { "en": "Sealants are a widely used preventive treatment. They are painted on without drilling or injections and are checked at regular visits." } }
+      ]
+    },
+    {
+      "slug": "dentures",
+      "status": "placeholder",
+      "title": { "en": "Dentures", "te": "కట్టుడు పళ్ళు" },
+      "bannerName": "Dentures",
+      "icon": "denture",
+      "image": "service-dentures",
+      "summary": { "en": "Comfortable complete, partial and flexible dentures, plus repairs." },
+      "intro": {
+        "en": "Well-made dentures restore your ability to eat and speak comfortably and support the shape of your face. Our prosthodontist takes careful impressions and bite records over several visits so your dentures fit well and look natural."
+      },
+      "doctors": ["dr-phani"],
+      "subTreatments": [
+        {
+          "slug": "complete-dentures",
+          "title": { "en": "Complete dentures" },
+          "description": { "en": "A full set of removable teeth for the upper jaw, lower jaw or both." },
+          "whoFor": { "en": "People who have lost all their teeth in one or both jaws." },
+          "sittings": { "en": "Usually 4–5 sittings" }
+        },
+        {
+          "slug": "partial-dentures",
+          "title": { "en": "Partial dentures" },
+          "description": { "en": "A removable plate that fills gaps and clips onto your remaining natural teeth." },
+          "whoFor": { "en": "People missing some teeth who prefer a removable option." },
+          "sittings": { "en": "Usually 3–4 sittings" }
+        },
+        {
+          "slug": "flexible-dentures",
+          "title": { "en": "Flexible dentures" },
+          "description": { "en": "A lighter partial denture made from a flexible material, without visible metal clasps." },
+          "whoFor": { "en": "Patients who want a more comfortable, discreet partial denture." },
+          "sittings": { "en": "Usually 3–4 sittings" }
+        },
+        {
+          "slug": "denture-repair-relining",
+          "title": { "en": "Denture repair & relining" },
+          "description": { "en": "Fixing cracked dentures, replacing lost teeth, or refitting a loose denture to your gums." },
+          "whoFor": { "en": "Anyone whose denture is broken, loose or uncomfortable." },
+          "sittings": { "en": "1–2 visits" }
+        }
+      ],
+      "faqs": [
+        { "q": { "en": "How long does it take to get used to new dentures?" }, "a": { "en": "Most people adapt within a few weeks. Start with soft foods cut into small pieces, and come back for adjustments if anything feels sore." } },
+        { "q": { "en": "Should I sleep with my dentures in?" }, "a": { "en": "Usually it's advised to take them out at night so your gums can rest. Keep them clean and in water or a denture solution." } },
+        { "q": { "en": "My denture feels loose. What can be done?" }, "a": { "en": "Gums and bone change shape over time. A reline can often improve the fit, and implant-supported dentures are an option for more grip." } }
+      ]
+    },
+    {
+      "slug": "cosmetic-dentistry",
+      "status": "placeholder",
+      "title": { "en": "Cosmetic Dentistry", "te": "సౌందర్య దంత వైద్యం" },
+      "bannerName": "Cosmetic Dentistry",
+      "icon": "sparkles",
+      "image": "service-cosmetic",
+      "summary": { "en": "Whitening, veneers, bonding and complete smile makeovers." },
+      "intro": {
+        "en": "Cosmetic dentistry improves the colour, shape and balance of your smile. We always start by checking that teeth and gums are healthy, then talk through what you'd like to change and which options are realistic for you."
+      },
+      "doctors": ["dr-suhasini", "dr-phani"],
+      "subTreatments": [
+        {
+          "slug": "teeth-whitening",
+          "title": { "en": "Teeth whitening" },
+          "description": { "en": "Professional whitening that lightens natural tooth colour under dental supervision." },
+          "whoFor": { "en": "Adults with healthy teeth who want a brighter shade." },
+          "sittings": { "en": "Usually 1–2 visits" },
+          "doctors": ["dr-suhasini"]
+        },
+        {
+          "slug": "smile-makeover",
+          "title": { "en": "Smile makeover" },
+          "description": { "en": "A planned combination of treatments — whitening, bonding, veneers, crowns or aligners — designed around your goals." },
+          "whoFor": { "en": "People who want to change several aspects of their smile." },
+          "sittings": { "en": "Planned at consultation" },
+          "doctors": ["dr-suhasini", "dr-phani"]
+        },
+        {
+          "slug": "veneers-laminates",
+          "title": { "en": "Veneers & laminates" },
+          "description": { "en": "Thin custom shells bonded to the front of teeth to improve their shape, colour or small gaps." },
+          "whoFor": { "en": "Front teeth that are chipped, stained or unevenly shaped." },
+          "sittings": { "en": "Usually 2–3 sittings" },
+          "doctors": ["dr-phani"]
+        },
+        {
+          "slug": "tooth-coloured-bonding",
+          "title": { "en": "Tooth-coloured bonding" },
+          "description": { "en": "Composite material sculpted directly onto teeth to repair chips or close small gaps." },
+          "whoFor": { "en": "Minor chips, gaps or uneven edges." },
+          "sittings": { "en": "1 visit" },
+          "doctors": ["dr-suhasini"]
+        },
+        {
+          "slug": "gum-contouring",
+          "title": { "en": "Gum contouring" },
+          "description": { "en": "Reshaping the gum line to create a more even, balanced frame for your teeth." },
+          "whoFor": { "en": "People with a 'gummy' smile or an uneven gum line." },
+          "sittings": { "en": "1 visit + review" },
+          "doctors": ["dr-sindhu"]
+        }
+      ],
+      "faqs": [
+        { "q": { "en": "Does whitening harm the teeth?" }, "a": { "en": "Professional whitening done under supervision is generally considered safe. Temporary sensitivity is common. Crowns and fillings don't change colour, which we'll consider when planning." } },
+        { "q": { "en": "How long do veneers last?" }, "a": { "en": "With good care, veneers can last many years. Avoiding biting hard objects and keeping regular check-ups helps them last." } },
+        { "q": { "en": "Can I see how my smile might look before treatment?" }, "a": { "en": "We'll discuss your goals and can show examples of what different treatments involve before you decide." } }
+      ]
+    },
+    {
+      "slug": "gum-care",
+      "status": "placeholder",
+      "title": { "en": "Periodontology (Gum Care)", "te": "చిగుళ్ళ చికిత్స" },
+      "bannerName": "Gum Care",
+      "icon": "gum",
+      "image": "service-gum-care",
+      "summary": { "en": "Treatment for bleeding, swollen or receding gums and gum disease." },
+      "intro": {
+        "en": "Healthy gums are the foundation of a healthy mouth. Gum disease often starts quietly with bleeding while brushing and, if left untreated, can loosen teeth. Gum disease has also been linked with wider health conditions such as diabetes and heart disease. Our periodontist treats every stage, from deep cleaning to gum surgery."
+      },
+      "doctors": ["dr-sindhu"],
+      "subTreatments": [
+        {
+          "slug": "deep-cleaning",
+          "title": { "en": "Gum treatment / deep cleaning (scaling & root planing)" },
+          "description": { "en": "Cleaning below the gum line to remove bacteria and tartar from the roots so the gums can heal." },
+          "whoFor": { "en": "People with bleeding gums, gum pockets or early gum disease." },
+          "sittings": { "en": "Usually 1–2 sittings" }
+        },
+        {
+          "slug": "flap-surgery",
+          "title": { "en": "Gum surgery (flap surgery)" },
+          "description": { "en": "A surgical procedure to clean deep pockets and reshape the supporting bone when deep cleaning alone isn't enough." },
+          "whoFor": { "en": "Advanced gum disease with deep pockets." },
+          "sittings": { "en": "1 procedure + review" }
+        },
+        {
+          "slug": "gum-depigmentation",
+          "title": { "en": "Gum depigmentation" },
+          "description": { "en": "Lightening of dark patches on the gums for a more even gum colour." },
+          "whoFor": { "en": "People concerned about dark or patchy gums." },
+          "sittings": { "en": "1–2 visits" }
+        },
+        {
+          "slug": "crown-lengthening",
+          "title": { "en": "Crown lengthening" },
+          "description": { "en": "Exposing more of a tooth by reshaping the gum and bone, often before a crown or for a gummy smile." },
+          "whoFor": { "en": "Teeth broken near the gum line, or short-looking teeth." },
+          "sittings": { "en": "1 procedure + review" }
+        },
+        {
+          "slug": "periodontal-maintenance",
+          "title": { "en": "Periodontal maintenance" },
+          "description": { "en": "Regular specialist cleaning and monitoring to keep gum disease under control after treatment." },
+          "whoFor": { "en": "Patients who have been treated for gum disease." },
+          "sittings": { "en": "Every 3–6 months" }
+        }
+      ],
+      "faqs": [
+        { "q": { "en": "Are bleeding gums serious?" }, "a": { "en": "Bleeding when you brush is often the first sign of gum inflammation. It is usually reversible when treated early, so it's worth having it checked." } },
+        { "q": { "en": "Is gum disease linked to other health problems?" }, "a": { "en": "Research has linked gum disease with conditions such as diabetes and heart disease. Looking after your gums is part of looking after your overall health." } },
+        { "q": { "en": "Can gum disease be cured?" }, "a": { "en": "Early gum disease (gingivitis) can usually be reversed. More advanced disease can be controlled with treatment and regular maintenance." } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "status": "placeholder",
+  "_note": "Never add invented reviews. Until a Google Places API key is configured (GOOGLE_PLACES_API_KEY + placeId) the site shows a card linking to the Maps listing. rating/reviewCount stay null until real values are known.",
+  "googleMapsUrl": "https://maps.app.goo.gl/ZFB415YP6BEBrrxV8",
+  "writeReviewUrl": "",
+  "placeId": "",
+  "liveReviewsEnabled": false,
+  "rating": null,
+  "reviewCount": null,
+  "card": {
+    "heading": { "en": "Read our reviews on Google", "te": "గూగుల్‌లో మా సమీక్షలు చదవండి" },
+    "text": { "en": "See what patients say about their visits, straight from our Google listing. If we've looked after you, a short review helps other families find the right care.", "te": "మా గూగుల్ లిస్టింగ్‌లో రోగుల అభిప్రాయాలు చూడండి." },
+    "readCta": { "en": "Read reviews on Google", "te": "గూగుల్‌లో చదవండి" },
+    "writeCta": { "en": "Write a review", "te": "సమీక్ష రాయండి" }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "status": "placeholder",
+  "_note": "Labels come from i18n/<lang>.json by key. Order = display order.",
+  "topBarMessage": "topbar.message",
+  "header": [
+    { "key": "nav.home", "href": "/" },
+    { "key": "nav.about", "href": "/about" },
+    { "key": "nav.services", "href": "/services" },
+    { "key": "nav.doctors", "href": "/doctors" },
+    { "key": "nav.education", "href": "/patient-education" },
+    { "key": "nav.faqs", "href": "/faqs" }
+  ],
+  "headerCta": { "key": "nav.contact", "href": "/contact" },
+  "footerQuickLinks": [
+    { "key": "nav.about", "href": "/about" },
+    { "key": "nav.services", "href": "/services" },
+    { "key": "nav.doctors", "href": "/doctors" },
+    { "key": "nav.whyUs", "href": "/why-us" },
+    { "key": "nav.gallery", "href": "/gallery" },
+    { "key": "nav.reviews", "href": "/reviews" },
+    { "key": "nav.education", "href": "/patient-education" },
+    { "key": "nav.faqs", "href": "/faqs" },
+    { "key": "nav.book", "href": "/book" },
+    { "key": "nav.emergency", "href": "/emergency" }
+  ],
+  "footerLegal": [
+    { "key": "nav.privacy", "href": "/privacy" },
+    { "key": "nav.terms", "href": "/terms" },
+    { "key": "nav.disclaimer", "href": "/disclaimer" },
+    { "key": "nav.cookies", "href": "/cookies" }
+  ]
+}

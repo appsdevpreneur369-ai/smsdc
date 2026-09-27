@@ -1,0 +1,63 @@
+{
+  "status": "placeholder",
+  "_note": "The 'What's troubling you?' picker. doctors = recommended doctors in order. When booking.allowDirectSpecialistBooking is false every problem routes to booking.defaultDoctor first. 'mode: any' means any listed doctor (e.g. the next available surgeon).",
+  "problems": [
+    {
+      "id": "pain-checkup",
+      "icon": "stethoscope",
+      "label": { "en": "Tooth pain, check-up or not sure", "te": "పంటి నొప్పి, చెకప్ లేదా తెలియదు" },
+      "hint": { "en": "Start with a consultation", "te": "సంప్రదింపుతో ప్రారంభించండి" },
+      "doctors": ["dr-suhasini"],
+      "service": "general-dentistry"
+    },
+    {
+      "id": "gums",
+      "icon": "gum",
+      "label": { "en": "Bleeding or swollen gums", "te": "చిగుళ్ళ నుండి రక్తం లేదా వాపు" },
+      "hint": { "en": "Gum specialist", "te": "చిగుళ్ళ నిపుణులు" },
+      "doctors": ["dr-sindhu"],
+      "service": "gum-care"
+    },
+    {
+      "id": "root-canal",
+      "icon": "tooth-root",
+      "label": { "en": "Severe pain, infected tooth or root canal", "te": "తీవ్రమైన నొప్పి, ఇన్ఫెక్షన్ లేదా రూట్ కెనాల్" },
+      "hint": { "en": "Root canal specialist", "te": "రూట్ కెనాల్ స్పెషలిస్ట్" },
+      "doctors": ["dr-naveen-kumar"],
+      "service": "root-canal-treatment"
+    },
+    {
+      "id": "wisdom-jaw",
+      "icon": "surgery",
+      "label": { "en": "Wisdom tooth, extraction or jaw problem", "te": "జ్ఞాన దంతం, పన్ను తీయడం లేదా దవడ సమస్య" },
+      "hint": { "en": "Oral surgeon — whoever is available first", "te": "ముందుగా అందుబాటులో ఉన్న శస్త్రచికిత్స నిపుణులు" },
+      "doctors": ["dr-varun-krishna", "dr-preethi"],
+      "mode": "any",
+      "service": "oral-surgery"
+    },
+    {
+      "id": "missing-teeth",
+      "icon": "implant",
+      "label": { "en": "Missing teeth, implants, dentures or crowns", "te": "పళ్ళు లేకపోవడం, ఇంప్లాంట్స్, కట్టుడు పళ్ళు" },
+      "hint": { "en": "Implants & dentures specialist", "te": "ఇంప్లాంట్స్ & కట్టుడు పళ్ళ నిపుణులు" },
+      "doctors": ["dr-phani"],
+      "service": "dental-implants"
+    },
+    {
+      "id": "alignment",
+      "icon": "braces",
+      "label": { "en": "Crooked teeth, braces or aligners", "te": "ఎత్తుపళ్ళు, బ్రేసెస్ లేదా అలైనర్స్" },
+      "hint": { "en": "Orthodontist", "te": "ఆర్థోడాంటిస్ట్" },
+      "doctors": ["dr-praveen"],
+      "service": "orthodontics"
+    },
+    {
+      "id": "cosmetic-cleaning",
+      "icon": "sparkles",
+      "label": { "en": "Cleaning, whitening or smile makeover", "te": "క్లీనింగ్, తెల్లబరచడం లేదా స్మైల్ మేకోవర్" },
+      "hint": { "en": "Start with a consultation", "te": "సంప్రదింపుతో ప్రారంభించండి" },
+      "doctors": ["dr-suhasini"],
+      "service": "cosmetic-dentistry"
+    }
+  ]
+}

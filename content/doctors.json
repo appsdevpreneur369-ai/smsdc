@@ -1,0 +1,216 @@
+{
+  "_note": "Order here is the display order. 'avatar.tone' picks brand colours for the initials avatar until 'avatar.image' (an id in images.json) is set. 'verify' lists fields still to be confirmed with the clinic. clinicflowDoctorId links to the doctor's ClinicFlow247 record once created.",
+  "consultSlotMinutes": 30,
+  "doctors": [
+    {
+      "slug": "dr-suhasini",
+      "status": "placeholder",
+      "firstName": "Suhasini",
+      "lastName": "",
+      "displayName": "Dr. Suhasini",
+      "initials": "S",
+      "qualification": "MDS",
+      "speciality": {
+        "en": "Oral & Maxillofacial Surgeon · Clinic Head",
+        "te": "నోటి మరియు దవడ శస్త్రచికిత్స నిపుణులు · క్లినిక్ హెడ్"
+      },
+      "shortSpeciality": { "en": "Clinic Head", "te": "క్లినిక్ హెడ్" },
+      "role": "head",
+      "experience": { "en": "20+ years of experience", "te": "20+ సంవత్సరాల అనుభవం" },
+      "summary": {
+        "en": "Leads the clinic and sees every new patient first, planning care across all specialities."
+      },
+      "bio": {
+        "en": [
+          "Dr. Suhasini is an MDS-qualified dental surgeon with over 20 years of clinical experience in comprehensive dental care. With a strong focus on patient comfort, precision and personalised treatment, she has helped patients of all ages achieve and keep healthy, confident smiles.",
+          "Her experience spans routine preventive and restorative care through to advanced dental and surgical procedures. She believes in understanding each patient's needs and treating them with a gentle, ethical, patient-centred approach, and she keeps up with modern advances so every visit is comfortable, transparent and stress-free."
+        ]
+      },
+      "expertise": [
+        "Comprehensive Dental Care",
+        "Preventive Dentistry",
+        "Restorative Dentistry",
+        "Cosmetic Dentistry",
+        "Oral Surgery",
+        "Advanced Dental Procedures"
+      ],
+      "consultation": [
+        { "days": ["monday", "tuesday", "wednesday", "thursday", "friday"], "opens": "10:00", "closes": "14:00" },
+        { "days": ["monday", "tuesday", "wednesday", "thursday", "friday"], "opens": "17:00", "closes": "20:00" },
+        { "days": ["saturday"], "opens": "10:00", "closes": "14:00" }
+      ],
+      "avatar": { "image": null, "tone": "primary" },
+      "registrationNumber": null,
+      "clinicflowDoctorId": null,
+      "verify": ["speciality", "consultation", "registrationNumber"]
+    },
+    {
+      "slug": "dr-sindhu",
+      "status": "placeholder",
+      "firstName": "Sindhu",
+      "lastName": "",
+      "displayName": "Dr. Sindhu",
+      "initials": "S",
+      "qualification": "MDS",
+      "speciality": { "en": "Periodontist (Gum Specialist)", "te": "చిగుళ్ళ వ్యాధి నిపుణులు" },
+      "shortSpeciality": { "en": "Gum Specialist", "te": "చిగుళ్ళ నిపుణులు" },
+      "role": "consultant",
+      "summary": {
+        "en": "Specialises in the health of the gums and the bone that supports the teeth."
+      },
+      "bio": {
+        "en": [
+          "Dr. Sindhu, MDS, is a periodontist. She specialises in the health of the gums and the bone that supports the teeth: gum disease, bleeding gums, deep cleaning and gum surgery."
+        ]
+      },
+      "expertise": ["Gum disease treatment", "Deep cleaning (scaling & root planing)", "Gum surgery", "Gum contouring & depigmentation", "Periodontal maintenance"],
+      "consultation": [
+        { "days": ["monday", "tuesday", "wednesday", "thursday", "friday"], "opens": "17:00", "closes": "20:00" }
+      ],
+      "avatar": { "image": null, "tone": "secondary" },
+      "registrationNumber": null,
+      "clinicflowDoctorId": null,
+      "verify": ["registrationNumber"]
+    },
+    {
+      "slug": "dr-preethi",
+      "status": "placeholder",
+      "firstName": "Preethi",
+      "lastName": "",
+      "displayName": "Dr. Preethi",
+      "initials": "P",
+      "qualification": "MDS",
+      "speciality": { "en": "Oral & Maxillofacial Surgeon", "te": "జ్ఞాన దంతములు మరియు దవడ ఎముకల స్పెషలిస్ట్" },
+      "shortSpeciality": { "en": "Oral Surgeon", "te": "దవడ శస్త్రచికిత్స నిపుణులు" },
+      "role": "consultant",
+      "summary": {
+        "en": "Wisdom-tooth removal, surgical extractions and minor oral surgery."
+      },
+      "bio": {
+        "en": [
+          "Dr. Preethi, MDS, is an oral and maxillofacial surgeon. She handles wisdom-tooth removal, surgical extractions and minor oral surgery, with a focus on safe, comfortable procedures."
+        ]
+      },
+      "expertise": ["Wisdom tooth removal", "Surgical extractions", "Minor oral surgery", "Implant-site preparation"],
+      "consultation": [
+        { "days": ["monday", "tuesday", "wednesday", "thursday", "friday"], "opens": "17:00", "closes": "20:00" }
+      ],
+      "avatar": { "image": null, "tone": "dark" },
+      "registrationNumber": null,
+      "clinicflowDoctorId": null,
+      "verify": ["speciality", "registrationNumber"]
+    },
+    {
+      "slug": "dr-naveen-kumar",
+      "status": "placeholder",
+      "firstName": "Naveen",
+      "lastName": "Kumar",
+      "displayName": "Dr. Naveen Kumar",
+      "initials": "NK",
+      "qualification": "MDS (Conservative Dentistry & Endodontics)",
+      "speciality": { "en": "Root Canal Specialist (Endodontist)", "te": "రూట్ కెనాల్ స్పెషలిస్ట్" },
+      "shortSpeciality": { "en": "Root Canal Specialist", "te": "రూట్ కెనాల్ స్పెషలిస్ట్" },
+      "role": "consultant",
+      "summary": {
+        "en": "Focuses on saving natural teeth through careful root canal treatment."
+      },
+      "bio": {
+        "en": [
+          "Dr. Naveen Kumar is a root canal specialist. He focuses on saving natural teeth through comfortable, precise root canal treatment and re-treatment."
+        ]
+      },
+      "expertise": ["Root canal treatment", "Re-root canal treatment", "Pulp therapy for children", "Treatment of infected teeth"],
+      "consultation": [
+        { "days": ["monday", "tuesday", "wednesday", "thursday", "friday"], "opens": "17:00", "closes": "20:00" }
+      ],
+      "avatar": { "image": null, "tone": "accent" },
+      "registrationNumber": null,
+      "clinicflowDoctorId": null,
+      "verify": ["qualification", "registrationNumber"]
+    },
+    {
+      "slug": "dr-varun-krishna",
+      "status": "placeholder",
+      "firstName": "Varun",
+      "lastName": "Krishna",
+      "displayName": "Dr. Varun Krishna",
+      "initials": "VK",
+      "qualification": "MDS",
+      "speciality": { "en": "Oral & Maxillofacial Surgeon", "te": "జ్ఞాన దంతములు మరియు దవడ ఎముకల స్పెషలిస్ట్" },
+      "shortSpeciality": { "en": "Oral Surgeon", "te": "దవడ శస్త్రచికిత్స నిపుణులు" },
+      "role": "consultant",
+      "summary": {
+        "en": "Wisdom teeth, jaw and facial-bone problems, and implant-site preparation."
+      },
+      "bio": {
+        "en": [
+          "Dr. Varun Krishna, MDS, is an oral and maxillofacial surgeon. He treats wisdom teeth and problems of the jaw and facial bones, and performs surgical extractions and implant-site preparation."
+        ]
+      },
+      "expertise": ["Wisdom tooth removal", "Jaw & facial bone injuries", "Surgical extractions", "Bone grafting & sinus lift", "TMJ consultation"],
+      "consultation": [
+        { "days": ["monday", "tuesday", "wednesday", "thursday", "friday"], "opens": "17:00", "closes": "20:00" }
+      ],
+      "avatar": { "image": null, "tone": "primary" },
+      "registrationNumber": null,
+      "clinicflowDoctorId": null,
+      "verify": ["registrationNumber"]
+    },
+    {
+      "slug": "dr-phani",
+      "status": "placeholder",
+      "firstName": "Phani",
+      "lastName": "",
+      "displayName": "Dr. Phani",
+      "initials": "P",
+      "qualification": "MDS",
+      "speciality": { "en": "Prosthodontist (Implants & Dentures)", "te": "ఇంప్లాంట్స్ మరియు కట్టుడు పళ్ళు" },
+      "shortSpeciality": { "en": "Implants & Dentures", "te": "ఇంప్లాంట్స్ & కట్టుడు పళ్ళు" },
+      "role": "consultant",
+      "summary": {
+        "en": "Restores missing and damaged teeth with implants, crowns, bridges and dentures."
+      },
+      "bio": {
+        "en": [
+          "Dr. Phani, MDS, is a prosthodontist. He restores missing and damaged teeth with implants, crowns, bridges and dentures designed for comfort and a natural look."
+        ]
+      },
+      "expertise": ["Dental implants", "Crowns & bridges", "Complete & partial dentures", "Veneers & laminates", "Smile makeovers"],
+      "consultation": [
+        { "days": ["monday", "tuesday", "wednesday", "thursday", "friday"], "opens": "17:00", "closes": "20:00" }
+      ],
+      "avatar": { "image": null, "tone": "secondary" },
+      "registrationNumber": null,
+      "clinicflowDoctorId": null,
+      "verify": ["registrationNumber"]
+    },
+    {
+      "slug": "dr-praveen",
+      "status": "placeholder",
+      "firstName": "Praveen",
+      "lastName": "",
+      "displayName": "Dr. Praveen",
+      "initials": "P",
+      "qualification": "MDS",
+      "speciality": { "en": "Orthodontist & Aligners Specialist", "te": "ఎత్తుపళ్ళ స్పెషలిస్ట్" },
+      "shortSpeciality": { "en": "Braces & Aligners", "te": "బ్రేసెస్ & అలైనర్స్" },
+      "role": "consultant",
+      "summary": {
+        "en": "Straightens crooked and protruding teeth with braces and clear aligners."
+      },
+      "bio": {
+        "en": [
+          "Dr. Praveen, MDS, is an orthodontist and aligners specialist. He straightens crooked and protruding teeth with braces and clear aligners for children and adults."
+        ]
+      },
+      "expertise": ["Metal & ceramic braces", "Clear aligners", "Retainers", "Early orthodontic checks for children"],
+      "consultation": [
+        { "days": ["monday", "tuesday", "wednesday", "thursday", "friday"], "opens": "17:00", "closes": "20:00" }
+      ],
+      "avatar": { "image": null, "tone": "dark" },
+      "registrationNumber": null,
+      "clinicflowDoctorId": null,
+      "verify": ["registrationNumber"]
+    }
+  ]
+}

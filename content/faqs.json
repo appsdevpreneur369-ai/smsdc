@@ -1,0 +1,43 @@
+{
+  "status": "placeholder",
+  "_note": "General clinic FAQs (shown on Home and /faqs). Treatment-specific FAQs live with each category in services.json and are also listed on /faqs. 'home: true' puts a question on the Home page.",
+  "faqs": [
+    {
+      "home": true,
+      "q": { "en": "Do I need an appointment?", "te": "అపాయింట్‌మెంట్ అవసరమా?" },
+      "a": { "en": "We recommend booking so we can keep your waiting time short, especially for specialist consultations, which are held on weekday evenings. If you are in pain, call us and we'll do our best to see you the same day." }
+    },
+    {
+      "home": true,
+      "q": { "en": "Which doctor should I see first?", "te": "ముందుగా ఏ డాక్టర్‌ను కలవాలి?" },
+      "a": { "en": "If you're not sure, start with Dr. Suhasini. She will examine you and involve the right specialist if needed. If you already know what you need — for example braces or gum treatment — you can choose that specialist directly when booking." }
+    },
+    {
+      "home": true,
+      "q": { "en": "How much will my treatment cost?", "te": "చికిత్సకు ఎంత ఖర్చు అవుతుంది?" },
+      "a": { "en": "Costs depend on what you need, so we don't publish prices. After your consultation we'll explain your options and their costs clearly before starting any treatment." }
+    },
+    {
+      "home": true,
+      "q": { "en": "What are your timings?", "te": "మీ సమయాలు ఏమిటి?" },
+      "a": { "en": "{{hoursSummary}}. See the contact page for today's timings and whether we're open right now." }
+    },
+    {
+      "home": true,
+      "q": { "en": "Do you treat children?", "te": "పిల్లలకు చికిత్స చేస్తారా?" },
+      "a": { "en": "Yes. We offer gentle check-ups, preventive care such as fluoride and sealants, treatment for decayed milk teeth, and early orthodontic checks from about age 7." }
+    },
+    {
+      "q": { "en": "What should I bring to my first visit?" },
+      "a": { "en": "Please bring any previous dental X-rays or reports, a list of medicines you take, and details of any medical conditions such as diabetes, heart problems or blood-thinning medication." }
+    },
+    {
+      "q": { "en": "Can I talk to the doctor in Telugu?" },
+      "a": { "en": "Yes. Our team speaks both English and Telugu." }
+    },
+    {
+      "q": { "en": "Is there a toothache emergency service?" },
+      "a": { "en": "During clinic hours, call us and we'll try to see you the same day. Outside clinic hours, for severe swelling, difficulty breathing or swallowing, or a serious injury, please go to the nearest hospital emergency department. See our emergency page for first-aid tips." }
+    }
+  ]
+}

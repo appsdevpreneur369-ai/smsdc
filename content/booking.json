@@ -1,0 +1,19 @@
+{
+  "status": "placeholder",
+  "_note": "mode 'clinicflow' opens clinicflowBookingUrl (the ClinicFlow247 public booking page, e.g. https://<frontend>/book/<clinic-slug>). If clinicflowBookingUrl is empty the site falls back to 'whatsapp'. clinicflowDoctorParam: as of 27 Sep 2026 the ClinicFlow /book/[slug] page does not read any doctor pre-select query parameter, so this is null; set it (e.g. 'doctorId') once core supports it — each doctor's clinicflowDoctorId in doctors.json is then appended.",
+  "mode": "whatsapp",
+  "clinicflowBookingUrl": "",
+  "clinicflowDoctorParam": null,
+  "allowDirectSpecialistBooking": true,
+  "defaultDoctor": "dr-suhasini",
+  "whatsappMessage": {
+    "en": "Hello {{clinic}}, I'd like to book an appointment.\nName: {{name}}\nConcern: {{problem}}\nPreferred doctor: {{doctor}}\nPreferred day: {{day}}\n(Sent from the website)"
+  },
+  "generalWhatsappMessage": {
+    "en": "Hello {{clinic}}, I have a question."
+  },
+  "note": {
+    "en": "Your request is confirmed only when the clinic replies. For severe pain or swelling, please call.",
+    "te": "క్లినిక్ సమాధానం ఇచ్చిన తర్వాతే మీ అపాయింట్‌మెంట్ ఖరారవుతుంది. తీవ్రమైన నొప్పి లేదా వాపు ఉంటే దయచేసి కాల్ చేయండి."
+  }
+}

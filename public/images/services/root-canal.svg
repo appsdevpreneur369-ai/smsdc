@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#05545C"/><stop offset="1" stop-color="#0A2E33"/></linearGradient>
+    
+  <radialGradient id="sFill" cx="0.36" cy="0.3" r="0.85"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.55" stop-color="#F4FBFA"/><stop offset="1" stop-color="#E3F4F2"/></radialGradient>
+  <linearGradient id="sShade" x1="0" y1="0" x2="1" y2="0"><stop offset="0.55" stop-color="#087F8C" stop-opacity="0"/><stop offset="1" stop-color="#087F8C" stop-opacity="0.16"/></linearGradient>
+  <filter id="sShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0A2E33" flood-opacity="0.28"/></filter>
+  <filter id="sBlur"><feGaussianBlur stdDeviation="10"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="30"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="560" cy="220" r="210" fill="#56C5C0" opacity="0.22" filter="url(#glow)"/>
+  <circle cx="660" cy="80" r="140" fill="#FFFFFF" opacity="0.05"/>
+  <circle cx="90" cy="520" r="180" fill="#FFFFFF" opacity="0.04"/>
+  <g fill="#FFFFFF" opacity="0.18"><circle cx="60" cy="60" r="3"/><circle cx="86" cy="60" r="3"/><circle cx="112" cy="60" r="3"/><circle cx="138" cy="60" r="3"/><circle cx="164" cy="60" r="3"/><circle cx="190" cy="60" r="3"/><circle cx="60" cy="86" r="3"/><circle cx="86" cy="86" r="3"/><circle cx="112" cy="86" r="3"/><circle cx="138" cy="86" r="3"/><circle cx="164" cy="86" r="3"/><circle cx="190" cy="86" r="3"/><circle cx="60" cy="112" r="3"/><circle cx="86" cy="112" r="3"/><circle cx="112" cy="112" r="3"/><circle cx="138" cy="112" r="3"/><circle cx="164" cy="112" r="3"/><circle cx="190" cy="112" r="3"/><circle cx="60" cy="138" r="3"/><circle cx="86" cy="138" r="3"/><circle cx="112" cy="138" r="3"/><circle cx="138" cy="138" r="3"/><circle cx="164" cy="138" r="3"/><circle cx="190" cy="138" r="3"/><circle cx="60" cy="164" r="3"/><circle cx="86" cy="164" r="3"/><circle cx="112" cy="164" r="3"/><circle cx="138" cy="164" r="3"/><circle cx="164" cy="164" r="3"/><circle cx="190" cy="164" r="3"/></g>
+  
+    
+  <g transform="translate(380 70) scale(0.7)">
+    <path d="M256 104C228 74 176 58 138 78C96 100 90 158 102 210C112 254 126 290 138 336C148 374 152 414 172 424C194 434 202 396 210 364C218 332 232 306 256 306C280 306 294 332 302 364C310 396 318 434 340 424C360 414 364 374 374 336C386 290 400 254 410 210C422 158 416 100 374 78C336 58 284 74 256 104Z" fill="url(#sFill)" filter="url(#sShadow)"/>
+    <path d="M256 104C228 74 176 58 138 78C96 100 90 158 102 210C112 254 126 290 138 336C148 374 152 414 172 424C194 434 202 396 210 364C218 332 232 306 256 306C280 306 294 332 302 364C310 396 318 434 340 424C360 414 364 374 374 336C386 290 400 254 410 210C422 158 416 100 374 78C336 58 284 74 256 104Z" fill="url(#sShade)"/>
+    <path d="M256 104C228 74 176 58 138 78C96 100 90 158 102 210C112 254 126 290 138 336C148 374 152 414 172 424C194 434 202 396 210 364C218 332 232 306 256 306C280 306 294 332 302 364C310 396 318 434 340 424C360 414 364 374 374 336C386 290 400 254 410 210C422 158 416 100 374 78C336 58 284 74 256 104Z" fill="none" stroke="#FFFFFF" stroke-opacity="0.9" stroke-width="3"/>
+    <ellipse cx="176" cy="130" rx="34" ry="52" transform="rotate(-28 176 130)" fill="#FFFFFF" opacity="0.95" filter="url(#sBlur)"/>
+    <ellipse cx="300" cy="112" rx="26" ry="12" transform="rotate(12 300 112)" fill="#FFFFFF" opacity="0.8" filter="url(#sBlur)"/>
+  </g>
+    <g transform="translate(380 70) scale(0.7)" fill="none" stroke="#E7B85C" stroke-width="12" stroke-linecap="round">
+      <path d="M220 200C210 260 196 320 186 400"/><path d="M292 200C302 260 316 320 326 400"/>
+      <ellipse cx="256" cy="190" rx="60" ry="30" fill="#E7B85C" fill-opacity="0.25"/>
+    </g>
+    <path transform="translate(330 150)" d="M0 -20C3.5999999999999996 -3.5999999999999996 3.5999999999999996 -3.5999999999999996 20 0C3.5999999999999996 3.5999999999999996 3.5999999999999996 3.5999999999999996 0 20C-3.5999999999999996 3.5999999999999996 -3.5999999999999996 3.5999999999999996 -20 0C-3.5999999999999996 -3.5999999999999996 -3.5999999999999996 -3.5999999999999996 0 -20Z" fill="#E7B85C" opacity="1"/><path transform="translate(720 330)" d="M0 -16C2.88 -2.88 2.88 -2.88 16 0C2.88 2.88 2.88 2.88 0 16C-2.88 2.88 -2.88 2.88 -16 0C-2.88 -2.88 -2.88 -2.88 0 -16Z" fill="#FFFFFF" opacity="0.8"/>
+</svg>

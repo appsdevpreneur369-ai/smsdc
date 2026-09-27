@@ -2,26 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
+  body {
+    @apply bg-bg font-body text-ink antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 {
+    @apply font-heading text-ink;
     text-wrap: balance;
   }
+  :focus-visible {
+    outline: 3px solid rgb(var(--c-primary));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .on-dark :focus-visible {
+    outline-color: rgb(var(--c-accent));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-primary;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-0.5 w-6 rounded-full bg-accent;
+  }
+  .on-dark .eyebrow { @apply text-accent; }
+  .section { @apply py-16 sm:py-20 lg:py-24; }
+  .dot-grid {
+    background-image: radial-gradient(rgb(var(--c-primary) / 0.35) 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+  }
+  .prose-clinic { @apply max-w-none text-[1.0625rem] leading-relaxed text-ink; }
+  .prose-clinic h2 { @apply mb-3 mt-10 text-2xl font-semibold; }
+  .prose-clinic h3 { @apply mb-2 mt-8 text-xl font-semibold; }
+  .prose-clinic p { @apply my-4; }
+  .prose-clinic ul { @apply my-4 list-disc space-y-2 pl-6 marker:text-primary; }
+  .prose-clinic ol { @apply my-4 list-decimal space-y-2 pl-6 marker:font-semibold marker:text-primary; }
+  .prose-clinic strong { @apply font-semibold text-ink; }
+  .prose-clinic a { @apply font-semibold text-primary underline underline-offset-2; }
 }

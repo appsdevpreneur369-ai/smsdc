@@ -1,0 +1,59 @@
+{
+  "status": "placeholder",
+  "_note": "First-aid guidance only — reviewed-pending by Dr. Suhasini. The clinic has no separate after-hours number (confirm).",
+  "urgentWarning": {
+    "en": "Go to the nearest hospital emergency department immediately if you have swelling that is spreading to the eye or neck, difficulty breathing or swallowing, a high fever with facial swelling, uncontrolled bleeding, or a head or jaw injury.",
+    "te": "కంటి లేదా మెడ వరకు వ్యాపిస్తున్న వాపు, శ్వాస లేదా మింగడంలో ఇబ్బంది, అధిక జ్వరం, ఆగని రక్తస్రావం, లేదా తల/దవడ గాయం ఉంటే వెంటనే దగ్గరలోని ఆసుపత్రి అత్యవసర విభాగానికి వెళ్ళండి."
+  },
+  "duringHours": { "en": "During clinic hours, call us first — we'll do our best to see you the same day.", "te": "క్లినిక్ సమయాల్లో ముందుగా మాకు కాల్ చేయండి." },
+  "afterHours": { "en": "Outside clinic hours, send us a WhatsApp message and we'll get back to you when the clinic opens. For anything serious, go to a hospital emergency department.", "te": "క్లినిక్ సమయం తర్వాత వాట్సాప్ సందేశం పంపండి. తీవ్రమైన సమస్య అయితే ఆసుపత్రికి వెళ్ళండి." },
+  "situations": [
+    {
+      "id": "toothache",
+      "icon": "zap",
+      "title": { "en": "Toothache", "te": "పంటి నొప్పి" },
+      "steps": [
+        { "en": "Rinse your mouth gently with warm salt water." },
+        { "en": "Use floss to remove any food caught between the teeth." },
+        { "en": "A cold compress on the outside of the cheek may ease swelling." },
+        { "en": "Take a pain reliever you have safely used before, as directed on the pack. Do not place tablets on the gum." },
+        { "en": "Call the clinic — lasting pain usually needs treatment." }
+      ]
+    },
+    {
+      "id": "knocked-out",
+      "icon": "alarm-clock",
+      "title": { "en": "Knocked-out adult tooth", "te": "పన్ను ఊడిపోతే" },
+      "steps": [
+        { "en": "Act quickly — the sooner you are seen, the better the chance of saving the tooth." },
+        { "en": "Pick the tooth up by the crown (the white part). Don't touch the root." },
+        { "en": "If it's dirty, rinse briefly with milk or clean water. Don't scrub it." },
+        { "en": "If you can, gently push it back into its socket and bite on a clean cloth to hold it." },
+        { "en": "If not, keep it in a small container of milk or inside the cheek (not for young children) and come to the clinic or an emergency department straight away." },
+        { "en": "Knocked-out milk teeth should not be put back — but do bring your child in to be checked." }
+      ]
+    },
+    {
+      "id": "broken-tooth",
+      "icon": "bandage",
+      "title": { "en": "Chipped or broken tooth", "te": "విరిగిన పన్ను" },
+      "steps": [
+        { "en": "Rinse with warm water and save any broken pieces." },
+        { "en": "Apply gentle pressure with gauze if there is bleeding." },
+        { "en": "Use a cold compress to reduce swelling." },
+        { "en": "Call the clinic for an appointment." }
+      ]
+    },
+    {
+      "id": "swelling",
+      "icon": "thermometer",
+      "title": { "en": "Swelling or abscess", "te": "వాపు లేదా చీము" },
+      "steps": [
+        { "en": "Rinse with warm salt water several times a day." },
+        { "en": "Do not apply heat to the outside of the face." },
+        { "en": "Call the clinic the same day — infections need prompt treatment." },
+        { "en": "If swelling spreads towards the eye or neck, or you feel unwell with a fever, go to a hospital emergency department." }
+      ]
+    }
+  ]
+}

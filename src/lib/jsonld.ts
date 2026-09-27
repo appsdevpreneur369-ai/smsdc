@@ -1,0 +1,99 @@
+import { clinic, doctors, getImage, brand, reviews } from './content';
+import type { Doctor, FaqItem } from './content/schemas';
+import { localePath, tx, type Lang } from './i18n';
+import { absoluteUrl } from './seo';
+
+const dayMap: Record<string, string> = {
+  monday: 'Monday',
+  tuesday: 'Tuesday',
+  wednesday: 'Wednesday',
+  thursday: 'Thursday',
+  friday: 'Friday',
+  saturday: 'Saturday',
+  sunday: 'Sunday',
+};
+
+export const clinicId = () => `${absoluteUrl('/')}#clinic`;
+
+/** Dentist + MedicalClinic for the clinic itself. */
+export function clinicJsonLd(lang: Lang) {
+  const specs = clinic.hours.flatMap((h) =>
+    h.sessions.map((s) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: dayMap[h.day], opens: s.opens, closes: s.closes })),
+  );
+  return {
+    '@context': 'https://schema.org',
+    '@type': ['Dentist', 'MedicalClinic'],
+    '@id': clinicId(),
+    name: clinic.officialName,
+    alternateName: tx(clinic.shortName, 'en'),
+    slogan: tx(clinic.tagline, 'en'),
+    description: tx(clinic.description, lang),
+    url: absoluteUrl(localePath(lang, '/')),
+    logo: absoluteUrl(getImage(brand.logo.icon).src),
+    image: absoluteUrl('/brand/logo-app-icon-1024.png'),
+    telephone: clinic.phone.e164,
+    email: clinic.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: clinic.address.street,
+      addressLocality: clinic.address.locality,
+      addressRegion: clinic.address.region,
+      postalCode: clinic.address.postalCode,
+      addressCountry: clinic.address.country,
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: clinic.geo.lat, longitude: clinic.geo.lng },
+    hasMap: clinic.maps.shareUrl,
+    openingHoursSpecification: specs,
+    areaServed: [clinic.serviceAreas.primary, ...clinic.serviceAreas.nearby].map((name) => ({ '@type': 'Place', name })),
+    availableLanguage: clinic.languages,
+    medicalSpecialty: 'Dentistry',
+    ...(reviews.rating && reviews.reviewCount
+      ? { aggregateRating: { '@type': 'AggregateRating', ratingValue: reviews.rating, reviewCount: reviews.reviewCount } }
+      : {}),
+    employee: doctors.map((d) => ({ '@id': `${absoluteUrl(`/doctors/${d.slug}`)}#physician` })),
+  };
+}
+
+export function physicianJsonLd(d: Doctor, lang: Lang) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Physician',
+    '@id': `${absoluteUrl(`/doctors/${d.slug}`)}#physician`,
+    name: d.displayName,
+    url: absoluteUrl(localePath(lang, `/doctors/${d.slug}`)),
+    description: tx(d.summary, lang),
+    medicalSpecialty: 'Dentistry',
+    knowsAbout: d.expertise,
+    hasCredential: d.qualification,
+    worksFor: { '@id': clinicId() },
+    telephone: clinic.phone.e164,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: clinic.address.street,
+      addressLocality: clinic.address.locality,
+      addressRegion: clinic.address.region,
+      postalCode: clinic.address.postalCode,
+      addressCountry: clinic.address.country,
+    },
+  };
+}
+
+export function faqJsonLd(items: FaqItem[], lang: Lang, vars?: Record<string, string | number>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((f) => ({
+      '@type': 'Question',
+      name: tx(f.q, lang, vars),
+      acceptedAnswer: { '@type': 'Answer', text: tx(f.a, lang, vars) },
+    })),
+  };
+}
+
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: absoluteUrl(it.path) })),
+  };
+}

@@ -1,0 +1,65 @@
+{
+  "status": "placeholder",
+  "slug": "suhasini-dental-clinic",
+  "siteUrl": "https://suhasini.clinicflow247.com",
+  "officialName": "Suhasini Dental Clinic and Implant Centre",
+  "displayName": {
+    "en": "Suhasini Dental Clinic & Implant Centre",
+    "te": "సుహాసిని డెంటల్ క్లినిక్ & ఇంప్లాంట్ సెంటర్"
+  },
+  "shortName": { "en": "Suhasini Dental", "te": "సుహాసిని డెంటల్" },
+  "tagline": { "en": "We take care of your Teeth", "te": "మీ దంతాల సంరక్షణ మా బాధ్యత" },
+  "description": {
+    "en": "A dental clinic and implant centre in Tadepalle, Andhra Pradesh, led by Dr. Suhasini, MDS, with a team of specialists in gum care, root canal treatment, oral surgery, implants, dentures and orthodontics."
+  },
+  "clinicHead": "dr-suhasini",
+  "phone": { "display": "+91 94414 11629", "e164": "+919441411629" },
+  "whatsapp": { "display": "+91 94414 11629", "e164": "+919441411629" },
+  "email": "dr.suhasini.mds@gmail.com",
+  "address": {
+    "street": "Aravinda High School Road",
+    "locality": "Tadepalle",
+    "region": "Andhra Pradesh",
+    "postalCode": "522501",
+    "country": "IN",
+    "countryName": "India"
+  },
+  "geo": {
+    "status": "placeholder",
+    "lat": 16.4812,
+    "lng": 80.6006,
+    "_note": "Approximate centre of Tadepalle, not the clinic's exact pin. Replace with the coordinates of the Google Maps listing."
+  },
+  "maps": {
+    "shareUrl": "https://maps.app.goo.gl/ZFB415YP6BEBrrxV8",
+    "embedUrl": "",
+    "embedQuery": "Aravinda High School Road, Tadepalle, Andhra Pradesh 522501",
+    "_note": "Short maps.app.goo.gl links cannot be embedded. If embedUrl is empty the site embeds a keyless search for embedQuery. Paste the listing's 'Share → Embed a map' src into embedUrl for an exact pin."
+  },
+  "chairs": 1,
+  "timezone": "Asia/Kolkata",
+  "hours": [
+    { "day": "monday", "sessions": [{ "opens": "10:00", "closes": "14:00" }, { "opens": "17:00", "closes": "20:00" }] },
+    { "day": "tuesday", "sessions": [{ "opens": "10:00", "closes": "14:00" }, { "opens": "17:00", "closes": "20:00" }] },
+    { "day": "wednesday", "sessions": [{ "opens": "10:00", "closes": "14:00" }, { "opens": "17:00", "closes": "20:00" }] },
+    { "day": "thursday", "sessions": [{ "opens": "10:00", "closes": "14:00" }, { "opens": "17:00", "closes": "20:00" }] },
+    { "day": "friday", "sessions": [{ "opens": "10:00", "closes": "14:00" }, { "opens": "17:00", "closes": "20:00" }] },
+    { "day": "saturday", "sessions": [{ "opens": "10:00", "closes": "14:00" }] },
+    { "day": "sunday", "sessions": [] }
+  ],
+  "hoursNote": {
+    "en": "Specialist consultations are held Monday to Friday evenings. Please book or call ahead."
+  },
+  "serviceAreas": {
+    "status": "placeholder",
+    "primary": "Tadepalle",
+    "nearby": ["Undavalli", "Kunchanapalli", "Mangalagiri", "Vijayawada"],
+    "_note": "Neighbouring areas are proposed for local SEO; confirm which ones the clinic wants to target."
+  },
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "youtube": ""
+  },
+  "languages": ["English", "Telugu"]
+}

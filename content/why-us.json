@@ -1,0 +1,58 @@
+{
+  "status": "placeholder",
+  "_note": "reasons = 'Why choose us' cards. steps map to walkwell.json processSteps[]. No invented statistics or awards.",
+  "reasons": [
+    {
+      "icon": "users",
+      "title": { "en": "The right specialist for each need", "te": "ప్రతి సమస్యకు సరైన నిపుణులు" },
+      "text": { "en": "Gum care, root canals, oral surgery, implants, dentures and braces are handled by MDS specialists in each field." }
+    },
+    {
+      "icon": "award",
+      "title": { "en": "Led by an experienced surgeon", "te": "అనుభవజ్ఞులైన సర్జన్ నేతృత్వం" },
+      "text": { "en": "Dr. Suhasini, MDS, brings more than 20 years of clinical experience to planning your care." }
+    },
+    {
+      "icon": "hand-coins",
+      "title": { "en": "Clear explanations, no surprises", "te": "స్పష్టమైన వివరణ" },
+      "text": { "en": "We explain what we find, your options and the costs before any treatment begins." }
+    },
+    {
+      "icon": "heart-handshake",
+      "title": { "en": "Gentle, patient-centred approach", "te": "సున్నితమైన చికిత్స" },
+      "text": { "en": "Unhurried appointments, careful technique and attention to your comfort at every step." }
+    },
+    {
+      "icon": "clock",
+      "title": { "en": "Evening consultations", "te": "సాయంత్రం సంప్రదింపులు" },
+      "text": { "en": "Specialists consult on weekday evenings, so you can visit after work or school." }
+    },
+    {
+      "icon": "languages",
+      "title": { "en": "English & Telugu", "te": "ఇంగ్లీష్ & తెలుగు" },
+      "text": { "en": "Talk to us in the language you're most comfortable with." }
+    }
+  ],
+  "steps": [
+    {
+      "icon": "message-circle",
+      "title": { "en": "Tell us what's troubling you", "te": "మీ సమస్య చెప్పండి" },
+      "text": { "en": "Book online, message us on WhatsApp or call. We'll suggest the right doctor." }
+    },
+    {
+      "icon": "stethoscope",
+      "title": { "en": "Consultation & examination", "te": "సంప్రదింపు & పరీక్ష" },
+      "text": { "en": "A careful check-up, with X-rays if needed, and a clear explanation of what we find." }
+    },
+    {
+      "icon": "clipboard-list",
+      "title": { "en": "Your treatment plan", "te": "మీ చికిత్స ప్రణాళిక" },
+      "text": { "en": "Options, number of sittings and costs explained — you decide, with no pressure." }
+    },
+    {
+      "icon": "heart-pulse",
+      "title": { "en": "Treatment & aftercare", "te": "చికిత్స & తదుపరి సంరక్షణ" },
+      "text": { "en": "Comfortable treatment with the right specialist, then clear aftercare and follow-up." }
+    }
+  ]
+}
