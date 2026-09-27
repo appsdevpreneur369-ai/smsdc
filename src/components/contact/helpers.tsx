@@ -70,7 +70,7 @@ export function MapEmbed({ lang, className }: { lang: Lang; className?: string }
   const dict = getDict(lang);
   return (
     <div className={className}>
-      <div className="relative h-full min-h-[320px] overflow-hidden rounded-brand border border-line bg-secondary-soft shadow-soft">
+      <div className="relative min-h-[320px] flex-1 overflow-hidden rounded-brand border border-line bg-secondary-soft shadow-soft">
         <iframe
           src={mapEmbedSrc()}
           title={t(dict, 'contact.mapTitle')}

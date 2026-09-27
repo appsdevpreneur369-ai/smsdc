@@ -126,7 +126,10 @@
     "whatsapp": "WhatsApp",
     "email": "Email",
     "mapTitle": "Map showing the clinic location",
-    "mapNote": "Map pin is approximate — use 'Get directions' for the exact listing."
+    "mapNote": "Map pin is approximate — use 'Get directions' for the exact listing.",
+    "areas": "Areas we serve",
+    "areasText": "Patients visit us from {{area}} and nearby areas.",
+    "reach": "Reach us"
   },
   "footer": {
     "quickLinks": "Quick links",
