@@ -17,7 +17,7 @@ export function Logo({ data, inverted, className }: { data: LogoData; inverted?:
       {/* eslint-disable-next-line @next/next/no-img-element -- tiny SVG, no optimisation needed */}
       <img src={inverted ? data.iconWhiteSrc : data.iconSrc} alt="" width={44} height={44} className="h-10 w-10 shrink-0 sm:h-11 sm:w-11" />
       <span className="flex flex-col leading-none">
-        <span className={cn('font-heading text-xl font-semibold tracking-tight sm:text-[1.4rem]', inverted ? 'text-white' : 'text-primary')}>
+        <span className={cn('font-heading text-xl font-semibold tracking-tight sm:text-[1.4rem]', inverted ? 'text-white' : 'text-primary-dark')}>
           {data.primary}
         </span>
         <span

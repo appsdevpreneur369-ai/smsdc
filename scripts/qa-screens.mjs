@@ -30,7 +30,7 @@ for (const p of paths) {
       document.querySelectorAll('img[loading="lazy"]').forEach((i) => (i.loading = 'eager'));
       await Promise.all([...document.images].map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; setTimeout(r, 5000); }))));
     });
-    await page.evaluate(() => document.querySelectorAll('[data-reveal]').forEach((e) => e.classList.add('is-in')));
+    await page.evaluate(() => document.querySelectorAll('[data-reveal]').forEach((e) => e.classList.remove('reveal-pending')));
     await new Promise((r) => setTimeout(r, 900));
     const info = await page.evaluate(() => {
       const docW = document.documentElement.scrollWidth;

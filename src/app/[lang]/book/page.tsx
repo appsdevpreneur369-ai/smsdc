@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { Clock, MessageCircle, ShieldCheck } from 'lucide-react';
 import { booking, clinic, doctors, effectiveBookingMode, routing } from '@/lib/content';
 import { consultLines } from '@/lib/doctors';
@@ -64,8 +63,7 @@ export default function BookPage({ params: { lang } }: { params: { lang: Lang } 
       </PageHeader>
       <section className="section">
         <div className="container grid gap-8 lg:grid-cols-[1fr_320px]">
-          <Suspense>
-            <BookingWizard
+          <BookingWizard
               problems={problems}
               doctors={wizardDoctors}
               strings={strings}
@@ -83,7 +81,6 @@ export default function BookPage({ params: { lang } }: { params: { lang: Lang } 
                 note: tx(booking.note, lang),
               }}
             />
-          </Suspense>
           <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">
             <div className="rounded-brand border border-line bg-surface p-5 shadow-soft">
               <OpenNowBadge hours={clinic.hours} timezone={clinic.timezone} strings={hoursStrings(lang)} />

@@ -1,8 +1,8 @@
 import type { CSSProperties, ReactNode } from 'react';
 
 /**
- * Scroll-reveal wrapper. Server-rendered visible; `RevealObserver` (client) adds the animation only when
- * JS is running and the page is visible, and CSS disables it for prefers-reduced-motion.
+ * Scroll-reveal wrapper. Server-rendered visible; `RevealObserver` (client) hides and fades in only
+ * elements that start below the fold, and never for prefers-reduced-motion.
  */
 export function Reveal({
   children,

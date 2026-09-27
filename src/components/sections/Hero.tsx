@@ -59,9 +59,8 @@ export function Hero({ lang }: { lang: Lang }) {
         </div>
 
         <div className="relative mx-auto w-full max-w-[520px]">
-          <div className="animate-float">
-            <ContentImage id={h.image} lang={lang} priority className="h-auto w-full" sizes="(min-width: 1024px) 520px, 90vw" />
-          </div>
+          {/* No animation on the image itself: an endlessly animating LCP element stops Chrome from recording LCP. */}
+          <ContentImage id={h.image} lang={lang} priority className="h-auto w-full" sizes="(min-width: 1024px) 520px, 90vw" />
           {h.chips.map((chip, i) => (
             <div
               key={i}
@@ -71,7 +70,10 @@ export function Hero({ lang }: { lang: Lang }) {
                   : 'absolute -right-1 bottom-[10%] max-w-[230px] sm:-right-4'
               }
             >
-              <div className="flex items-center gap-3 rounded-2xl border border-white/60 bg-surface/90 p-3 pr-4 shadow-lift backdrop-blur">
+              <div
+                className="flex animate-float items-center gap-3 rounded-2xl border border-white/60 bg-surface/90 p-3 pr-4 shadow-lift backdrop-blur"
+                style={{ animationDelay: `${i * 1.5}s` }}
+              >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-white">
                   <Icon name={chip.icon} className="h-5 w-5" />
                 </span>

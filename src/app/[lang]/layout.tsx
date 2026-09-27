@@ -7,7 +7,7 @@ import { getDict, isLang, locales, t, tx } from '@/lib/i18n';
 import { clinicJsonLd } from '@/lib/jsonld';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { FloatingActions, Footer, SiteHeader, TopBar } from '@/components/layout/chrome';
-import { RevealObserver, revealBootScript } from '@/components/ui/RevealObserver';
+import { RevealObserver } from '@/components/ui/RevealObserver';
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -47,7 +47,6 @@ export default function LangLayout({ children, params }: { children: React.React
     <html lang={dict._meta.htmlLang} className={fontClassNames} suppressHydrationWarning>
       <head>
         <style dangerouslySetInnerHTML={{ __html: themeCss }} />
-        <script dangerouslySetInnerHTML={{ __html: revealBootScript }} />
       </head>
       <body>
         <a

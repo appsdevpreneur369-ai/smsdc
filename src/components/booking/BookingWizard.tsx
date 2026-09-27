@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, CalendarCheck, Check, Clock, ExternalLink, Phone, RotateCcw } from 'lucide-react';
 import { Icon, WhatsAppIcon } from '@/components/ui/Icon';
@@ -55,7 +54,6 @@ export function BookingWizard({
   config: WizardConfig;
   strings: WizardStrings;
 }) {
-  const params = useSearchParams();
   const byslug = useMemo(() => Object.fromEntries(doctors.map((d) => [d.slug, d])), [doctors]);
 
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -67,8 +65,10 @@ export function BookingWizard({
   const headingRef = useRef<HTMLHeadingElement>(null);
   const firstRender = useRef(true);
 
-  // Deep links: /book?problem=<id> or /book?doctor=<slug>
+  // Deep links: /book?problem=<id> or /book?doctor=<slug>. Read after mount (not useSearchParams) so the
+  // wizard is still server-rendered into the static page.
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
     const p = params.get('problem');
     const d = params.get('doctor');
     if (p && problems.some((x) => x.id === p)) {
@@ -78,7 +78,7 @@ export function BookingWizard({
       setDoctor(config.allowDirect ? d : config.defaultDoctor);
       setStep(2);
     }
-  }, [params, problems, byslug, config.allowDirect, config.defaultDoctor]);
+  }, [problems, byslug, config.allowDirect, config.defaultDoctor]);
 
   useEffect(() => {
     if (firstRender.current) {

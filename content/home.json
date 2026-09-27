@@ -2,92 +2,275 @@
   "status": "placeholder",
   "_note": "Tokens: {{doctorCount}}, {{categoryCount}}, {{area}} are filled from the other content files so numbers never drift. Link hrefs: a site path like '/book', or '@call' / '@whatsapp'.",
   "hero": {
-    "badge": { "en": "Dental Clinic & Implant Centre · {{area}}", "te": "డెంటల్ క్లినిక్ & ఇంప్లాంట్ సెంటర్ · తాడేపల్లి" },
-    "headlineLine1": { "en": "Gentle, expert care", "te": "సున్నితమైన, నిపుణుల సంరక్షణ" },
-    "headlineLine2": { "en": "for every smile.", "te": "ప్రతి చిరునవ్వుకు." },
+    "badge": {
+      "en": "Dental Clinic & Implant Centre · {{area}}",
+      "te": "డెంటల్ క్లినిక్ & ఇంప్లాంట్ సెంటర్ · తాడేపల్లి"
+    },
+    "headlineLine1": {
+      "en": "Gentle, expert care",
+      "te": "సున్నితమైన, నిపుణుల సంరక్షణ"
+    },
+    "headlineLine2": {
+      "en": "for every smile.",
+      "te": "ప్రతి చిరునవ్వుకు."
+    },
     "text": {
       "en": "From routine check-ups to implants, braces and oral surgery — {{doctorCount}} specialists under one roof in {{area}}, led by Dr. Suhasini, MDS.",
       "te": "సాధారణ చెకప్ నుండి ఇంప్లాంట్స్, బ్రేసెస్, నోటి శస్త్రచికిత్స వరకు — డా. సుహాసిని, MDS నేతృత్వంలో ఒకే చోట {{doctorCount}} మంది నిపుణులు."
     },
-    "primaryCta": { "label": { "en": "Book Appointment", "te": "అపాయింట్‌మెంట్ బుక్ చేయండి" }, "href": "/book" },
-    "secondaryCta": { "label": { "en": "Explore Treatments", "te": "చికిత్సలు చూడండి" }, "href": "/services" },
+    "primaryCta": {
+      "label": {
+        "en": "Book Appointment",
+        "te": "అపాయింట్‌మెంట్ బుక్ చేయండి"
+      },
+      "href": "/book"
+    },
+    "secondaryCta": {
+      "label": {
+        "en": "Explore Treatments",
+        "te": "చికిత్సలు చూడండి"
+      },
+      "href": "/services"
+    },
     "trustTicks": [
-      { "en": "{{doctorCount}} Specialists", "te": "{{doctorCount}} మంది నిపుణులు" },
-      { "en": "Implant Centre", "te": "ఇంప్లాంట్ సెంటర్" },
-      { "en": "Open Mon–Sat", "te": "సోమ–శని" }
+      {
+        "en": "{{doctorCount}} Specialists",
+        "te": "{{doctorCount}} మంది నిపుణులు"
+      },
+      {
+        "en": "Implant Centre",
+        "te": "ఇంప్లాంట్ సెంటర్"
+      },
+      {
+        "en": "Open Mon–Sat",
+        "te": "సోమ–శని"
+      }
     ],
     "image": "hero-smile",
     "chips": [
-      { "icon": "users", "label": { "en": "{{doctorCount}} specialists under one roof", "te": "ఒకే చోట {{doctorCount}} మంది నిపుణులు" } },
-      { "icon": "award", "label": { "en": "Led by Dr. Suhasini · 20+ years' experience", "te": "డా. సుహాసిని · 20+ సంవత్సరాల అనుభవం" } }
+      {
+        "icon": "users",
+        "label": {
+          "en": "{{doctorCount}} specialists under one roof",
+          "te": "ఒకే చోట {{doctorCount}} మంది నిపుణులు"
+        }
+      },
+      {
+        "icon": "award",
+        "label": {
+          "en": "Led by Dr. Suhasini · 20+ years' experience",
+          "te": "డా. సుహాసిని · 20+ సంవత్సరాల అనుభవం"
+        }
+      }
     ]
   },
   "trustStrip": [
-    { "icon": "users", "title": { "en": "{{doctorCount}} specialists", "te": "{{doctorCount}} మంది నిపుణులు" }, "text": { "en": "Gums, root canals, surgery, implants and braces", "te": "చిగుళ్ళు, రూట్ కెనాల్, శస్త్రచికిత్స, ఇంప్లాంట్స్, బ్రేసెస్" } },
-    { "icon": "implant", "title": { "en": "Implant centre", "te": "ఇంప్లాంట్ సెంటర్" }, "text": { "en": "Planning, surgery and restoration in one place", "te": "ప్రణాళిక నుండి చికిత్స వరకు ఒకే చోట" } },
-    { "icon": "clock", "title": { "en": "Mon–Sat", "te": "సోమ–శని" }, "text": { "en": "Morning and evening sessions on weekdays", "te": "వారపు రోజుల్లో ఉదయం మరియు సాయంత్రం" } },
-    { "icon": "hand-coins", "title": { "en": "Costs explained first", "te": "ముందుగానే ఖర్చు వివరణ" }, "text": { "en": "We explain your options and costs before starting", "te": "చికిత్సకు ముందే ఖర్చు వివరిస్తాము" } }
+    {
+      "icon": "users",
+      "title": {
+        "en": "{{doctorCount}} specialists",
+        "te": "{{doctorCount}} మంది నిపుణులు"
+      },
+      "text": {
+        "en": "Gums, root canals, surgery, implants and braces",
+        "te": "చిగుళ్ళు, రూట్ కెనాల్, శస్త్రచికిత్స, ఇంప్లాంట్స్, బ్రేసెస్"
+      }
+    },
+    {
+      "icon": "implant",
+      "title": {
+        "en": "Implant centre",
+        "te": "ఇంప్లాంట్ సెంటర్"
+      },
+      "text": {
+        "en": "Planning, surgery and restoration in one place",
+        "te": "ప్రణాళిక నుండి చికిత్స వరకు ఒకే చోట"
+      }
+    },
+    {
+      "icon": "clock",
+      "title": {
+        "en": "Mon–Sat",
+        "te": "సోమ–శని"
+      },
+      "text": {
+        "en": "Morning and evening sessions on weekdays",
+        "te": "వారపు రోజుల్లో ఉదయం మరియు సాయంత్రం"
+      }
+    },
+    {
+      "icon": "hand-coins",
+      "title": {
+        "en": "Costs explained first",
+        "te": "ముందుగానే ఖర్చు వివరణ"
+      },
+      "text": {
+        "en": "We explain your options and costs before starting",
+        "te": "చికిత్సకు ముందే ఖర్చు వివరిస్తాము"
+      }
+    }
   ],
   "about": {
-    "eyebrow": { "en": "About the clinic", "te": "క్లినిక్ గురించి" },
-    "heading": { "en": "A calm, caring dental home in {{area}}", "te": "తాడేపల్లిలో ప్రశాంతమైన దంత వైద్య కేంద్రం" },
+    "eyebrow": {
+      "en": "About the clinic",
+      "te": "క్లినిక్ గురించి"
+    },
+    "heading": {
+      "en": "A calm, caring dental home in {{area}}",
+      "te": "తాడేపల్లిలో ప్రశాంతమైన దంత వైద్య కేంద్రం"
+    },
     "paragraphs": [
-      { "en": "Suhasini Dental Clinic and Implant Centre is led by Dr. Suhasini, MDS, an oral and maxillofacial surgeon with more than 20 years of experience. Alongside her, a team of MDS specialists covers every stage of dental care." },
-      { "en": "We take time to listen, explain your options clearly and treat you gently — whether you need a simple filling, a new smile or surgery." }
+      {
+        "en": "Suhasini Dental Clinic and Implant Centre is led by Dr. Suhasini, MDS, an oral and maxillofacial surgeon with more than 20 years of experience. Alongside her, a team of MDS specialists covers every stage of dental care."
+      },
+      {
+        "en": "We take time to listen, explain your options clearly and treat you gently — whether you need a simple filling, a new smile or surgery."
+      }
     ],
     "bullets": [
-      { "en": "Care planned together by the clinic head and specialists" },
-      { "en": "Specialists in gums, root canals, surgery, implants and braces" },
-      { "en": "Consultations in English and Telugu" }
+      {
+        "en": "Care planned together by the clinic head and specialists"
+      },
+      {
+        "en": "Specialists in gums, root canals, surgery, implants and braces"
+      },
+      {
+        "en": "Consultations in English and Telugu"
+      }
     ],
     "image": "about-clinic",
-    "cta": { "label": { "en": "Learn more", "te": "మరింత తెలుసుకోండి" }, "href": "/about" }
+    "cta": {
+      "label": {
+        "en": "More about the clinic",
+        "te": "క్లినిక్ గురించి మరింత"
+      },
+      "href": "/about"
+    }
   },
   "sections": {
     "services": {
-      "eyebrow": { "en": "Our treatments", "te": "మా చికిత్సలు" },
-      "heading": { "en": "Complete dental care, one trusted team", "te": "సంపూర్ణ దంత సంరక్షణ, ఒకే బృందం" },
-      "intro": { "en": "{{categoryCount}} areas of care, each led by the right specialist." }
+      "eyebrow": {
+        "en": "Our treatments",
+        "te": "మా చికిత్సలు"
+      },
+      "heading": {
+        "en": "Complete dental care, one trusted team",
+        "te": "సంపూర్ణ దంత సంరక్షణ, ఒకే బృందం"
+      },
+      "intro": {
+        "en": "{{categoryCount}} areas of care, each led by the right specialist."
+      }
     },
     "problemPicker": {
-      "eyebrow": { "en": "Not sure where to start?", "te": "ఎక్కడ ప్రారంభించాలో తెలియదా?" },
-      "heading": { "en": "What's troubling you?", "te": "మీ సమస్య ఏమిటి?" },
-      "intro": { "en": "Pick what fits best and we'll suggest the right doctor.", "te": "మీ సమస్యను ఎంచుకోండి, సరైన డాక్టర్‌ను సూచిస్తాము." }
+      "eyebrow": {
+        "en": "Not sure where to start?",
+        "te": "ఎక్కడ ప్రారంభించాలో తెలియదా?"
+      },
+      "heading": {
+        "en": "What's troubling you?",
+        "te": "మీ సమస్య ఏమిటి?"
+      },
+      "intro": {
+        "en": "Pick what fits best and we'll suggest the right doctor.",
+        "te": "మీ సమస్యను ఎంచుకోండి, సరైన డాక్టర్‌ను సూచిస్తాము."
+      }
     },
     "doctors": {
-      "eyebrow": { "en": "Our specialists", "te": "మా నిపుణులు" },
-      "heading": { "en": "Meet the doctors", "te": "మా డాక్టర్లు" },
-      "intro": { "en": "MDS specialists for every part of your smile." }
+      "eyebrow": {
+        "en": "Our specialists",
+        "te": "మా నిపుణులు"
+      },
+      "heading": {
+        "en": "Meet the doctors",
+        "te": "మా డాక్టర్లు"
+      },
+      "intro": {
+        "en": "MDS specialists for every part of your smile."
+      }
     },
     "whyUs": {
-      "eyebrow": { "en": "Why patients choose us", "te": "మమ్మల్ని ఎందుకు ఎంచుకోవాలి" },
-      "heading": { "en": "Care that feels simple from the first visit", "te": "మొదటి సందర్శన నుండే సులభమైన సంరక్షణ" }
+      "eyebrow": {
+        "en": "Why patients choose us",
+        "te": "మమ్మల్ని ఎందుకు ఎంచుకోవాలి"
+      },
+      "heading": {
+        "en": "Care that feels simple from the first visit",
+        "te": "మొదటి సందర్శన నుండే సులభమైన సంరక్షణ"
+      }
     },
     "process": {
-      "eyebrow": { "en": "How it works", "te": "ఎలా పని చేస్తుంది" },
-      "heading": { "en": "Your visit in four steps", "te": "నాలుగు దశల్లో మీ సందర్శన" }
+      "eyebrow": {
+        "en": "How it works",
+        "te": "ఎలా పని చేస్తుంది"
+      },
+      "heading": {
+        "en": "Your visit in four steps",
+        "te": "నాలుగు దశల్లో మీ సందర్శన"
+      }
     },
     "education": {
-      "eyebrow": { "en": "Patient education", "te": "రోగుల అవగాహన" },
-      "heading": { "en": "Know your smile better", "te": "మీ చిరునవ్వును బాగా తెలుసుకోండి" }
+      "eyebrow": {
+        "en": "Patient education",
+        "te": "రోగుల అవగాహన"
+      },
+      "heading": {
+        "en": "Know your smile better",
+        "te": "మీ చిరునవ్వును బాగా తెలుసుకోండి"
+      }
     },
     "reviews": {
-      "eyebrow": { "en": "Patient reviews", "te": "రోగుల సమీక్షలు" },
-      "heading": { "en": "Hear it from our patients", "te": "మా రోగుల మాటల్లో" }
+      "eyebrow": {
+        "en": "Patient reviews",
+        "te": "రోగుల సమీక్షలు"
+      },
+      "heading": {
+        "en": "Hear it from our patients",
+        "te": "మా రోగుల మాటల్లో"
+      }
     },
     "faq": {
-      "eyebrow": { "en": "FAQs", "te": "తరచుగా అడిగే ప్రశ్నలు" },
-      "heading": { "en": "Questions patients often ask", "te": "రోగులు తరచుగా అడిగే ప్రశ్నలు" }
+      "eyebrow": {
+        "en": "FAQs",
+        "te": "తరచుగా అడిగే ప్రశ్నలు"
+      },
+      "heading": {
+        "en": "Questions patients often ask",
+        "te": "రోగులు తరచుగా అడిగే ప్రశ్నలు"
+      }
     },
     "contact": {
-      "eyebrow": { "en": "Visit us", "te": "మమ్మల్ని సందర్శించండి" },
-      "heading": { "en": "Find the clinic", "te": "క్లినిక్ చిరునామా" }
+      "eyebrow": {
+        "en": "Visit us",
+        "te": "మమ్మల్ని సందర్శించండి"
+      },
+      "heading": {
+        "en": "Find the clinic",
+        "te": "క్లినిక్ చిరునామా"
+      }
     }
   },
   "ctaBanner": {
-    "heading": { "en": "Ready for a healthier, happier smile?", "te": "ఆరోగ్యకరమైన చిరునవ్వుకు సిద్ధమా?" },
-    "text": { "en": "Book a consultation, or message us on WhatsApp — we'll help you find the right doctor.", "te": "సంప్రదింపు బుక్ చేయండి లేదా వాట్సాప్‌లో సందేశం పంపండి." },
-    "primary": { "label": { "en": "Book Appointment", "te": "అపాయింట్‌మెంట్ బుక్ చేయండి" }, "href": "/book" },
-    "secondary": { "label": { "en": "WhatsApp us", "te": "వాట్సాప్ చేయండి" }, "href": "@whatsapp" }
+    "heading": {
+      "en": "Ready for a healthier, happier smile?",
+      "te": "ఆరోగ్యకరమైన చిరునవ్వుకు సిద్ధమా?"
+    },
+    "text": {
+      "en": "Book a consultation, or message us on WhatsApp — we'll help you find the right doctor.",
+      "te": "సంప్రదింపు బుక్ చేయండి లేదా వాట్సాప్‌లో సందేశం పంపండి."
+    },
+    "primary": {
+      "label": {
+        "en": "Book Appointment",
+        "te": "అపాయింట్‌మెంట్ బుక్ చేయండి"
+      },
+      "href": "/book"
+    },
+    "secondary": {
+      "label": {
+        "en": "WhatsApp us",
+        "te": "వాట్సాప్ చేయండి"
+      },
+      "href": "@whatsapp"
+    }
   }
 }
