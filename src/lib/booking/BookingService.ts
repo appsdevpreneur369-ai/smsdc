@@ -62,7 +62,8 @@ export interface BookingService {
   getBranches(): Promise<Branch[]>;
   getTreatments(): TreatmentGroup[];
   getAvailableDates(doctorSlugs: string[]): string[];
-  getSlots(doctorSlugs: string[], branchId: string, date: string): Promise<SlotOption[]>;
+  /** fresh: bypass the proxy's short cache (pre-booking re-check, reload after a slot was taken). */
+  getSlots(doctorSlugs: string[], branchId: string, date: string, opts?: { fresh?: boolean }): Promise<SlotOption[]>;
   getNextAvailable(doctorSlugs: string[], branchId: string): Promise<NextAvailable>;
   sendOtp(phone: string, resend?: boolean): Promise<void>;
   verifyOtp(phone: string, otp: string): Promise<boolean>;

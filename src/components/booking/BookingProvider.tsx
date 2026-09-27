@@ -120,7 +120,18 @@ export function BookingProvider({ config, children }: { config: BookingClientCon
 
   const markBooked = useCallback(() => writePopupState('booked'), []);
 
+  // Warm the health check shortly after load (idle), so the popup/buttons open straight into the right mode.
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const run = () => void ensureResolved();
+      if ('requestIdleCallback' in window) window.requestIdleCallback(run, { timeout: 3000 });
+      else run();
+    }, 3000);
+    return () => clearTimeout(t);
+  }, [ensureResolved]);
+
   // Every "Book Appointment" link (/book or /te/book, with optional ?problem/treatment/doctor) opens the modal.
+  // Capture phase: runs before next/link's own click handler, which then sees defaultPrevented and skips navigation.
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -133,8 +144,8 @@ export function BookingProvider({ config, children }: { config: BookingClientCon
       const q = url.searchParams;
       open({ prefill: { problem: q.get('problem'), treatment: q.get('treatment'), doctor: q.get('doctor') }, opener: a });
     };
-    document.addEventListener('click', onClick);
-    return () => document.removeEventListener('click', onClick);
+    document.addEventListener('click', onClick, true);
+    return () => document.removeEventListener('click', onClick, true);
   }, [open]);
 
   // Auto-open after the configured delay, once per session, never on excluded pages or over another dialog.

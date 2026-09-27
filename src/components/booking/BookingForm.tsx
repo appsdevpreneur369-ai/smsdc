@@ -79,7 +79,7 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
   }, [dates, draft.date, setDraft]);
 
   // Live slots for the chosen doctor(s) + date (ClinicFlow mode only).
-  const loadSlots = useCallback(async () => {
+  const loadSlots = useCallback(async (fresh = false) => {
     if (!service?.liveSlots || !draft.date || !draft.branchId || !doctorSlugs.length) {
       setSlots(null);
       setNextAvail(null);
@@ -88,7 +88,7 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
     setSlotsLoading(true);
     setNextAvail(null);
     try {
-      const list = await service.getSlots(doctorSlugs, draft.branchId, draft.date);
+      const list = await service.getSlots(doctorSlugs, draft.branchId, draft.date, { fresh });
       setSlots(list);
       if (!list.length) {
         setNextAvail('loading');
@@ -249,8 +249,12 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
     setResult(res);
     setStep('success');
     markBooked();
-    requestAnimationFrame(() => successRef.current?.focus());
   };
+
+  // Move focus to the success message once it is rendered.
+  useEffect(() => {
+    if (step === 'success') successRef.current?.focus();
+  }, [step]);
 
   // OTP resend countdown
   useEffect(() => {
@@ -260,7 +264,7 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
   }, [step, resendIn]);
 
   useEffect(() => {
-    if (step === 'otp') requestAnimationFrame(() => otpRef.current?.focus());
+    if (step === 'otp') otpRef.current?.focus();
   }, [step]);
 
   const resend = async () => {
@@ -297,7 +301,7 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
         setStep('form');
         setBanner({ kind: 'error', text: s.slotTaken });
         setErrors((p) => ({ ...p, time: s.slotTaken }));
-        void loadSlots();
+        void loadSlots(true);
         requestAnimationFrame(() => fieldRefs.current.time?.focus());
       } else {
         setBanner({ kind: 'error', text: errorText(e), retry: () => void verifyAndBook(), whatsapp: true });

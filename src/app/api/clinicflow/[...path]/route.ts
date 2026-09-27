@@ -14,6 +14,7 @@ const ALLOWED: { re: RegExp; maxAge: number }[] = [
   { re: new RegExp(`^clinics/${UUID}/doctors/${UUID}/slots/next-available$`), maxAge: 30 },
 ];
 const ALLOWED_PARAMS = new Set(['branchId', 'date']);
+// ?fresh=1 skips the cache (used right before booking and after a slot turned out to be taken).
 
 export const dynamic = 'force-dynamic';
 
@@ -31,18 +32,19 @@ export async function GET(req: NextRequest, { params }: { params: { path: string
   });
   const target = `${baseUrl}/${path}${qs.size ? `?${qs}` : ''}`;
 
+  const fresh = req.nextUrl.searchParams.get('fresh') === '1';
   try {
     const upstream = await fetch(target, {
       headers: { Accept: 'application/json' },
-      next: { revalidate: rule.maxAge },
-      signal: AbortSignal.timeout(10_000),
+      ...(fresh ? { cache: 'no-store' as const } : { next: { revalidate: rule.maxAge } }),
+      signal: AbortSignal.timeout(20_000), // the API scales to zero; allow for a cold start
     });
     const body = await upstream.text();
     return new NextResponse(body || null, {
       status: upstream.status,
       headers: {
         'Content-Type': upstream.headers.get('content-type') ?? 'application/json',
-        'Cache-Control': upstream.ok ? `public, max-age=${rule.maxAge}, s-maxage=${rule.maxAge}` : 'no-store',
+        'Cache-Control': upstream.ok && !fresh ? `public, max-age=${rule.maxAge}, s-maxage=${rule.maxAge}` : 'no-store',
       },
     });
   } catch {

@@ -39,7 +39,7 @@ abstract class ContentBackedService implements BookingService {
 
   // Content-only modes have no live slots or OTP; parameters are part of the shared interface.
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  async getSlots(doctorSlugs: string[], branchId: string, date: string): Promise<SlotOption[]> {
+  async getSlots(doctorSlugs: string[], branchId: string, date: string, opts?: { fresh?: boolean }): Promise<SlotOption[]> {
     return [];
   }
 
@@ -162,12 +162,15 @@ export class ClinicFlowBookingService extends ContentBackedService {
     return this.branches;
   }
 
-  async getSlots(doctorSlugs: string[], branchId: string, date: string): Promise<SlotOption[]> {
+  async getSlots(doctorSlugs: string[], branchId: string, date: string, opts?: { fresh?: boolean }): Promise<SlotOption[]> {
     const lists = await Promise.all(
       doctorSlugs.map(async (slug) => {
         const doc = this.doctorIds.get(slug);
         if (!doc) return [];
-        const res = await safeFetch(this.proxy(`clinics/${this.clinicId}/doctors/${doc.id}/slots?branchId=${encodeURIComponent(branchId)}&date=${date}`));
+        const res = await safeFetch(
+          this.proxy(`clinics/${this.clinicId}/doctors/${doc.id}/slots?branchId=${encodeURIComponent(branchId)}&date=${date}${opts?.fresh ? '&fresh=1' : ''}`),
+          opts?.fresh ? { cache: 'no-store' } : undefined,
+        );
         try {
           const slots = await parseResponse(res, SlotListSchema);
           const name = this.doctor(slug)?.displayName ?? doc.fullName ?? doc.firstName;
@@ -225,7 +228,7 @@ export class ClinicFlowBookingService extends ContentBackedService {
     const doc = this.doctorIds.get(req.doctorSlug);
     if (!doc) throw new BookingError('request', 'Doctor not available for online booking');
     // Re-check right before booking: someone may have taken the slot while the visitor typed the OTP.
-    const fresh = await this.getSlots([req.doctorSlug], req.branchId, req.date);
+    const fresh = await this.getSlots([req.doctorSlug], req.branchId, req.date, { fresh: true });
     if (!fresh.some((s) => s.time === req.time)) throw new BookingError('slotTaken');
     const { firstName, lastName } = splitFullName(req.fullName);
     const res = await safeFetch(`${this.cfg.api.baseUrl}/appointments/guest-book`, {
@@ -315,7 +318,7 @@ async function checkApiBase(cfg: BookingClientConfig): Promise<{ ok: true; clini
     const clinic = await safeFetch(`${cfg.proxyBase}/${path}`).then((r) => parseResponse(r, ClinicPublicSchema));
     clinicId = clinicId || clinic.id;
   } catch (e) {
-    return { ok: false, reason: e instanceof BookingError && e.kind === 'notFound' ? `clinic "${cfg.api.clinicSlug}" not found on ClinicFlow` : `API unreachable (${describe(e)})` };
+    return { ok: false, reason: e instanceof BookingError && e.kind === 'notFound' ? `clinic "${cfg.api.clinicSlug}" not found on ClinicFlow` : `API unreachable or timed out (${describe(e)})` };
   }
   // CORS probe: the same public GET, straight from the browser. Blocked origin → network error.
   try {

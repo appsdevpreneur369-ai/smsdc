@@ -27,11 +27,13 @@ Matches `clinicflow-frontend` so components can merge later: Next.js 14 App Rout
 
 ## Booking
 
-Config in `content/booking.json`. `/book` is a 3-step wizard (problem → recommended doctor from `routing.json` → hand-off).
+Popup + form connected to ClinicFlow247 — see `docs/BOOKING.md`. Config: `content/booking.json`. Code: `src/lib/booking/*` (pure rules, zod API schemas, `BookingService` + ClinicFlow/Enquiry/WhatsApp implementations, fallback), `src/components/booking/*` (provider, modal, form), `src/app/api/clinicflow/[...path]` (read-only GET proxy).
 
-- `mode: "clinicflow"` opens `clinicflowBookingUrl` (ClinicFlow247 `/book/<slug>`). As of 27 Sep 2026 that page does **not** read a doctor pre-select param, so `clinicflowDoctorParam` is `null`; the wizard tells the patient which doctor to pick.
-- `mode: "whatsapp"` (and the fallback when the URL is empty) opens `wa.me` with a prefilled message.
-- Do **not** call the ClinicFlow API from the browser (CORS not configured) and do **not** proxy guest booking through a server (rate-limited per IP). See `../SMSDC_PendingItems.md`.
+- GETs (clinic, branches, doctors, slots, next-available) go through the same-origin proxy (short cache, allow-listed paths).
+- POSTs (OTP send/resend, guest-book, leads) go **straight from the browser** — never proxy them: guest-book is rate-limited 5/15 min per IP. They need this site's origin in the API's CORS list (`APP_CORS_ALLOWEDORIGINS` env on the API, see docs/BOOKING.md).
+- Health check + automatic fallback clinicflow → enquiry → whatsapp; never a fake success; no mock service in `src/` (mocks only in `tests/` and `scripts/harness/`).
+- `verifyOtp` is a format check only: guest-book verifies the OTP itself (like ClinicFlow's own /book page); calling /auth/otp/verify first could consume the code.
+- Tests: `npm test` (vitest, pure rules + stubbed fetch). End-to-end against a production build + test-only mock API: `scripts/harness/mock-clinicflow.mjs` + `scripts/harness/e2e-booking.mjs` (see docs/BOOKING.md).
 
 ## How content maps to ClinicFlow247 (`walkwell.json` tenant schema)
 

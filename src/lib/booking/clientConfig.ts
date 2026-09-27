@@ -44,7 +44,7 @@ export function bookingClientConfig(lang: Lang): BookingClientConfig {
     clinic: {
       name: tx(clinic.displayName, lang),
       shortName: tx(clinic.shortName, lang),
-      branchName: `${tx(clinic.displayName, lang)} — ${clinic.address.locality}`,
+      branchName: `${tx(clinic.shortName, lang)} — ${clinic.address.locality}`,
       address: fullAddress,
       mapsUrl: clinic.maps.shareUrl,
       whatsappDigits: clinic.whatsapp.e164.replace(/\D/g, ''),

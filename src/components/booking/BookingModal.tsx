@@ -43,7 +43,16 @@ export function BookingModal() {
     [draft, close],
   );
 
-  // Scroll lock without layout shift (compensate for the scrollbar), plus ESC and focus trap.
+  // Latest values for the key handler, so the open-time effect below runs once per open (re-running it on
+  // every keystroke would move focus back to the panel and drop typed characters).
+  const requestCloseRef = useRef(requestClose);
+  const confirmRef = useRef(confirmDiscard);
+  useEffect(() => {
+    requestCloseRef.current = requestClose;
+    confirmRef.current = confirmDiscard;
+  }, [requestClose, confirmDiscard]);
+
+  // Scroll lock without layout shift (compensate for the scrollbar), initial focus, ESC and focus trap.
   useEffect(() => {
     if (!isOpen) return;
     const { body, documentElement } = document;
@@ -57,8 +66,8 @@ export function BookingModal() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.preventDefault();
-        if (confirmDiscard) setConfirmDiscard(false);
-        else requestClose('esc');
+        if (confirmRef.current) setConfirmDiscard(false);
+        else requestCloseRef.current('esc');
         return;
       }
       if (e.key !== 'Tab' || !panelRef.current) return;
@@ -80,7 +89,7 @@ export function BookingModal() {
       body.style.paddingRight = prev.paddingRight;
       document.removeEventListener('keydown', onKey);
     };
-  }, [isOpen, requestClose, confirmDiscard]);
+  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) setConfirmDiscard(false);
