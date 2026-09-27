@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 280" width="1320" height="280">
-<!-- PLACEHOLDER logo generated from content/brand.json — replace when the clinic approves a final logo. -->
-  <g transform="translate(0 4) scale(0.53)"><path d="M256 104C228 74 176 58 138 78C96 100 90 158 102 210C112 254 126 290 138 336C148 374 152 414 172 424C194 434 202 396 210 364C218 332 232 306 256 306C280 306 294 332 302 364C310 396 318 434 340 424C360 414 364 374 374 336C386 290 400 254 410 210C422 158 416 100 374 78C336 58 284 74 256 104Z" fill="none" stroke="#087F8C" stroke-width="28" stroke-linejoin="round"/>
-  <path d="M314 146C294 124 222 122 210 166C198 212 312 198 306 246C300 292 226 294 198 268" fill="none" stroke="#087F8C" stroke-width="28" stroke-linecap="round"/>
-  <path d="M150 466Q256 540 362 466" fill="none" stroke="#E7B85C" stroke-width="28" stroke-linecap="round"/></g>
-  <text x="300" y="150" font-family="Poppins, 'Segoe UI', Arial, sans-serif" font-size="124" font-weight="600" fill="#087F8C" letter-spacing="-2">Suhasini</text>
-  <text x="306" y="224" font-family="Poppins, 'Segoe UI', Arial, sans-serif" font-size="40" font-weight="500" fill="#263238" letter-spacing="7">DENTAL CLINIC &amp; IMPLANT CENTRE</text>
-</svg>

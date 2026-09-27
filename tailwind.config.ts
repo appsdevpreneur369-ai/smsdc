@@ -26,6 +26,7 @@ const config: Config = {
       fontFamily: {
         heading: ['var(--font-heading)', 'system-ui', 'sans-serif'],
         body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        logo: ['var(--font-logo)', 'system-ui', 'sans-serif'],
       },
       borderRadius: { brand: 'var(--radius)' },
       boxShadow: {

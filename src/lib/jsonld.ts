@@ -30,7 +30,7 @@ export function clinicJsonLd(lang: Lang) {
     description: tx(clinic.description, lang),
     url: absoluteUrl(localePath(lang, '/')),
     logo: absoluteUrl(getImage(brand.logo.icon).src),
-    image: absoluteUrl('/brand/logo-app-icon-1024.png'),
+    image: absoluteUrl(getImage(brand.logo.appIcon).src),
     telephone: clinic.phone.e164,
     email: clinic.email,
     address: {

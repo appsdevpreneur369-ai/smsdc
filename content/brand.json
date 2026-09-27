@@ -1,23 +1,23 @@
 {
   "status": "placeholder",
-  "_note": "Proposed rebrand (replaces the blue/red of the current banners). Colours become CSS variables that feed the Tailwind theme. Gold and aqua fail WCAG AA as text on light backgrounds: use them for decoration, or on the dark colours. accentText is the AA-safe gold for text on light backgrounds.",
+  "_note": "Palette sampled from the clinic's logo (logo.png, 27 Sep 2026): outline teal #08495F, root teal #197D98 (darkened to #157890 for WCAG AA), smile gold #D1AA5B. Colours become CSS variables that feed the Tailwind theme. Gold and aqua fail WCAG AA as text on light backgrounds: decoration only, or on the dark colours. accentText is the AA-safe gold for text on light backgrounds.",
   "colors": {
-    "primary": "#087F8C",
-    "primaryHover": "#066A75",
-    "primaryDark": "#05545C",
-    "secondary": "#56C5C0",
-    "secondarySoft": "#E3F4F2",
-    "accent": "#E7B85C",
-    "accentText": "#8A6116",
+    "primary": "#157890",
+    "primaryHover": "#0F6278",
+    "primaryDark": "#08495F",
+    "secondary": "#5DB8CC",
+    "secondarySoft": "#E4F1F4",
+    "accent": "#D1AA5B",
+    "accentText": "#85601A",
     "background": "#F8FBFA",
     "surface": "#FFFFFF",
     "text": "#263238",
     "textSecondary": "#55666D",
-    "border": "#DCE8E6",
-    "dark": "#0A2E33",
-    "darkSoft": "#12424A",
+    "border": "#D9E7EC",
+    "dark": "#0A2E3B",
+    "darkSoft": "#123F50",
     "onDark": "#FFFFFF",
-    "onDarkMuted": "#B7D3D1",
+    "onDarkMuted": "#B9D3DB",
     "success": "#157F3C",
     "danger": "#B42318",
     "whatsapp": "#167A40",
@@ -25,13 +25,13 @@
   },
   "fonts": {
     "heading": "Poppins",
-    "body": "Manrope"
+    "body": "Manrope",
+    "logo": "Roboto"
   },
   "logo": {
-    "horizontal": "logo-horizontal",
-    "horizontalWhite": "logo-horizontal-white",
-    "icon": "logo-icon",
-    "iconWhite": "logo-icon-white"
+    "icon": "logo",
+    "iconWhite": "logo-white",
+    "appIcon": "logo-app-icon"
   },
   "radius": "1.25rem",
   "wordmark": {

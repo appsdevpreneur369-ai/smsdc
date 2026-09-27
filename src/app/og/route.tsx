@@ -1,5 +1,5 @@
 import { ImageResponse } from 'next/og';
-import { brand, clinic } from '@/lib/content';
+import { brand, clinic, getImage } from '@/lib/content';
 import { tx } from '@/lib/i18n';
 
 export const runtime = 'edge';
@@ -12,8 +12,11 @@ export async function GET(req: Request) {
   const raw = new URL(req.url).searchParams.get('title')?.slice(0, 90) ?? '';
   const title = LATIN_ONLY.test(raw) ? raw : tx(clinic.tagline, 'en');
   const c = brand.colors;
-  const svg = await fetch(new URL('/brand/logo-icon-white.svg', req.url)).then((r) => r.text());
-  const iconSrc = `data:image/svg+xml;base64,${btoa(svg.replace(/<!--[\s\S]*?-->/g, ''))}`;
+  const logoPath = getImage(brand.logo.iconWhite).src;
+  const buf = new Uint8Array((await fetch(new URL(logoPath, req.url)).then((r) => r.arrayBuffer())) as ArrayBuffer);
+  let bin = '';
+  buf.forEach((b) => (bin += String.fromCharCode(b)));
+  const iconSrc = `data:image/png;base64,${btoa(bin)}`;
   return new ImageResponse(
     (
       <div
@@ -33,8 +36,8 @@ export async function GET(req: Request) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={iconSrc} width={96} height={96} alt="" />
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ fontSize: 48, fontWeight: 700 }}>{brand.wordmark.primary}</div>
-            <div style={{ fontSize: 22, letterSpacing: 4, color: c.onDarkMuted, textTransform: 'uppercase' }}>{brand.wordmark.secondary}</div>
+            <div style={{ fontSize: 52, fontWeight: 700 }}>{brand.wordmark.primary}</div>
+            <div style={{ fontSize: 26, color: c.accent }}>{brand.wordmark.secondary}</div>
           </div>
         </div>
         <div style={{ fontSize: 64, fontWeight: 700, lineHeight: 1.1, maxWidth: 1000 }}>{title}</div>

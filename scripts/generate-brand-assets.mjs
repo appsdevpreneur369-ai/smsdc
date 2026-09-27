@@ -1,6 +1,6 @@
-// Generates the placeholder logo set, illustrations and favicons from content/brand.json.
+// Generates the illustrations (in brand.json colours) and the favicon set (from the clinic's logo).
 // Run after changing brand colours:  npm run brand
-// Output: public/brand/*, public/images/*.svg, public/images/services/*.svg, public/icons/*, src/app/favicon.ico
+// Output: public/images/*.svg, public/images/services/*.svg, public/icons/*, src/app/favicon.ico
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -8,7 +8,6 @@ import sharp from 'sharp';
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1')), '..');
 const brand = JSON.parse(fs.readFileSync(path.join(root, 'content/brand.json'), 'utf8'));
 const c = brand.colors;
-const wordmark = brand.wordmark;
 
 const out = (rel, data) => {
   const p = path.join(root, rel);
@@ -19,41 +18,12 @@ const out = (rel, data) => {
 // ── Geometry (512 × 512 box) ────────────────────────────────────────────────
 const TOOTH =
   'M256 104C228 74 176 58 138 78C96 100 90 158 102 210C112 254 126 290 138 336C148 374 152 414 172 424C194 434 202 396 210 364C218 332 232 306 256 306C280 306 294 332 302 364C310 396 318 434 340 424C360 414 364 374 374 336C386 290 400 254 410 210C422 158 416 100 374 78C336 58 284 74 256 104Z';
-const S_CURVE = 'M314 146C294 124 222 122 210 166C198 212 312 198 306 246C300 292 226 294 198 268';
-const SMILE = 'M150 466Q256 540 362 466';
-
-function iconMarkup({ tooth, s, smile, stroke = 26 }) {
-  return `<path d="${TOOTH}" fill="none" stroke="${tooth}" stroke-width="${stroke}" stroke-linejoin="round"/>
-  <path d="${S_CURVE}" fill="none" stroke="${s}" stroke-width="${stroke}" stroke-linecap="round"/>
-  <path d="${SMILE}" fill="none" stroke="${smile}" stroke-width="${stroke}" stroke-linecap="round"/>`;
-}
 
 const svg = (w, h, body, extra = '') =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}"${extra}>\n${body}\n</svg>\n`;
-
-const PLACEHOLDER_NOTE = '<!-- PLACEHOLDER logo generated from content/brand.json — replace when the clinic approves a final logo. -->';
-
-// ── Logos ───────────────────────────────────────────────────────────────────
-out('public/brand/logo-icon.svg', svg(512, 512, `${PLACEHOLDER_NOTE}\n${iconMarkup({ tooth: c.primary, s: c.primary, smile: c.accent })}`));
-out('public/brand/logo-icon-white.svg', svg(512, 512, `${PLACEHOLDER_NOTE}\n${iconMarkup({ tooth: '#FFFFFF', s: '#FFFFFF', smile: '#FFFFFF' })}`));
-const appIcon = (size = 512) =>
-  svg(512, 512, `${PLACEHOLDER_NOTE}
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c.primary}"/><stop offset="1" stop-color="${c.primaryDark}"/></linearGradient></defs>
-  <rect width="512" height="512" rx="${size === 512 ? 112 : 0}" fill="url(#bg)"/>
-  <g transform="translate(76 60) scale(0.7)">${iconMarkup({ tooth: '#FFFFFF', s: '#FFFFFF', smile: c.accent, stroke: 34 })}</g>`);
-out('public/brand/logo-app-icon.svg', appIcon());
-
-const lockup = (dark) => {
-  const primary = dark ? '#FFFFFF' : c.primary;
-  const sub = dark ? c.onDarkMuted : c.text;
-  const smile = dark ? c.accent : c.accent;
-  return svg(1320, 280, `${PLACEHOLDER_NOTE}
-  <g transform="translate(0 4) scale(0.53)">${iconMarkup({ tooth: primary, s: primary, smile, stroke: 28 })}</g>
-  <text x="300" y="150" font-family="Poppins, 'Segoe UI', Arial, sans-serif" font-size="124" font-weight="600" fill="${primary}" letter-spacing="-2">${wordmark.primary}</text>
-  <text x="306" y="224" font-family="Poppins, 'Segoe UI', Arial, sans-serif" font-size="40" font-weight="500" fill="${sub}" letter-spacing="7">${wordmark.secondary.toUpperCase().replace('&', '&amp;')}</text>`);
-};
-out('public/brand/logo-horizontal.svg', lockup(false));
-out('public/brand/logo-horizontal-white.svg', lockup(true));
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}"${extra}>
+${body}
+</svg>
+`;
 
 // ── Shared illustration helpers ─────────────────────────────────────────────
 const sparkle = (x, y, r, fill, opacity = 1) =>
@@ -242,30 +212,34 @@ const services = {
 };
 for (const [name, body] of Object.entries(services)) out(`public/images/services/${name}.svg`, body);
 
-// ── Raster favicons / PWA icons ─────────────────────────────────────────────
-const appSvg = Buffer.from(appIcon());
-const fullBleed = Buffer.from(appIcon(0));
-const png = (buf, size) => sharp(buf, { density: 300 }).resize(size, size).png().toBuffer();
-const sizes = { 'icon-16.png': 16, 'icon-32.png': 32, 'icon-192.png': 192, 'icon-512.png': 512 };
-for (const [file, size] of Object.entries(sizes)) out(`public/icons/${file}`, await png(appSvg, size));
-out('public/icons/apple-touch-icon.png', await png(fullBleed, 180));
-out('public/icons/icon-maskable-512.png', await png(fullBleed, 512));
-out('public/brand/logo-app-icon-1024.png', await png(appSvg, 1024));
+// ── Favicons / PWA icons from the clinic's logo (content/images.json → brand.logo.appIcon) ─────────────
+const images = JSON.parse(fs.readFileSync(path.join(root, 'content/images.json'), 'utf8')).images;
+const logoSrc = path.join(root, 'public', images[brand.logo.appIcon].src);
+// Logo on a white tile (rounded for browser tabs, square for iOS/maskable which apply their own mask).
+async function tile(size, { radius = 0.22, pad = 0.1 } = {}) {
+  const inner = Math.round(size * (1 - pad * 2));
+  const logo = await sharp(logoSrc).resize(inner, inner, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).toBuffer();
+  const r = Math.round(size * radius);
+  const bg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}"><rect width="${size}" height="${size}" rx="${r}" fill="#FFFFFF"/></svg>`);
+  return sharp(bg).composite([{ input: logo, gravity: 'center' }]).png().toBuffer();
+}
+for (const [file, size] of Object.entries({ 'icon-16.png': 16, 'icon-32.png': 32, 'icon-192.png': 192, 'icon-512.png': 512 }))
+  out(`public/icons/${file}`, await tile(size, { pad: size <= 32 ? 0.02 : 0.1 }));
+out('public/icons/apple-touch-icon.png', await tile(180, { radius: 0, pad: 0.12 }));
+out('public/icons/icon-maskable-512.png', await tile(512, { radius: 0, pad: 0.2 }));
 
 // favicon.ico containing 16/32/48 PNGs
-const icoImages = await Promise.all([16, 32, 48].map((s) => png(appSvg, s)));
+const icoSizes = [16, 32, 48];
+const icoImages = await Promise.all(icoSizes.map((s) => tile(s, { pad: 0.02 })));
 const header = Buffer.alloc(6 + 16 * icoImages.length);
 header.writeUInt16LE(0, 0);
 header.writeUInt16LE(1, 2);
 header.writeUInt16LE(icoImages.length, 4);
 let offset = header.length;
 icoImages.forEach((img, i) => {
-  const s = [16, 32, 48][i];
   const o = 6 + i * 16;
-  header.writeUInt8(s, o);
-  header.writeUInt8(s, o + 1);
-  header.writeUInt8(0, o + 2);
-  header.writeUInt8(0, o + 3);
+  header.writeUInt8(icoSizes[i], o);
+  header.writeUInt8(icoSizes[i], o + 1);
   header.writeUInt16LE(1, o + 4);
   header.writeUInt16LE(32, o + 6);
   header.writeUInt32LE(img.length, o + 8);

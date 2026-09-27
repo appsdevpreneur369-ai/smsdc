@@ -76,8 +76,8 @@ export const BrandSchema = z.object({
     whatsapp: Hex,
     whatsappHover: Hex,
   }),
-  fonts: z.object({ heading: z.string(), body: z.string() }),
-  logo: z.object({ horizontal: z.string(), horizontalWhite: z.string(), icon: z.string(), iconWhite: z.string() }),
+  fonts: z.object({ heading: z.string(), body: z.string(), logo: z.string() }),
+  logo: z.object({ icon: z.string(), iconWhite: z.string(), appIcon: z.string() }),
   radius: z.string(),
   wordmark: z.object({ primary: z.string(), secondary: z.string() }),
 });

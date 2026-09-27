@@ -22,7 +22,8 @@ Matches `clinicflow-frontend` so components can merge later: Next.js 14 App Rout
 
 - Routing: all pages live in `src/app/[lang]/`. `src/middleware.ts` rewrites root paths to `/en/*` (English at `/about`) and serves Telugu at `/te/*`. `/en/*` redirects to the root.
 - Server components read content directly. **Client components must not import `src/lib/content`** (it would ship zod + all JSON to the browser); pass resolved strings as props.
-- `npm run brand` regenerates the logo set, illustrations and favicons from `content/brand.json` (`scripts/generate-brand-assets.mjs`).
+- Logo: the clinic's own `logo.png` (supplied 27 Sep 2026; background removed) in `public/brand/` — `logo.png`, `logo-white.png` (dark backgrounds), `logo-1024.png` (master). The header title is text (`brand.json wordmark`) in Roboto (`fonts.logo`), not an image. The palette in `brand.json` is sampled from the logo.
+- `npm run brand` regenerates the illustrations (in `brand.json` colours) and the favicon/app icons (from the logo master) — `scripts/generate-brand-assets.mjs`.
 
 ## Booking
 
