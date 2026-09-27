@@ -4,9 +4,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Globe, Menu, Phone, X } from 'lucide-react';
+import { Globe, Menu, Phone, UserRound, X } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Logo, type LogoData } from './Logo';
+import { useAccount } from '@/components/account/AccountProvider';
 import { WhatsAppIcon } from '@/components/ui/Icon';
 import { cn } from '@/lib/cn';
 import { localePath, stripLang, type Lang } from '@/lib/i18n';
@@ -19,12 +20,16 @@ export type HeaderProps = {
   book: { label: string; href: string };
   call: { label: string; href: string; display: string };
   whatsapp: { label: string; href: string };
+  /** Patient account page; the label switches to "My account" once signed in. */
+  account: { href: string; signIn: string; myAccount: string };
   langSwitch: { label: string; ariaLabel: string; target: Lang; note: string };
   strings: { openMenu: string; closeMenu: string; main: string; menu: string };
 };
 
 export function Header(props: HeaderProps) {
-  const { logo, items, cta, langSwitch, strings } = props;
+  const { logo, items, cta, account, langSwitch, strings } = props;
+  const { session } = useAccount();
+  const accountLabel = session ? account.myAccount : account.signIn;
   const pathname = usePathname() || '/';
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -99,6 +104,20 @@ export function Header(props: HeaderProps) {
             {cta.label}
           </Link>
           <Link
+            href={account.href}
+            aria-label={accountLabel}
+            title={accountLabel}
+            aria-current={isActive(account.href) ? 'page' : undefined}
+            data-account-link={session ? 'signed-in' : 'signed-out'}
+            className={cn(
+              'relative inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors',
+              scrolled ? 'text-white/85 hover:bg-white/10 hover:text-accent' : 'text-ink hover:bg-secondary-soft hover:text-primary',
+            )}
+          >
+            <UserRound className="h-5 w-5" aria-hidden />
+            {session && <span className={cn('absolute right-2 top-2 h-2.5 w-2.5 rounded-full bg-success ring-2', scrolled ? 'ring-dark' : 'ring-bg')} aria-hidden />}
+          </Link>
+          <Link
             href={altHref}
             hrefLang={langSwitch.target}
             lang={langSwitch.target}
@@ -159,6 +178,7 @@ function MobileMenu({
   book,
   call,
   whatsapp,
+  account,
   langSwitch,
   strings,
 }: HeaderProps & { open: boolean; onClose: () => void; isActive: (h: string) => boolean; altHref: string }) {
@@ -277,6 +297,10 @@ function MobileMenu({
                   {whatsapp.label}
                 </a>
               </div>
+              <Link href={account.href} className="flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/30 font-heading text-sm font-semibold">
+                <UserRound className="h-4 w-4" aria-hidden />
+                <MobileAccountLabel {...account} />
+              </Link>
               <Link
                 href={altHref}
                 hrefLang={langSwitch.target}
@@ -295,4 +319,9 @@ function MobileMenu({
     </AnimatePresence>,
     document.body,
   );
+}
+
+function MobileAccountLabel({ signIn, myAccount }: HeaderProps['account']) {
+  const { session } = useAccount();
+  return <>{session ? myAccount : signIn}</>;
 }

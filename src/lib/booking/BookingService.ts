@@ -1,6 +1,7 @@
 // Booking service abstraction. Implementations: ClinicFlowBookingService (real API), EnquiryBookingService
 // (real lead via POST /clinics/public/{slug}/leads), WhatsAppBookingService (no network, opens wa.me).
 // There is deliberately no mock implementation here — mocks live only in tests/harnesses.
+import type { PatientApi } from '../account/patientApi';
 import type { Day } from '../content/schemas';
 import type { BookingMode } from './selectMode';
 import type { TreatmentGroup } from './treatments';
@@ -59,6 +60,10 @@ export interface BookingService {
   readonly liveSlots: boolean;
   /** true when submitting requires the phone OTP step. */
   readonly requiresOtp: boolean;
+  /** true when signed-in patients can book with their ClinicFlow account (no OTP). */
+  readonly supportsAccounts: boolean;
+  /** ClinicFlow clinic id when connected (used to show only this clinic's appointments). */
+  readonly clinicId: string | null;
   getBranches(): Promise<Branch[]>;
   getTreatments(): TreatmentGroup[];
   getAvailableDates(doctorSlugs: string[]): string[];
@@ -68,5 +73,7 @@ export interface BookingService {
   sendOtp(phone: string, resend?: boolean): Promise<void>;
   verifyOtp(phone: string, otp: string): Promise<boolean>;
   book(req: BookingRequest): Promise<BookingResult>;
+  /** Signed-in patient booking: slot lock + POST /appointments. Only when supportsAccounts. */
+  bookAsPatient(req: BookingRequest, api: PatientApi): Promise<BookingResult>;
   submitEnquiry(req: BookingRequest): Promise<BookingResult>;
 }

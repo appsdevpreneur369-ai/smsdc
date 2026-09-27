@@ -56,6 +56,7 @@ export function SiteHeader({ lang }: { lang: Lang }) {
       book={{ label: t(dict, 'cta.book'), href: localePath(lang, '/book') }}
       call={{ label: t(dict, 'cta.call'), href: telHref, display: clinic.phone.display }}
       whatsapp={{ label: t(dict, 'cta.whatsapp'), href: generalWhatsappHref(lang) }}
+      account={{ href: localePath(lang, '/account'), signIn: t(dict, 'account.signIn'), myAccount: t(dict, 'account.account') }}
       langSwitch={{ label: t(dict, 'lang.switchTo'), ariaLabel: t(dict, 'lang.switchToLabel'), target: other, note: t(dict, 'lang.draftNote') }}
       strings={{ openMenu: t(dict, 'nav.openMenu'), closeMenu: t(dict, 'nav.closeMenu'), main: t(dict, 'nav.main'), menu: t(dict, 'nav.menu') }}
     />

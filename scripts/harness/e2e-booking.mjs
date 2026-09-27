@@ -1,6 +1,7 @@
 // TEST-ONLY end-to-end checks of the booking popup against a production build.
 // Usage: node scripts/harness/e2e-booking.mjs <baseUrl> <outDir> <suite>
-//   suites: clinicflow (mock API, scenario ok) | errors-500 | errors-429 | enquiry | fallback (real staging config)
+//   suites: clinicflow (mock API, scenario ok) | account (mock API: patient sign-up/in, booking, My appointments)
+//           | errors-500 | errors-429 | enquiry | fallback (real staging config)
 import fs from 'node:fs';
 import puppeteer from 'puppeteer-core';
 
@@ -437,6 +438,175 @@ if (suite === 'fallback') {
     await page.waitForFunction(() => document.body.innerText.includes('WhatsApp has opened'), { timeout: 5000 });
     check(`fallback @${w}: no "Appointment requested/confirmed" wording`, !/(Appointment requested|CONFIRMED)/.test(await page.evaluate(() => document.body.innerText)));
     await page.screenshot({ path: `${out}/14-whatsapp-continue-${w}.png` });
+    await ctx.close();
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Patient accounts (mock API, scenario ok): sign up once, book without OTP, My appointments, cancel,
+// sign out / in, wrong password, staff account refused, duplicate email, forgot password.
+if (suite === 'account') {
+  const email = `lakshmi.${Date.now()}@mock.test`;
+  const password = 'Secret123';
+  const text = (page) => page.evaluate(() => document.body.innerText);
+  const mockLog = async () => (await fetch(`${MOCK}/__log`)).json();
+  const noErrors = (logs) => !logs.some((l) => (l.startsWith('error') && !l.includes('Failed to load resource')) || l.startsWith('pageerror'));
+  const authInput = (page, ac) => page.$(`[data-auth-view] input[autocomplete="${ac}"]`);
+  async function typeAuth(page, sel, value) {
+    const el = await page.$(`[data-auth-view] ${sel}`);
+    await el.click({ clickCount: 3 });
+    await el.evaluate((i) => i.select());
+    await el.type(value);
+  }
+  const noOverflow = (page) => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+
+  // 1. Popup: choose account, sign up inside the popup, book without OTP
+  {
+    const { ctx, page, logs } = await fresh(1280);
+    await page.goto(`${base}/`, { waitUntil: 'networkidle2' });
+    check('header shows "Sign in" when signed out', (await page.$('[data-account-link="signed-out"]')) !== null);
+    await page.click('main section a[href="/book"]');
+    await waitDialog(page);
+    await page.waitForFunction(() => document.body.innerText.includes('How would you like to book?'), { timeout: 15000 });
+    check('booking asks guest vs account; guest is the default when signed out', (await page.$('[data-who="guest"]')) !== null);
+    await page.evaluate(() => [...document.querySelectorAll('[data-booking-dialog] label')].find((l) => l.textContent.includes('Sign in / Create account')).click());
+    await page.waitForSelector('[data-auth-view="signup"]');
+    check('account mode shows the sign-up panel; guest name/phone/email fields hidden', (await page.$('form[data-variant] input[autocomplete="name"]')) === null);
+    await page.screenshot({ path: `${out}/20-account-signup-in-popup.png` });
+
+    // Pick treatment/date/time first, then try to book without signing in
+    await selectByLabel(page, 'Treatment', 'Root canal treatment');
+    await wait(200);
+    const date = await selectByLabel(page, 'Choose Date', 1);
+    await page.waitForFunction(() => [...document.querySelectorAll('form[data-variant] option')].some((o) => /PM|AM/.test(o.textContent)), { timeout: 10000 });
+    const time = await selectByLabel(page, 'Choose Time', 0);
+    await (await page.$('form[data-variant] input[type=checkbox]')).click();
+    await (await page.$('form[data-variant] button[type=submit]')).click();
+    await page.waitForFunction(() => document.body.innerText.includes('Please sign in or create an account first'), { timeout: 5000 });
+    check('booking without signing in → asks to sign in (nothing sent)', !(await mockLog()).log.some((l) => l.includes('/slots/lock')));
+
+    // Sign-up validation, then a real sign-up
+    await typeAuth(page, 'input[autocomplete="name"]', 'Lakshmi Prasanna');
+    await typeAuth(page, 'input[type=tel]', '94414 11629');
+    await typeAuth(page, 'input[type=email]', email);
+    await typeAuth(page, 'input[autocomplete="new-password"]', 'short');
+    await (await page.$('[data-auth-view] button[type=submit]')).click();
+    await wait(300);
+    const v = await text(page);
+    check('sign-up validation: short password + consent required', v.includes('Password must be at least 8 characters') && v.includes('Please agree so we can contact you'));
+    await typeAuth(page, 'input[autocomplete="new-password"]', password);
+    await (await page.$('[data-auth-view] input[type=checkbox]')).click();
+    await (await page.$('[data-auth-view] button[type=submit]')).click();
+    await page.waitForSelector('[data-signed-in]', { timeout: 8000 });
+    const signed = await text(page);
+    check('signed up once → signed in straight away (name + email shown)', signed.includes('Signed in as Lakshmi Prasanna') && signed.includes(email));
+    check('email-only notice shown', signed.includes('confirmations and reminders are sent to your email'));
+    check('treatment/date/time kept through sign-up', (await page.$eval('form[data-variant]', (f) => [...f.querySelectorAll('select')].map((s) => s.value).join('|'))).includes(date));
+    check('header switches to "My account"', (await page.$('[data-account-link="signed-in"]')) !== null);
+    await page.screenshot({ path: `${out}/21-account-signed-in-form.png` });
+
+    await (await page.$('form[data-variant] button[type=submit]')).click();
+    await page.waitForFunction(() => document.body.innerText.includes('Appointment requested'), { timeout: 10000 });
+    const ok = await text(page);
+    check('booked with the account: success with doctor/date/time/status from the API', /Dr\. /.test(ok) && ok.includes('CONFIRMED') && /(AM|PM)/.test(ok));
+    check('no OTP step for signed-in patients', !ok.includes('Verify your phone number'));
+    check('success links to My appointments', ok.includes('View my appointments') && ok.includes('saved in My appointments'));
+    const log = await mockLog();
+    check('slot lock → POST /appointments, straight from the browser; no OTP, no guest-book', log.log.some((l) => /^POST \/api\/v1\/clinics\/[^ ]+\/slots\/lock$/.test(l)) && log.log.some((l) => l === 'POST /api/v1/appointments') && !log.log.some((l) => l.includes('/otp/') || l.includes('guest-book')));
+    const mine = log.appointments.filter((a) => a.ownerEmail === email);
+    check('appointment stored for this patient at the chosen time', mine.length === 1 && mine[0].appointmentDate === date && mine[0].startTime.startsWith(time.split('|')[0]), JSON.stringify(mine[0] ?? {}));
+    await page.screenshot({ path: `${out}/22-account-booked.png` });
+
+    // 2. My appointments + cancel
+    await Promise.all([page.waitForNavigation({ waitUntil: 'networkidle2' }), page.evaluate(() => [...document.querySelectorAll('a')].find((a) => a.textContent.includes('View my appointments')).click())]);
+    await page.waitForSelector('[data-appointments="upcoming"] li', { timeout: 10000 });
+    const acct = await text(page);
+    check('/account: greeting + upcoming appointment (Confirmed)', acct.includes('Hello, Lakshmi Prasanna') && (await page.$$('[data-appointments="upcoming"] li[data-status="CONFIRMED"]')).length === 1);
+    check('/account: other clinics\' appointments hidden', !acct.includes('Dr. Elsewhere'));
+    check('/account: no booking popup auto-open', (await wait(9500), !(await dialog(page))));
+    await page.screenshot({ path: `${out}/23-my-appointments.png`, fullPage: true });
+    await page.evaluate(() => [...document.querySelectorAll('[data-appointments="upcoming"] button')].find((b) => b.textContent.includes('Cancel appointment')).click());
+    await page.waitForFunction(() => document.body.innerText.includes('Cancel this appointment?'));
+    await page.type('[data-appointments="upcoming"] input[type=text]', 'Travelling that day');
+    await page.screenshot({ path: `${out}/24-cancel-confirm.png` });
+    await page.evaluate(() => [...document.querySelectorAll('[data-appointments="upcoming"] button')].find((b) => b.textContent.includes('Yes, cancel it')).click());
+    await page.waitForFunction(() => document.body.innerText.includes('Your appointment has been cancelled.'), { timeout: 8000 });
+    check('cancel → moved to Past & cancelled', (await page.$$('[data-appointments="past"] li[data-status="CANCELLED"]')).length === 1 && (await page.$$('[data-appointments="upcoming"] li')).length === 0);
+    check('cancel sent the reason to the API', (await mockLog()).appointments.find((a) => a.ownerEmail === email)?.cancellationReason === 'Travelling that day');
+    await page.screenshot({ path: `${out}/25-cancelled.png`, fullPage: true });
+
+    // 3. Sign out, wrong password, sign back in
+    await page.evaluate(() => [...document.querySelectorAll('main button')].find((b) => b.textContent.trim() === 'Sign out').click());
+    await page.waitForSelector('[data-auth-view="signin"]');
+    check('sign out → sign-in form, token removed, header says Sign in', (await page.evaluate(() => sessionStorage.getItem('smsdc.patientSession'))) === null && (await page.$('[data-account-link="signed-out"]')) !== null);
+    await typeAuth(page, 'input[type=email]', email);
+    await typeAuth(page, 'input[autocomplete="current-password"]', 'WrongPass9');
+    await (await page.$('[data-auth-view] button[type=submit]')).click();
+    await page.waitForFunction(() => document.body.innerText.includes("don't match"), { timeout: 5000 });
+    check('wrong password → clear message, still signed out', (await page.evaluate(() => sessionStorage.getItem('smsdc.patientSession'))) === null);
+    await typeAuth(page, 'input[autocomplete="current-password"]', password);
+    await (await page.$('[data-auth-view] button[type=submit]')).click();
+    await page.waitForSelector('[data-appointments="past"] li', { timeout: 8000 });
+    check('sign in again → appointments load', (await text(page)).includes('Hello, Lakshmi Prasanna'));
+    check('token never in the URL or console', !page.url().includes('acc-') && !logs.some((l) => l.includes('acc-') || l.includes('ref-')));
+    check('no console errors', noErrors(logs), logs.filter((l) => l.startsWith('error')).join(' | '));
+    await ctx.close();
+  }
+
+  // 4. Staff account refused, duplicate email, forgot password (on /account)
+  {
+    const { ctx, page, logs } = await fresh(1280);
+    await page.goto(`${base}/account`, { waitUntil: 'networkidle2' });
+    await page.waitForSelector('[data-auth-view="signin"]', { timeout: 10000 });
+    await typeAuth(page, 'input[type=email]', 'doctor.qa@mock.test');
+    await typeAuth(page, 'input[autocomplete="current-password"]', 'DoctorPass1');
+    await (await page.$('[data-auth-view] button[type=submit]')).click();
+    await page.waitForFunction(() => document.body.innerText.includes('clinic staff account'), { timeout: 5000 });
+    check('staff (doctor) account refused on the patient site', (await page.evaluate(() => sessionStorage.getItem('smsdc.patientSession'))) === null);
+    await page.evaluate(() => [...document.querySelectorAll('[data-auth-view] button')].find((b) => b.textContent.trim() === 'Create account').click());
+    await page.waitForSelector('[data-auth-view="signup"]');
+    await typeAuth(page, 'input[autocomplete="name"]', 'Someone Else');
+    await typeAuth(page, 'input[type=tel]', '9876543210');
+    await typeAuth(page, 'input[type=email]', email);
+    await typeAuth(page, 'input[autocomplete="new-password"]', 'Another123');
+    await (await page.$('[data-auth-view] input[type=checkbox]')).click();
+    await (await page.$('[data-auth-view] button[type=submit]')).click();
+    await page.waitForFunction(() => document.body.innerText.includes('An account with this email already exists'), { timeout: 5000 });
+    check('duplicate email → "already exists, sign in instead"', true);
+    await page.evaluate(() => [...document.querySelectorAll('[data-auth-view] button')].find((b) => b.textContent.trim() === 'Sign in').click());
+    await page.waitForSelector('[data-auth-view="signin"]');
+    await page.evaluate(() => [...document.querySelectorAll('[data-auth-view] button')].find((b) => b.textContent.includes('Forgot password')).click());
+    await page.waitForSelector('[data-auth-view="forgot"]');
+    await typeAuth(page, 'input[type=email]', email);
+    await (await page.$('[data-auth-view] button[type=submit]')).click();
+    await page.waitForFunction(() => document.body.innerText.includes('a reset link is on its way'), { timeout: 5000 });
+    check('forgot password → reset link message', (await mockLog()).log.some((l) => l === 'POST /api/v1/auth/forgot-password'));
+    await page.screenshot({ path: `${out}/26-forgot.png` });
+    check('/account is noindex', (await page.$eval('meta[name="robots"]', (m) => m.content).catch(() => '')).includes('noindex'));
+    check('no console errors', noErrors(logs), logs.filter((l) => l.startsWith('error')).join(' | '));
+    await ctx.close();
+  }
+
+  // 5. Mobile + Telugu
+  for (const w of [360, 390]) {
+    const { ctx, page } = await fresh(w, 800);
+    await page.goto(`${base}/account`, { waitUntil: 'networkidle2' });
+    await page.waitForSelector('[data-auth-view="signin"]', { timeout: 10000 });
+    check(`/account @${w}: no horizontal overflow`, await noOverflow(page));
+    await page.screenshot({ path: `${out}/27-account-${w}.png`, fullPage: true });
+    await page.goto(`${base}/book`, { waitUntil: 'networkidle2' });
+    await page.waitForFunction(() => document.body.innerText.includes('How would you like to book?'), { timeout: 15000 });
+    await page.evaluate(() => [...document.querySelectorAll('label')].find((l) => l.textContent.includes('Sign in / Create account')).click());
+    await page.waitForSelector('[data-auth-view="signup"]');
+    check(`/book account mode @${w}: no horizontal overflow`, await noOverflow(page));
+    await page.screenshot({ path: `${out}/28-book-account-${w}.png`, fullPage: true });
+    await ctx.close();
+  }
+  {
+    const { ctx, page } = await fresh(1280);
+    await page.goto(`${base}/te/account`, { waitUntil: 'networkidle2' });
+    await page.waitForSelector('[data-auth-view="signin"]', { timeout: 10000 });
+    check('/te/account renders Telugu', (await text(page)).includes('మీ ఖాతాలోకి సైన్ ఇన్ చేయండి'));
     await ctx.close();
   }
 }

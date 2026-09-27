@@ -272,6 +272,7 @@ export const PagesSchema = z.object({
   education: PageMeta,
   faqs: PageMeta,
   book: PageMeta,
+  account: PageMeta,
   contact: PageMeta,
   emergency: PageMeta,
   notFound: PageMeta,

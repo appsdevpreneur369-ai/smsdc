@@ -77,7 +77,7 @@ describe('popup rules', () => {
   });
   it('content config matches the brief', () => {
     expect(booking.popup).toMatchObject({ enabled: true, delaySeconds: 8, oncePerSession: true, showOnMobile: true });
-    expect(booking.popup.excludedPaths).toEqual(['/book', '/privacy', '/terms', '/disclaimer', '/cookies']);
+    expect(booking.popup.excludedPaths).toEqual(['/book', '/account', '/privacy', '/terms', '/disclaimer', '/cookies']);
   });
 });
 
@@ -179,6 +179,9 @@ const cfg = (preferredMode: BookingClientConfig['preferredMode'] = 'clinicflow')
     enquiryTemplate: '{{problem}}',
     note: '',
     strings: { anyTime: 'Any time' },
+    accountStrings: {},
+    accountHref: '/account',
+    otpHint: '',
     dayNames: {},
   }) as BookingClientConfig;
 

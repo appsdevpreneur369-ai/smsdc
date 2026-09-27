@@ -58,6 +58,9 @@ export function bookingClientConfig(lang: Lang): BookingClientConfig {
     enquiryTemplate: tx(booking.enquiryMessage, lang),
     note: tx(booking.note, lang),
     strings: dict.bookingForm as Record<string, string>,
+    accountStrings: dict.account as Record<string, string>,
+    accountHref: localePath(lang, '/account'),
+    otpHint: (process.env.NEXT_PUBLIC_BOOKING_OTP_HINT ?? '').trim(),
     dayNames: Object.fromEntries(DAYS.map((d) => [d, t(dict, `days.${d}`)])),
   };
 }

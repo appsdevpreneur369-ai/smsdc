@@ -3,7 +3,8 @@
 //  - POST calls (OTP, guest-book, leads) go straight from the visitor's browser to ClinicFlow: the API
 //    rate-limits guest booking per IP, so proxying would make every visitor share our server's IP.
 //    That requires our origin in the API's CORS allow-list; the health check detects when it isn't.
-import { AnyBody, AppointmentSchema, BookingError, BranchListSchema, ClinicPublicSchema, DoctorListSchema, LeadSchema, NextAvailableSchema, SlotListSchema, parseResponse, safeFetch, type ApiDoctor } from './api';
+import type { PatientApi } from '../account/patientApi';
+import { AnyBody, AppointmentSchema, BookingError, BranchListSchema, ClinicPublicSchema, DoctorListSchema, LeadSchema, NextAvailableSchema, SlotListSchema, parseResponse, safeFetch, type ApiAppointment, type ApiDoctor } from './api';
 import type { Branch, BookingDoctor, BookingRequest, BookingResult, BookingService, NextAvailable, SlotOption } from './BookingService';
 import type { BookingClientConfig } from './config';
 import { addDays, availableDates, hhmm, todayInZone } from './dates';
@@ -18,6 +19,8 @@ abstract class ContentBackedService implements BookingService {
   abstract readonly mode: BookingMode;
   abstract readonly liveSlots: boolean;
   abstract readonly requiresOtp: boolean;
+  readonly supportsAccounts: boolean = false;
+  readonly clinicId: string | null = null;
   constructor(protected cfg: BookingClientConfig) {}
 
   protected doctor(slug: string): BookingDoctor | undefined {
@@ -53,6 +56,10 @@ abstract class ContentBackedService implements BookingService {
 
   async verifyOtp(phone: string, otp: string): Promise<boolean> {
     return false;
+  }
+
+  async bookAsPatient(req: BookingRequest, api: PatientApi): Promise<BookingResult> {
+    throw new BookingError('request', 'Accounts are not available in this mode');
   }
   /* eslint-enable @typescript-eslint/no-unused-vars */
 
@@ -122,13 +129,14 @@ export class ClinicFlowBookingService extends ContentBackedService {
   readonly mode = 'clinicflow' as const;
   readonly liveSlots = true;
   readonly requiresOtp = true;
+  readonly supportsAccounts = true;
   private branches: Branch[] = [];
   /** content doctor slug → ClinicFlow doctor */
   private doctorIds = new Map<string, ApiDoctor>();
 
   constructor(
     cfg: BookingClientConfig,
-    private clinicId: string,
+    readonly clinicId: string,
   ) {
     super(cfg);
   }
@@ -224,12 +232,35 @@ export class ClinicFlowBookingService extends ContentBackedService {
     return /^\d{6}$/.test(otp.trim());
   }
 
-  async book(req: BookingRequest): Promise<BookingResult> {
+  /** Doctor for the request, after re-checking (uncached) that the slot is still free. */
+  private async checkedDoctor(req: BookingRequest): Promise<ApiDoctor> {
     const doc = this.doctorIds.get(req.doctorSlug);
     if (!doc) throw new BookingError('request', 'Doctor not available for online booking');
-    // Re-check right before booking: someone may have taken the slot while the visitor typed the OTP.
+    // Someone may have taken the slot while the visitor typed the OTP / signed in.
     const fresh = await this.getSlots([req.doctorSlug], req.branchId, req.date, { fresh: true });
     if (!fresh.some((s) => s.time === req.time)) throw new BookingError('slotTaken');
+    return doc;
+  }
+
+  private booked(a: ApiAppointment, req: BookingRequest): BookingResult {
+    return {
+      kind: 'booked',
+      appointmentId: a.id,
+      status: a.status,
+      doctorName: a.doctorName ?? this.doctor(req.doctorSlug)?.displayName ?? '',
+      branchName: a.branchName ?? undefined,
+      date: a.appointmentDate,
+      time: hhmm(a.startTime),
+      endTime: a.endTime ? hhmm(a.endTime) : undefined,
+    };
+  }
+
+  private notes(req: BookingRequest) {
+    return `Website booking — ${req.treatmentLabel}`;
+  }
+
+  async book(req: BookingRequest): Promise<BookingResult> {
+    const doc = await this.checkedDoctor(req);
     const { firstName, lastName } = splitFullName(req.fullName);
     const res = await safeFetch(`${this.cfg.api.baseUrl}/appointments/guest-book`, {
       method: 'POST',
@@ -244,20 +275,22 @@ export class ClinicFlowBookingService extends ContentBackedService {
         branchId: req.branchId,
         date: req.date,
         startTime: `${req.time}:00`,
-        notes: `Website booking — ${req.treatmentLabel}`,
+        notes: this.notes(req),
       }),
     });
-    const a = await parseResponse(res, AppointmentSchema);
-    return {
-      kind: 'booked',
-      appointmentId: a.id,
-      status: a.status,
-      doctorName: a.doctorName ?? this.doctor(req.doctorSlug)?.displayName ?? '',
-      branchName: a.branchName ?? undefined,
-      date: a.appointmentDate,
-      time: hhmm(a.startTime),
-      endTime: a.endTime ? hhmm(a.endTime) : undefined,
-    };
+    return this.booked(await parseResponse(res, AppointmentSchema), req);
+  }
+
+  /** Signed-in patient: hold the slot (3-minute lock), then confirm it. The lock is released if booking fails. */
+  async bookAsPatient(req: BookingRequest, api: PatientApi): Promise<BookingResult> {
+    const doc = await this.checkedDoctor(req);
+    const lock = await api.lockSlot(this.clinicId, doc.id, { branchId: req.branchId, date: req.date, startTime: `${req.time}:00` });
+    try {
+      return this.booked(await api.book(lock.lockId, this.notes(req)), req);
+    } catch (e) {
+      await api.releaseLock(this.clinicId, doc.id, lock.lockId).catch(() => undefined);
+      throw e;
+    }
   }
 
   async submitEnquiry(req: BookingRequest): Promise<BookingResult> {

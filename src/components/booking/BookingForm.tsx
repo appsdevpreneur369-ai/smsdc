@@ -1,7 +1,10 @@
 'use client';
 
-import { useCallback, useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
-import { AlertCircle, CalendarPlus, CheckCircle2, Loader2, MapPin, Phone, RotateCcw } from 'lucide-react';
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { AlertCircle, CalendarPlus, CheckCircle2, Loader2, LogOut, MapPin, Phone, RotateCcw, UserRound } from 'lucide-react';
+import { useAccount } from '@/components/account/AccountProvider';
+import { AuthPanel, accountErrorText } from '@/components/account/AuthPanel';
+import { sessionDisplayName } from '@/lib/account/session';
 import { WhatsAppIcon } from '@/components/ui/Icon';
 import { buttonClass } from '@/components/ui/primitives-client';
 import { cn } from '@/lib/cn';
@@ -13,6 +16,7 @@ import { doctorsForOption, findOption } from '@/lib/booking/treatments';
 import { isSixDigitOtp, isValidEmail, isValidFullName, maskIndianMobile, normalizeIndianMobile } from '@/lib/booking/validation';
 import { formatTime } from '@/lib/hours';
 import { useBooking, type BookingDraft } from './BookingProvider';
+import { Detail, FieldBox, inputCls } from './fields';
 
 type Field = 'fullName' | 'phone' | 'email' | 'branchId' | 'treatmentId' | 'date' | 'time' | 'consent';
 type Errors = Partial<Record<Field, string>>;
@@ -23,7 +27,9 @@ const fill = (s: string, v: Record<string, string>) => s.replace(/\{\{(\w+)\}\}/
 
 export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; onDone?: () => void }) {
   const { config, draft, setDraft, resetDraft, resolved, ensureResolved, markBooked } = useBooking();
+  const { api, session, signOut } = useAccount();
   const s = config.strings;
+  const a = config.accountStrings;
   const uid = useId();
   const id = (f: string) => `${uid}-${f}`;
 
@@ -41,11 +47,17 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
   const [resendIn, setResendIn] = useState(0);
   const [result, setResult] = useState<BookingResult | null>(null);
   const [verifiedPhone, setVerifiedPhone] = useState('');
+  const [bookedWithAccount, setBookedWithAccount] = useState(false);
+  const authRef = useRef<HTMLDivElement>(null);
   const fieldRefs = useRef<Partial<Record<Field, HTMLElement | null>>>({});
   const otpRef = useRef<HTMLInputElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
 
   const service = resolved?.service ?? null;
+  // Patient accounts exist only when connected to ClinicFlow. Signed in → account, unless they chose guest.
+  const accountsOn = !!service?.supportsAccounts;
+  const who: 'guest' | 'account' = !accountsOn ? 'guest' : draft.who || (session ? 'account' : 'guest');
+  const asPatient = who === 'account' && !!session;
 
   useEffect(() => {
     void ensureResolved();
@@ -137,12 +149,14 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
   const validate = useCallback(
     (d: BookingDraft): Errors => {
       const e: Errors = {};
-      if (!d.fullName.trim()) e.fullName = s.required;
-      else if (!isValidFullName(d.fullName)) e.fullName = s.nameInvalid;
-      if (!d.phone.trim()) e.phone = s.required;
-      else if (!normalizeIndianMobile(d.phone)) e.phone = s.phoneInvalid;
-      if (!d.email.trim()) e.email = s.required;
-      else if (!isValidEmail(d.email)) e.email = s.emailInvalid;
+      if (who === 'guest') {
+        if (!d.fullName.trim()) e.fullName = s.required;
+        else if (!isValidFullName(d.fullName)) e.fullName = s.nameInvalid;
+        if (!d.phone.trim()) e.phone = s.required;
+        else if (!normalizeIndianMobile(d.phone)) e.phone = s.phoneInvalid;
+        if (!d.email.trim()) e.email = s.required;
+        else if (!isValidEmail(d.email)) e.email = s.emailInvalid;
+      }
       if (!d.branchId) e.branchId = s.required;
       if (!d.treatmentId) e.treatmentId = s.required;
       if (!d.date) e.date = d.treatmentId ? s.required : s.pickTreatmentFirst;
@@ -150,7 +164,7 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
       if (!d.consent) e.consent = s.consentRequired;
       return e;
     },
-    [s, service],
+    [s, service, who],
   );
 
   const onBlur = (f: Field) => {
@@ -169,9 +183,9 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
   const buildRequest = (): BookingRequest => {
     const [time, slotDoctor] = draft.time.includes('|') ? draft.time.split('|') : [draft.time, ''];
     return {
-      fullName: draft.fullName,
-      phone: normalizeIndianMobile(draft.phone) ?? '',
-      email: draft.email,
+      fullName: asPatient && session ? sessionDisplayName(session) : draft.fullName,
+      phone: asPatient ? '' : (normalizeIndianMobile(draft.phone) ?? ''),
+      email: asPatient && session ? session.user.email : draft.email,
       branchId: draft.branchId,
       treatmentLabel: option?.label ?? '',
       doctorSlug: slotDoctor || doctorSlugs[0] || '',
@@ -198,6 +212,7 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
   };
 
   function errorText(e: unknown): string {
+    if (e instanceof BookingError && ['badCredentials', 'emailTaken', 'accountDisabled', 'notPatient', 'unauthorized'].includes(e.kind)) return accountErrorText(e, a, s);
     if (e instanceof BookingError) {
       if (e.kind === 'network') return s.errNetwork;
       if (e.kind === 'rateLimit') return s.errRateLimit;
@@ -213,6 +228,12 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
   const submit = async (ev?: React.FormEvent) => {
     ev?.preventDefault();
     if (!service || submitting) return;
+    if (who === 'account' && !session) {
+      setBanner({ kind: 'error', text: a.signInRequired });
+      authRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      authRef.current?.querySelector<HTMLInputElement>('input')?.focus({ preventScroll: true });
+      return;
+    }
     const e = validate(draft);
     setErrors(e);
     setTouched({ fullName: true, phone: true, email: true, branchId: true, treatmentId: true, date: true, time: true, consent: true });
@@ -226,6 +247,11 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
     setBanner(null);
     try {
       const req = buildRequest();
+      if (asPatient) {
+        // Signed-in patient: the account is the identity, so no OTP.
+        finish(await service.bookAsPatient(req, api), true);
+        return;
+      }
       if (service.requiresOtp) {
         await service.sendOtp(req.phone);
         setVerifiedPhone(req.phone);
@@ -239,13 +265,23 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
       if (res.kind === 'whatsapp') window.open(res.href, '_blank', 'noopener,noreferrer');
       finish(res);
     } catch (err) {
+      if (asPatient && err instanceof BookingError && err.kind === 'slotTaken') {
+        slotTakenReset();
+        return;
+      }
+      if (asPatient) {
+        const expired = err instanceof BookingError && err.kind === 'unauthorized';
+        setBanner({ kind: 'error', text: errorText(err), retry: expired ? undefined : () => void submit(), whatsapp: true });
+        return;
+      }
       setBanner({ kind: 'error', text: service.requiresOtp && err instanceof BookingError && err.kind !== 'rateLimit' && err.kind !== 'network' ? s.errOtpSend : errorText(err), retry: () => void submit(), whatsapp: true });
     } finally {
       setSubmitting(false);
     }
   };
 
-  const finish = (res: BookingResult) => {
+  const finish = (res: BookingResult, viaAccount = false) => {
+    setBookedWithAccount(viaAccount);
     setResult(res);
     setStep('success');
     markBooked();
@@ -296,13 +332,7 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
         setOtpError(s.otpInvalid);
         otpRef.current?.focus();
       } else if (e instanceof BookingError && e.kind === 'slotTaken') {
-        // Keep everything else; clear only the time and reload the slots.
-        setDraft({ time: '' });
-        setStep('form');
-        setBanner({ kind: 'error', text: s.slotTaken });
-        setErrors((p) => ({ ...p, time: s.slotTaken }));
-        void loadSlots(true);
-        requestAnimationFrame(() => fieldRefs.current.time?.focus());
+        slotTakenReset();
       } else {
         setBanner({ kind: 'error', text: errorText(e), retry: () => void verifyAndBook(), whatsapp: true });
       }
@@ -310,6 +340,16 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
       setSubmitting(false);
     }
   };
+
+  // Keep everything else; clear only the time and reload the slots.
+  function slotTakenReset() {
+    setDraft({ time: '' });
+    setStep('form');
+    setBanner({ kind: 'error', text: s.slotTaken });
+    setErrors((p) => ({ ...p, time: s.slotTaken }));
+    void loadSlots(true);
+    requestAnimationFrame(() => fieldRefs.current.time?.focus());
+  }
 
   const doneAndReset = () => {
     resetDraft();
@@ -368,6 +408,7 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
         <div>
           <h3 className="text-xl font-bold">{s.otpTitle}</h3>
           <p className="mt-1 text-ink-muted">{fill(s.otpHelp, { phone: maskIndianMobile(verifiedPhone) })}</p>
+          {config.otpHint && <p className="mt-2 inline-block rounded-lg bg-accent/20 px-3 py-1.5 text-sm font-semibold text-ink">{fill(s.demoOtpHint, { code: config.otpHint })}</p>}
         </div>
         {bannerEl}
         <div>
@@ -427,13 +468,69 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
     fieldRefs.current[f] = el;
   };
 
+  const chooseWho = (w: 'guest' | 'account') => {
+    setDraft({ who: w });
+    setBanner(null);
+  };
+  const whoOption = (w: 'guest' | 'account', title: string, hint: string) => (
+    <label
+      className={cn(
+        'flex cursor-pointer items-start gap-3 rounded-2xl border-2 p-3.5 transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary/40',
+        who === w ? 'border-primary bg-secondary-soft' : 'border-line bg-surface hover:border-primary/50',
+      )}
+    >
+      <input type="radio" name={id('who')} value={w} checked={who === w} onChange={() => chooseWho(w)} className="mt-1 h-4 w-4 shrink-0 accent-primary" />
+      <span>
+        <span className="block font-heading font-semibold">{title}</span>
+        <span className="block text-sm text-ink-muted">{hint}</span>
+      </span>
+    </label>
+  );
+
   return (
-    <form onSubmit={submit} noValidate className="space-y-5" data-variant={variant}>
+    <div className="space-y-5">
       {service.mode !== 'clinicflow' && (
         <p className="rounded-2xl bg-secondary-soft p-4 text-sm text-primary-dark">{service.mode === 'enquiry' ? s.modeEnquiry : s.modeWhatsapp}</p>
       )}
+
+      {accountsOn && (
+        <fieldset>
+          <legend className="mb-2 font-heading text-sm font-semibold">{a.howToBook}</legend>
+          <div className="grid gap-3 sm:grid-cols-2" data-who={who}>
+            {whoOption('account', a.withAccount, a.withAccountHint)}
+            {whoOption('guest', a.asGuest, a.asGuestHint)}
+          </div>
+        </fieldset>
+      )}
+
+      {/* The sign-in panel is its own <form>, so it sits above (not inside) the booking form. */}
+      {accountsOn && who === 'account' && !session && (
+        <div ref={authRef} className="scroll-mt-4">
+          <AuthPanel a={a} f={s} consentText={config.consentText} privacyHref={config.privacyHref} initialView="signup" prefill={{ fullName: draft.fullName, phone: draft.phone, email: draft.email }} onSignedIn={() => setBanner(null)} />
+        </div>
+      )}
+
+      {accountsOn && who === 'account' && session && (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-primary/20 bg-secondary-soft p-4" data-signed-in="">
+          <p className="flex min-w-0 items-start gap-3">
+            <UserRound className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+            <span className="min-w-0">
+              <span className="block font-heading font-semibold">{fill(a.signedInAs, { name: sessionDisplayName(session) })}</span>
+              <span className="block break-all text-sm text-ink-muted">{session.user.email}</span>
+              <span className="mt-1 block text-xs text-primary-dark">{a.emailNote}</span>
+            </span>
+          </p>
+          <button type="button" onClick={signOut} className="inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold text-primary underline-offset-2 hover:underline">
+            <LogOut className="h-4 w-4" aria-hidden /> {a.notYou}
+          </button>
+        </div>
+      )}
+
+      <form onSubmit={submit} noValidate className="space-y-5" data-variant={variant}>
       {bannerEl}
       <div className="grid gap-x-5 gap-y-4 sm:grid-cols-2">
+        {who === 'guest' && (
+          <>
         <FieldBox label={s.name} htmlFor={id('fullName')} error={err('fullName')} errId={id('fullName-err')} required reqLabel={s.requiredMark}>
           <input ref={setRef('fullName')} id={id('fullName')} type="text" autoComplete="name" placeholder={s.namePlaceholder} value={draft.fullName} onChange={(e) => update({ fullName: e.target.value }, 'fullName')} onBlur={() => onBlur('fullName')} aria-invalid={!!err('fullName')} aria-describedby={describe('fullName')} aria-required="true" className={inputCls(!!err('fullName'))} />
         </FieldBox>
@@ -450,6 +547,8 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
         <FieldBox label={s.email} htmlFor={id('email')} error={err('email')} errId={id('email-err')} required reqLabel={s.requiredMark}>
           <input ref={setRef('email')} id={id('email')} type="email" autoComplete="email" inputMode="email" placeholder={s.emailPlaceholder} value={draft.email} onChange={(e) => update({ email: e.target.value }, 'email')} onBlur={() => onBlur('email')} aria-invalid={!!err('email')} aria-describedby={describe('email')} aria-required="true" className={inputCls(!!err('email'))} />
         </FieldBox>
+          </>
+        )}
 
         <FieldBox label={s.branch} htmlFor={id('branchId')} error={err('branchId')} errId={id('branchId-err')} required reqLabel={s.requiredMark}>
           {branches && branches.length === 1 ? (
@@ -580,7 +679,8 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
         </a>
       </div>
       <p className="text-xs text-ink-muted">{config.note}</p>
-    </form>
+      </form>
+    </div>
   );
 
   function Success({ result, successRef, onDone }: { result: BookingResult; successRef: React.RefObject<HTMLDivElement>; onDone: () => void }) {
@@ -626,7 +726,13 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
             </div>
           </dl>
         )}
+        {booked && bookedWithAccount && <p className="text-sm font-medium text-primary-dark">{a.savedToAccount}</p>}
         <div className="flex flex-wrap gap-3">
+          {booked && bookedWithAccount && (
+            <a href={config.accountHref} className={buttonClass('outline', 'md')}>
+              <UserRound className="h-4 w-4" aria-hidden /> {a.viewAppointments}
+            </a>
+          )}
           {booked && (
             <button type="button" onClick={downloadIcs} className={buttonClass('outline', 'md')}>
               <CalendarPlus className="h-4 w-4" aria-hidden /> {s.addToCalendar}
@@ -647,46 +753,6 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
       </div>
     );
   }
-}
-
-function FieldBox({ label, htmlFor, error, errId, required, reqLabel, children }: { label: string; htmlFor: string; error?: string; errId: string; required?: boolean; reqLabel?: string; children: ReactNode }) {
-  return (
-    <div>
-      <label htmlFor={htmlFor} className="block font-heading text-sm font-semibold">
-        {label}
-        {required && (
-          <span className="text-danger" aria-hidden>
-            {' '}
-            *
-          </span>
-        )}
-        {required && <span className="sr-only"> ({reqLabel})</span>}
-      </label>
-      {children}
-      {error && (
-        <p id={errId} className="mt-1.5 text-sm font-medium text-danger">
-          {error}
-        </p>
-      )}
-    </div>
-  );
-}
-
-function Detail({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <dt className="text-xs font-semibold uppercase tracking-wider text-ink-muted">{label}</dt>
-      <dd className="mt-0.5 font-heading font-semibold">{value}</dd>
-    </div>
-  );
-}
-
-function inputCls(invalid: boolean, extra = '') {
-  return cn(
-    'mt-2 block min-h-[48px] w-full rounded-xl border bg-surface px-4 text-base outline-none transition focus:ring-2 disabled:cursor-not-allowed disabled:bg-bg disabled:text-ink-muted',
-    invalid ? 'border-danger focus:ring-danger/30' : 'border-line focus:border-primary focus:ring-primary/30',
-    extra,
-  );
 }
 
 const prettyRange = (v: string) => {

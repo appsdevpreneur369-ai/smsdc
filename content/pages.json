@@ -78,6 +78,13 @@
     "heading": { "en": "Let's find the right doctor for you", "te": "మీకు సరైన డాక్టర్‌ను కనుగొందాం" },
     "intro": { "en": "Three quick steps. It takes less than a minute." }
   },
+  "account": {
+    "title": { "en": "My Account", "te": "నా ఖాతా" },
+    "description": { "en": "Sign in to book with your patient account and see or cancel your appointments at {{clinic}}." },
+    "eyebrow": { "en": "Patient account", "te": "పేషెంట్ ఖాతా" },
+    "heading": { "en": "Your appointments, in one place", "te": "మీ అపాయింట్‌మెంట్‌లు, ఒకే చోట" },
+    "intro": { "en": "Sign up once, then sign in to book, see and cancel your appointments. Confirmations and reminders come by email." }
+  },
   "contact": {
     "title": { "en": "Contact & Timings" },
     "description": { "en": "Address, phone, WhatsApp, map and timings for {{clinic}}, Aravinda High School Road, {{area}}." },

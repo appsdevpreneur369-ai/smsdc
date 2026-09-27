@@ -21,6 +21,8 @@ export type BookingDraft = {
   time: string;
   consent: boolean;
   honeypot: string;
+  /** Guest (phone OTP) or patient account; '' = not chosen yet (account when signed in, else guest). */
+  who: '' | 'guest' | 'account';
 };
 
 export const emptyDraft: BookingDraft = {
@@ -34,6 +36,7 @@ export const emptyDraft: BookingDraft = {
   time: '',
   consent: false,
   honeypot: '',
+  who: '',
 };
 
 export const isDirty = (d: BookingDraft) => !!(d.fullName || d.phone || d.email || d.treatmentId || d.date || d.time || d.consent);

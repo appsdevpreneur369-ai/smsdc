@@ -30,6 +30,21 @@ export const AppointmentSchema = z.object({
   status: z.string(),
 });
 export const LeadSchema = z.object({ id: z.string() });
+export const AuthResponseSchema = z.object({
+  accessToken: z.string().min(1),
+  refreshToken: z.string().min(1),
+  expiresIn: z.number().nullable().optional(),
+  user: z.object({
+    id: z.string(),
+    email: z.string(),
+    firstName: nullableStr,
+    lastName: nullableStr,
+    role: z.string(),
+  }),
+});
+export const LockSchema = z.object({ lockId: z.string().min(1), expiresAt: nullableStr, secondsRemaining: z.number().nullable().optional() });
+export const MyAppointmentSchema = AppointmentSchema.extend({ clinicId: nullableStr, cancellationReason: nullableStr });
+export const MyAppointmentListSchema = z.array(MyAppointmentSchema);
 export const AnyBody = z.unknown();
 export const ErrorEnvelopeSchema = z.object({
   success: z.literal(false),
@@ -39,8 +54,40 @@ export const ErrorEnvelopeSchema = z.object({
 export type ApiBranch = z.infer<typeof BranchSchema>;
 export type ApiDoctor = z.infer<typeof DoctorSchema>;
 export type ApiAppointment = z.infer<typeof AppointmentSchema>;
+export type ApiMyAppointment = z.infer<typeof MyAppointmentSchema>;
+export type ApiAuthResponse = z.infer<typeof AuthResponseSchema>;
 
-export type BookingErrorKind = 'network' | 'rateLimit' | 'server' | 'request' | 'slotTaken' | 'otpInvalid' | 'notFound' | 'invalidResponse';
+export type BookingErrorKind =
+  | 'network'
+  | 'rateLimit'
+  | 'server'
+  | 'request'
+  | 'slotTaken'
+  | 'otpInvalid'
+  | 'notFound'
+  | 'invalidResponse'
+  // patient accounts
+  | 'emailTaken'
+  | 'badCredentials'
+  | 'accountDisabled'
+  | 'unauthorized'
+  | 'cannotCancel'
+  | 'notPatient';
+
+/** ClinicFlow error codes → kinds. Checked before the HTTP status (several different errors share 409). */
+const CODE_KINDS: Record<string, BookingErrorKind> = {
+  RATE_LIMIT_EXCEEDED: 'rateLimit',
+  APPOINTMENT_SLOT_NOT_AVAILABLE: 'slotTaken',
+  APPOINTMENT_SLOT_LOCKED: 'slotTaken',
+  SLOT_LOCK_NOT_FOUND: 'slotTaken',
+  OTP_INVALID: 'otpInvalid',
+  AUTH_EMAIL_ALREADY_EXISTS: 'emailTaken',
+  AUTH_INVALID_CREDENTIALS: 'badCredentials',
+  AUTH_ACCOUNT_DISABLED: 'accountDisabled',
+  AUTH_REFRESH_TOKEN_INVALID: 'unauthorized',
+  APPOINTMENT_ALREADY_CANCELLED: 'cannotCancel',
+  APPOINTMENT_CANNOT_CANCEL: 'cannotCancel',
+};
 
 export class BookingError extends Error {
   constructor(
@@ -66,9 +113,10 @@ export async function parseResponse<T extends z.ZodTypeAny>(res: Response, schem
     const env = ErrorEnvelopeSchema.safeParse(body);
     const code = env.success ? env.data.error.code : undefined;
     const msg = env.success ? env.data.error.message : undefined;
-    if (res.status === 429 || code === 'RATE_LIMIT_EXCEEDED') throw new BookingError('rateLimit', msg, code);
-    if (res.status === 409 || code === 'APPOINTMENT_SLOT_NOT_AVAILABLE') throw new BookingError('slotTaken', msg, code);
-    if (code === 'OTP_INVALID') throw new BookingError('otpInvalid', msg, code);
+    if (code && CODE_KINDS[code]) throw new BookingError(CODE_KINDS[code], msg, code);
+    if (res.status === 429) throw new BookingError('rateLimit', msg, code);
+    if (res.status === 401) throw new BookingError('unauthorized', msg, code);
+    if (res.status === 409) throw new BookingError('slotTaken', msg, code);
     if (res.status === 404) throw new BookingError('notFound', msg, code);
     if (res.status >= 500) throw new BookingError('server', msg, code);
     throw new BookingError('request', msg, code);

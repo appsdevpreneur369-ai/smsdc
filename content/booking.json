@@ -22,7 +22,7 @@
     "delaySeconds": 8,
     "oncePerSession": true,
     "showOnMobile": true,
-    "excludedPaths": ["/book", "/privacy", "/terms", "/disclaimer", "/cookies"]
+    "excludedPaths": ["/book", "/account", "/privacy", "/terms", "/disclaimer", "/cookies"]
   },
   "consent": {
     "en": "I agree to be contacted about this appointment by WhatsApp, SMS, call or email.",

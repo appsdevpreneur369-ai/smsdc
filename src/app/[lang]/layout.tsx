@@ -9,7 +9,9 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { FloatingActions, Footer, SiteHeader, TopBar } from '@/components/layout/chrome';
 import { RevealObserver } from '@/components/ui/RevealObserver';
 import { BookingProvider } from '@/components/booking/BookingProvider';
+import { AccountProvider } from '@/components/account/AccountProvider';
 import { bookingClientConfig } from '@/lib/booking/clientConfig';
+import { clinicflowApiConfig } from '@/lib/booking/serverConfig';
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -46,6 +48,7 @@ export default function LangLayout({ children, params }: { children: React.React
   if (!isLang(params.lang)) notFound();
   const lang = params.lang;
   const dict = getDict(lang);
+  const api = clinicflowApiConfig();
   return (
     <html lang={dict._meta.htmlLang} className={fontClassNames} suppressHydrationWarning>
       <head>
@@ -58,6 +61,7 @@ export default function LangLayout({ children, params }: { children: React.React
         >
           {t(dict, 'nav.skip')}
         </a>
+        <AccountProvider baseUrl={api.baseUrl} clinicSlug={api.clinicSlug}>
         <BookingProvider config={bookingClientConfig(lang)}>
         <TopBar lang={lang} />
         <SiteHeader lang={lang} />
@@ -67,6 +71,7 @@ export default function LangLayout({ children, params }: { children: React.React
         <Footer lang={lang} />
         <FloatingActions lang={lang} />
         </BookingProvider>
+        </AccountProvider>
         <RevealObserver />
         <JsonLd data={clinicJsonLd(lang)} />
       </body>

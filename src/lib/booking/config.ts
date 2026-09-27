@@ -32,5 +32,11 @@ export type BookingClientConfig = {
   enquiryTemplate: string;
   note: string;
   strings: Record<string, string>;
+  /** Patient-account UI strings (i18n "account"). */
+  accountStrings: Record<string, string>;
+  /** Localised path of the My account page. */
+  accountHref: string;
+  /** Staging/demo only (NEXT_PUBLIC_BOOKING_OTP_HINT): the fixed code shown next to the OTP field while SMS is in dry-run. */
+  otpHint: string;
   dayNames: Record<string, string>;
 };
