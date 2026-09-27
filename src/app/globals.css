@@ -20,6 +20,10 @@
     line-height: 1.35 !important;
     letter-spacing: 0 !important;
   }
+  /* Never show a focus outline for mouse/touch focus; keyboard focus uses :focus-visible below. */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
   :focus-visible {
     outline: 3px solid rgb(var(--c-primary));
     outline-offset: 3px;

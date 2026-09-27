@@ -63,15 +63,22 @@ export function Header(props: HeaderProps) {
               href={item.href}
               aria-current={isActive(item.href) ? 'page' : undefined}
               className={cn(
-                'relative whitespace-nowrap rounded-full px-3 py-3 font-heading text-[0.92rem] font-medium transition-colors xl:px-3',
+                // No outline/ring ever (it showed as a rounded box after clicks); the underline is the only
+                // active marker, and a softer underline is the keyboard-only (:focus-visible) indicator.
+                'group relative whitespace-nowrap px-3 py-3 font-heading text-[0.92rem] font-medium outline-none transition-colors focus-visible:outline-none',
                 scrolled ? 'text-white/85 hover:text-white' : 'text-ink hover:text-primary',
                 isActive(item.href) && (scrolled ? 'text-accent' : 'text-primary'),
               )}
             >
               {item.label}
-              {isActive(item.href) && (
-                <span className={cn('absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full', scrolled ? 'bg-accent' : 'bg-primary')} aria-hidden />
-              )}
+              <span
+                className={cn(
+                  'absolute inset-x-3 -bottom-0.5 h-0.5 origin-left rounded-full transition-transform duration-200',
+                  scrolled ? 'bg-accent' : 'bg-primary',
+                  isActive(item.href) ? 'scale-x-100' : 'scale-x-0 opacity-60 group-focus-visible:scale-x-100',
+                )}
+                aria-hidden
+              />
             </Link>
           ))}
         </nav>
@@ -227,11 +234,20 @@ function MobileMenu({
                       href={item.href}
                       aria-current={isActive(item.href) ? 'page' : undefined}
                       className={cn(
-                        'flex min-h-[52px] items-center rounded-2xl px-4 font-heading text-lg font-medium transition-colors hover:bg-white/10',
-                        isActive(item.href) && 'bg-white/10 text-accent',
+                        'group flex min-h-[52px] items-center px-4 font-heading text-lg font-medium outline-none transition-colors hover:text-accent focus-visible:outline-none',
+                        isActive(item.href) && 'text-accent',
                       )}
                     >
-                      {item.label}
+                      <span className="relative py-1">
+                        {item.label}
+                        <span
+                          className={cn(
+                            'absolute inset-x-0 -bottom-0.5 h-0.5 origin-left rounded-full bg-accent transition-transform duration-200',
+                            isActive(item.href) ? 'scale-x-100' : 'scale-x-0 opacity-60 group-focus-visible:scale-x-100',
+                          )}
+                          aria-hidden
+                        />
+                      </span>
                     </Link>
                   </li>
                 ))}
