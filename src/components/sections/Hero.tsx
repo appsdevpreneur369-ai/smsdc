@@ -14,48 +14,33 @@ export function Hero({ lang }: { lang: Lang }) {
       <div className="pointer-events-none absolute -bottom-40 right-0 h-[420px] w-[420px] rounded-full bg-accent/15 blur-3xl" aria-hidden />
       <div className="container relative grid items-center gap-10 pb-16 pt-10 sm:pt-14 lg:grid-cols-[1.1fr_1fr] lg:gap-6 lg:pb-24 lg:pt-16">
         <div>
-          <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 text-sm font-semibold text-primary shadow-soft">
-              <span className="h-2 w-2 rounded-full bg-accent" aria-hidden />
-              {tx(h.badge, lang, vars)}
-              <DraftBadge status={home.status} lang={lang} />
-            </p>
+          <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 text-sm font-semibold text-primary shadow-soft">
+            <span className="h-2 w-2 rounded-full bg-accent" aria-hidden />
+            {tx(h.badge, lang, vars)}
+            <DraftBadge status={home.status} lang={lang} />
+          </p>
+          <h1 id="hero-heading" className="mt-6 text-[2.6rem] font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.4rem]">
+            <span className="block">{tx(h.headlineLine1, lang, vars)}</span>
+            {/* Accent line in brand teal (AA on ivory; gold text would fail contrast). */}
+            <span className="block text-primary">{tx(h.headlineLine2, lang, vars)}</span>
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted sm:text-xl">{tx(h.text, lang, vars)}</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href={h.primaryCta.href} lang={lang} size="lg">
+              {tx(h.primaryCta.label, lang)}
+            </ButtonLink>
+            <ButtonLink href={h.secondaryCta.href} lang={lang} size="lg" variant="outline">
+              {tx(h.secondaryCta.label, lang)}
+            </ButtonLink>
           </div>
-          <div>
-            <h1 id="hero-heading" className="mt-6 text-[2.6rem] font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.4rem]">
-              <span className="block">{tx(h.headlineLine1, lang, vars)}</span>
-              {/* Accent line: teal text (AA on ivory) with a gold swash — gold text itself fails contrast. */}
-              <span className="relative inline-block pb-2 text-primary">
-                {tx(h.headlineLine2, lang, vars)}
-                <svg className="absolute -bottom-1 left-0 h-3 w-full text-accent" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden>
-                  <path d="M2 9C60 3 140 1 298 7" stroke="currentColor" strokeWidth="5" strokeLinecap="round" fill="none" />
-                </svg>
-              </span>
-            </h1>
-          </div>
-          <div>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted sm:text-xl">{tx(h.text, lang, vars)}</p>
-          </div>
-          <div>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={h.primaryCta.href} lang={lang} size="lg">
-                {tx(h.primaryCta.label, lang)}
-              </ButtonLink>
-              <ButtonLink href={h.secondaryCta.href} lang={lang} size="lg" variant="outline">
-                {tx(h.secondaryCta.label, lang)}
-              </ButtonLink>
-            </div>
-          </div>
-          <div>
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-              {h.trustTicks.map((tick, i) => (
-                <li key={i} className="inline-flex items-center gap-2 font-heading text-sm font-semibold text-ink">
-                  <CheckCircle2 className="h-5 w-5 text-primary" aria-hidden />
-                  {tx(tick, lang, vars)}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+            {h.trustTicks.map((tick, i) => (
+              <li key={i} className="inline-flex items-center gap-2 font-heading text-sm font-semibold text-ink">
+                <CheckCircle2 className="h-5 w-5 text-primary" aria-hidden />
+                {tx(tick, lang, vars)}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="relative mx-auto w-full max-w-[520px]">
