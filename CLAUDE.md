@@ -53,3 +53,41 @@ Components may merge into core later, but **content may not**: core forbids tena
 ## Checks before calling anything done
 
 `npm run lint`, `npx tsc --noEmit`, `npm run build` all pass; check pages at 360 px and 1280 px. Never modify anything under `D:\ClinicFlow`. Ask before deploying anywhere.
+
+## Deployments
+
+Manual, same approach as ClinicFlow247 (no CI/CD): build the image locally, push to Artifact Registry, `gcloud run deploy`. Never touch other services, `clinicflow-lb`, certs, DNS or the ClinicFlow API.
+
+| Item | Value |
+| --- | --- |
+| Repo | https://github.com/appsdevpreneur369-ai/smsdc (`main`; pushed over HTTPS — this PC has no GitHub SSH key) |
+| GCP | project `sincere-stock-499113-f1`, region `asia-south1` |
+| Image | `asia-south1-docker.pkg.dev/sincere-stock-499113-f1/clinicflow/smsdc-frontend:<git short SHA>` |
+| Staging service | `smsdc-frontend-staging` — 256Mi, 1 CPU, min-instances 0, unauthenticated |
+| Staging URL | https://smsdc-frontend-staging-1071497363324.asia-south1.run.app |
+| Staging build args | `NEXT_PUBLIC_SITE_ENV=staging` (X-Robots-Tag noindex, robots Disallow: /, meta noindex), `NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES=true`, `NEXT_PUBLIC_NOINDEX=true`, `NEXT_PUBLIC_SITE_URL=<staging URL>` |
+
+History (staging):
+
+| Date | Commit / image tag | Revision | Notes |
+| --- | --- | --- | --- |
+| 2026-09-27 | `4978932` | `smsdc-frontend-staging-00001-25d` | First deploy. `/og` returned 500 (self-fetch). |
+| 2026-09-27 | `7eb8958` | `smsdc-frontend-staging-00002-wkz` | OG logo embedded at build time. |
+| 2026-09-27 | `afc693e` | `smsdc-frontend-staging-00003-sql` | Draft badge readable on dark cards. **Current.** |
+
+Redeploy staging (all NEXT_PUBLIC_* values are baked in at build time):
+
+```bash
+SHA=$(git rev-parse --short HEAD)
+IMG=asia-south1-docker.pkg.dev/sincere-stock-499113-f1/clinicflow/smsdc-frontend:$SHA
+docker build \
+  --build-arg NEXT_PUBLIC_SITE_ENV=staging \
+  --build-arg NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES=true \
+  --build-arg NEXT_PUBLIC_NOINDEX=true \
+  --build-arg NEXT_PUBLIC_SITE_URL=https://smsdc-frontend-staging-1071497363324.asia-south1.run.app \
+  -t $IMG .
+docker push $IMG
+gcloud run deploy smsdc-frontend-staging --project sincere-stock-499113-f1 --region asia-south1 --image $IMG
+```
+
+Then: curl `/`, `/doctors`, `/treatments` (308 → `/services`), `/book`, `/contact`, `/og?title=x` and check zero ERROR logs for the new revision.
