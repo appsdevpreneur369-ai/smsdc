@@ -84,7 +84,8 @@
     "previous": "Previous",
     "carouselPrev": "Previous doctors",
     "carouselNext": "Next doctors",
-    "prices": "Pricing"
+    "prices": "Pricing",
+    "speciality": "Speciality"
   },
   "hours": {
     "title": "Clinic timings",

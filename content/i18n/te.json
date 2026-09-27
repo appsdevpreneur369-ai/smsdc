@@ -85,7 +85,8 @@
     "previous": "మునుపటి",
     "carouselPrev": "మునుపటి డాక్టర్లు",
     "carouselNext": "తదుపరి డాక్టర్లు",
-    "prices": "ధరలు"
+    "prices": "ధరలు",
+    "speciality": "ప్రత్యేకత"
   },
   "hours": {
     "title": "క్లినిక్ సమయాలు",
