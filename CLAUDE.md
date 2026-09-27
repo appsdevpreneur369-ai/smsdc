@@ -87,6 +87,7 @@ docker build \
   --build-arg NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES=true \
   --build-arg NEXT_PUBLIC_NOINDEX=true \
   --build-arg NEXT_PUBLIC_SITE_URL=https://smsdc-frontend-staging-1071497363324.asia-south1.run.app \
+  --build-arg NEXT_PUBLIC_CLINICFLOW_API_URL=https://clinicflow-api-staging-znvqdsvqkq-el.a.run.app/api/v1 \
   -t $IMG .
 docker push $IMG
 gcloud run deploy smsdc-frontend-staging --project sincere-stock-499113-f1 --region asia-south1 --image $IMG
