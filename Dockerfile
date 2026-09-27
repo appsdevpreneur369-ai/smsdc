@@ -5,7 +5,8 @@
 FROM node:20-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+# npm install (not ci), same as clinicflow-frontend: the lockfile is written by a newer local npm.
+RUN npm install --no-audit --no-fund
 
 # ── Stage 2: Build ───────────────────────────────────────────────────────────
 FROM node:20-alpine AS builder

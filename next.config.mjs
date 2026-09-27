@@ -5,6 +5,15 @@ const nextConfig = {
   // Self-contained server for the Docker image (same as clinicflow-frontend).
   output: 'standalone',
   poweredByHeader: false,
+  // Treatments live at /services (the nav label reads "Treatments"); keep /treatments working as an alias.
+  async redirects() {
+    return [
+      { source: '/treatments', destination: '/services', permanent: true },
+      { source: '/treatments/:slug', destination: '/services/:slug', permanent: true },
+      { source: '/te/treatments', destination: '/te/services', permanent: true },
+      { source: '/te/treatments/:slug', destination: '/te/services/:slug', permanent: true },
+    ];
+  },
   async headers() {
     const security = [
       { key: 'X-Content-Type-Options', value: 'nosniff' },
