@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
-import { brand, clinic, getImage } from '@/lib/content';
+import { brand, clinic } from '@/lib/content';
+import { ogLogoDataUri } from '@/generated/og-logo';
 import { tx } from '@/lib/i18n';
 
 export const runtime = 'edge';
@@ -12,11 +13,8 @@ export async function GET(req: Request) {
   const raw = new URL(req.url).searchParams.get('title')?.slice(0, 90) ?? '';
   const title = LATIN_ONLY.test(raw) ? raw : tx(clinic.tagline, 'en');
   const c = brand.colors;
-  const logoPath = getImage(brand.logo.iconWhite).src;
-  const buf = new Uint8Array((await fetch(new URL(logoPath, req.url)).then((r) => r.arrayBuffer())) as ArrayBuffer);
-  let bin = '';
-  buf.forEach((b) => (bin += String.fromCharCode(b)));
-  const iconSrc = `data:image/png;base64,${btoa(bin)}`;
+  // Embedded at build time (npm run brand): no self-fetch, which fails behind Cloud Run.
+  const iconSrc = ogLogoDataUri;
   return new ImageResponse(
     (
       <div
