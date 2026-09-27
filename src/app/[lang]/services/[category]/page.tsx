@@ -87,7 +87,7 @@ export default function CategoryPage({ params: { lang, category } }: { params: P
                   <Reveal as="li" key={s.slug} delay={Math.min(i, 3) * 0.05}>
                     <article id={s.slug} className="scroll-mt-28 rounded-brand border border-line bg-surface p-6 shadow-soft sm:p-7">
                       <div className="flex items-start gap-4">
-                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary-soft font-heading font-bold text-primary">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary-soft font-heading font-bold text-primary-dark">
                           {i + 1}
                         </span>
                         <div className="min-w-0 flex-1">

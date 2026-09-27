@@ -67,7 +67,7 @@ export default function EmergencyPage({ params: { lang } }: { params: { lang: La
                     <ol className="mt-5 space-y-3">
                       {s.steps.map((step, j) => (
                         <li key={j} className="flex gap-3">
-                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary-soft font-heading text-sm font-bold text-primary">
+                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary-soft font-heading text-sm font-bold text-primary-dark">
                             {j + 1}
                           </span>
                           <span className="leading-relaxed">{tx(step, lang)}</span>

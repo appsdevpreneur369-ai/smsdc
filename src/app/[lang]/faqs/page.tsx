@@ -44,7 +44,7 @@ export default function FaqsPage({ params: { lang } }: { params: { lang: Lang } 
             <ul className="sticky top-28 space-y-1">
               {groups.map((g) => (
                 <li key={g.id}>
-                  <a href={`#${g.id}`} className="flex min-h-[44px] items-center gap-3 rounded-xl px-3 font-medium hover:bg-secondary-soft hover:text-primary">
+                  <a href={`#${g.id}`} className="flex min-h-[44px] items-center gap-3 rounded-xl px-3 font-medium hover:bg-secondary-soft hover:text-primary-dark">
                     <Icon name={g.icon} className="h-4 w-4 text-primary" />
                     {g.title}
                   </a>

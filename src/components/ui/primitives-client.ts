@@ -9,7 +9,7 @@ const variants: Record<Variant, string> = {
   white: 'bg-white text-primary-dark hover:bg-secondary-soft',
   'outline-white': 'border-2 border-white/70 text-white hover:bg-white hover:text-primary-dark',
   whatsapp: 'bg-whatsapp text-white hover:bg-whatsapp-hover',
-  ghost: 'text-primary hover:bg-secondary-soft',
+  ghost: 'text-primary hover:bg-secondary-soft hover:text-primary-dark',
 };
 
 export function buttonClass(variant: Variant = 'primary', size: 'md' | 'lg' | 'sm' = 'md') {

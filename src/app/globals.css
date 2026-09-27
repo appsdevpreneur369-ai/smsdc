@@ -53,7 +53,7 @@
 
 @layer components {
   .eyebrow {
-    @apply inline-flex items-center gap-2 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-primary;
+    @apply inline-flex items-center gap-2 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-primary-dark;
   }
   .eyebrow::before {
     content: '';
