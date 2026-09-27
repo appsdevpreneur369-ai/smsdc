@@ -65,32 +65,32 @@ export default function DoctorPage({ params: { lang, slug } }: { params: Params 
           <DraftBadge status={d.status} lang={lang} />
         </div>
         <dl className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="flex gap-3">
-            <GraduationCap className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-            <div>
-              <dt className="text-xs font-semibold uppercase tracking-wider text-ink-muted">{t(dict, 'common.qualification')}</dt>
-              <dd className="font-semibold">{d.qualification}</dd>
-            </div>
+          <div>
+            <dt className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-ink-muted">
+              <GraduationCap className="h-5 w-5 shrink-0 text-primary" aria-hidden />
+              {t(dict, 'common.qualification')}
+            </dt>
+            <dd className="mt-1 pl-7 font-semibold">{d.qualification}</dd>
           </div>
-          <div className="flex gap-3">
-            <Award className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-            <div>
-              <dt className="text-xs font-semibold uppercase tracking-wider text-ink-muted">{t(dict, 'common.speciality')}</dt>
-              <dd className="font-semibold">{tx(d.speciality, lang)}</dd>
-              {lang === 'en' && teluguLine && (
-                <dd lang="te" className="text-sm text-ink-muted">
-                  {teluguLine}
-                </dd>
-              )}
-            </div>
+          <div>
+            <dt className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-ink-muted">
+              <Award className="h-5 w-5 shrink-0 text-primary" aria-hidden />
+              {t(dict, 'common.speciality')}
+            </dt>
+            <dd className="mt-1 pl-7 font-semibold">{tx(d.speciality, lang)}</dd>
+            {lang === 'en' && teluguLine && (
+              <dd lang="te" className="pl-7 text-sm text-ink-muted">
+                {teluguLine}
+              </dd>
+            )}
           </div>
           {d.experience && (
-            <div className="flex gap-3 sm:col-span-2">
-              <CalendarClock className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-              <div>
-                <dt className="text-xs font-semibold uppercase tracking-wider text-ink-muted">{t(dict, 'common.experience')}</dt>
-                <dd className="font-semibold">{tx(d.experience, lang)}</dd>
-              </div>
+            <div className="sm:col-span-2">
+              <dt className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-ink-muted">
+                <CalendarClock className="h-5 w-5 shrink-0 text-primary" aria-hidden />
+                {t(dict, 'common.experience')}
+              </dt>
+              <dd className="mt-1 pl-7 font-semibold">{tx(d.experience, lang)}</dd>
             </div>
           )}
         </dl>

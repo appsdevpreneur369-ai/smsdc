@@ -40,7 +40,7 @@ export function Carousel({ children, prevLabel, nextLabel, label }: { children: 
       <ul
         ref={ref}
         aria-label={label}
-        className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-6 overflow-x-auto px-4 pb-6 sm:scroll-px-6 lg:scroll-px-0 [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 [&::-webkit-scrollbar]:hidden"
+        className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-6 overflow-x-auto px-4 pb-6 [scrollbar-width:none] sm:mx-0 sm:scroll-px-0 sm:px-0 [&::-webkit-scrollbar]:hidden"
       >
         {Children.map(children, (child) => (
           <li className="w-[78%] shrink-0 snap-start sm:w-[44%] lg:w-[calc((100%-72px)/4)]">{child}</li>

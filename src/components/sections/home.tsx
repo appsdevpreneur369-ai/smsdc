@@ -232,7 +232,7 @@ export function WhyUsSection({ lang }: P) {
       </section>
       <section className="on-dark section relative overflow-hidden bg-dark" aria-labelledby="process-heading">
         <div className="dot-grid pointer-events-none absolute left-6 top-10 h-40 w-40 opacity-25" aria-hidden />
-        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-primary/40 blur-3xl" aria-hidden />
+        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl" aria-hidden />
         <div className="container relative">
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">{tx(sec.process.eyebrow, lang)}</p>
