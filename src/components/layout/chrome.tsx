@@ -28,11 +28,11 @@ export function TopBar({ lang }: { lang: Lang }) {
       <div className="container flex h-10 items-center justify-between text-[0.8rem]">
         <p className="font-medium">{t(dict, navigation.topBarMessage)}</p>
         <div className="flex items-center gap-6">
-          <a href={mailHref} className="inline-flex items-center gap-2 hover:text-accent">
+          <a href={mailHref} className="inline-flex h-10 items-center gap-2 hover:text-accent">
             <Mail className="h-4 w-4" aria-hidden />
             {clinic.email}
           </a>
-          <a href={telHref} className="inline-flex items-center gap-2 hover:text-accent">
+          <a href={telHref} className="inline-flex h-10 items-center gap-2 hover:text-accent">
             <Phone className="h-4 w-4" aria-hidden />
             {clinic.phone.display}
           </a>
@@ -103,7 +103,7 @@ export function FloatingActions({ lang }: { lang: Lang }) {
           </a>
           <Link href={book} className="m-1.5 flex flex-col items-center justify-center gap-1 rounded-2xl bg-accent text-xs font-bold text-dark">
             <CalendarCheck className="h-5 w-5" aria-hidden />
-            {t(dict, 'cta.book')}
+            {t(dict, 'cta.bookShort')}
           </Link>
         </div>
       </nav>
@@ -130,7 +130,7 @@ export function Footer({ lang }: { lang: Lang }) {
           <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-1">
             {navigation.footerQuickLinks.map((l) => (
               <li key={l.href}>
-                <Link href={localePath(lang, l.href)} className="inline-flex min-h-[40px] items-center hover:text-accent">
+                <Link href={localePath(lang, l.href)} className="inline-flex min-h-[44px] items-center hover:text-accent">
                   {t(dict, l.key)}
                 </Link>
               </li>
@@ -140,27 +140,27 @@ export function Footer({ lang }: { lang: Lang }) {
 
         <div>
           <h2 className="font-heading text-base font-semibold text-white">{t(dict, 'footer.contact')}</h2>
-          <ul className="mt-5 space-y-4">
+          <ul className="mt-3 space-y-1">
             <li>
-              <a href={mapsDirectionsHref} target="_blank" rel="noopener noreferrer" className="flex gap-3 hover:text-accent">
+              <a href={mapsDirectionsHref} target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-start gap-3 py-2 hover:text-accent">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden />
                 <span>{fullAddress}</span>
               </a>
             </li>
             <li>
-              <a href={telHref} className="flex items-center gap-3 hover:text-accent">
+              <a href={telHref} className="flex min-h-[44px] items-center gap-3 hover:text-accent">
                 <Phone className="h-5 w-5 shrink-0 text-accent" aria-hidden />
                 {clinic.phone.display}
               </a>
             </li>
             <li>
-              <a href={generalWhatsappHref(lang)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-accent">
+              <a href={generalWhatsappHref(lang)} target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center gap-3 hover:text-accent">
                 <WhatsAppIcon className="h-5 w-5 shrink-0 text-accent" />
                 {clinic.whatsapp.display}
               </a>
             </li>
             <li>
-              <a href={mailHref} className="flex items-center gap-3 break-all hover:text-accent">
+              <a href={mailHref} className="flex min-h-[44px] items-center gap-3 break-all hover:text-accent">
                 <Mail className="h-5 w-5 shrink-0 text-accent" aria-hidden />
                 {clinic.email}
               </a>
@@ -190,7 +190,7 @@ export function Footer({ lang }: { lang: Lang }) {
           <ul className="flex flex-wrap gap-x-5 gap-y-1">
             {navigation.footerLegal.map((l) => (
               <li key={l.href}>
-                <Link href={localePath(lang, l.href)} className="inline-flex min-h-[40px] items-center hover:text-accent">
+                <Link href={localePath(lang, l.href)} className="inline-flex min-h-[44px] items-center hover:text-accent">
                   {t(dict, l.key)}
                 </Link>
               </li>

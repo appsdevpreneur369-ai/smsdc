@@ -56,14 +56,14 @@ export function Header(props: HeaderProps) {
       <div className="container flex h-[72px] items-center justify-between gap-4">
         <Logo data={logo} inverted={scrolled} />
 
-        <nav aria-label={strings.main} className="hidden items-center gap-1 lg:flex">
+        <nav aria-label={strings.main} className="hidden items-center gap-0.5 xl:flex">
           {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               aria-current={isActive(item.href) ? 'page' : undefined}
               className={cn(
-                'relative whitespace-nowrap rounded-full px-2.5 py-2.5 font-heading text-[0.92rem] font-medium transition-colors xl:px-3',
+                'relative whitespace-nowrap rounded-full px-3 py-3 font-heading text-[0.92rem] font-medium transition-colors xl:px-3',
                 scrolled ? 'text-white/85 hover:text-white' : 'text-ink hover:text-primary',
                 isActive(item.href) && (scrolled ? 'text-accent' : 'text-primary'),
               )}
@@ -101,19 +101,19 @@ export function Header(props: HeaderProps) {
           </Link>
         </div>
 
-        <div className="flex items-center gap-1 lg:hidden">
+        <div className="flex items-center gap-1 xl:hidden">
           <Link
             href={altHref}
             hrefLang={langSwitch.target}
             lang={langSwitch.target}
             aria-label={langSwitch.ariaLabel}
             className={cn(
-              'inline-flex min-h-[44px] items-center gap-1 rounded-full px-2.5 font-heading text-sm font-medium',
+              'inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1 rounded-full px-2.5 font-heading text-sm font-medium lg:hidden',
               scrolled ? 'text-white' : 'text-ink',
             )}
           >
             <Globe className="h-4 w-4" aria-hidden />
-            {langSwitch.label}
+            <span className="hidden sm:inline">{langSwitch.label}</span>
           </Link>
           <button
             type="button"
@@ -187,7 +187,7 @@ function MobileMenu({
   return createPortal(
     <AnimatePresence>
       {open && (
-        <div className="fixed inset-0 z-[60] lg:hidden" id="mobile-menu">
+        <div className="fixed inset-0 z-[60] xl:hidden" id="mobile-menu">
           <motion.div
             className="absolute inset-0 bg-dark/60 backdrop-blur-sm"
             initial={{ opacity: 0 }}

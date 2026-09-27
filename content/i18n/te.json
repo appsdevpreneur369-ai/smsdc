@@ -1,6 +1,13 @@
 {
-  "_meta": { "status": "placeholder", "language": "తెలుగు", "htmlLang": "te-IN", "_note": "Machine-drafted, pending review by a native Telugu speaker at the clinic." },
-  "topbar": { "message": "తాడేపల్లిలో నిపుణుల దంత వైద్యం · సోమ–శని" },
+  "_meta": {
+    "status": "placeholder",
+    "language": "తెలుగు",
+    "htmlLang": "te-IN",
+    "_note": "Machine-drafted, pending review by a native Telugu speaker at the clinic."
+  },
+  "topbar": {
+    "message": "తాడేపల్లిలో నిపుణుల దంత వైద్యం · సోమ–శని"
+  },
   "nav": {
     "home": "హోమ్",
     "about": "మా గురించి",
@@ -25,7 +32,12 @@
     "breadcrumb": "బ్రెడ్‌క్రంబ్",
     "main": "ప్రధాన నావిగేషన్"
   },
-  "lang": { "label": "భాష", "switchTo": "English", "switchToLabel": "Read this page in English", "draftNote": "తెలుగు అనువాదం యంత్రం ద్వారా తయారైంది — సమీక్ష పెండింగ్‌లో ఉంది." },
+  "lang": {
+    "label": "భాష",
+    "switchTo": "English",
+    "switchToLabel": "Read this page in English",
+    "draftNote": "తెలుగు అనువాదం యంత్రం ద్వారా తయారైంది — సమీక్ష పెండింగ్‌లో ఉంది."
+  },
   "cta": {
     "book": "అపాయింట్‌మెంట్ బుక్ చేయండి",
     "call": "కాల్",
@@ -45,7 +57,8 @@
     "back": "వెనుకకు",
     "next": "తర్వాత",
     "home": "హోమ్‌కు వెళ్ళండి",
-    "explore": "చూడండి"
+    "explore": "చూడండి",
+    "bookShort": "బుక్"
   },
   "common": {
     "draft": "డ్రాఫ్ట్",
@@ -86,7 +99,8 @@
     "day": "రోజు",
     "morning": "ఉదయం",
     "evening": "సాయంత్రం",
-    "todayLabel": "ఈరోజు"
+    "todayLabel": "ఈరోజు",
+    "timings": "సమయాలు"
   },
   "days": {
     "monday": "సోమవారం",
@@ -96,7 +110,15 @@
     "friday": "శుక్రవారం",
     "saturday": "శనివారం",
     "sunday": "ఆదివారం",
-    "short": { "monday": "సోమ", "tuesday": "మంగళ", "wednesday": "బుధ", "thursday": "గురు", "friday": "శుక్ర", "saturday": "శని", "sunday": "ఆది" }
+    "short": {
+      "monday": "సోమ",
+      "tuesday": "మంగళ",
+      "wednesday": "బుధ",
+      "thursday": "గురు",
+      "friday": "శుక్ర",
+      "saturday": "శని",
+      "sunday": "ఆది"
+    }
   },
   "contact": {
     "address": "చిరునామా",
@@ -177,5 +199,7 @@
     "moreQuestions": "మరిన్ని ప్రశ్నలు",
     "seeAll": "అన్ని ప్రశ్నలు చూడండి"
   },
-  "notFound": { "cta": "హోమ్‌కు వెళ్ళండి" }
+  "notFound": {
+    "cta": "హోమ్‌కు వెళ్ళండి"
+  }
 }

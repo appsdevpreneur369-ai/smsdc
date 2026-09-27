@@ -1,6 +1,12 @@
 {
-  "_meta": { "status": "placeholder", "language": "English", "htmlLang": "en-IN" },
-  "topbar": { "message": "Specialist dental care in Tadepalle · Mon–Sat" },
+  "_meta": {
+    "status": "placeholder",
+    "language": "English",
+    "htmlLang": "en-IN"
+  },
+  "topbar": {
+    "message": "Specialist dental care in Tadepalle · Mon–Sat"
+  },
   "nav": {
     "home": "Home",
     "about": "About",
@@ -25,7 +31,12 @@
     "breadcrumb": "Breadcrumb",
     "main": "Main navigation"
   },
-  "lang": { "label": "Language", "switchTo": "తెలుగు", "switchToLabel": "Read this page in Telugu", "draftNote": "" },
+  "lang": {
+    "label": "Language",
+    "switchTo": "తెలుగు",
+    "switchToLabel": "Read this page in Telugu",
+    "draftNote": ""
+  },
   "cta": {
     "book": "Book Appointment",
     "call": "Call",
@@ -45,7 +56,8 @@
     "back": "Back",
     "next": "Next",
     "home": "Back to home",
-    "explore": "Explore"
+    "explore": "Explore",
+    "bookShort": "Book"
   },
   "common": {
     "draft": "Draft",
@@ -86,7 +98,8 @@
     "day": "Day",
     "morning": "Morning",
     "evening": "Evening",
-    "todayLabel": "Today"
+    "todayLabel": "Today",
+    "timings": "Timings"
   },
   "days": {
     "monday": "Monday",
@@ -96,7 +109,15 @@
     "friday": "Friday",
     "saturday": "Saturday",
     "sunday": "Sunday",
-    "short": { "monday": "Mon", "tuesday": "Tue", "wednesday": "Wed", "thursday": "Thu", "friday": "Fri", "saturday": "Sat", "sunday": "Sun" }
+    "short": {
+      "monday": "Mon",
+      "tuesday": "Tue",
+      "wednesday": "Wed",
+      "thursday": "Thu",
+      "friday": "Fri",
+      "saturday": "Sat",
+      "sunday": "Sun"
+    }
   },
   "contact": {
     "address": "Address",
@@ -177,5 +198,7 @@
     "moreQuestions": "More questions",
     "seeAll": "See all FAQs"
   },
-  "notFound": { "cta": "Back to home" }
+  "notFound": {
+    "cta": "Back to home"
+  }
 }
