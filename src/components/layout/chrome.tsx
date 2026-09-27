@@ -9,6 +9,7 @@ import { WhatsAppIcon } from '@/components/ui/Icon';
 import { DraftBadge } from '@/components/ui/primitives';
 import { Header } from './Header';
 import { FloatingDock } from './FloatingDock';
+import { SocialLinks } from './SocialLinks';
 import { Logo, type LogoData } from './Logo';
 
 export function logoData(lang: Lang): LogoData {
@@ -128,6 +129,7 @@ export function Footer({ lang }: { lang: Lang }) {
           <Logo data={logoData(lang)} inverted />
           <p className="mt-5 max-w-sm leading-relaxed">{tx(clinic.description, lang)}</p>
           <p className="mt-4 font-heading text-lg italic text-accent">“{tx(clinic.tagline, lang)}”</p>
+          <SocialLinks lang={lang} />
         </div>
 
         <div>

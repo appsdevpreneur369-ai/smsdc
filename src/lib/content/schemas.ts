@@ -48,7 +48,14 @@ export const ClinicSchema = z.object({
     .length(7),
   hoursNote: Loc.optional(),
   serviceAreas: z.object({ status: Status, primary: z.string(), nearby: z.array(z.string()) }),
-  social: z.record(z.string(), z.string()),
+  /** Empty string = shown as a non-clickable icon; a URL makes it a link. Keys match walkwell.json socialLinks. */
+  socialLinks: z.object({
+    instagram: z.union([z.literal(''), z.string().url()]),
+    youtube: z.union([z.literal(''), z.string().url()]),
+    twitter: z.union([z.literal(''), z.string().url()]),
+    linkedin: z.union([z.literal(''), z.string().url()]),
+    facebook: z.union([z.literal(''), z.string().url()]),
+  }),
   languages: z.array(z.string()),
 });
 

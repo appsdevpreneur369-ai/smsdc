@@ -137,7 +137,10 @@
     "legal": "Legal",
     "rights": "All rights reserved.",
     "poweredBy": "Appointments powered by ClinicFlow247",
-    "placeholderNote": "Preview website — content pending clinic approval."
+    "placeholderNote": "Preview website — content pending clinic approval.",
+    "follow": "Follow us",
+    "opensNewTab": "(opens in a new tab)",
+    "comingSoon": "coming soon"
   },
   "booking": {
     "stepLabel": "Step {{n}} of 3",
