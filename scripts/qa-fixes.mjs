@@ -61,10 +61,15 @@ for (const w of [360, 390, 768, 1024, 1280, 1440]) {
   await p.screenshot({ path: `${out}/${label}-3-footer-${w}.png` });
   // Does any floating control overlap footer text?
   const overlap = await p.evaluate(() => {
-    const floats = [...document.querySelectorAll('[data-floating]')].filter((e) => {
-      const s = getComputedStyle(e);
-      return s.display !== 'none' && s.visibility !== 'hidden' && Number(s.opacity) > 0.05;
-    });
+    // Floating controls: the desktop pills (links inside the dock) and the mobile sticky bar itself.
+    const visible = (e) => {
+      for (let n = e; n && n !== document.body; n = n.parentElement) {
+        const s = getComputedStyle(n);
+        if (s.display === 'none' || s.visibility === 'hidden' || Number(s.opacity) < 0.05) return false;
+      }
+      return true;
+    };
+    const floats = [...document.querySelectorAll('div[data-floating] a, nav[data-floating]')].filter(visible);
     const texts = [...document.querySelectorAll('footer a, footer p, footer li, footer span')].filter((e) => e.children.length === 0 && e.textContent.trim());
     const hits = [];
     for (const f of floats) {

@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Height of the mobile sticky action bar (Call · WhatsApp · Book), excluding the safe-area inset. */
+    --mobile-bar-h: 4rem;
+  }
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;

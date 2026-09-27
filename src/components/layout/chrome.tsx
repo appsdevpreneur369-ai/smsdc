@@ -8,6 +8,7 @@ import { fullAddress } from '@/lib/vars';
 import { WhatsAppIcon } from '@/components/ui/Icon';
 import { DraftBadge } from '@/components/ui/primitives';
 import { Header } from './Header';
+import { FloatingDock } from './FloatingDock';
 import { Logo, type LogoData } from './Logo';
 
 export function logoData(lang: Lang): LogoData {
@@ -67,7 +68,7 @@ export function FloatingActions({ lang }: { lang: Lang }) {
   const book = localePath(lang, '/book');
   return (
     <>
-      <div className="pointer-events-none fixed inset-x-0 bottom-6 z-40 hidden md:block">
+      <FloatingDock>
         <div className="flex justify-between px-6">
           <a
             href={wa}
@@ -86,18 +87,19 @@ export function FloatingActions({ lang }: { lang: Lang }) {
             {t(dict, 'cta.book')}
           </Link>
         </div>
-      </div>
+      </FloatingDock>
 
       <nav
         aria-label={t(dict, 'cta.book')}
-        className="on-dark fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-dark/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden"
+        data-floating=""
+        className="on-dark fixed inset-x-0 bottom-0 z-40 h-[calc(var(--mobile-bar-h)+env(safe-area-inset-bottom))] border-t border-white/10 bg-dark/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden"
       >
-        <div className="grid grid-cols-3">
-          <a href={telHref} className="flex min-h-[60px] flex-col items-center justify-center gap-1 text-xs font-semibold text-white">
+        <div className="grid h-[var(--mobile-bar-h)] grid-cols-3">
+          <a href={telHref} className="flex h-full min-h-[44px] flex-col items-center justify-center gap-1 text-xs font-semibold text-white">
             <Phone className="h-5 w-5" aria-hidden />
             {t(dict, 'cta.call')}
           </a>
-          <a href={wa} target="_blank" rel="noopener noreferrer" className="flex min-h-[60px] flex-col items-center justify-center gap-1 text-xs font-semibold text-white">
+          <a href={wa} target="_blank" rel="noopener noreferrer" className="flex h-full min-h-[44px] flex-col items-center justify-center gap-1 text-xs font-semibold text-white">
             <WhatsAppIcon className="h-5 w-5" />
             {t(dict, 'cta.whatsapp')}
           </a>
@@ -116,7 +118,10 @@ export function Footer({ lang }: { lang: Lang }) {
   const year = new Date().getFullYear();
   const dayName = (d: string) => t(dict, `days.short.${d}`);
   return (
-    <footer className="on-dark relative overflow-hidden bg-dark pb-24 text-on-dark-muted md:pb-0">
+    <footer
+      // Mobile: leave room for the sticky Call · WhatsApp · Book bar (its height + safe-area inset + breathing room).
+      className="on-dark relative overflow-hidden bg-dark pb-[calc(var(--mobile-bar-h)+env(safe-area-inset-bottom)+1rem)] text-on-dark-muted md:pb-0"
+    >
       <div className="dot-grid pointer-events-none absolute -right-10 top-10 h-40 w-64 opacity-20" aria-hidden />
       <div className="container grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr]">
         <div>
