@@ -75,7 +75,8 @@ History (staging):
 | --- | --- | --- | --- |
 | 2026-09-27 | `4978932` | `smsdc-frontend-staging-00001-25d` | First deploy. `/og` returned 500 (self-fetch). |
 | 2026-09-27 | `7eb8958` | `smsdc-frontend-staging-00002-wkz` | OG logo embedded at build time. |
-| 2026-09-27 | `afc693e` | `smsdc-frontend-staging-00003-sql` | Draft badge readable on dark cards. **Current.** |
+| 2026-09-27 | `afc693e` | `smsdc-frontend-staging-00003-sql` | Draft badge readable on dark cards. |
+| 2026-09-27 | `d01b828` | `smsdc-frontend-staging-00004-mgs` | Booking popup + ClinicFlow integration; built against the staging API → falls back to WhatsApp until the clinic is onboarded and CORS allows this origin (SMSDC_PendingItems 9.1/9.2). **Current.** |
 
 Redeploy staging (all NEXT_PUBLIC_* values are baked in at build time):
 
