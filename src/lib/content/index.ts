@@ -122,4 +122,8 @@ export const effectiveBookingMode: 'clinicflow' | 'whatsapp' =
 
 export const showPlaceholderBadges = process.env.NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES === 'true';
 
+/** 'staging' | 'production' (default). Staging is never indexed. */
+export const siteEnv = process.env.NEXT_PUBLIC_SITE_ENV === 'staging' ? 'staging' : 'production';
+export const noIndex = siteEnv === 'staging' || process.env.NEXT_PUBLIC_NOINDEX === 'true';
+
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || clinic.siteUrl).replace(/\/$/, '');

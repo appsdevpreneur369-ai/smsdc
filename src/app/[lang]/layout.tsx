@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { notFound } from 'next/navigation';
 import '../globals.css';
-import { brand, clinic, siteUrl } from '@/lib/content';
+import { brand, clinic, noIndex, siteUrl } from '@/lib/content';
 import { fontClassNames, themeCss } from '@/lib/theme';
 import { getDict, isLang, locales, t, tx } from '@/lib/i18n';
 import { clinicJsonLd } from '@/lib/jsonld';
@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     },
     manifest: '/manifest.webmanifest',
     formatDetection: { telephone: false },
+    ...(noIndex ? { robots: { index: false, follow: false } } : {}),
   };
 }
 

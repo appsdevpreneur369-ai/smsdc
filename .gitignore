@@ -20,13 +20,18 @@
 .DS_Store
 *.pem
 
+# logs
+*.log
+logs/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
+# env files (never commit secrets; .env.example is the documented template)
+.env*
+!.env.example
 
 # vercel
 .vercel
@@ -34,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local QA output
+/qa/

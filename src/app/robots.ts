@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next';
+import { noIndex } from '@/lib/content';
 import { absoluteUrl } from '@/lib/seo';
 
-// Preview deployments should set NEXT_PUBLIC_NOINDEX=true so drafts aren't indexed before go-live.
+// Staging (NEXT_PUBLIC_SITE_ENV=staging) and previews (NEXT_PUBLIC_NOINDEX=true) must not be indexed.
 export default function robots(): MetadataRoute.Robots {
-  if (process.env.NEXT_PUBLIC_NOINDEX === 'true') return { rules: { userAgent: '*', disallow: '/' } };
+  if (noIndex) return { rules: { userAgent: '*', disallow: '/' } };
   return {
     rules: { userAgent: '*', allow: '/' },
     sitemap: absoluteUrl('/sitemap.xml'),
