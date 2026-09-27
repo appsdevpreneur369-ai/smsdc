@@ -10,11 +10,17 @@ export function middleware(req: NextRequest) {
     url.pathname = pathname.slice(3) || '/';
     return NextResponse.redirect(url, 308);
   }
-  if (pathname === '/te' || pathname.startsWith('/te/')) return NextResponse.next();
+  // x-lang lets not-found.tsx (which receives no params) render in the right language.
+  const headers = new Headers(req.headers);
+  if (pathname === '/te' || pathname.startsWith('/te/')) {
+    headers.set('x-lang', 'te');
+    return NextResponse.next({ request: { headers } });
+  }
 
+  headers.set('x-lang', 'en');
   const url = req.nextUrl.clone();
   url.pathname = `/en${pathname === '/' ? '' : pathname}`;
-  return NextResponse.rewrite(url);
+  return NextResponse.rewrite(url, { request: { headers } });
 }
 
 export const config = {
