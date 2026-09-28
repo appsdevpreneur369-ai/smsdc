@@ -1,11 +1,14 @@
-import { ImageIcon } from 'lucide-react';
-import { gallery } from '@/lib/content';
-import { getDict, t, tx, type Lang } from '@/lib/i18n';
+import { clinic, gallery } from '@/lib/content';
+import { galleryCategories, galleryPhotos } from '@/lib/gallery';
+import { getDict, localePath, t, tx, type Lang } from '@/lib/i18n';
+import { clinicId } from '@/lib/jsonld';
 import { pageHeader, staticPageMetadata } from '@/lib/page';
+import { absoluteUrl } from '@/lib/seo';
 import { PageHeader } from '@/components/layout/PageHeader';
-import { ContentImage, DraftBadge } from '@/components/ui/primitives';
-import { Reveal } from '@/components/ui/Reveal';
+import { DraftBadge } from '@/components/ui/primitives';
 import { CtaBanner } from '@/components/sections/home';
+import { GalleryGrid } from '@/components/gallery/GalleryGrid';
+import { JsonLd } from '@/components/seo/JsonLd';
 
 export function generateMetadata({ params }: { params: { lang: Lang } }) {
   return staticPageMetadata('gallery', params.lang, '/gallery');
@@ -14,6 +17,8 @@ export function generateMetadata({ params }: { params: { lang: Lang } }) {
 export default function GalleryPage({ params: { lang } }: { params: { lang: Lang } }) {
   const h = pageHeader('gallery', lang);
   const dict = getDict(lang);
+  const photos = galleryPhotos(lang);
+  const g = (k: string) => t(dict, `gallery.${k}`);
   return (
     <>
       <PageHeader lang={lang} crumbs={[{ name: h.title, path: '/gallery' }]} eyebrow={h.eyebrow} heading={h.heading} intro={h.intro}>
@@ -23,35 +28,36 @@ export default function GalleryPage({ params: { lang } }: { params: { lang: Lang
       </PageHeader>
       <section className="section">
         <div className="container">
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {gallery.items.map((item, i) => (
-              <Reveal as="li" key={i} delay={(i % 3) * 0.06}>
-                <figure className="group overflow-hidden rounded-brand border border-line bg-surface shadow-soft">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-secondary-soft">
-                    {item.image ? (
-                      <ContentImage
-                        id={item.image}
-                        lang={lang}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
-                      />
-                    ) : (
-                      <div className="flex h-full flex-col items-center justify-center gap-3 border-2 border-dashed border-primary/25 text-primary">
-                        <div className="dot-grid absolute inset-0 opacity-20" aria-hidden />
-                        <ImageIcon className="relative h-10 w-10" aria-hidden />
-                        <span className="relative text-sm font-semibold">{t(dict, 'gallery.comingSoon')}</span>
-                      </div>
-                    )}
-                  </div>
-                  <figcaption className="p-4 font-heading font-semibold">{tx(item.caption, lang)}</figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </ul>
+          <GalleryGrid
+            photos={photos}
+            categories={galleryCategories(lang)}
+            strings={{ all: g('all'), filterLabel: g('filterLabel'), open: g('open'), dialogLabel: g('dialogLabel'), close: g('close'), previous: g('previous'), next: g('next'), counter: g('counter') }}
+          />
         </div>
       </section>
       <CtaBanner lang={lang} />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ImageGallery',
+          name: h.heading,
+          description: h.intro,
+          url: absoluteUrl(localePath(lang, '/gallery')),
+          inLanguage: lang,
+          about: { '@id': clinicId() },
+          image: photos.map((p) => ({
+            '@type': 'ImageObject',
+            contentUrl: absoluteUrl(p.src),
+            name: p.caption,
+            caption: p.caption,
+            description: p.alt,
+            width: { '@type': 'QuantitativeValue', value: p.width, unitCode: 'E37' },
+            height: { '@type': 'QuantitativeValue', value: p.height, unitCode: 'E37' },
+            creditText: tx(clinic.displayName, 'en'),
+            copyrightNotice: `© ${tx(clinic.displayName, 'en')}`,
+          })),
+        }}
+      />
     </>
   );
 }

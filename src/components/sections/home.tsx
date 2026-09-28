@@ -13,6 +13,8 @@ import { Carousel } from '@/components/ui/Carousel';
 import { DoctorCard, ServiceCard } from '@/components/cards';
 import { OpenNowBadge, TimingsTable } from '@/components/contact/Hours';
 import { ContactList, MapEmbed, hoursStrings } from '@/components/contact/helpers';
+import { PhotoThumb } from '@/components/gallery/PhotoThumb';
+import { photosFor } from '@/lib/gallery';
 
 type P = { lang: Lang };
 const sec = home.sections;
@@ -113,6 +115,38 @@ export function ServicesSection({ lang, limit }: P & { limit?: number }) {
 }
 
 /** "What's troubling you?" — each option deep-links into the booking wizard. */
+/** "Inside Our Clinic": up to 6 real photos (images.json placement "home"), linking to /gallery. */
+export function ClinicPhotosTeaser({ lang }: P) {
+  const dict = getDict(lang);
+  const photos = photosFor('home', lang)
+    .filter((p) => p.id !== home.about.image) // already shown in the About block
+    .slice(0, 6);
+  if (!photos.length) return null;
+  const href = localePath(lang, '/gallery');
+  return (
+    <section className="section bg-surface" aria-labelledby="gallery-teaser-heading">
+      <div className="container">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <SectionHeading id="gallery-teaser-heading" align="left" eyebrow={t(dict, 'gallery.teaserEyebrow')} heading={t(dict, 'gallery.teaserTitle')} intro={t(dict, 'gallery.teaserText')} />
+          <ButtonLink href="/gallery" lang={lang} variant="outline" className="shrink-0">
+            {t(dict, 'gallery.viewAll')}
+          </ButtonLink>
+        </div>
+        <ul className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {photos.map((p, i) => (
+            <Reveal as="li" key={p.id} delay={i * 0.06}>
+              <Link href={href} className="group block overflow-hidden rounded-brand border border-line bg-bg shadow-soft">
+                <PhotoThumb photo={p} sizes="(min-width: 1024px) 300px, 50vw" />
+                <span className="block p-3 font-heading text-sm font-semibold text-ink sm:text-base">{p.caption}</span>
+              </Link>
+            </Reveal>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 export function ProblemPicker({ lang }: P) {
   return (
     <section className="section relative overflow-hidden" aria-labelledby="picker-heading">
@@ -178,7 +212,8 @@ export function DoctorsSection({ lang }: P) {
   );
 }
 
-export function WhyUsGrid({ lang }: P) {
+export function WhyUsGrid({ lang, headingLevel = 'h3' }: P & { headingLevel?: 'h2' | 'h3' }) {
+  const H = headingLevel;
   return (
     <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {whyUs.reasons.map((r, i) => (
@@ -186,7 +221,7 @@ export function WhyUsGrid({ lang }: P) {
           <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white transition-transform group-hover:scale-110">
             <Icon name={r.icon} className="h-6 w-6" />
           </span>
-          <h3 className="mt-5 text-lg font-semibold">{tx(r.title, lang)}</h3>
+          <H className="mt-5 text-lg font-semibold">{tx(r.title, lang)}</H>
           <p className="mt-2 text-ink-muted">{tx(r.text, lang)}</p>
         </Reveal>
       ))}
@@ -273,7 +308,8 @@ export function EducationTeaser({ lang }: P) {
   );
 }
 
-export function ArticleCard({ article, lang, featured }: { article: ReturnType<typeof getArticles>[number]; lang: Lang; featured?: boolean }) {
+export function ArticleCard({ article, lang, featured, headingLevel = 'h3' }: { article: ReturnType<typeof getArticles>[number]; lang: Lang; featured?: boolean; headingLevel?: 'h2' | 'h3' }) {
+  const H = headingLevel;
   const dict = getDict(lang);
   const m = article.meta;
   const title = (lang === 'te' && m.title_te) || m.title;
@@ -288,10 +324,10 @@ export function ArticleCard({ article, lang, featured }: { article: ReturnType<t
       <span className={cn('flex h-12 w-12 items-center justify-center rounded-2xl', featured ? 'bg-accent text-dark' : 'bg-secondary-soft text-primary')}>
         <Icon name={m.icon} className="h-6 w-6" />
       </span>
-      <h3 className={cn('mt-5 flex flex-wrap items-center gap-2 text-xl font-semibold', featured && 'text-white')}>
+      <H className={cn('mt-5 flex flex-wrap items-center gap-2 text-xl font-semibold', featured && 'text-white')}>
         {title}
         <DraftBadge status={m.status} lang={lang} onDark={featured} />
-      </h3>
+      </H>
       <p className={cn('mt-2 flex-1', featured ? 'text-on-dark-muted' : 'text-ink-muted')}>{m.summary}</p>
       <span className={cn('mt-5 inline-flex items-center gap-2 text-sm font-semibold', featured ? 'text-accent' : 'text-primary')}>
         {t(dict, 'cta.readArticle')} · {article.readMinutes} {t(dict, 'common.minRead')}

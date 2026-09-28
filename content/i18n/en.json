@@ -192,7 +192,20 @@
     "onGoogle": "on Google"
   },
   "gallery": {
-    "comingSoon": "Photo coming soon"
+    "comingSoon": "Photo coming soon",
+    "all": "All",
+    "filterLabel": "Filter photos",
+    "open": "Open photo: {{caption}}",
+    "dialogLabel": "Photo viewer",
+    "close": "Close",
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "counter": "{{n}} / {{total}}",
+    "teaserEyebrow": "Gallery",
+    "teaserTitle": "Inside Our Clinic",
+    "teaserText": "Take a look around before your first visit.",
+    "viewAll": "View full gallery",
+    "photoCount": "{{count}} photos"
   },
   "emergency": {
     "callNow": "Call the clinic now",
@@ -351,5 +364,11 @@
     "savedToAccount": "This appointment is saved in My appointments.",
     "viewAppointments": "View my appointments",
     "refresh": "Refresh"
+  },
+  "seo": {
+    "doctorAt": "{{name}} sees patients at {{clinic}}, {{area}}.",
+    "doctorAtShort": "At {{shortName}}, {{area}}.",
+    "treatmentAt": "Treatment by our specialists at {{clinic}}, {{area}}.",
+    "bookOnline": "Book an appointment online."
   }
 }

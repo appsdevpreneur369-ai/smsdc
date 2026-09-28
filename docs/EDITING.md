@@ -32,10 +32,35 @@ After editing, run `npm run dev` and check the page. If you make a typo in a JSO
 | Privacy, Terms, Disclaimer, Cookies | `content/legal/*.md` | Change `status: placeholder` to `approved` after legal review; that removes the "Draft" banner. |
 | Emergency advice | `content/emergency.json` | |
 | Google reviews card | `content/reviews.json` | Fill `rating`/`reviewCount` only with real numbers from Google. Never add review text by hand. `writeReviewUrl` = the "Ask for reviews" link from Google Business Profile. |
-| Gallery photos | `content/gallery.json` | `image: null` shows a "Photo coming soon" tile. Before/after photos need the patient's written consent. |
+| Gallery photos | `content/gallery.json` (order + filter chips) and `content/images.json` (the photo itself) | See **Adding a gallery photo** below. Before/after photos need the patient's written consent. |
 | Menu and footer links | `content/navigation.json` | Labels come from the translation files. |
 | Button labels, menu words, any interface text | `content/i18n/en.json` and `content/i18n/te.json` | The Telugu file is machine-drafted and needs review by a native speaker. |
 | Telugu version of a content string | Change `"text"` into `{ "en": "text", "te": "తెలుగు" }` | Anything without Telugu falls back to English on the Telugu site. |
+
+## Adding a gallery photo
+
+1. Put the original photo in `D:\SMSDC\SMSDC-Images` (this folder is **not** in git: originals never go online as they are).
+2. Add one line to `scripts/process-clinic-photos.mjs → PHOTOS` with a descriptive file name, e.g. `{ src: 'IMG_2031.jpg', out: 'suhasini-dental-clinic-tadepalle-reception.jpg' }`.
+3. Run `npm run photos -- "D:\SMSDC\SMSDC-Images"`. It writes `public/images/gallery/<name>.jpg`: max 1600 px wide, compressed, and **all EXIF/GPS data removed**. It prints each file's size (aim for under ~200 KB).
+4. Add one entry to `content/images.json`:
+   ```json
+   "clinic-reception": {
+     "status": "placeholder",
+     "src": "/images/gallery/suhasini-dental-clinic-tadepalle-reception.jpg",
+     "width": 1600, "height": 1200,
+     "alt": { "en": "Reception and waiting area at Suhasini Dental Clinic, Tadepalle" },
+     "caption": { "en": "Reception & waiting area", "te": "రిసెప్షన్" },
+     "category": "clinic",
+     "placement": ["gallery", "home"],
+     "source": "Clinic-supplied photo", "licence": "Clinic's own photo"
+   }
+   ```
+   - **alt**: what's in the photo plus the clinic, in plain words, up to ~125 characters. **caption**: short, shown under the photo and in the viewer.
+   - **category**: `clinic`, `treatments` or `education` (the filter chips on `/gallery`).
+   - **placement**: where else it appears: `home` ("Inside Our Clinic" strip, up to 6 photos), `about` (first = beside the About heading, second = next to the clinic story).
+5. Add the id to `content/gallery.json → items` where it should appear in the gallery order.
+
+A photo that isn't 4:3 (e.g. a square poster) is shown whole on a blurred background, never cropped. Never publish photos where patients can be recognised, or screens with patient records, without written consent.
 
 ## Booking popup and form
 

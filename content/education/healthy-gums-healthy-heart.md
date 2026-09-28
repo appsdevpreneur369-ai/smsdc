@@ -5,8 +5,10 @@ order: 1
 title: Healthy Gums, Healthy Heart
 title_te: ఆరోగ్యకరమైన చిగుళ్ళు, ఆరోగ్యకరమైన గుండె
 summary: Your oral health and heart health are connected. Here's what research suggests — and simple ways to protect both.
+description: "Gum disease is linked with heart health. Learn how, the warning signs of gum disease, and simple steps to protect both. From Suhasini Dental."
 icon: heart-pulse
 image: poster-healthy-gums
+ogImage: poster-healthy-gums-og
 reviewedBy: Dr. Suhasini
 reviewStatus: pending
 relatedService: gum-care

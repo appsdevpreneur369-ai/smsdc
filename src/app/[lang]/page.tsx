@@ -6,6 +6,7 @@ import { siteVars } from '@/lib/vars';
 import { Hero } from '@/components/sections/Hero';
 import {
   AboutSplit,
+  ClinicPhotosTeaser,
   ContactSection,
   CtaBanner,
   DoctorsSection,
@@ -38,6 +39,7 @@ export default function HomePage({ params: { lang } }: { params: { lang: Lang } 
       <Hero lang={lang} />
       <TrustStrip lang={lang} />
       <ServicesSection lang={lang} />
+      <ClinicPhotosTeaser lang={lang} />
       <ProblemPicker lang={lang} />
       <AboutSplit lang={lang} />
       <DoctorsSection lang={lang} />

@@ -1,5 +1,5 @@
 {
-  "_note": "Every image on the site is looked up here by id. To replace one: drop the new file in /public/images (or /public/brand) and change 'src' (and width/height/alt). SVG artwork is original, made for this site. Never use photos of people as if they were our doctors.",
+  "_note": "Every image on the site is looked up here by id. Photos: put the original in D:\\SMSDC\\SMSDC-Images, add it to scripts/process-clinic-photos.mjs, run `npm run photos -- \"D:\\SMSDC\\SMSDC-Images\"` (resizes + strips EXIF/GPS into /public/images/gallery), then add an entry here. caption/category/placement are optional: category = clinic | treatments | education; placement = gallery, home, about, og. Never use photos of people as if they were our doctors; patients only with written consent.",
   "images": {
     "logo": {
       "status": "approved",
@@ -168,16 +168,153 @@
       "source": "Original SVG decorative artwork",
       "licence": "Owned by the clinic"
     },
+    "clinic-entrance": {
+      "status": "placeholder",
+      "src": "/images/gallery/suhasini-dental-clinic-tadepalle-entrance.jpg",
+      "width": 1600,
+      "height": 1200,
+      "alt": {
+        "en": "Entrance of Suhasini Dental Clinic & Implant Centre in Tadepalle, with the clinic signboard above the glass doors",
+        "te": "తాడేపల్లిలోని సుహాసిని డెంటల్ క్లినిక్ ప్రవేశ ద్వారం, పైన క్లినిక్ బోర్డు"
+      },
+      "caption": {
+        "en": "Our clinic entrance in Tadepalle",
+        "te": "తాడేపల్లిలో మా క్లినిక్ ప్రవేశ ద్వారం"
+      },
+      "category": "clinic",
+      "placement": [
+        "gallery",
+        "home",
+        "about"
+      ],
+      "source": "Clinic-supplied photo (SMSDC-Images, 28 Sep 2026); resized, metadata stripped (npm run photos)",
+      "licence": "Clinic's own photo"
+    },
+    "clinic-treatment-room": {
+      "status": "placeholder",
+      "src": "/images/gallery/suhasini-dental-clinic-treatment-room.jpg",
+      "width": 1218,
+      "height": 912,
+      "alt": {
+        "en": "Treatment room at Suhasini Dental Clinic with two dental chairs and overhead lights",
+        "te": "సుహాసిని డెంటల్ క్లినిక్‌లో రెండు డెంటల్ కుర్చీలు ఉన్న చికిత్స గది"
+      },
+      "caption": {
+        "en": "Treatment room with two dental chairs",
+        "te": "రెండు డెంటల్ కుర్చీలతో చికిత్స గది"
+      },
+      "category": "clinic",
+      "placement": [
+        "gallery",
+        "home",
+        "about"
+      ],
+      "source": "Clinic-supplied photo (SMSDC-Images, 28 Sep 2026); resized, metadata stripped (npm run photos)",
+      "licence": "Clinic's own photo"
+    },
+    "clinic-dental-chair": {
+      "status": "placeholder",
+      "src": "/images/gallery/suhasini-dental-clinic-dental-chair.jpg",
+      "width": 1600,
+      "height": 1200,
+      "alt": {
+        "en": "Blue dental chair with its overhead light and instrument unit at Suhasini Dental Clinic",
+        "te": "సుహాసిని డెంటల్ క్లినిక్‌లో నీలి రంగు డెంటల్ కుర్చీ, లైట్ మరియు పరికరాల యూనిట్"
+      },
+      "caption": {
+        "en": "Dental chair and treatment unit",
+        "te": "డెంటల్ కుర్చీ మరియు చికిత్స యూనిట్"
+      },
+      "category": "clinic",
+      "placement": [
+        "gallery",
+        "home"
+      ],
+      "source": "Clinic-supplied photo (SMSDC-Images, 28 Sep 2026); resized, metadata stripped (npm run photos)",
+      "licence": "Clinic's own photo"
+    },
+    "clinic-dental-chair-side": {
+      "status": "placeholder",
+      "src": "/images/gallery/suhasini-dental-clinic-dental-chair-side-view.jpg",
+      "width": 1600,
+      "height": 1200,
+      "alt": {
+        "en": "Side view of a dental chair and its treatment light at Suhasini Dental Clinic",
+        "te": "సుహాసిని డెంటల్ క్లినిక్‌లో డెంటల్ కుర్చీ పక్క నుండి దృశ్యం"
+      },
+      "caption": {
+        "en": "Dental chair, side view",
+        "te": "డెంటల్ కుర్చీ – పక్క నుండి"
+      },
+      "category": "clinic",
+      "placement": [
+        "gallery",
+        "home"
+      ],
+      "source": "Clinic-supplied photo (SMSDC-Images, 28 Sep 2026); resized, metadata stripped (npm run photos)",
+      "licence": "Clinic's own photo"
+    },
+    "services-banner": {
+      "status": "placeholder",
+      "src": "/images/gallery/suhasini-dental-care-services-banner.jpg",
+      "width": 1600,
+      "height": 1200,
+      "alt": {
+        "en": "Clinic poster of dental care services: treatment, implants, braces, surgery, hygiene, dentures, cosmetic and gum care",
+        "te": "దంత చికిత్సలు, ఇంప్లాంట్లు, బ్రేసెస్, సర్జరీ, డెంచర్లు, చిగుళ్ళ సంరక్షణ వంటి సేవల క్లినిక్ పోస్టర్"
+      },
+      "caption": {
+        "en": "Our dental care services poster",
+        "te": "మా దంత సంరక్షణ సేవల పోస్టర్"
+      },
+      "category": "treatments",
+      "placement": [
+        "gallery",
+        "home"
+      ],
+      "source": "Clinic-supplied poster photo (SMSDC-Images, 28 Sep 2026); resized, metadata stripped (npm run poster photos)",
+      "licence": "Clinic's own poster"
+    },
     "poster-healthy-gums": {
       "status": "placeholder",
-      "src": "/images/poster-healthy-gums.jpg",
-      "width": 539,
-      "height": 460,
+      "src": "/images/gallery/healthy-gums-healthy-heart-poster.jpg",
+      "width": 1400,
+      "height": 1421,
       "alt": {
-        "en": "The clinic's 'Healthy Gums, Healthy Heart' awareness poster showing a tooth, a heart and how gum disease may affect the heart"
+        "en": "The clinic's 'Healthy Gums, Healthy Heart' poster: how gum disease may affect the heart, with a tooth and a heart",
+        "te": "'ఆరోగ్యకరమైన చిగుళ్ళు, ఆరోగ్యకరమైన గుండె' అవగాహన పోస్టర్"
       },
-      "source": "Clinic-supplied photo of its poster (26 Sep 2026)",
-      "licence": "Clinic's own material"
+      "caption": {
+        "en": "Healthy Gums, Healthy Heart: our awareness poster",
+        "te": "ఆరోగ్యకరమైన చిగుళ్ళు, ఆరోగ్యకరమైన గుండె – అవగాహన పోస్టర్"
+      },
+      "category": "education",
+      "placement": [
+        "gallery",
+        "article:healthy-gums-healthy-heart"
+      ],
+      "source": "Clinic-supplied poster (SMSDC-Images, 28 Sep 2026); resized, metadata stripped (npm run posters)",
+      "licence": "Clinic's own poster"
+    },
+    "poster-healthy-gums-og": {
+      "status": "placeholder",
+      "src": "/images/gallery/healthy-gums-healthy-heart-og.jpg",
+      "width": 1200,
+      "height": 630,
+      "alt": {
+        "en": "Healthy Gums, Healthy Heart: your oral health and heart health are connected",
+        "te": "ఆరోగ్యకరమైన చిగుళ్ళు, ఆరోగ్యకరమైన గుండె"
+      },
+      "caption": {
+        "en": "Healthy Gums, Healthy Heart",
+        "te": "ఆరోగ్యకరమైన చిగుళ్ళు, ఆరోగ్యకరమైన గుండె"
+      },
+      "category": "education",
+      "placement": [
+        "og"
+      ],
+      "source": "Share card (1200×630) cropped from the poster",
+      "licence": "Clinic's own poster"
     }
   }
 }

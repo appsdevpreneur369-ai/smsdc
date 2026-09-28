@@ -95,6 +95,10 @@ export const ImageSchema = z.object({
   width: z.number().int().positive(),
   height: z.number().int().positive(),
   alt: Loc,
+  /** Photos: caption shown in the gallery/lightbox, gallery category and where the photo is used. */
+  caption: Loc.optional(),
+  category: z.enum(['clinic', 'treatments', 'education']).optional(),
+  placement: z.array(z.string()).default([]),
   source: z.string(),
   licence: z.string(),
 });
@@ -242,7 +246,9 @@ export const ReviewsSchema = z.object({
 
 export const GallerySchema = z.object({
   status: Status,
-  items: z.array(z.object({ image: z.string().nullable(), caption: Loc, category: z.string() })),
+  categories: z.array(z.object({ id: z.enum(['clinic', 'treatments', 'education']), label: Loc })),
+  /** Image ids from images.json, in display order. */
+  items: z.array(z.string()).min(1),
 });
 
 export const EmergencySchema = z.object({
@@ -296,8 +302,12 @@ export const ArticleFrontmatter = z.object({
   title: z.string(),
   title_te: z.string().optional(),
   summary: z.string(),
+  /** Meta description (120–160 characters); defaults to the summary. */
+  description: z.string().max(160).optional(),
   icon: z.string(),
   image: z.string().optional(),
+  /** Image id for the Open Graph / social share card (1200×630); defaults to the generated card. */
+  ogImage: z.string().optional(),
   reviewedBy: z.string().optional(),
   reviewStatus: z.enum(['pending', 'reviewed']).optional(),
   relatedService: Slug.optional(),

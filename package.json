@@ -9,6 +9,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "brand": "node scripts/generate-brand-assets.mjs",
+    "photos": "node scripts/process-clinic-photos.mjs",
     "contrast": "node scripts/check-contrast.mjs",
     "test": "vitest run"
   },

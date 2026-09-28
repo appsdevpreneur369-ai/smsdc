@@ -8,6 +8,7 @@
     { "key": "nav.services", "href": "/services" },
     { "key": "nav.doctors", "href": "/doctors" },
     { "key": "nav.education", "href": "/patient-education" },
+    { "key": "nav.gallery", "href": "/gallery" },
     { "key": "nav.faqs", "href": "/faqs" }
   ],
   "headerCta": { "key": "nav.contact", "href": "/contact" },

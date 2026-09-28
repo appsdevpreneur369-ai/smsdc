@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowRight, BadgeCheck } from 'lucide-react';
-import { getCategory } from '@/lib/content';
+import { getCategory, getImage } from '@/lib/content';
 import { getArticle, getArticles, renderMarkdown } from '@/lib/content/markdown';
 import { getDict, locales, localePath, t, tx, type Lang } from '@/lib/i18n';
 import { pageMetadata, absoluteUrl } from '@/lib/seo';
@@ -26,8 +26,9 @@ export function generateMetadata({ params }: { params: Params }) {
     lang: params.lang,
     path: `/patient-education/${a.meta.slug}`,
     title: (params.lang === 'te' && a.meta.title_te) || a.meta.title,
-    description: a.meta.summary,
+    description: a.meta.description ?? a.meta.summary,
     type: 'article',
+    image: a.meta.ogImage ? getImage(a.meta.ogImage).src : undefined,
   });
 }
 
@@ -96,7 +97,7 @@ export default function ArticlePage({ params: { lang, slug } }: { params: Params
               </Link>
             )}
             <p className="rounded-brand bg-secondary-soft p-5 text-sm text-ink-muted">
-              <Link href={localePath(lang, '/disclaimer')} className="font-semibold text-primary underline underline-offset-2">
+              <Link href={localePath(lang, '/disclaimer')} className="font-semibold text-primary-dark underline underline-offset-2">
                 {t(dict, 'nav.disclaimer')}
               </Link>
             </p>
@@ -125,6 +126,7 @@ export default function ArticlePage({ params: { lang, slug } }: { params: Params
           description: a.meta.summary,
           url: absoluteUrl(localePath(lang, `/patient-education/${a.meta.slug}`)),
           inLanguage: lang === 'te' ? 'te' : 'en',
+          ...(a.meta.image ? { image: absoluteUrl(getImage(a.meta.image).src) } : {}),
           publisher: { '@id': clinicId() },
           audience: { '@type': 'Patient' },
         }}

@@ -1,10 +1,12 @@
-import { clinicHead, home, pages } from '@/lib/content';
+import { clinicHead, pages } from '@/lib/content';
+import { photosFor } from '@/lib/gallery';
 import { getDict, t, tx, type Lang } from '@/lib/i18n';
 import { pageHeader, staticPageMetadata } from '@/lib/page';
 import { siteVars } from '@/lib/vars';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { Icon } from '@/components/ui/Icon';
-import { ButtonLink, ContentImage, DraftBadge } from '@/components/ui/primitives';
+import { ButtonLink, DraftBadge } from '@/components/ui/primitives';
+import { PhotoThumb } from '@/components/gallery/PhotoThumb';
 import { Reveal } from '@/components/ui/Reveal';
 import { CtaBanner, DoctorsSection, TrustStrip, WhyUsSection } from '@/components/sections/home';
 
@@ -17,6 +19,9 @@ export default function AboutPage({ params: { lang } }: { params: { lang: Lang }
   const dict = getDict(lang);
   const vars = siteVars(lang);
   const about = pages.about;
+  // images.json placement "about": the first sits beside the heading (desktop), the next with the clinic story.
+  const aboutPhotos = photosFor('about', lang);
+  const storyPhoto = aboutPhotos[1] ?? aboutPhotos[0];
   return (
     <>
       <PageHeader
@@ -29,7 +34,7 @@ export default function AboutPage({ params: { lang } }: { params: { lang: Lang }
           <div className="relative hidden lg:block">
             <div className="dot-grid absolute -right-4 -top-4 h-32 w-32 opacity-60" aria-hidden />
             <div className="relative overflow-hidden rounded-[2rem] border-8 border-surface shadow-lift">
-              <ContentImage id={home.about.image} lang={lang} priority className="h-auto w-full" sizes="480px" />
+              {aboutPhotos[0] && <PhotoThumb photo={aboutPhotos[0]} sizes="480px" />}
             </div>
           </div>
         }
@@ -48,6 +53,12 @@ export default function AboutPage({ params: { lang } }: { params: { lang: Lang }
             {about.story.map((p, i) => (
               <p key={i}>{tx(p, lang, vars)}</p>
             ))}
+            {storyPhoto && (
+              <figure className="not-prose my-8 overflow-hidden rounded-brand border border-line bg-surface shadow-soft">
+                <PhotoThumb photo={storyPhoto} sizes="(min-width: 1024px) 640px, 100vw" />
+                <figcaption className="p-4 font-heading text-sm font-semibold">{storyPhoto.caption}</figcaption>
+              </figure>
+            )}
             <div className="mt-8">
               <ButtonLink href={`/doctors/${clinicHead.slug}`} lang={lang}>
                 {clinicHead.displayName} — {t(dict, 'cta.viewProfile')}

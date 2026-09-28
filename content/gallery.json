@@ -1,12 +1,35 @@
 {
   "status": "placeholder",
-  "_note": "Each item points at an image id in images.json. Empty 'image' = a styled placeholder tile showing the caption. Add real clinic photos (and before/after photos ONLY with written patient consent).",
+  "_note": "Display order of the /gallery page (image ids from images.json; each needs caption + category there). Filter chips come from `categories` and only show when a category has photos. Wanted: reception/waiting area, sterilisation area, team photo (with consent). Before/after photos ONLY with written patient consent.",
+  "categories": [
+    {
+      "id": "clinic",
+      "label": {
+        "en": "Clinic",
+        "te": "క్లినిక్"
+      }
+    },
+    {
+      "id": "treatments",
+      "label": {
+        "en": "Treatments",
+        "te": "చికిత్సలు"
+      }
+    },
+    {
+      "id": "education",
+      "label": {
+        "en": "Patient Education",
+        "te": "రోగి అవగాహన"
+      }
+    }
+  ],
   "items": [
-    { "image": null, "caption": { "en": "Clinic exterior & signboard", "te": "క్లినిక్ బయటి దృశ్యం" }, "category": "clinic" },
-    { "image": null, "caption": { "en": "Reception & waiting area", "te": "రిసెప్షన్ & వేచి ఉండే ప్రదేశం" }, "category": "clinic" },
-    { "image": null, "caption": { "en": "Treatment room", "te": "చికిత్స గది" }, "category": "clinic" },
-    { "image": null, "caption": { "en": "Sterilisation area", "te": "స్టెరిలైజేషన్ ప్రదేశం" }, "category": "clinic" },
-    { "image": null, "caption": { "en": "Our team", "te": "మా బృందం" }, "category": "team" },
-    { "image": "poster-healthy-gums", "caption": { "en": "Healthy Gums, Healthy Heart — our awareness poster", "te": "ఆరోగ్యకరమైన చిగుళ్ళు, ఆరోగ్యకరమైన గుండె" }, "category": "awareness" }
+    "clinic-entrance",
+    "clinic-treatment-room",
+    "clinic-dental-chair",
+    "clinic-dental-chair-side",
+    "services-banner",
+    "poster-healthy-gums"
   ]
 }

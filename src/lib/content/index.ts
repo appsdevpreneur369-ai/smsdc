@@ -92,7 +92,11 @@ routing.problems.forEach((p) => {
 doctors.forEach((d) => needImage(d.avatar.image, `doctors.json ${d.slug}`));
 needImage(home.hero.image, 'home.json hero');
 needImage(home.about.image, 'home.json about');
-gallery.items.forEach((g, i) => needImage(g.image, `gallery.json item ${i}`));
+gallery.items.forEach((id) => {
+  needImage(id, 'gallery.json items');
+  const img = images[id];
+  if (img && (!img.caption || !img.category)) refErrors.push(`images.json ${id}: gallery photos need a caption and a category`);
+});
 Object.values(brand.logo).forEach((id) => needImage(id, 'brand.json logo'));
 if (refErrors.length) throw new Error(`Content cross-reference errors:\n  • ${refErrors.join('\n  • ')}`);
 
