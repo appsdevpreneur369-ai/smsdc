@@ -34,7 +34,12 @@ const logo = font(brand.fonts.logo);
 
 export const fontClassNames = Array.from(new Set([heading.variable, body.variable, logo.variable, telugu.variable])).join(' ');
 
-/** :root CSS variables generated from brand.json. Telugu glyphs fall through to Noto Sans Telugu. */
+/**
+ * :root CSS variables generated from brand.json. On Telugu pages Telugu glyphs fall through to the Noto Sans Telugu
+ * web font; English pages only show a few Telugu glyphs (the language switch), so they use the device's Telugu font
+ * instead of downloading ~120 KB for them.
+ */
+const stack = (primary: string, telugu: string, last: string) => `var(${primary}),${telugu}${last}`;
 export const themeCss = `:root{${Object.entries(brand.colors)
   .map(([k, v]) => `--c-${k}:${hexToRgb(v)};`)
-  .join('')}--radius:${brand.radius};--font-heading:var(${heading.cssVar}),var(--font-telugu),'Nirmala UI';--font-body:var(${body.cssVar}),var(--font-telugu),'Nirmala UI';--font-logo:var(${logo.cssVar}),var(--font-telugu),sans-serif;}`;
+  .join('')}--radius:${brand.radius};--font-heading:${stack(heading.cssVar, '', "'Nirmala UI','Noto Sans Telugu'")};--font-body:${stack(body.cssVar, '', "'Nirmala UI','Noto Sans Telugu'")};--font-logo:${stack(logo.cssVar, '', 'sans-serif')};}:root:lang(te){--font-heading:${stack(heading.cssVar, 'var(--font-telugu),', "'Nirmala UI'")};--font-body:${stack(body.cssVar, 'var(--font-telugu),', "'Nirmala UI'")};--font-logo:${stack(logo.cssVar, 'var(--font-telugu),', 'sans-serif')};}`;

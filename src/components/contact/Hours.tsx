@@ -39,7 +39,15 @@ function useClinicNow(hours: Hours, timezone: string) {
 
 export function OpenNowBadge({ hours, timezone, strings, className }: { hours: Hours; timezone: string; strings: HoursStrings; className?: string }) {
   const now = useClinicNow(hours, timezone);
-  if (!now) return <span className={cn('inline-block h-8 w-40 animate-pulse rounded-full bg-line', className)} aria-hidden />;
+  // Status on one line, detail on the next, so the placeholder (shown until the clinic's local time is known) has the
+  // same height as the badge and nothing below it moves (CLS).
+  if (!now)
+    return (
+      <span className={cn('inline-flex flex-col items-start gap-1.5', className)} aria-hidden>
+        <span className="block h-7 w-28 animate-pulse rounded-full bg-line" />
+        <span className="block h-5 w-44 animate-pulse rounded-full bg-line/70" />
+      </span>
+    );
   const s = now.status;
   let detail = '';
   if (s.open) detail = fill(strings.closesAt, { time: formatTime(s.closesAt) });
@@ -48,7 +56,7 @@ export function OpenNowBadge({ hours, timezone, strings, className }: { hours: H
     detail = fill(strings.opensAt, { when, time: formatTime(s.nextOpen.time) });
   }
   return (
-    <p role="status" className={cn('inline-flex flex-wrap items-center gap-2 text-sm', className)}>
+    <p role="status" className={cn('inline-flex flex-col items-start gap-1.5 text-sm', className)}>
       <span
         className={cn(
           'inline-flex items-center gap-2 rounded-full px-3 py-1 font-heading font-semibold',
@@ -61,7 +69,7 @@ export function OpenNowBadge({ hours, timezone, strings, className }: { hours: H
         </span>
         {s.open ? strings.openNow : strings.closedNow}
       </span>
-      <span className="text-ink-muted">{detail}</span>
+      <span className="min-h-5 leading-5 text-ink-muted">{detail}</span>
     </p>
   );
 }

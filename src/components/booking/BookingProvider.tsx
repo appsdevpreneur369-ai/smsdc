@@ -7,7 +7,11 @@ import { autoOpenDelayMs, barePath, canAutoOpen } from '@/lib/booking/popupRules
 import { resolveBookingService, type ResolvedBooking } from '@/lib/booking/services';
 import { readPopupState, writePopupState } from '@/lib/booking/storage';
 import { resolvePrefill } from '@/lib/booking/treatments';
-import { BookingModal } from './BookingModal';
+import dynamic from 'next/dynamic';
+
+// The popup (form, framer-motion, account panel) is loaded after the page is interactive, not in every page's
+// first bundle: it only matters once someone clicks Book or the timed auto-open fires.
+const BookingModal = dynamic(() => import('./BookingModal').then((m) => m.BookingModal), { ssr: false });
 
 export type BookingDraft = {
   fullName: string;
