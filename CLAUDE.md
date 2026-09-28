@@ -81,7 +81,8 @@ History (staging):
 | 2026-09-27 | `7eb8958` | `smsdc-frontend-staging-00002-wkz` | OG logo embedded at build time. |
 | 2026-09-27 | `afc693e` | `smsdc-frontend-staging-00003-sql` | Draft badge readable on dark cards. |
 | 2026-09-27 | `d01b828` | `smsdc-frontend-staging-00004-mgs` | Booking popup + ClinicFlow integration; built against the staging API → falls back to WhatsApp until the clinic is onboarded and CORS allows this origin (SMSDC_PendingItems 9.1/9.2). |
-| 2026-09-27 | `433f9cf` | `smsdc-frontend-staging-00005-92t` | Patient accounts (sign up/in, book without OTP, My appointments, cancel) + OTP hint. Live-verified against the staging API: guest + patient bookings CONFIRMED, confirmation emails logged as sent. **Current.** |
+| 2026-09-27 | `433f9cf` | `smsdc-frontend-staging-00005-92t` | Patient accounts (sign up/in, book without OTP, My appointments, cancel) + OTP hint. Live-verified against the staging API: guest + patient bookings CONFIRMED, confirmation emails logged as sent. |
+| 2026-09-28 | `3ee5bda` | `smsdc-frontend-staging-00006-lsf` | Closing popup no longer swallows clicks; offline modes list 30-min times (`consultSlotMinutes`) instead of sessions. Re-verified live in Chrome (guest + OTP) and by script (account flow). **Current.** |
 
 Redeploy staging (all NEXT_PUBLIC_* values are baked in at build time):
 
