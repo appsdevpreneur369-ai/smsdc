@@ -1,0 +1,98 @@
+[
+  {
+    "form": "mobile",
+    "route": "/",
+    "perf": 90,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 69,
+    "lcp": "3.1 s",
+    "cls": "0",
+    "tbt": "80 ms",
+    "seoFails": [
+      "is-crawlable"
+    ],
+    "a11yFails": [],
+    "bpFails": []
+  },
+  {
+    "form": "mobile",
+    "route": "/gallery",
+    "perf": 92,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 69,
+    "lcp": "2.8 s",
+    "cls": "0",
+    "tbt": "20 ms",
+    "seoFails": [
+      "is-crawlable"
+    ],
+    "a11yFails": [],
+    "bpFails": []
+  },
+  {
+    "form": "mobile",
+    "route": "/doctors/dr-suhasini",
+    "perf": 92,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 69,
+    "lcp": "3.3 s",
+    "cls": "0",
+    "tbt": "30 ms",
+    "seoFails": [
+      "is-crawlable"
+    ],
+    "a11yFails": [],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 69,
+    "lcp": "0.8 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "seoFails": [
+      "is-crawlable"
+    ],
+    "a11yFails": [],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/gallery",
+    "perf": 91,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 69,
+    "lcp": "0.6 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "seoFails": [
+      "is-crawlable"
+    ],
+    "a11yFails": [],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/doctors/dr-suhasini",
+    "perf": 100,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 69,
+    "lcp": "0.6 s",
+    "cls": "0",
+    "tbt": "0 ms",
+    "seoFails": [
+      "is-crawlable"
+    ],
+    "a11yFails": [],
+    "bpFails": []
+  }
+]

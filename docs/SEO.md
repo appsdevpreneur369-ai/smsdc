@@ -47,8 +47,10 @@ node scripts/harness/seo-audit.mjs http://localhost:3100 out.json          # tit
 node scripts/harness/lighthouse-all.mjs http://localhost:3100 docs/seo-reports/<date>/local both
 ```
 
-Structured data: paste a page URL into https://validator.schema.org and https://search.google.com/test/rich-results (both work on
-the noindex staging URL). Google only shows FAQ rich results for a few authoritative sites, so a valid `FAQPage` that isn't
+Structured data: paste a page URL into https://validator.schema.org (works on staging). Google's Rich Results Test can't fetch
+staging (its `robots.txt` blocks Google), so use its **Code** tab with the page's JSON-LD, or test the URL after go-live.
+2026-09-29: validator.schema.org 0 errors / 0 warnings (home, doctor, gallery); Rich Results Test 0 errors: Local business +
+Organisation (only note: optional `priceRange`, left out on purpose), Breadcrumbs, Image metadata (optional creator/license notes). Google only shows FAQ rich results for a few authoritative sites, so a valid `FAQPage` that isn't
 displayed is expected.
 
 Results of each audit run are in `docs/seo-reports/<date>/` (`summary.json`; the HTML reports stay local and aren't committed).
