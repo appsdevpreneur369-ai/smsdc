@@ -2,12 +2,12 @@
   "status": "placeholder",
   "_note": "Per-page SEO title/description and page header (eyebrow, heading, intro). {{area}} = clinic.serviceAreas.primary, {{nearby}} = nearby areas, {{clinic}} = display name.",
   "home": {
-    "title": { "en": "Dentist in {{area}} | {{clinic}}" },
-    "description": { "en": "{{clinic}} in {{area}}, Andhra Pradesh: check-ups, root canal treatment, implants, braces & aligners, gum care, dentures and oral surgery by MDS specialists. Serving {{area}} and nearby areas including {{nearby}}." }
+    "title": { "en": "Dentist in {{area}} | {{shortName}} & Implant Centre" },
+    "description": { "en": "{{clinic}}, {{area}}: check-ups, root canals, implants, braces, gum care, dentures and oral surgery by {{doctorCount}} specialists. Book online." }
   },
   "about": {
     "title": { "en": "About Us" },
-    "description": { "en": "Meet {{clinic}} in {{area}} — led by Dr. Suhasini, MDS, with a team of dental specialists." },
+    "description": { "en": "Meet {{clinic}} in {{area}}, led by Dr. Suhasini: {{doctorCount}} dental specialists for gums, root canals, implants, braces and surgery." },
     "eyebrow": { "en": "About us", "te": "మా గురించి" },
     "heading": { "en": "Dentistry with patience, precision and care", "te": "ఓర్పు, ఖచ్చితత్వం, సంరక్షణతో దంత వైద్యం" },
     "intro": { "en": "A neighbourhood dental clinic and implant centre in {{area}}, bringing specialist care close to home." },
@@ -24,49 +24,49 @@
   },
   "doctors": {
     "title": { "en": "Our Doctors" },
-    "description": { "en": "The dental specialists at {{clinic}}, {{area}}: periodontist, endodontist, oral & maxillofacial surgeons, prosthodontist and orthodontist." },
+    "description": { "en": "Meet the {{doctorCount}} dental specialists at {{clinic}}, {{area}}, for gums, root canals, oral surgery, implants and braces." },
     "eyebrow": { "en": "Our specialists", "te": "మా నిపుణులు" },
     "heading": { "en": "Meet the doctors", "te": "మా డాక్టర్లను కలవండి" },
     "intro": { "en": "An MDS specialist for every part of your smile, led by Dr. Suhasini." }
   },
   "services": {
     "title": { "en": "Dental Treatments" },
-    "description": { "en": "Dental treatments at {{clinic}}, {{area}}: general dentistry, root canals, implants, braces & aligners, oral surgery, cleaning, dentures, cosmetic dentistry and gum care." },
+    "description": { "en": "Treatments at {{clinic}}, {{area}}: check-ups, root canals, implants, braces, surgery, cleaning, dentures, cosmetic and gum care." },
     "eyebrow": { "en": "Treatments", "te": "చికిత్సలు" },
     "heading": { "en": "Everything your smile needs", "te": "మీ చిరునవ్వుకు కావలసినవన్నీ" },
     "intro": { "en": "Explore our treatments. Each is led by the specialist best suited to it, and every plan begins with a consultation." }
   },
   "whyUs": {
     "title": { "en": "Why Choose Us" },
-    "description": { "en": "Why patients in {{area}} choose {{clinic}}: specialists under one roof, clear explanations and gentle care." },
+    "description": { "en": "Why patients in {{area}} choose {{clinic}}: {{doctorCount}} specialists under one roof, clear explanations and gentle care." },
     "eyebrow": { "en": "Why choose us", "te": "మమ్మల్ని ఎందుకు ఎంచుకోవాలి" },
     "heading": { "en": "Specialist care that feels personal", "te": "వ్యక్తిగత శ్రద్ధతో నిపుణుల సంరక్షణ" },
     "intro": { "en": "What you can expect when you visit us." }
   },
   "gallery": {
-    "title": { "en": "Gallery" },
-    "description": { "en": "A look inside {{clinic}} in {{area}}." },
+    "title": { "en": "Clinic Gallery", "te": "క్లినిక్ గ్యాలరీ" },
+    "description": { "en": "Photos of {{clinic}} in {{area}}: the entrance, treatment room and dental chairs, plus our patient-education posters." },
     "eyebrow": { "en": "Gallery", "te": "గ్యాలరీ" },
-    "heading": { "en": "Inside the clinic", "te": "క్లినిక్ లోపల" },
-    "intro": { "en": "Photos of the clinic and team will appear here soon." }
+    "heading": { "en": "Our Clinic Gallery", "te": "మా క్లినిక్ గ్యాలరీ" },
+    "intro": { "en": "A look inside {{clinic}} in {{area}}, where {{doctorCount}} specialists see patients: the entrance, our treatment room and dental chairs, and the posters we use to explain dental care." }
   },
   "reviews": {
     "title": { "en": "Patient Reviews" },
-    "description": { "en": "Read patient reviews of {{clinic}}, {{area}}, on Google." },
+    "description": { "en": "Read Google reviews of {{clinic}}, {{area}}, and share your own experience after your visit. Your feedback helps other patients." },
     "eyebrow": { "en": "Reviews", "te": "సమీక్షలు" },
     "heading": { "en": "What our patients say", "te": "మా రోగులు ఏమంటారు" },
     "intro": { "en": "We only show genuine reviews, straight from Google." }
   },
   "education": {
     "title": { "en": "Patient Education" },
-    "description": { "en": "Easy-to-read guides from {{clinic}}: gum health, aftercare after extraction and root canal treatment, caring for braces and dentures, and dental emergencies." },
+    "description": { "en": "Easy guides from {{clinic}}: gum and heart health, care after extractions and root canals, braces, dentures and emergencies." },
     "eyebrow": { "en": "Patient education", "te": "రోగుల అవగాహన" },
     "heading": { "en": "Guides for a healthier smile", "te": "ఆరోగ్యకరమైన చిరునవ్వుకు మార్గదర్శకాలు" },
     "intro": { "en": "Practical advice written for patients. Always follow the specific instructions your dentist gives you." }
   },
   "faqs": {
-    "title": { "en": "FAQs" },
-    "description": { "en": "Answers to common questions about appointments, costs, timings and treatments at {{clinic}}, {{area}}." },
+    "title": { "en": "Dental FAQs" },
+    "description": { "en": "Common questions about appointments, costs, timings and treatments at {{clinic}}, {{area}}. Still unsure? Call or WhatsApp us." },
     "eyebrow": { "en": "FAQs", "te": "ప్రశ్నలు" },
     "heading": { "en": "Frequently asked questions", "te": "తరచుగా అడిగే ప్రశ్నలు" },
     "intro": { "en": "Can't find your answer? Call or WhatsApp us." }

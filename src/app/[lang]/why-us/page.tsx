@@ -20,7 +20,7 @@ export default function WhyUsPage({ params: { lang } }: { params: { lang: Lang }
       </PageHeader>
       <section className="section">
         <div className="container">
-          <WhyUsGrid lang={lang} />
+          <WhyUsGrid lang={lang} headingLevel="h2" />
         </div>
       </section>
       <section className="on-dark section bg-dark" aria-labelledby="process-heading">

@@ -1,0 +1,765 @@
+{
+  "rows": [
+    {
+      "path": "/",
+      "lang": "en-IN",
+      "title": "Dentist in Tadepalle | Suhasini Dental & Implant Centre",
+      "titleLen": 55,
+      "descLen": 160,
+      "h1": 1,
+      "ld": "FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te",
+      "lang": "te-IN",
+      "title": "Dentist in Tadepalle | సుహాసిని డెంటల్ & Implant Centre",
+      "titleLen": 55,
+      "descLen": 157,
+      "h1": 1,
+      "ld": "FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/about",
+      "lang": "en-IN",
+      "title": "About Us | Suhasini Dental, Tadepalle",
+      "titleLen": 37,
+      "descLen": 153,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/about",
+      "lang": "te-IN",
+      "title": "About Us | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 37,
+      "descLen": 157,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/services",
+      "lang": "en-IN",
+      "title": "Dental Treatments | Suhasini Dental, Tadepalle",
+      "titleLen": 46,
+      "descLen": 159,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/services",
+      "lang": "te-IN",
+      "title": "Dental Treatments | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 46,
+      "descLen": 158,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/doctors",
+      "lang": "en-IN",
+      "title": "Our Doctors | Suhasini Dental, Tadepalle",
+      "titleLen": 40,
+      "descLen": 142,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/doctors",
+      "lang": "te-IN",
+      "title": "Our Doctors | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 40,
+      "descLen": 146,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/why-us",
+      "lang": "en-IN",
+      "title": "Why Choose Us | Suhasini Dental, Tadepalle",
+      "titleLen": 42,
+      "descLen": 139,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/why-us",
+      "lang": "te-IN",
+      "title": "Why Choose Us | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 42,
+      "descLen": 143,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/gallery",
+      "lang": "en-IN",
+      "title": "Clinic Gallery | Suhasini Dental, Tadepalle",
+      "titleLen": 43,
+      "descLen": 147,
+      "h1": 1,
+      "ld": "BreadcrumbList, ImageGallery, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/gallery",
+      "lang": "te-IN",
+      "title": "క్లినిక్ గ్యాలరీ | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 45,
+      "descLen": 151,
+      "h1": 1,
+      "ld": "BreadcrumbList, ImageGallery, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/reviews",
+      "lang": "en-IN",
+      "title": "Patient Reviews | Suhasini Dental, Tadepalle",
+      "titleLen": 44,
+      "descLen": 158,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/reviews",
+      "lang": "te-IN",
+      "title": "Patient Reviews | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 44,
+      "descLen": 153,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/patient-education",
+      "lang": "en-IN",
+      "title": "Patient Education | Suhasini Dental, Tadepalle",
+      "titleLen": 46,
+      "descLen": 153,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/patient-education",
+      "lang": "te-IN",
+      "title": "Patient Education | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 46,
+      "descLen": 157,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/faqs",
+      "lang": "en-IN",
+      "title": "Dental FAQs | Suhasini Dental, Tadepalle",
+      "titleLen": 40,
+      "descLen": 156,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/faqs",
+      "lang": "te-IN",
+      "title": "Dental FAQs | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 40,
+      "descLen": 160,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/book",
+      "lang": "en-IN",
+      "title": "Book an Appointment | Suhasini Dental, Tadepalle",
+      "titleLen": 48,
+      "descLen": 149,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/book",
+      "lang": "te-IN",
+      "title": "Book an Appointment | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 48,
+      "descLen": 153,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/contact",
+      "lang": "en-IN",
+      "title": "Contact & Timings | Suhasini Dental, Tadepalle",
+      "titleLen": 46,
+      "descLen": 124,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/contact",
+      "lang": "te-IN",
+      "title": "Contact & Timings | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 46,
+      "descLen": 128,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/emergency",
+      "lang": "en-IN",
+      "title": "Dental Emergency | Suhasini Dental, Tadepalle",
+      "titleLen": 45,
+      "descLen": 151,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/emergency",
+      "lang": "te-IN",
+      "title": "Dental Emergency | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 45,
+      "descLen": 155,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/services/general-dentistry",
+      "lang": "en-IN",
+      "title": "General Dentistry | Suhasini Dental, Tadepalle",
+      "titleLen": 46,
+      "descLen": 154,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/services/general-dentistry",
+      "lang": "te-IN",
+      "title": "సాధారణ దంత వైద్యం | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 46,
+      "descLen": 149,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/services/root-canal-treatment",
+      "lang": "en-IN",
+      "title": "Root Canal Treatment | Suhasini Dental, Tadepalle",
+      "titleLen": 49,
+      "descLen": 147,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/services/root-canal-treatment",
+      "lang": "te-IN",
+      "title": "రూట్ కెనాల్ చికిత్స | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 48,
+      "descLen": 142,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/services/dental-implants",
+      "lang": "en-IN",
+      "title": "Dental Implants | Suhasini Dental, Tadepalle",
+      "titleLen": 44,
+      "descLen": 158,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/services/dental-implants",
+      "lang": "te-IN",
+      "title": "డెంటల్ ఇంప్లాంట్స్ | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 47,
+      "descLen": 153,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/services/orthodontics",
+      "lang": "en-IN",
+      "title": "Orthodontics — Braces & Aligners | Suhasini Dental",
+      "titleLen": 50,
+      "descLen": 153,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/services/orthodontics",
+      "lang": "te-IN",
+      "title": "బ్రేసెస్ & అలైనర్స్ | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 48,
+      "descLen": 148,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/services/oral-surgery",
+      "lang": "en-IN",
+      "title": "Oral & Dental Surgery | Suhasini Dental, Tadepalle",
+      "titleLen": 50,
+      "descLen": 155,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/services/oral-surgery",
+      "lang": "te-IN",
+      "title": "నోటి శస్త్రచికిత్స | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 47,
+      "descLen": 150,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/services/oral-hygiene",
+      "lang": "en-IN",
+      "title": "Oral Hygiene & Prevention | Suhasini Dental, Tadepalle",
+      "titleLen": 54,
+      "descLen": 148,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/services/oral-hygiene",
+      "lang": "te-IN",
+      "title": "నోటి పరిశుభ్రత | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 43,
+      "descLen": 143,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/services/dentures",
+      "lang": "en-IN",
+      "title": "Dentures | Suhasini Dental, Tadepalle",
+      "titleLen": 37,
+      "descLen": 150,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/services/dentures",
+      "lang": "te-IN",
+      "title": "కట్టుడు పళ్ళు | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 42,
+      "descLen": 145,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/services/cosmetic-dentistry",
+      "lang": "en-IN",
+      "title": "Cosmetic Dentistry | Suhasini Dental, Tadepalle",
+      "titleLen": 47,
+      "descLen": 141,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/services/cosmetic-dentistry",
+      "lang": "te-IN",
+      "title": "సౌందర్య దంత వైద్యం | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 47,
+      "descLen": 136,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/services/gum-care",
+      "lang": "en-IN",
+      "title": "Periodontology (Gum Care) | Suhasini Dental, Tadepalle",
+      "titleLen": 54,
+      "descLen": 149,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/services/gum-care",
+      "lang": "te-IN",
+      "title": "చిగుళ్ళ చికిత్స | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 44,
+      "descLen": 144,
+      "h1": 1,
+      "ld": "BreadcrumbList, FAQPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/doctors/dr-suhasini",
+      "lang": "en-IN",
+      "title": "Dr. Suhasini, Clinic Head | Suhasini Dental, Tadepalle",
+      "titleLen": 54,
+      "descLen": 136,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/doctors/dr-suhasini",
+      "lang": "te-IN",
+      "title": "Dr. Suhasini, క్లినిక్ హెడ్ | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 56,
+      "descLen": 148,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/doctors/dr-sindhu",
+      "lang": "en-IN",
+      "title": "Dr. Sindhu, Gum Specialist | Suhasini Dental, Tadepalle",
+      "titleLen": 55,
+      "descLen": 155,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/doctors/dr-sindhu",
+      "lang": "te-IN",
+      "title": "Dr. Sindhu, చిగుళ్ళ నిపుణులు | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 57,
+      "descLen": 158,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/doctors/dr-preethi",
+      "lang": "en-IN",
+      "title": "Dr. Preethi, Oral Surgeon | Suhasini Dental, Tadepalle",
+      "titleLen": 54,
+      "descLen": 147,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/doctors/dr-preethi",
+      "lang": "te-IN",
+      "title": "Dr. Preethi, దవడ శస్త్రచికిత్స నిపుణులు | సుహాసిని డెంటల్",
+      "titleLen": 57,
+      "descLen": 153,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/doctors/dr-naveen-kumar",
+      "lang": "en-IN",
+      "title": "Dr. Naveen Kumar, Root Canal Specialist | Suhasini Dental",
+      "titleLen": 57,
+      "descLen": 155,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/doctors/dr-naveen-kumar",
+      "lang": "te-IN",
+      "title": "Dr. Naveen Kumar, రూట్ కెనాల్ స్పెషలిస్ట్ | సుహాసిని డెంటల్",
+      "titleLen": 59,
+      "descLen": 152,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/doctors/dr-varun-krishna",
+      "lang": "en-IN",
+      "title": "Dr. Varun Krishna, Oral Surgeon | Suhasini Dental, Tadepalle",
+      "titleLen": 60,
+      "descLen": 160,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/doctors/dr-varun-krishna",
+      "lang": "te-IN",
+      "title": "Dr. Varun Krishna, దవడ శస్త్రచికిత్స నిపుణులు",
+      "titleLen": 45,
+      "descLen": 156,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/doctors/dr-phani",
+      "lang": "en-IN",
+      "title": "Dr. Phani, Implants & Dentures | Suhasini Dental, Tadepalle",
+      "titleLen": 59,
+      "descLen": 158,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/doctors/dr-phani",
+      "lang": "te-IN",
+      "title": "Dr. Phani, ఇంప్లాంట్స్ & కట్టుడు పళ్ళు | సుహాసిని డెంటల్",
+      "titleLen": 56,
+      "descLen": 122,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/doctors/dr-praveen",
+      "lang": "en-IN",
+      "title": "Dr. Praveen, Braces & Aligners | Suhasini Dental, Tadepalle",
+      "titleLen": 59,
+      "descLen": 153,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/doctors/dr-praveen",
+      "lang": "te-IN",
+      "title": "Dr. Praveen, బ్రేసెస్ & అలైనర్స్ | సుహాసిని డెంటల్",
+      "titleLen": 50,
+      "descLen": 159,
+      "h1": 1,
+      "ld": "BreadcrumbList, Physician, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/patient-education/healthy-gums-healthy-heart",
+      "lang": "en-IN",
+      "title": "Healthy Gums, Healthy Heart | Suhasini Dental, Tadepalle",
+      "titleLen": 56,
+      "descLen": 141,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/patient-education/healthy-gums-healthy-heart",
+      "lang": "te-IN",
+      "title": "ఆరోగ్యకరమైన చిగుళ్ళు, ఆరోగ్యకరమైన గుండె | సుహాసిని డెంటల్",
+      "titleLen": 57,
+      "descLen": 141,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/patient-education/aftercare-tooth-extraction",
+      "lang": "en-IN",
+      "title": "Aftercare after a tooth extraction | Suhasini Dental",
+      "titleLen": 52,
+      "descLen": 142,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/patient-education/aftercare-tooth-extraction",
+      "lang": "te-IN",
+      "title": "పన్ను తీసిన తర్వాత జాగ్రత్తలు | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 58,
+      "descLen": 142,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/patient-education/after-root-canal-treatment",
+      "lang": "en-IN",
+      "title": "After root canal treatment | Suhasini Dental, Tadepalle",
+      "titleLen": 55,
+      "descLen": 149,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/patient-education/after-root-canal-treatment",
+      "lang": "te-IN",
+      "title": "రూట్ కెనాల్ చికిత్స తర్వాత | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 55,
+      "descLen": 149,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/patient-education/caring-for-braces",
+      "lang": "en-IN",
+      "title": "Caring for your braces | Suhasini Dental, Tadepalle",
+      "titleLen": 51,
+      "descLen": 135,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/patient-education/caring-for-braces",
+      "lang": "te-IN",
+      "title": "బ్రేసెస్ సంరక్షణ | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 45,
+      "descLen": 135,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/patient-education/caring-for-dentures",
+      "lang": "en-IN",
+      "title": "Caring for your dentures | Suhasini Dental, Tadepalle",
+      "titleLen": 53,
+      "descLen": 145,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/patient-education/caring-for-dentures",
+      "lang": "te-IN",
+      "title": "కట్టుడు పళ్ళ సంరక్షణ | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 49,
+      "descLen": 145,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/patient-education/when-to-see-a-dentist-urgently",
+      "lang": "en-IN",
+      "title": "When to see a dentist urgently | Suhasini Dental, Tadepalle",
+      "titleLen": 59,
+      "descLen": 128,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/patient-education/when-to-see-a-dentist-urgently",
+      "lang": "te-IN",
+      "title": "వెంటనే డెంటిస్ట్‌ను ఎప్పుడు కలవాలి | సుహాసిని డెంటల్",
+      "titleLen": 52,
+      "descLen": 128,
+      "h1": 1,
+      "ld": "BreadcrumbList, MedicalWebPage, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/cookies",
+      "lang": "en-IN",
+      "title": "Cookie Notice | Suhasini Dental, Tadepalle",
+      "titleLen": 42,
+      "descLen": 160,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/cookies",
+      "lang": "te-IN",
+      "title": "Cookie Notice | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 42,
+      "descLen": 156,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/disclaimer",
+      "lang": "en-IN",
+      "title": "Medical Disclaimer | Suhasini Dental, Tadepalle",
+      "titleLen": 47,
+      "descLen": 121,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/disclaimer",
+      "lang": "te-IN",
+      "title": "Medical Disclaimer | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 47,
+      "descLen": 125,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/privacy",
+      "lang": "en-IN",
+      "title": "Privacy Policy | Suhasini Dental, Tadepalle",
+      "titleLen": 43,
+      "descLen": 156,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/privacy",
+      "lang": "te-IN",
+      "title": "Privacy Policy | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 43,
+      "descLen": 160,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/terms",
+      "lang": "en-IN",
+      "title": "Terms of Use | Suhasini Dental, Tadepalle",
+      "titleLen": 41,
+      "descLen": 159,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    },
+    {
+      "path": "/te/terms",
+      "lang": "te-IN",
+      "title": "Terms of Use | సుహాసిని డెంటల్, Tadepalle",
+      "titleLen": 41,
+      "descLen": 155,
+      "h1": 1,
+      "ld": "BreadcrumbList, Dentist+MedicalClinic",
+      "issues": []
+    }
+  ],
+  "broken": []
+}

@@ -5,6 +5,7 @@ order: 3
 title: After root canal treatment
 title_te: రూట్ కెనాల్ చికిత్స తర్వాత
 summary: What's normal after a root canal, how to look after the tooth, and why a crown often matters.
+description: "What's normal after root canal treatment, how to look after the tooth while it heals, and why a crown often matters. From Suhasini Dental, Tadepalle."
 icon: tooth-root
 reviewedBy: Dr. Suhasini
 reviewStatus: pending

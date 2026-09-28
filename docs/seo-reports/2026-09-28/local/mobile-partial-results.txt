@@ -1,0 +1,14 @@
+﻿mobile  /                                                P83 A100 BP100 SEO100  LCP 4.2 s CLS 0.037 TBT 0 ms  
+mobile  /about                                           P85 A100 BP100 SEO100  LCP 4.1 s CLS 0 TBT 80 ms  
+mobile  /services                                        P82 A100 BP100 SEO100  LCP 4.4 s CLS 0 TBT 90 ms  
+mobile  /services/gum-care                               P84 A100 BP100 SEO100  LCP 4.2 s CLS 0 TBT 20 ms  
+mobile  /doctors                                         P85 A100 BP100 SEO100  LCP 4.1 s CLS 0 TBT 30 ms  
+mobile  /doctors/dr-suhasini                             P86 A100 BP100 SEO100  LCP 4.0 s CLS 0 TBT 40 ms  
+mobile  /gallery                                         P94 A100 BP100 SEO100  LCP 3.0 s CLS 0 TBT 60 ms  
+mobile  /patient-education                               P85 A100 BP100 SEO100  LCP 4.1 s CLS 0 TBT 20 ms  
+mobile  /patient-education/healthy-gums-healthy-heart    P84 A96 BP100 SEO100  LCP 4.3 s CLS 0 TBT 0 ms  color-contrast
+mobile  /faqs                                            P90 A100 BP100 SEO100  LCP 3.4 s CLS 0 TBT 10 ms  
+mobile  /book                                            P86 A100 BP100 SEO100  LCP 4.0 s CLS 0 TBT 10 ms  
+mobile  /contact                                         P83 A100 BP100 SEO100  LCP 3.9 s CLS 0.117 TBT 30 ms  
+mobile  /emergency                                       P86 A100 BP100 SEO100  LCP 4.0 s CLS 0.003 TBT 50 ms  
+mobile  /privacy                                         P90 A100 BP100 SEO100  LCP 3.5 s CLS 0.015 TBT 50 ms  

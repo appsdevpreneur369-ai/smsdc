@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CalendarClock, HandCoins, Stethoscope, Users } from 'lucide-react';
-import { categories, getCategory, getDoctor, services } from '@/lib/content';
+import { categories, clinic, getCategory, getDoctor, services } from '@/lib/content';
 import { getDict, locales, localePath, t, tx, type Lang } from '@/lib/i18n';
-import { pageMetadata } from '@/lib/seo';
+import { fitDescription, pageMetadata } from '@/lib/seo';
 import { faqJsonLd } from '@/lib/jsonld';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { ServiceCard } from '@/components/cards';
@@ -28,7 +28,11 @@ export function generateMetadata({ params }: { params: Params }) {
     lang: params.lang,
     path: `/services/${c.slug}`,
     title: tx(c.title, params.lang),
-    description: `${tx(c.summary, params.lang)} ${tx(services.pricingNote, params.lang)}`,
+    description: fitDescription([
+      tx(c.summary, params.lang),
+      t(getDict(params.lang), 'seo.treatmentAt', { clinic: tx(clinic.displayName, params.lang), area: clinic.serviceAreas.primary }),
+      tx(services.pricingNote, params.lang),
+    ]),
   });
 }
 

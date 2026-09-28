@@ -303,3 +303,21 @@ describe('preferredTimes (offline modes: appointment-length steps, like live slo
   it('drops times already past today', () => expect(preferredTimes(consultant, 'monday', 30, '18:10')).toEqual(['18:30', '19:00', '19:30']));
   it('nothing on a day off', () => expect(preferredTimes(consultant, 'sunday', 30)).toEqual([]));
 });
+
+describe('SEO helpers', async () => {
+  const { fitDescription, fitTitle, titleSuffix } = await import('@/lib/seo');
+  it('title keeps the full suffix when it fits in 60', () => expect(fitTitle('About Us', 'en')).toBe('About Us'));
+  it('title falls back to the short brand, then clips', () => {
+    const t = fitTitle('Dr. Naveen Kumar, Root Canal Specialist', 'en');
+    expect(t).toEqual({ absolute: 'Dr. Naveen Kumar, Root Canal Specialist | Suhasini Dental' });
+    const long = fitTitle('A very long page title that will never fit into sixty characters at all', 'en') as { absolute: string };
+    expect(long.absolute.length).toBeLessThanOrEqual(60);
+    expect(titleSuffix('en')).toBe(' | Suhasini Dental, Tadepalle');
+  });
+  it('description joins sentences up to 160 and clips at a word', () => {
+    expect(fitDescription(['a'.repeat(100), 'b'.repeat(50), 'c'.repeat(30)])).toBe(`${'a'.repeat(100)} ${'b'.repeat(50)}`);
+    const d = fitDescription([`${'word '.repeat(40)}end`]);
+    expect(d.length).toBeLessThanOrEqual(160);
+    expect(d.endsWith('…')).toBe(true);
+  });
+});

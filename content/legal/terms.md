@@ -2,7 +2,7 @@
 slug: terms
 status: placeholder
 title: Terms of Use
-description: The terms that apply when you use the {{clinic}} website and request appointments online.
+description: The terms that apply when you use the {{clinic}} website and request or book appointments online, and what you can expect from us.
 lastUpdated: 2026-09-27
 ---
 

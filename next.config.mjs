@@ -5,6 +5,8 @@ const nextConfig = {
   // Self-contained server for the Docker image (same as clinicflow-frontend).
   output: 'standalone',
   poweredByHeader: false,
+  // Photos are served as AVIF (or WebP) at the size each layout needs; originals stay JPEG in /public.
+  images: { formats: ['image/avif', 'image/webp'] },
   // Treatments live at /services (the nav label reads "Treatments"); keep /treatments working as an alias.
   async redirects() {
     return [

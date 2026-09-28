@@ -1,0 +1,294 @@
+[
+  {
+    "form": "mobile",
+    "route": "/contact",
+    "perf": 87,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "3.9 s",
+    "cls": "0",
+    "tbt": "10 ms",
+    "seoFails": [],
+    "a11yFails": [],
+    "bpFails": []
+  },
+  {
+    "form": "mobile",
+    "route": "/patient-education/healthy-gums-healthy-heart",
+    "perf": 82,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "4.6 s",
+    "cls": "0",
+    "tbt": "30 ms",
+    "seoFails": [],
+    "a11yFails": [],
+    "bpFails": []
+  },
+  {
+    "form": "mobile",
+    "route": "/te",
+    "perf": 77,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "4.9 s",
+    "cls": "0.028",
+    "tbt": "100 ms",
+    "seoFails": [],
+    "a11yFails": [],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/about",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "1.0 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/services",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "1.0 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/services/gum-care",
+    "perf": 98,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "1.0 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/doctors",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/doctors/dr-suhasini",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/gallery",
+    "perf": 100,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "0.7 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/patient-education",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/patient-education/healthy-gums-healthy-heart",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/faqs",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/book",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/contact",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/emergency",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0.001",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/privacy",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0.01",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [
+      "label-content-name-mismatch"
+    ],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/te",
+    "perf": 97,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "1.1 s",
+    "cls": "0.029",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [],
+    "bpFails": []
+  },
+  {
+    "form": "desktop",
+    "route": "/",
+    "perf": 99,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "0.9 s",
+    "cls": "0.017",
+    "tbt": "0 ms",
+    "seoFails": [],
+    "a11yFails": [],
+    "bpFails": []
+  },
+  {
+    "form": "mobile",
+    "route": "/",
+    "perf": 82,
+    "a11y": 100,
+    "bp": 100,
+    "seo": 100,
+    "lcp": "4.5 s",
+    "cls": "0.037",
+    "tbt": "50 ms",
+    "seoFails": [],
+    "a11yFails": [],
+    "bpFails": []
+  }
+]

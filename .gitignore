@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local QA output
 /qa/
+
+# Lighthouse HTML reports are large; scores are kept in docs/seo-reports/*/summary.json
+docs/seo-reports/**/*.html

@@ -5,6 +5,7 @@ order: 2
 title: Aftercare after a tooth extraction
 title_te: పన్ను తీసిన తర్వాత జాగ్రత్తలు
 summary: How to help the socket heal comfortably in the first few days after a tooth is removed.
+description: "How to help the socket heal comfortably after a tooth is removed, what to eat, how to keep it clean and when to call us. From Suhasini Dental."
 icon: bandage
 reviewedBy: Dr. Suhasini
 reviewStatus: pending

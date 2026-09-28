@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Award, CalendarClock, GraduationCap } from 'lucide-react';
-import { categoriesForDoctor, doctors } from '@/lib/content';
+import { categoriesForDoctor, clinic, doctors } from '@/lib/content';
 import { consultLines } from '@/lib/doctors';
 import { getDict, locales, localePath, t, tx, type Lang } from '@/lib/i18n';
-import { pageMetadata } from '@/lib/seo';
+import { fitDescription, pageMetadata } from '@/lib/seo';
 import { physicianJsonLd } from '@/lib/jsonld';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { Avatar } from '@/components/ui/Avatar';
@@ -26,8 +26,13 @@ export function generateMetadata({ params }: { params: Params }) {
   return pageMetadata({
     lang: params.lang,
     path: `/doctors/${d.slug}`,
-    title: `${d.displayName}, ${d.qualification} — ${tx(d.shortSpeciality, params.lang)}`,
-    description: tx(d.summary, params.lang),
+    title: `${d.displayName}, ${tx(d.shortSpeciality, params.lang)}`,
+    description: fitDescription([
+      tx(d.summary, params.lang),
+      t(getDict(params.lang), 'seo.doctorAt', { name: d.displayName, qualification: d.qualification, clinic: tx(clinic.displayName, params.lang), area: clinic.serviceAreas.primary }),
+      t(getDict(params.lang), 'seo.doctorAtShort', { shortName: tx(clinic.shortName, params.lang), area: clinic.serviceAreas.primary }),
+      t(getDict(params.lang), 'seo.bookOnline'),
+    ]),
   });
 }
 

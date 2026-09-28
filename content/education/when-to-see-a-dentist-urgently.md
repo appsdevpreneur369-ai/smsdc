@@ -5,6 +5,7 @@ order: 6
 title: When to see a dentist urgently
 title_te: వెంటనే డెంటిస్ట్‌ను ఎప్పుడు కలవాలి
 summary: The signs that shouldn't wait for a routine appointment — and when to go straight to hospital.
+description: "The dental signs that shouldn't wait for a routine appointment, what to do in the meantime, and when to go straight to hospital."
 icon: siren
 reviewedBy: Dr. Suhasini
 reviewStatus: pending

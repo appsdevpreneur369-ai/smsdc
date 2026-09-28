@@ -1,4 +1,5 @@
 import { clinic, doctors, getImage, brand, reviews } from './content';
+import { photosFor } from './gallery';
 import type { Doctor, FaqItem } from './content/schemas';
 import { localePath, tx, type Lang } from './i18n';
 import { absoluteUrl } from './seo';
@@ -17,6 +18,8 @@ export const clinicId = () => `${absoluteUrl('/')}#clinic`;
 
 /** Dentist + MedicalClinic for the clinic itself. */
 export function clinicJsonLd(lang: Lang) {
+  // Only real profiles: empty socialLinks entries are left out.
+  const sameAs = Object.values(clinic.socialLinks).filter((u): u is string => typeof u === 'string' && u.length > 0);
   const specs = clinic.hours.flatMap((h) =>
     h.sessions.map((s) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: dayMap[h.day], opens: s.opens, closes: s.closes })),
   );
@@ -29,8 +32,9 @@ export function clinicJsonLd(lang: Lang) {
     slogan: tx(clinic.tagline, 'en'),
     description: tx(clinic.description, lang),
     url: absoluteUrl(localePath(lang, '/')),
-    logo: absoluteUrl(getImage(brand.logo.icon).src),
-    image: absoluteUrl(getImage(brand.logo.appIcon).src),
+    logo: absoluteUrl(getImage(brand.logo.appIcon).src),
+    // Real clinic photos first (entrance, treatment room); the logo when there are none yet.
+    image: (photosFor('about', 'en').length ? photosFor('about', 'en').map((p) => p.src) : [getImage(brand.logo.appIcon).src]).map(absoluteUrl),
     telephone: clinic.phone.e164,
     email: clinic.email,
     address: {
@@ -46,7 +50,8 @@ export function clinicJsonLd(lang: Lang) {
     openingHoursSpecification: specs,
     areaServed: [clinic.serviceAreas.primary, ...clinic.serviceAreas.nearby].map((name) => ({ '@type': 'Place', name })),
     availableLanguage: clinic.languages,
-    medicalSpecialty: 'Dentistry',
+    medicalSpecialty: 'https://schema.org/Dentistry',
+    ...(sameAs.length ? { sameAs } : {}),
     ...(reviews.rating && reviews.reviewCount
       ? { aggregateRating: { '@type': 'AggregateRating', ratingValue: reviews.rating, reviewCount: reviews.reviewCount } }
       : {}),
@@ -62,9 +67,9 @@ export function physicianJsonLd(d: Doctor, lang: Lang) {
     name: d.displayName,
     url: absoluteUrl(localePath(lang, `/doctors/${d.slug}`)),
     description: tx(d.summary, lang),
-    medicalSpecialty: 'Dentistry',
+    medicalSpecialty: 'https://schema.org/Dentistry',
     knowsAbout: d.expertise,
-    hasCredential: d.qualification,
+    hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'degree', name: d.qualification },
     worksFor: { '@id': clinicId() },
     telephone: clinic.phone.e164,
     address: {

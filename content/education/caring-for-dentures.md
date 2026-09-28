@@ -5,6 +5,7 @@ order: 5
 title: Caring for your dentures
 title_te: కట్టుడు పళ్ళ సంరక్షణ
 summary: Daily cleaning, getting used to new dentures, and when they need checking.
+description: "Daily denture cleaning, getting used to new dentures, and when they need checking or adjusting. Practical advice from Suhasini Dental, Tadepalle."
 icon: denture
 reviewedBy: Dr. Suhasini
 reviewStatus: pending

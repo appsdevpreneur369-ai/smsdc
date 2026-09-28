@@ -2,7 +2,7 @@
 slug: cookies
 status: placeholder
 title: Cookie Notice
-description: How the {{clinic}} website uses cookies and similar technologies.
+description: How the {{clinic}} website uses cookies and similar technologies, why they are needed, and how you can manage them in your browser.
 lastUpdated: 2026-09-27
 ---
 

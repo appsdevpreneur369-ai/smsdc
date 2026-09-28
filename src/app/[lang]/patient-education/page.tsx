@@ -20,7 +20,7 @@ export default function EducationPage({ params: { lang } }: { params: { lang: La
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((a, i) => (
               <Reveal as="li" key={a.meta.slug} delay={(i % 3) * 0.06}>
-                <ArticleCard article={a} lang={lang} featured={i === 0} />
+                <ArticleCard article={a} lang={lang} featured={i === 0} headingLevel="h2" />
               </Reveal>
             ))}
           </ul>

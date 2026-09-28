@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import '../globals.css';
 import { brand, clinic, noIndex, siteUrl } from '@/lib/content';
 import { fontClassNames, themeCss } from '@/lib/theme';
+import { titleSuffix } from '@/lib/seo';
 import { getDict, isLang, locales, t, tx } from '@/lib/i18n';
 import { clinicJsonLd } from '@/lib/jsonld';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   const name = tx(clinic.displayName, lang);
   return {
     metadataBase: new URL(siteUrl),
-    title: { default: name, template: `%s | ${tx(clinic.shortName, lang)}` },
+    title: { default: name, template: `%s${titleSuffix(lang)}` },
     description: tx(clinic.description, lang),
     applicationName: tx(clinic.shortName, lang),
     icons: {

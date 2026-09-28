@@ -5,6 +5,7 @@ order: 4
 title: Caring for your braces
 title_te: బ్రేసెస్ సంరక్షణ
 summary: Cleaning tips, foods to avoid and how to handle common niggles while you wear braces.
+description: "Cleaning tips, foods to avoid and how to handle common niggles while you wear braces. Practical advice from Suhasini Dental, Tadepalle."
 icon: braces
 reviewedBy: Dr. Suhasini
 reviewStatus: pending

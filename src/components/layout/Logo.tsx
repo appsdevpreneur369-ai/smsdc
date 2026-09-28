@@ -8,6 +8,8 @@ export type LogoData = {
   primary: string;
   secondary: string;
   label: string;
+  /** Screen-reader-only text after the name, e.g. ", Home". */
+  homeSuffix: string;
 };
 
 /**
@@ -17,7 +19,8 @@ export type LogoData = {
  */
 export function Logo({ data, inverted, className }: { data: LogoData; inverted?: boolean; className?: string }) {
   return (
-    <Link href={data.href} aria-label={data.label} className={cn('group flex min-h-[44px] items-center gap-2.5 sm:gap-3', className)}>
+    // Accessible name = the visible name + a hidden ", Home" (an aria-label would have to repeat the visible text exactly).
+    <Link href={data.href} className={cn('group flex min-h-[44px] items-center gap-2.5 sm:gap-3', className)}>
       {/* eslint-disable-next-line @next/next/no-img-element -- small, already-optimised PNG */}
       <img src={inverted ? data.iconWhiteSrc : data.iconSrc} alt="" width={52} height={52} className="h-11 w-11 shrink-0 sm:h-[52px] sm:w-[52px]" />
       <span className="flex flex-col font-logo leading-tight">
@@ -25,8 +28,11 @@ export function Logo({ data, inverted, className }: { data: LogoData; inverted?:
           {data.primary}
         </span>
         <span className={cn('whitespace-nowrap text-[0.72rem] font-medium tracking-[0.02em] sm:text-[0.82rem]', inverted ? 'text-accent' : 'text-primary')}>
+          {/* the space keeps the accessible name "Suhasini Dental Clinic…" (not "SuhasiniDental…") */}
+          {' '}
           {data.secondary}
         </span>
+        <span className="sr-only">{data.homeSuffix}</span>
       </span>
     </Link>
   );
