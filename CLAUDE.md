@@ -82,7 +82,8 @@ History (staging):
 | 2026-09-27 | `afc693e` | `smsdc-frontend-staging-00003-sql` | Draft badge readable on dark cards. |
 | 2026-09-27 | `d01b828` | `smsdc-frontend-staging-00004-mgs` | Booking popup + ClinicFlow integration; built against the staging API → falls back to WhatsApp until the clinic is onboarded and CORS allows this origin (SMSDC_PendingItems 9.1/9.2). |
 | 2026-09-27 | `433f9cf` | `smsdc-frontend-staging-00005-92t` | Patient accounts (sign up/in, book without OTP, My appointments, cancel) + OTP hint. Live-verified against the staging API: guest + patient bookings CONFIRMED, confirmation emails logged as sent. |
-| 2026-09-28 | `3ee5bda` | `smsdc-frontend-staging-00006-lsf` | Closing popup no longer swallows clicks; offline modes list 30-min times (`consultSlotMinutes`) instead of sessions. Re-verified live in Chrome (guest + OTP) and by script (account flow). **Current.** |
+| 2026-09-28 | `3ee5bda` | `smsdc-frontend-staging-00006-lsf` | Closing popup no longer swallows clicks; offline modes list 30-min times (`consultSlotMinutes`) instead of sessions. Re-verified live in Chrome (guest + OTP) and by script (account flow). |
+| 2026-09-28 | `6d05467` | `smsdc-frontend-staging-00007-8xt` | `consultSlotMinutes` 15 (ClinicFlow staging doctors also set to 15 min). Live: 15-min slots (Dr. Suhasini 28 on a weekday, consultants 12); account booking 5:15–5:30 PM CONFIRMED, then cancelled. **Current.** |
 
 Redeploy staging (all NEXT_PUBLIC_* values are baked in at build time):
 
