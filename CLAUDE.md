@@ -71,6 +71,7 @@ Manual, same approach as ClinicFlow247 (no CI/CD): build the image locally, push
 | Staging URL | https://smsdc-frontend-staging-1071497363324.asia-south1.run.app |
 | Staging build args | `NEXT_PUBLIC_SITE_ENV=staging` (X-Robots-Tag noindex, robots Disallow: /, meta noindex), `NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES=true`, `NEXT_PUBLIC_NOINDEX=true`, `NEXT_PUBLIC_SITE_URL=<staging URL>`, `NEXT_PUBLIC_CLINICFLOW_API_URL=<staging API>`, `NEXT_PUBLIC_BOOKING_OTP_HINT=123456` (staging only) |
 | ClinicFlow staging API | `clinicflow-api-staging` rev `00064-nw2`: this origin in `APP_CORS_ALLOWEDORIGINS`, `EMAIL_ENABLED=true`, SMS/WhatsApp off (OTP 123456). Suhasini clinic onboarded + ACTIVE (SMSDC_PendingItems 10). Changing its env needs the owner's explicit yes; always `--update-env-vars`. |
+| Staging API warm instance | 28 Sep: `--min-instances=1` (rev `00065-x5t`, same image/env) so booking doesn't fall back to WhatsApp on a ~54 s cold start. **Revert after the demo** (`--min-instances=0`, SMSDC_PendingItems 11.9). |
 
 History (staging):
 
