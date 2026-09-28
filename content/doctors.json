@@ -1,6 +1,6 @@
 {
   "_note": "Order here is the display order. 'avatar.tone' picks brand colours for the initials avatar until 'avatar.image' (an id in images.json) is set. 'verify' lists fields still to be confirmed with the clinic. clinicflowDoctorId links to the doctor's ClinicFlow247 record once created.",
-  "consultSlotMinutes": 30,
+  "consultSlotMinutes": 15,
   "doctors": [
     {
       "slug": "dr-suhasini",

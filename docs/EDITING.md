@@ -53,6 +53,7 @@ Everything is in `content/booking.json` (full technical detail: [`docs/BOOKING.m
 - **Dates** come from each doctor's `consultation` days in `doctors.json` (and, in ClinicFlow mode, the live slots). `advanceDays` (30) is how far ahead patients can book.
 - **Wording**: consent text (`consent`), the WhatsApp message (`whatsappMessage`), the enquiry message (`enquiryMessage`) and the note under the form (`note`). Form labels and messages are in `content/i18n/en.json` / `te.json` → `bookingForm`; sign in / sign up / My account wording → `account` (appointment status names are `status_CONFIRMED` etc.). The My account page's heading and intro are in `pages.json → account`.
 - `allowDirectSpecialistBooking: false` books every treatment with `defaultDoctor` (Dr. Suhasini) first.
+- **Appointment length**: `doctors.json → consultSlotMinutes` (15). Live time slots come from ClinicFlow (each doctor's appointment length there); this number is used for the time list when the site can't reach ClinicFlow, so keep the two the same.
 - **Linking a doctor to ClinicFlow**: doctors are matched to ClinicFlow by first (and last) name automatically. If a name differs in ClinicFlow, set that doctor's `clinicflowDoctorId` in `doctors.json`.
 
 ## Other switches (environment variables)
