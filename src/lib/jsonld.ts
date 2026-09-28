@@ -1,4 +1,4 @@
-import { clinic, doctors, getImage, brand, reviews } from './content';
+import { clinic, getImage, brand, reviews } from './content';
 import { photosFor } from './gallery';
 import type { Doctor, FaqItem } from './content/schemas';
 import { localePath, tx, type Lang } from './i18n';
@@ -49,20 +49,20 @@ export function clinicJsonLd(lang: Lang) {
     hasMap: clinic.maps.shareUrl,
     openingHoursSpecification: specs,
     areaServed: [clinic.serviceAreas.primary, ...clinic.serviceAreas.nearby].map((name) => ({ '@type': 'Place', name })),
-    availableLanguage: clinic.languages,
+    knowsLanguage: clinic.languages, // (availableLanguage isn't a Dentist property)
     medicalSpecialty: 'https://schema.org/Dentistry',
     ...(sameAs.length ? { sameAs } : {}),
     ...(reviews.rating && reviews.reviewCount
       ? { aggregateRating: { '@type': 'AggregateRating', ratingValue: reviews.rating, reviewCount: reviews.reviewCount } }
       : {}),
-    employee: doctors.map((d) => ({ '@id': `${absoluteUrl(`/doctors/${d.slug}`)}#physician` })),
   };
 }
 
 export function physicianJsonLd(d: Doctor, lang: Lang) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Physician',
+    // IndividualPhysician: schema.org's type for one doctor (a Physician is a practice); linked by practicesAt.
+    '@type': 'IndividualPhysician',
     '@id': `${absoluteUrl(`/doctors/${d.slug}`)}#physician`,
     name: d.displayName,
     url: absoluteUrl(localePath(lang, `/doctors/${d.slug}`)),
@@ -70,7 +70,7 @@ export function physicianJsonLd(d: Doctor, lang: Lang) {
     medicalSpecialty: 'https://schema.org/Dentistry',
     knowsAbout: d.expertise,
     hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'degree', name: d.qualification },
-    worksFor: { '@id': clinicId() },
+    practicesAt: { '@id': clinicId() },
     telephone: clinic.phone.e164,
     address: {
       '@type': 'PostalAddress',

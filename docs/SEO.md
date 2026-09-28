@@ -28,7 +28,7 @@ Then submit `https://<domain>/sitemap.xml` in Google Search Console.
 | Canonical + hreflang | `pageMetadata()`: canonical = this page; `en-IN`, `te-IN`, `x-default` alternates. |
 | `<html lang>` | `en` / `te` from the URL (`/te/*`). |
 | Open Graph + Twitter | 1200×630 image: generated per page by `/og?title=…`; articles can set `ogImage` (e.g. the Healthy Gums poster card). `summary_large_image`. |
-| Structured data (JSON-LD) | Every page: `Dentist` + `MedicalClinic` (name, address, geo, phone, opening hours, logo, clinic photos, `sameAs` only for filled social links, no `priceRange`: prices aren't published). Inner pages: `BreadcrumbList`. Doctors: `Physician`. Articles: `MedicalWebPage` (+ image). Gallery: `ImageGallery` of `ImageObject`s. FAQs (home, /faqs, treatment pages): `FAQPage`. |
+| Structured data (JSON-LD) | Every page: `Dentist` + `MedicalClinic` (name, address, geo, phone, opening hours, logo, clinic photos, `sameAs` only for filled social links, no `priceRange`: prices aren't published). Inner pages: `BreadcrumbList`. Doctors: `IndividualPhysician` (linked to the clinic with `practicesAt`; the clinic lists `knowsLanguage`). Articles: `MedicalWebPage` (+ image). Gallery: `ImageGallery` of `ImageObject`s. FAQs (home, /faqs, treatment pages): `FAQPage`. |
 | Images | `next/image` (AVIF/WebP, responsive `sizes`, width/height → no layout shift, lazy below the fold). Every image has alt text from `content/images.json`; decorative ones `alt=""`. |
 
 ## Sitemap and robots
