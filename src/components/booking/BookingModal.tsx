@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion, useIsPresent, useReducedMotion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { buttonClass } from '@/components/ui/primitives-client';
 import { cn } from '@/lib/cn';
@@ -106,7 +106,7 @@ export function BookingModal() {
   return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[70] flex items-end justify-center sm:items-center sm:p-6">
+        <ModalLayer>
           <motion.div
             className="absolute inset-0 bg-ink/50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
@@ -164,9 +164,15 @@ export function BookingModal() {
               </div>
             )}
           </motion.div>
-        </div>
+        </ModalLayer>
       )}
     </AnimatePresence>,
     document.body,
   );
+}
+
+/** Full-screen layer; while the closing animation plays it lets clicks through to the page (e.g. the header). */
+function ModalLayer({ children }: { children: React.ReactNode }) {
+  const present = useIsPresent();
+  return <div className={cn('fixed inset-0 z-[70] flex items-end justify-center sm:items-center sm:p-6', !present && 'pointer-events-none')}>{children}</div>;
 }

@@ -3,7 +3,7 @@ import { isValidEmail, isValidFullName, maskIndianMobile, normalizeIndianMobile,
 import { barePath, canAutoOpen, isExcludedPath, type PopupConfig } from '@/lib/booking/popupRules';
 import { selectMode, fallbackOrder } from '@/lib/booking/selectMode';
 import { buildTreatmentGroups, doctorsForOption, findOption, resolvePrefill, type TreatmentSource } from '@/lib/booking/treatments';
-import { addDays, availableDates, weekdayOf } from '@/lib/booking/dates';
+import { addDays, availableDates, preferredTimes, weekdayOf } from '@/lib/booking/dates';
 import { buildIcs } from '@/lib/booking/ics';
 import { mapDoctor, resolveBookingService } from '@/lib/booking/services';
 import type { BookingClientConfig } from '@/lib/booking/config';
@@ -164,6 +164,7 @@ const cfg = (preferredMode: BookingClientConfig['preferredMode'] = 'clinicflow')
     api: { baseUrl: 'https://api.test/api/v1', clinicSlug: 'suhasini', clinicId: '' },
     proxyBase: '/api/clinicflow',
     advanceDays: 30,
+    slotMinutes: 30,
     otpResendSeconds: 30,
     timezone: 'Asia/Kolkata',
     treatments: [],
@@ -281,4 +282,24 @@ describe('ics', () => {
     expect(ics).toContain('SUMMARY:Visit\\, Dr. X');
     expect(ics).toContain('LOCATION:Road\\; Town');
   });
+});
+
+describe('preferredTimes (offline modes: appointment-length steps, like live slots)', () => {
+  const head = [
+    { days: ['monday', 'tuesday'] as const, opens: '10:00', closes: '14:00' },
+    { days: ['monday', 'tuesday'] as const, opens: '17:00', closes: '20:00' },
+  ].map((c) => ({ ...c, days: [...c.days] }));
+  const consultant = [{ days: ['monday' as const], opens: '17:00', closes: '20:00' }];
+  it('30-minute steps that end by closing time', () => {
+    const t = preferredTimes(head, 'monday', 30);
+    expect(t[0]).toBe('10:00');
+    expect(t).toContain('13:30');
+    expect(t).not.toContain('14:00');
+    expect(t.at(-1)).toBe('19:30');
+    expect(t).toHaveLength(14);
+  });
+  it('merges doctors without duplicates', () => expect(preferredTimes([...head, ...consultant], 'monday', 30)).toHaveLength(14));
+  it('15-minute steps if the slot length changes', () => expect(preferredTimes(consultant, 'monday', 15)).toHaveLength(12));
+  it('drops times already past today', () => expect(preferredTimes(consultant, 'monday', 30, '18:10')).toEqual(['18:30', '19:00', '19:30']));
+  it('nothing on a day off', () => expect(preferredTimes(consultant, 'sunday', 30)).toEqual([]));
 });

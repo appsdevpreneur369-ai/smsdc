@@ -1,5 +1,5 @@
 import 'server-only';
-import { booking, categories, clinic, doctors, routing } from '../content';
+import { booking, categories, clinic, doctors, doctorsFile, routing } from '../content';
 import { DAYS } from '../hours';
 import { getDict, localePath, t, tx, type Lang } from '../i18n';
 import { telHref } from '../links';
@@ -18,6 +18,7 @@ export function bookingClientConfig(lang: Lang): BookingClientConfig {
     api: { baseUrl: api.baseUrl, clinicSlug: api.clinicSlug, clinicId: api.clinicId },
     proxyBase: '/api/clinicflow',
     advanceDays: booking.advanceDays,
+    slotMinutes: doctorsFile.consultSlotMinutes,
     otpResendSeconds: booking.otpResendSeconds,
     timezone: clinic.timezone,
     treatments: buildTreatmentGroups({

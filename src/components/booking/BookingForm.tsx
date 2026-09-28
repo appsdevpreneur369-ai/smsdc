@@ -10,7 +10,8 @@ import { buttonClass } from '@/components/ui/primitives-client';
 import { cn } from '@/lib/cn';
 import { BookingError } from '@/lib/booking/api';
 import type { Branch, BookingRequest, BookingResult, NextAvailable, SlotOption } from '@/lib/booking/BookingService';
-import { weekdayOf } from '@/lib/booking/dates';
+import { timeInZone } from '@/lib/account/appointments';
+import { preferredTimes, todayInZone, weekdayOf } from '@/lib/booking/dates';
 import { buildIcs } from '@/lib/booking/ics';
 import { doctorsForOption, findOption } from '@/lib/booking/treatments';
 import { isSixDigitOtp, isValidEmail, isValidFullName, maskIndianMobile, normalizeIndianMobile } from '@/lib/booking/validation';
@@ -118,23 +119,14 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
     void loadSlots();
   }, [loadSlots]);
 
-  // Preferred-time options (enquiry / WhatsApp): the mapped doctors' consultation sessions on that weekday.
+  // Preferred-time options (enquiry / WhatsApp): appointment-length steps inside the mapped doctors' consultation
+  // hours on that weekday, like the live slot list (times already past today are left out).
   const sessions = useMemo(() => {
     if (!draft.date || service?.liveSlots) return [];
-    const wd = weekdayOf(draft.date);
-    const seen = new Set<string>();
-    const out: { value: string; label: string }[] = [];
-    for (const slug of doctorSlugs) {
-      for (const c of config.doctors.find((d) => d.slug === slug)?.consultation ?? []) {
-        if (!c.days.includes(wd)) continue;
-        const v = `${c.opens}-${c.closes}`;
-        if (seen.has(v)) continue;
-        seen.add(v);
-        out.push({ value: v, label: `${formatTime(c.opens)} – ${formatTime(c.closes)}` });
-      }
-    }
-    return out.sort((a, b) => a.value.localeCompare(b.value));
-  }, [draft.date, service, doctorSlugs, config.doctors]);
+    const consultations = doctorSlugs.flatMap((slug) => config.doctors.find((d) => d.slug === slug)?.consultation ?? []);
+    const today = draft.date === todayInZone(config.timezone) ? timeInZone(config.timezone) : undefined;
+    return preferredTimes(consultations, weekdayOf(draft.date), config.slotMinutes, today).map((t) => ({ value: t, label: formatTime(t) }));
+  }, [draft.date, service, doctorSlugs, config.doctors, config.slotMinutes, config.timezone]);
 
   const multiDoctor = doctorSlugs.length > 1;
   const dateLabel = useCallback(
@@ -757,7 +749,7 @@ export function BookingForm({ variant, onDone }: { variant: 'modal' | 'page'; on
 
 const prettyRange = (v: string) => {
   const [a, b] = v.split('-');
-  return b ? `${formatTime(a)} – ${formatTime(b)}` : v;
+  return b ? `${formatTime(a)} – ${formatTime(b)}` : formatTime(a);
 };
 
 function addMinutes(hhmm: string, m: number) {

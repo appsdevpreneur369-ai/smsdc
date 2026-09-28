@@ -11,6 +11,8 @@ export type BookingClientConfig = {
   /** Same-origin GET proxy for ClinicFlow (see src/app/api/clinicflow). */
   proxyBase: string;
   advanceDays: number;
+  /** Appointment length in minutes (doctors.json consultSlotMinutes): step of the offline preferred-time list. */
+  slotMinutes: number;
   otpResendSeconds: number;
   timezone: string;
   treatments: TreatmentGroup[];

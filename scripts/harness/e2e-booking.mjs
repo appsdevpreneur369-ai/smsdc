@@ -137,7 +137,7 @@ if (suite === 'clinicflow') {
         continue;
       }
       await el.evaluate((e) => e.scrollIntoView({ block: 'center' }));
-      await wait(300);
+      await wait(1000); // let the scroll-reveal slide-in (0.7 s) finish, or the click can land on a moving button
       await el.click();
       await waitDialog(page, 4000).catch(() => {});
       const opened = !!(await dialog(page));

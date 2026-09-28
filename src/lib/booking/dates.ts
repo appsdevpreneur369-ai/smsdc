@@ -39,3 +39,21 @@ export const hhmm = (t: string) => t.slice(0, 5);
 
 /** Minutes since midnight for "HH:mm". */
 export const toMinutes = (t: string) => Number(t.slice(0, 2)) * 60 + Number(t.slice(3, 5));
+
+/**
+ * Preferred-time choices for the offline modes (enquiry / WhatsApp): every `step`-minute start time inside the
+ * doctors' consultation windows on that weekday (the appointment must end by closing time), de-duplicated and
+ * sorted. `notBefore` ("HH:mm") drops times that have already passed today. These are requests, not live slots.
+ */
+export function preferredTimes(consultations: Consultation[], weekday: Day, step: number, notBefore?: string): string[] {
+  const min = notBefore ? toMinutes(notBefore) : -1;
+  const out = new Set<string>();
+  for (const c of consultations) {
+    if (!c.days.includes(weekday) || step <= 0) continue;
+    for (let m = toMinutes(c.opens); m + step <= toMinutes(c.closes); m += step) {
+      if (m <= min) continue;
+      out.add(`${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`);
+    }
+  }
+  return [...out].sort();
+}
