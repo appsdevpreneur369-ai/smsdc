@@ -85,7 +85,8 @@ History (staging):
 | 2026-09-28 | `3ee5bda` | `smsdc-frontend-staging-00006-lsf` | Closing popup no longer swallows clicks; offline modes list 30-min times (`consultSlotMinutes`) instead of sessions. Re-verified live in Chrome (guest + OTP) and by script (account flow). |
 | 2026-09-28 | `6d05467` | `smsdc-frontend-staging-00007-8xt` | `consultSlotMinutes` 15 (ClinicFlow staging doctors also set to 15 min). Live: 15-min slots (Dr. Suhasini 28 on a weekday, consultants 12); account booking 5:15–5:30 PM CONFIRMED, then cancelled. |
 | 2026-09-29 | `2dd5b51` | `smsdc-frontend-staging-00008-z5q` | Clinic photos + /gallery (filters, lightbox), home strip, About photos, poster article; SEO pass (titles, descriptions, headings, image sitemap, JSON-LD); lazy popup/mobile menu; CLS + contrast fixes. |
-| 2026-09-29 | `a967f99` | `smsdc-frontend-staging-00009-msz` | JSON-LD validator fixes (IndividualPhysician + practicesAt, knowsLanguage). schema.org validator 0 errors / 0 warnings on home, doctor, gallery. **Current.** |
+| 2026-09-29 | `a967f99` | `smsdc-frontend-staging-00009-msz` | JSON-LD validator fixes (IndividualPhysician + practicesAt, knowsLanguage). schema.org validator 0 errors / 0 warnings on home, doctor, gallery. |
+| 2026-10-19 | `1a2bde1` | `smsdc-frontend-staging-00010-pnp` | My account: "Prescriptions, treatment plans & invoices" card → the clinic's ClinicFlow portal sign-in (EN + TE); `NEXT_PUBLIC_CLINICFLOW_PORTAL_URL` = staging portal. Pages 200, no ERROR logs. **Current.** |
 
 Redeploy staging (all NEXT_PUBLIC_* values are baked in at build time):
 
@@ -99,6 +100,7 @@ docker build \
   --build-arg NEXT_PUBLIC_SITE_URL=https://smsdc-frontend-staging-1071497363324.asia-south1.run.app \
   --build-arg NEXT_PUBLIC_CLINICFLOW_API_URL=https://clinicflow-api-staging-znvqdsvqkq-el.a.run.app/api/v1 \
   --build-arg NEXT_PUBLIC_BOOKING_OTP_HINT=123456 \
+  --build-arg NEXT_PUBLIC_CLINICFLOW_PORTAL_URL=https://clinicflow-frontend-staging-1071497363324.asia-south1.run.app \
   -t $IMG .
 docker push $IMG
 gcloud run deploy smsdc-frontend-staging --project sincere-stock-499113-f1 --region asia-south1 --image $IMG
