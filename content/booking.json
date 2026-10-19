@@ -6,15 +6,22 @@
     "_note": "apiBaseUrl / clinicSlug / clinicId can be overridden at build time with NEXT_PUBLIC_CLINICFLOW_API_URL, NEXT_PUBLIC_CLINICFLOW_CLINIC_SLUG, NEXT_PUBLIC_CLINICFLOW_CLINIC_ID. clinicId is optional: it is looked up from the slug.",
     "apiBaseUrl": "https://api.clinicflow247.com/api/v1",
     "clinicSlug": "suhasini-dental-clinic-and-implant-centre",
-    "clinicId": ""
+    "clinicId": "",
+    "_note_portal": "ClinicFlow247 patient portal (prescriptions, treatment plans, invoices) -- linked from My account. Override per deployment with NEXT_PUBLIC_CLINICFLOW_PORTAL_URL (e.g. staging, or the clinic's portal domain).",
+    "portalBaseUrl": "https://clinicflow247.com"
   },
   "advanceDays": 30,
   "otpResendSeconds": 30,
   "allowDirectSpecialistBooking": true,
   "defaultDoctor": "dr-suhasini",
   "generalOption": {
-    "label": { "en": "Not sure – general check-up", "te": "తెలియదు – సాధారణ చెకప్" },
-    "doctors": ["dr-suhasini"]
+    "label": {
+      "en": "Not sure – general check-up",
+      "te": "తెలియదు – సాధారణ చెకప్"
+    },
+    "doctors": [
+      "dr-suhasini"
+    ]
   },
   "popup": {
     "_note": "Auto-opens once per browsing session after delaySeconds, never on page load, never on excludedPaths. On mobile it is a full-height sheet (Google penalises intrusive mobile interstitials — keep it delayed and once-only).",
@@ -22,7 +29,14 @@
     "delaySeconds": 8,
     "oncePerSession": true,
     "showOnMobile": true,
-    "excludedPaths": ["/book", "/account", "/privacy", "/terms", "/disclaimer", "/cookies"]
+    "excludedPaths": [
+      "/book",
+      "/account",
+      "/privacy",
+      "/terms",
+      "/disclaimer",
+      "/cookies"
+    ]
   },
   "consent": {
     "en": "I agree to be contacted about this appointment by WhatsApp, SMS, call or email.",

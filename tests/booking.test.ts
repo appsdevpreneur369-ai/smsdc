@@ -181,7 +181,7 @@ const cfg = (preferredMode: BookingClientConfig['preferredMode'] = 'clinicflow')
     note: '',
     strings: { anyTime: 'Any time' },
     accountStrings: {},
-    accountHref: '/account',
+    accountHref: '/account', portalLoginUrl: 'https://portal.test/clinic/x/login',
     otpHint: '',
     dayNames: {},
   }) as BookingClientConfig;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useId, useMemo, useState } from 'react';
-import { AlertCircle, CalendarDays, CheckCircle2, Clock, Loader2, LogOut, RotateCcw, Stethoscope } from 'lucide-react';
+import { AlertCircle, CalendarDays, CheckCircle2, Clock, ExternalLink, FileText, Loader2, LogOut, RotateCcw, Stethoscope } from 'lucide-react';
 import { buttonClass } from '@/components/ui/primitives-client';
 import { useBooking } from '@/components/booking/BookingProvider';
 import { canCancel, groupAppointments, timeInZone } from '@/lib/account/appointments';
@@ -87,6 +87,19 @@ export function AccountPage() {
           </button>
         </div>
       </div>
+
+      <section aria-labelledby="records-h" className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex gap-3">
+          <FileText className="mt-1 h-5 w-5 shrink-0 text-primary" aria-hidden />
+          <div>
+            <h2 id="records-h" className="text-lg font-bold">{a.recordsTitle}</h2>
+            <p className="mt-1 text-sm text-ink-muted">{a.recordsBody}</p>
+          </div>
+        </div>
+        <a href={config.portalLoginUrl} target="_blank" rel="noopener" className={cn(buttonClass('outline', 'md'), 'shrink-0')}>
+          {a.recordsCta} <ExternalLink className="h-4 w-4" aria-hidden />
+        </a>
+      </section>
 
       {notice && (
         <p role="status" className="flex gap-2 rounded-2xl border border-primary/20 bg-secondary-soft p-4 text-sm font-medium">

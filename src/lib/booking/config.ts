@@ -38,6 +38,8 @@ export type BookingClientConfig = {
   accountStrings: Record<string, string>;
   /** Localised path of the My account page. */
   accountHref: string;
+  /** The clinic's ClinicFlow247 patient portal sign-in (prescriptions, treatment plans, invoices). */
+  portalLoginUrl: string;
   /** Staging/demo only (NEXT_PUBLIC_BOOKING_OTP_HINT): the fixed code shown next to the OTP field while SMS is in dry-run. */
   otpHint: string;
   dayNames: Record<string, string>;

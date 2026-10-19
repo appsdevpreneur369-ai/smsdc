@@ -363,7 +363,10 @@
     "status_NO_SHOW": "Missed",
     "savedToAccount": "This appointment is saved in My appointments.",
     "viewAppointments": "View my appointments",
-    "refresh": "Refresh"
+    "refresh": "Refresh",
+    "recordsTitle": "Prescriptions, treatment plans & invoices",
+    "recordsBody": "Your prescriptions, treatment plans with estimates, and invoices are in your secure patient portal. Sign in there with the same email and password.",
+    "recordsCta": "Open my health records"
   },
   "seo": {
     "doctorAt": "{{name}} sees patients at {{clinic}}, {{area}}.",

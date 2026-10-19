@@ -171,7 +171,7 @@ export const RoutingSchema = z.object({
 export const BookingSchema = z.object({
   status: Status,
   mode: z.enum(['clinicflow', 'enquiry', 'whatsapp']),
-  clinicflow: z.object({ apiBaseUrl: z.string(), clinicSlug: z.string(), clinicId: z.string() }),
+  clinicflow: z.object({ apiBaseUrl: z.string(), clinicSlug: z.string(), clinicId: z.string(), portalBaseUrl: z.string().url() }),
   advanceDays: z.number().int().min(1).max(180),
   otpResendSeconds: z.number().int().min(10).max(300),
   allowDirectSpecialistBooking: z.boolean().default(true),

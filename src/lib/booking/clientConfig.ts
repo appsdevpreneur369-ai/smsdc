@@ -61,6 +61,7 @@ export function bookingClientConfig(lang: Lang): BookingClientConfig {
     strings: dict.bookingForm as Record<string, string>,
     accountStrings: dict.account as Record<string, string>,
     accountHref: localePath(lang, '/account'),
+    portalLoginUrl: `${api.portalBaseUrl}/clinic/${encodeURIComponent(api.clinicSlug)}/login`,
     otpHint: (process.env.NEXT_PUBLIC_BOOKING_OTP_HINT ?? '').trim(),
     dayNames: Object.fromEntries(DAYS.map((d) => [d, t(dict, `days.${d}`)])),
   };

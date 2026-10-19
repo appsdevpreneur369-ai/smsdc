@@ -7,5 +7,6 @@ export function clinicflowApiConfig() {
     baseUrl: (process.env.NEXT_PUBLIC_CLINICFLOW_API_URL || booking.clinicflow.apiBaseUrl).replace(/\/$/, ''),
     clinicSlug: process.env.NEXT_PUBLIC_CLINICFLOW_CLINIC_SLUG || booking.clinicflow.clinicSlug,
     clinicId: process.env.NEXT_PUBLIC_CLINICFLOW_CLINIC_ID || booking.clinicflow.clinicId,
+    portalBaseUrl: (process.env.NEXT_PUBLIC_CLINICFLOW_PORTAL_URL || booking.clinicflow.portalBaseUrl).replace(/\/$/, ''),
   };
 }
