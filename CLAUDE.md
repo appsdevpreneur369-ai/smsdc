@@ -86,7 +86,8 @@ History (staging):
 | 2026-09-28 | `6d05467` | `smsdc-frontend-staging-00007-8xt` | `consultSlotMinutes` 15 (ClinicFlow staging doctors also set to 15 min). Live: 15-min slots (Dr. Suhasini 28 on a weekday, consultants 12); account booking 5:15–5:30 PM CONFIRMED, then cancelled. |
 | 2026-09-29 | `2dd5b51` | `smsdc-frontend-staging-00008-z5q` | Clinic photos + /gallery (filters, lightbox), home strip, About photos, poster article; SEO pass (titles, descriptions, headings, image sitemap, JSON-LD); lazy popup/mobile menu; CLS + contrast fixes. |
 | 2026-09-29 | `a967f99` | `smsdc-frontend-staging-00009-msz` | JSON-LD validator fixes (IndividualPhysician + practicesAt, knowsLanguage). schema.org validator 0 errors / 0 warnings on home, doctor, gallery. |
-| 2026-10-19 | `1a2bde1` | `smsdc-frontend-staging-00010-pnp` | My account: "Prescriptions, treatment plans & invoices" card → the clinic's ClinicFlow portal sign-in (EN + TE); `NEXT_PUBLIC_CLINICFLOW_PORTAL_URL` = staging portal. Pages 200, no ERROR logs. **Current.** |
+| 2026-10-19 | `1a2bde1` | `smsdc-frontend-staging-00010-pnp` | My account: "Prescriptions, treatment plans & invoices" card → the clinic's ClinicFlow portal sign-in (EN + TE); `NEXT_PUBLIC_CLINICFLOW_PORTAL_URL` = staging portal. Pages 200, no ERROR logs. |
+| 2026-10-20 | `556525c` + `a480967` | `smsdc-frontend-staging-00012-7pd` | Owner approved the content: every record `approved` (no Draft badges / legal draft notes), footer draft notice now follows the i18n `_meta.status`; gallery minus "Treatment room with two dental chairs" + "Dental chair, side view" (still on Home/About); Dr. Suhasini BDS (EN+TE). 18 pages 200, 0 draft markers. **Current.** |
 
 Redeploy staging (all NEXT_PUBLIC_* values are baked in at build time):
 
