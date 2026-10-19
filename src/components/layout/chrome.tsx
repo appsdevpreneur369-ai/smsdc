@@ -118,6 +118,7 @@ export function FloatingActions({ lang }: { lang: Lang }) {
 
 export function Footer({ lang }: { lang: Lang }) {
   const dict = getDict(lang);
+  const dictDraft = (dict as { _meta?: { status?: string } })._meta?.status === 'placeholder';
   const year = new Date().getFullYear();
   const dayName = (d: string) => t(dict, `days.short.${d}`);
   return (
@@ -206,7 +207,9 @@ export function Footer({ lang }: { lang: Lang }) {
             ))}
           </ul>
         </div>
-        {(showPlaceholderBadges || lang === 'te') && (
+        {/* Draft notice only while this language's strings are still placeholders (content/i18n/<lang>.json _meta.status):
+            once the clinic approves the content it disappears, with or without the staging badge flag. */}
+        {dictDraft && (showPlaceholderBadges || lang === 'te') && (
           <div className="container pb-6 text-xs">
             <DraftBadge status="placeholder" lang={lang} className="mr-2" onDark />
             {showPlaceholderBadges && t(dict, 'footer.placeholderNote')} {lang === 'te' && t(dict, 'lang.draftNote')}
