@@ -1,5 +1,5 @@
 {
-  "status": "placeholder",
+  "status": "approved",
   "_note": "Per-page SEO title/description and page header (eyebrow, heading, intro). {{area}} = clinic.serviceAreas.primary, {{nearby}} = nearby areas, {{clinic}} = display name.",
   "home": {
     "title": { "en": "Dentist in {{area}} | {{shortName}} & Implant Centre" },
@@ -13,7 +13,7 @@
     "intro": { "en": "A neighbourhood dental clinic and implant centre in {{area}}, bringing specialist care close to home." },
     "story": [
       { "en": "Suhasini Dental Clinic and Implant Centre was built around a simple idea: people should be able to get complete, specialist dental care close to home, from a team that listens and explains." },
-      { "en": "The clinic is led by Dr. Suhasini, MDS, who has over 20 years of clinical experience across preventive, restorative, cosmetic and surgical dentistry. She works alongside MDS specialists in gum care, root canal treatment, oral and maxillofacial surgery, implants and dentures, and orthodontics — so most treatment can be planned and completed in one familiar place." },
+      { "en": "The clinic is led by Dr. Suhasini, BDS, who has over 20 years of clinical experience across preventive, restorative, cosmetic and surgical dentistry. She works alongside MDS specialists in gum care, root canal treatment, oral and maxillofacial surgery, implants and dentures, and orthodontics — so most treatment can be planned and completed in one familiar place." },
       { "en": "We welcome patients from {{area}} and nearby areas including {{nearby}}, and we're happy to talk with you in English or Telugu." }
     ],
     "values": [

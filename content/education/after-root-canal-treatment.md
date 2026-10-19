@@ -1,6 +1,6 @@
 ---
 slug: after-root-canal-treatment
-status: placeholder
+status: approved
 order: 3
 title: After root canal treatment
 title_te: రూట్ కెనాల్ చికిత్స తర్వాత

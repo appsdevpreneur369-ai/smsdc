@@ -1,5 +1,5 @@
 {
-  "status": "placeholder",
+  "status": "approved",
   "_note": "General clinic FAQs (shown on Home and /faqs). Treatment-specific FAQs live with each category in services.json and are also listed on /faqs. 'home: true' puts a question on the Home page.",
   "faqs": [
     {

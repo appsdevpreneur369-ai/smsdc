@@ -1,6 +1,6 @@
 ---
 slug: caring-for-dentures
-status: placeholder
+status: approved
 order: 5
 title: Caring for your dentures
 title_te: కట్టుడు పళ్ళ సంరక్షణ

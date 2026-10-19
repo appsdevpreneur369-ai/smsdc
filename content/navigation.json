@@ -1,5 +1,5 @@
 {
-  "status": "placeholder",
+  "status": "approved",
   "_note": "Labels come from i18n/<lang>.json by key. Order = display order.",
   "topBarMessage": "topbar.message",
   "header": [

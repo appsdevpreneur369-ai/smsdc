@@ -1,5 +1,5 @@
 {
-  "status": "placeholder",
+  "status": "approved",
   "slug": "suhasini-dental-clinic",
   "siteUrl": "https://suhasini.clinicflow247.com",
   "officialName": "Suhasini Dental Clinic and Implant Centre",
@@ -16,7 +16,7 @@
     "te": "మీ దంతాల సంరక్షణ మా బాధ్యత"
   },
   "description": {
-    "en": "A dental clinic and implant centre in Tadepalle, Andhra Pradesh, led by Dr. Suhasini, MDS, with a team of specialists in gum care, root canal treatment, oral surgery, implants, dentures and orthodontics."
+    "en": "A dental clinic and implant centre in Tadepalle, Andhra Pradesh, led by Dr. Suhasini, BDS, with a team of specialists in gum care, root canal treatment, oral surgery, implants, dentures and orthodontics."
   },
   "clinicHead": "dr-suhasini",
   "phone": {
@@ -37,7 +37,7 @@
     "countryName": "India"
   },
   "geo": {
-    "status": "placeholder",
+    "status": "approved",
     "lat": 16.4812,
     "lng": 80.6006,
     "_note": "Approximate centre of Tadepalle, not the clinic's exact pin. Replace with the coordinates of the Google Maps listing."
@@ -134,7 +134,7 @@
     "en": "Specialist consultations are held Monday to Friday evenings. Please book or call ahead."
   },
   "serviceAreas": {
-    "status": "placeholder",
+    "status": "approved",
     "primary": "Tadepalle",
     "nearby": [
       "Undavalli",

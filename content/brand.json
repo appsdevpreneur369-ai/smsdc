@@ -1,5 +1,5 @@
 {
-  "status": "placeholder",
+  "status": "approved",
   "_note": "Palette sampled from the clinic's logo (logo.png, 27 Sep 2026): outline teal #08495F, root teal #197D98 (darkened to #157890 for WCAG AA), smile gold #D1AA5B. Colours become CSS variables that feed the Tailwind theme. Gold and aqua fail WCAG AA as text on light backgrounds: decoration only, or on the dark colours. accentText is the AA-safe gold for text on light backgrounds.",
   "colors": {
     "primary": "#157890",

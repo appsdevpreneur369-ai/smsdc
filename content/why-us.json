@@ -1,5 +1,5 @@
 {
-  "status": "placeholder",
+  "status": "approved",
   "_note": "reasons = 'Why choose us' cards. steps map to walkwell.json processSteps[]. No invented statistics or awards.",
   "reasons": [
     {
@@ -10,7 +10,7 @@
     {
       "icon": "award",
       "title": { "en": "Led by an experienced surgeon", "te": "అనుభవజ్ఞులైన సర్జన్ నేతృత్వం" },
-      "text": { "en": "Dr. Suhasini, MDS, brings more than 20 years of clinical experience to planning your care." }
+      "text": { "en": "Dr. Suhasini, BDS, brings more than 20 years of clinical experience to planning your care." }
     },
     {
       "icon": "hand-coins",

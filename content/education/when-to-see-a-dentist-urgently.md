@@ -1,6 +1,6 @@
 ---
 slug: when-to-see-a-dentist-urgently
-status: placeholder
+status: approved
 order: 6
 title: When to see a dentist urgently
 title_te: వెంటనే డెంటిస్ట్‌ను ఎప్పుడు కలవాలి

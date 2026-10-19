@@ -1,5 +1,5 @@
 {
-  "status": "placeholder",
+  "status": "approved",
   "_note": "Tokens: {{doctorCount}}, {{categoryCount}}, {{area}} are filled from the other content files so numbers never drift. Link hrefs: a site path like '/book', or '@call' / '@whatsapp'.",
   "hero": {
     "badge": {
@@ -15,8 +15,8 @@
       "te": "ప్రతి చిరునవ్వుకు."
     },
     "text": {
-      "en": "From routine check-ups to implants, braces and oral surgery — {{doctorCount}} specialists under one roof in {{area}}, led by Dr. Suhasini, MDS.",
-      "te": "సాధారణ చెకప్ నుండి ఇంప్లాంట్స్, బ్రేసెస్, నోటి శస్త్రచికిత్స వరకు — డా. సుహాసిని, MDS నేతృత్వంలో ఒకే చోట {{doctorCount}} మంది నిపుణులు."
+      "en": "From routine check-ups to implants, braces and oral surgery — {{doctorCount}} specialists under one roof in {{area}}, led by Dr. Suhasini, BDS.",
+      "te": "సాధారణ చెకప్ నుండి ఇంప్లాంట్స్, బ్రేసెస్, నోటి శస్త్రచికిత్స వరకు — డా. సుహాసిని, BDS నేతృత్వంలో ఒకే చోట {{doctorCount}} మంది నిపుణులు."
     },
     "primaryCta": {
       "label": {
@@ -121,7 +121,7 @@
     },
     "paragraphs": [
       {
-        "en": "Suhasini Dental Clinic and Implant Centre is led by Dr. Suhasini, MDS, an oral and maxillofacial surgeon with more than 20 years of experience. Alongside her, a team of MDS specialists covers every stage of dental care."
+        "en": "Suhasini Dental Clinic and Implant Centre is led by Dr. Suhasini, BDS, an oral and maxillofacial surgeon with more than 20 years of experience. Alongside her, a team of MDS specialists covers every stage of dental care."
       },
       {
         "en": "We take time to listen, explain your options clearly and treat you gently — whether you need a simple filling, a new smile or surgery."

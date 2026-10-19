@@ -1,5 +1,5 @@
 {
-  "status": "placeholder",
+  "status": "approved",
   "_note": "Booking popup + form. See docs/BOOKING.md. mode = preferred mode; the site falls back automatically clinicflow → enquiry → whatsapp when a mode is unavailable (clinic not found on ClinicFlow247, CORS not allowed, API down). It never shows a success the API did not return.",
   "mode": "clinicflow",
   "clinicflow": {

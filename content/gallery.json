@@ -1,5 +1,5 @@
 {
-  "status": "placeholder",
+  "status": "approved",
   "_note": "Display order of the /gallery page (image ids from images.json; each needs caption + category there). Filter chips come from `categories` and only show when a category has photos. Wanted: reception/waiting area, sterilisation area, team photo (with consent). Before/after photos ONLY with written patient consent.",
   "categories": [
     {
@@ -26,9 +26,7 @@
   ],
   "items": [
     "clinic-entrance",
-    "clinic-treatment-room",
     "clinic-dental-chair",
-    "clinic-dental-chair-side",
     "services-banner",
     "poster-healthy-gums"
   ]

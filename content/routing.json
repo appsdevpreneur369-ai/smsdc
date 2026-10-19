@@ -1,5 +1,5 @@
 {
-  "status": "placeholder",
+  "status": "approved",
   "_note": "The 'What's troubling you?' picker. doctors = recommended doctors in order. When booking.allowDirectSpecialistBooking is false every problem routes to booking.defaultDoctor first. 'mode: any' means any listed doctor (e.g. the next available surgeon).",
   "problems": [
     {

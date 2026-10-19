@@ -1,6 +1,6 @@
 ---
 slug: healthy-gums-healthy-heart
-status: placeholder
+status: approved
 order: 1
 title: Healthy Gums, Healthy Heart
 title_te: ఆరోగ్యకరమైన చిగుళ్ళు, ఆరోగ్యకరమైన గుండె

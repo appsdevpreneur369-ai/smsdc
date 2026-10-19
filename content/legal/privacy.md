@@ -1,6 +1,6 @@
 ---
 slug: privacy
-status: placeholder
+status: approved
 title: Privacy Policy
 description: How {{clinic}} collects, uses and protects your personal data, in line with India's Digital Personal Data Protection Act, 2023.
 lastUpdated: 2026-09-27

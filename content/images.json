@@ -35,7 +35,7 @@
       "licence": "Clinic's own logo"
     },
     "hero-smile": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/hero-smile.svg",
       "width": 640,
       "height": 640,
@@ -47,7 +47,7 @@
       "licence": "Owned by the clinic"
     },
     "about-clinic": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/about-clinic.svg",
       "width": 720,
       "height": 640,
@@ -59,7 +59,7 @@
       "licence": "Owned by the clinic"
     },
     "service-general": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/services/general.svg",
       "width": 800,
       "height": 600,
@@ -70,7 +70,7 @@
       "licence": "Owned by the clinic"
     },
     "service-root-canal": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/services/root-canal.svg",
       "width": 800,
       "height": 600,
@@ -81,7 +81,7 @@
       "licence": "Owned by the clinic"
     },
     "service-implants": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/services/implants.svg",
       "width": 800,
       "height": 600,
@@ -92,7 +92,7 @@
       "licence": "Owned by the clinic"
     },
     "service-orthodontics": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/services/orthodontics.svg",
       "width": 800,
       "height": 600,
@@ -103,7 +103,7 @@
       "licence": "Owned by the clinic"
     },
     "service-oral-surgery": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/services/oral-surgery.svg",
       "width": 800,
       "height": 600,
@@ -114,7 +114,7 @@
       "licence": "Owned by the clinic"
     },
     "service-hygiene": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/services/hygiene.svg",
       "width": 800,
       "height": 600,
@@ -125,7 +125,7 @@
       "licence": "Owned by the clinic"
     },
     "service-dentures": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/services/dentures.svg",
       "width": 800,
       "height": 600,
@@ -136,7 +136,7 @@
       "licence": "Owned by the clinic"
     },
     "service-cosmetic": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/services/cosmetic.svg",
       "width": 800,
       "height": 600,
@@ -147,7 +147,7 @@
       "licence": "Owned by the clinic"
     },
     "service-gum-care": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/services/gum-care.svg",
       "width": 800,
       "height": 600,
@@ -158,7 +158,7 @@
       "licence": "Owned by the clinic"
     },
     "faq-panel": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/faq-panel.svg",
       "width": 560,
       "height": 640,
@@ -169,7 +169,7 @@
       "licence": "Owned by the clinic"
     },
     "clinic-entrance": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/gallery/suhasini-dental-clinic-tadepalle-entrance.jpg",
       "width": 1600,
       "height": 1200,
@@ -191,7 +191,7 @@
       "licence": "Clinic's own photo"
     },
     "clinic-treatment-room": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/gallery/suhasini-dental-clinic-treatment-room.jpg",
       "width": 1218,
       "height": 912,
@@ -213,7 +213,7 @@
       "licence": "Clinic's own photo"
     },
     "clinic-dental-chair": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/gallery/suhasini-dental-clinic-dental-chair.jpg",
       "width": 1600,
       "height": 1200,
@@ -234,7 +234,7 @@
       "licence": "Clinic's own photo"
     },
     "clinic-dental-chair-side": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/gallery/suhasini-dental-clinic-dental-chair-side-view.jpg",
       "width": 1600,
       "height": 1200,
@@ -255,7 +255,7 @@
       "licence": "Clinic's own photo"
     },
     "services-banner": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/gallery/suhasini-dental-care-services-banner.jpg",
       "width": 1600,
       "height": 1200,
@@ -276,7 +276,7 @@
       "licence": "Clinic's own poster"
     },
     "poster-healthy-gums": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/gallery/healthy-gums-healthy-heart-poster.jpg",
       "width": 1400,
       "height": 1421,
@@ -297,7 +297,7 @@
       "licence": "Clinic's own poster"
     },
     "poster-healthy-gums-og": {
-      "status": "placeholder",
+      "status": "approved",
       "src": "/images/gallery/healthy-gums-healthy-heart-og.jpg",
       "width": 1200,
       "height": 630,

@@ -1,6 +1,6 @@
 ---
 slug: disclaimer
-status: placeholder
+status: approved
 title: Medical Disclaimer
 description: The information on the {{clinic}} website is general education, not personal medical advice.
 lastUpdated: 2026-09-27

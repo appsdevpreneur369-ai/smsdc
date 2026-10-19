@@ -1,6 +1,6 @@
 ---
 slug: aftercare-tooth-extraction
-status: placeholder
+status: approved
 order: 2
 title: Aftercare after a tooth extraction
 title_te: పన్ను తీసిన తర్వాత జాగ్రత్తలు

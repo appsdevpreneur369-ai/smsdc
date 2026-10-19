@@ -1,5 +1,5 @@
 {
-  "status": "placeholder",
+  "status": "approved",
   "_note": "Never add invented reviews. Until a Google Places API key is configured (GOOGLE_PLACES_API_KEY + placeId) the site shows a card linking to the Maps listing. rating/reviewCount stay null until real values are known.",
   "googleMapsUrl": "https://maps.app.goo.gl/ZFB415YP6BEBrrxV8",
   "writeReviewUrl": "",

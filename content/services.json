@@ -7,7 +7,7 @@
   "categories": [
     {
       "slug": "general-dentistry",
-      "status": "placeholder",
+      "status": "approved",
       "title": { "en": "General Dentistry", "te": "సాధారణ దంత వైద్యం" },
       "bannerName": "Dental Treatment",
       "icon": "stethoscope",
@@ -62,7 +62,7 @@
     },
     {
       "slug": "root-canal-treatment",
-      "status": "placeholder",
+      "status": "approved",
       "title": { "en": "Root Canal Treatment", "te": "రూట్ కెనాల్ చికిత్స" },
       "bannerName": "Root Canal Treatment",
       "icon": "tooth-root",
@@ -111,7 +111,7 @@
     },
     {
       "slug": "dental-implants",
-      "status": "placeholder",
+      "status": "approved",
       "title": { "en": "Dental Implants", "te": "డెంటల్ ఇంప్లాంట్స్" },
       "bannerName": "Dental Implants",
       "icon": "implant",
@@ -171,7 +171,7 @@
     },
     {
       "slug": "orthodontics",
-      "status": "placeholder",
+      "status": "approved",
       "title": { "en": "Orthodontics — Braces & Aligners", "te": "బ్రేసెస్ & అలైనర్స్" },
       "bannerName": "Orthodontics",
       "icon": "braces",
@@ -226,7 +226,7 @@
     },
     {
       "slug": "oral-surgery",
-      "status": "placeholder",
+      "status": "approved",
       "title": { "en": "Oral & Dental Surgery", "te": "నోటి శస్త్రచికిత్స" },
       "bannerName": "Dental Surgery",
       "icon": "surgery",
@@ -283,7 +283,7 @@
     },
     {
       "slug": "oral-hygiene",
-      "status": "placeholder",
+      "status": "approved",
       "title": { "en": "Oral Hygiene & Prevention", "te": "నోటి పరిశుభ్రత" },
       "bannerName": "Oral Hygiene",
       "icon": "toothbrush-sparkles",
@@ -331,7 +331,7 @@
     },
     {
       "slug": "dentures",
-      "status": "placeholder",
+      "status": "approved",
       "title": { "en": "Dentures", "te": "కట్టుడు పళ్ళు" },
       "bannerName": "Dentures",
       "icon": "denture",
@@ -379,7 +379,7 @@
     },
     {
       "slug": "cosmetic-dentistry",
-      "status": "placeholder",
+      "status": "approved",
       "title": { "en": "Cosmetic Dentistry", "te": "సౌందర్య దంత వైద్యం" },
       "bannerName": "Cosmetic Dentistry",
       "icon": "sparkles",
@@ -439,7 +439,7 @@
     },
     {
       "slug": "gum-care",
-      "status": "placeholder",
+      "status": "approved",
       "title": { "en": "Periodontology (Gum Care)", "te": "చిగుళ్ళ చికిత్స" },
       "bannerName": "Gum Care",
       "icon": "gum",

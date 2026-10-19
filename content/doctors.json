@@ -4,12 +4,12 @@
   "doctors": [
     {
       "slug": "dr-suhasini",
-      "status": "placeholder",
+      "status": "approved",
       "firstName": "Suhasini",
       "lastName": "",
       "displayName": "Dr. Suhasini",
       "initials": "S",
-      "qualification": "MDS",
+      "qualification": "BDS",
       "speciality": {
         "en": "Oral & Maxillofacial Surgeon · Clinic Head",
         "te": "నోటి మరియు దవడ శస్త్రచికిత్స నిపుణులు · క్లినిక్ హెడ్"
@@ -22,7 +22,7 @@
       },
       "bio": {
         "en": [
-          "Dr. Suhasini is an MDS-qualified dental surgeon with over 20 years of clinical experience in comprehensive dental care. With a strong focus on patient comfort, precision and personalised treatment, she has helped patients of all ages achieve and keep healthy, confident smiles.",
+          "Dr. Suhasini is an BDS-qualified dental surgeon with over 20 years of clinical experience in comprehensive dental care. With a strong focus on patient comfort, precision and personalised treatment, she has helped patients of all ages achieve and keep healthy, confident smiles.",
           "Her experience spans routine preventive and restorative care through to advanced dental and surgical procedures. She believes in understanding each patient's needs and treating them with a gentle, ethical, patient-centred approach, and she keeps up with modern advances so every visit is comfortable, transparent and stress-free."
         ]
       },
@@ -46,7 +46,7 @@
     },
     {
       "slug": "dr-sindhu",
-      "status": "placeholder",
+      "status": "approved",
       "firstName": "Sindhu",
       "lastName": "",
       "displayName": "Dr. Sindhu",
@@ -74,7 +74,7 @@
     },
     {
       "slug": "dr-preethi",
-      "status": "placeholder",
+      "status": "approved",
       "firstName": "Preethi",
       "lastName": "",
       "displayName": "Dr. Preethi",
@@ -102,7 +102,7 @@
     },
     {
       "slug": "dr-naveen-kumar",
-      "status": "placeholder",
+      "status": "approved",
       "firstName": "Naveen",
       "lastName": "Kumar",
       "displayName": "Dr. Naveen Kumar",
@@ -130,7 +130,7 @@
     },
     {
       "slug": "dr-varun-krishna",
-      "status": "placeholder",
+      "status": "approved",
       "firstName": "Varun",
       "lastName": "Krishna",
       "displayName": "Dr. Varun Krishna",
@@ -158,7 +158,7 @@
     },
     {
       "slug": "dr-phani",
-      "status": "placeholder",
+      "status": "approved",
       "firstName": "Phani",
       "lastName": "",
       "displayName": "Dr. Phani",
@@ -186,7 +186,7 @@
     },
     {
       "slug": "dr-praveen",
-      "status": "placeholder",
+      "status": "approved",
       "firstName": "Praveen",
       "lastName": "",
       "displayName": "Dr. Praveen",

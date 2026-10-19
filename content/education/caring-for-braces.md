@@ -1,6 +1,6 @@
 ---
 slug: caring-for-braces
-status: placeholder
+status: approved
 order: 4
 title: Caring for your braces
 title_te: బ్రేసెస్ సంరక్షణ
