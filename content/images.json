@@ -190,28 +190,6 @@
       "source": "Clinic-supplied photo (SMSDC-Images, 28 Sep 2026); resized, metadata stripped (npm run photos)",
       "licence": "Clinic's own photo"
     },
-    "clinic-treatment-room": {
-      "status": "approved",
-      "src": "/images/gallery/suhasini-dental-clinic-treatment-room.jpg",
-      "width": 1218,
-      "height": 912,
-      "alt": {
-        "en": "Treatment room at Suhasini Dental Clinic with two dental chairs and overhead lights",
-        "te": "సుహాసిని డెంటల్ క్లినిక్‌లో రెండు డెంటల్ కుర్చీలు ఉన్న చికిత్స గది"
-      },
-      "caption": {
-        "en": "Treatment room with two dental chairs",
-        "te": "రెండు డెంటల్ కుర్చీలతో చికిత్స గది"
-      },
-      "category": "clinic",
-      "placement": [
-        "gallery",
-        "home",
-        "about"
-      ],
-      "source": "Clinic-supplied photo (SMSDC-Images, 28 Sep 2026); resized, metadata stripped (npm run photos)",
-      "licence": "Clinic's own photo"
-    },
     "clinic-dental-chair": {
       "status": "approved",
       "src": "/images/gallery/suhasini-dental-clinic-dental-chair.jpg",
@@ -233,25 +211,26 @@
       "source": "Clinic-supplied photo (SMSDC-Images, 28 Sep 2026); resized, metadata stripped (npm run photos)",
       "licence": "Clinic's own photo"
     },
-    "clinic-dental-chair-side": {
+    "dr-suhasini-treating": {
       "status": "approved",
-      "src": "/images/gallery/suhasini-dental-clinic-dental-chair-side-view.jpg",
-      "width": 1600,
-      "height": 1200,
+      "src": "/images/gallery/dr-suhasini-treating-a-patient.jpg",
+      "width": 720,
+      "height": 1432,
       "alt": {
-        "en": "Side view of a dental chair and its treatment light at Suhasini Dental Clinic",
-        "te": "సుహాసిని డెంటల్ క్లినిక్‌లో డెంటల్ కుర్చీ పక్క నుండి దృశ్యం"
+        "en": "Dr. Suhasini examining a patient's teeth at Suhasini Dental Clinic",
+        "te": "సుహాసిని డెంటల్ క్లినిక్‌లో రోగి దంతాలను పరీక్షిస్తున్న డా. సుహాసిని"
       },
       "caption": {
-        "en": "Dental chair, side view",
-        "te": "డెంటల్ కుర్చీ – పక్క నుండి"
+        "en": "Dr. Suhasini with a patient",
+        "te": "రోగితో డా. సుహాసిని"
       },
       "category": "clinic",
       "placement": [
         "gallery",
-        "home"
+        "home",
+        "about"
       ],
-      "source": "Clinic-supplied photo (SMSDC-Images, 28 Sep 2026); resized, metadata stripped (npm run photos)",
+      "source": "Clinic-supplied photo (SMSDC-Images/suhasini-treating-patient.jpeg, 20 Oct 2026); black bars trimmed, resized, metadata stripped (npm run photos)",
       "licence": "Clinic's own photo"
     },
     "services-banner": {

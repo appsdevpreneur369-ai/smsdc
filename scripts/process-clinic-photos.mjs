@@ -20,10 +20,9 @@ fs.mkdirSync(outDir, { recursive: true });
 /** source file → output name; `extract` crops a region first (px of the source). */
 const PHOTOS = [
   { src: 'Suhasini_Dental_Clinic_Gallery_4.jpg', out: 'suhasini-dental-clinic-tadepalle-entrance.jpg' },
-  // The supplied image has a white band under the photo: keep only the photo itself.
-  { src: 'Suhasini_Dental_Clinic_Gallery_1.jpg', out: 'suhasini-dental-clinic-treatment-room.jpg', extract: { left: 190, top: 62, width: 1218, height: 912 } },
   { src: 'Suhasini_Dental_Clinic_Gallery_2.jpg', out: 'suhasini-dental-clinic-dental-chair.jpg' },
-  { src: 'Suhasini_Dental_Clinic_Gallery_3.jpg', out: 'suhasini-dental-clinic-dental-chair-side-view.jpg' },
+  // Phone photo: trim the black bars above and below the picture.
+  { src: 'suhasini-treating-patient.jpeg', out: 'dr-suhasini-treating-a-patient.jpg', extract: { left: 0, top: 84, width: 720, height: 1432 } },
   { src: 'suhasini-dental-care-services-banner.jpg', out: 'suhasini-dental-care-services-banner.jpg' },
   { src: 'Healthy_Gums_Healthy_Heart.png', out: 'healthy-gums-healthy-heart-poster.jpg', quality: 72, width: 1400 },
   // Open Graph card for the article: the poster's headline, 1200×630.
