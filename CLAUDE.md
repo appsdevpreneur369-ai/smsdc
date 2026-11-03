@@ -109,3 +109,5 @@ gcloud run deploy smsdc-frontend-staging --project sincere-stock-499113-f1 --reg
 ```
 
 Then: curl `/`, `/doctors`, `/treatments` (308 → `/services`), `/book`, `/account`, `/contact`, `/og?title=x` and check zero ERROR logs for the new revision.
+
+| 2026-11-03 | `c5c4f95` | `smsdc-frontend-staging-00015-8vj` | Owner: no draft markers before handover. Telugu `lang.draftNote` (machine-translation note in the phone menu) emptied; new `cloudbuild.staging.yaml` with `NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES=false`. 76 pages 200, 0 markers. First Cloud Build failed in next/font (Google Fonts fetch, transient) — retry OK. Rollback `00013-v77`. |
