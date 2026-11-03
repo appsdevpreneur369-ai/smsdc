@@ -1,0 +1,294 @@
+{
+  "_note": "PRODUCTION tenant config for Suhasini Dental Clinic and Implant Centre (owner approved 3 Nov 2026, live with placeholders). Copied from clinicflow-api branch chore/smsdc-staging-tenant-config + the corrections made on staging (Dr. Suhasini is BDS; description). Used by scripts/prod/setup-production.py.",
+  "clinic": {
+    "name": "Suhasini Dental Clinic and Implant Centre",
+    "address": "Aravinda High School Road, Tadepalle, Andhra Pradesh 522501",
+    "city": "Tadepalle",
+    "country": "India",
+    "phone": "+919441411629",
+    "email": "dr.suhasini.mds@gmail.com",
+    "_note_email": "Clinic contact email shown on the public site only. Verified in the API source: clinic.email is never used as a notification recipient (only a display/contact fallback), so staging test bookings cannot mail the real clinic.",
+    "plan": "ENTERPRISE",
+    "slug": "suhasini-dental-clinic-and-implant-centre",
+    "_note_slug": "Passed explicitly to POST /clinics (CreateClinicRequest.slug) so the result is exactly this string; an explicit slug collision returns CLINIC_SLUG_TAKEN rather than auto-suffixing. Not taken on staging as of 27 Sep 2026 (GET /clinics/public/<slug> -> 404).",
+    "whiteLabel": true,
+    "appTitle": "Suhasini Dental Clinic & Implant Centre",
+    "logoUrl": null,
+    "faviconUrl": null,
+    "_note_logo": "No logo asset yet (SMSDC_PendingItems.md 5.1). Left null so the importer's unconditional PUT doesn't point at a non-existent file.",
+    "themeTokens": {
+      "primaryColor": "#087F8C",
+      "primaryHoverColor": "#076E7A",
+      "primaryPressedColor": "#065F69",
+      "primaryDisabledColor": "#9CCCD1",
+      "secondaryColor": "#56C5C0",
+      "secondaryHoverColor": "#4BABA7",
+      "accentColor": "#E7B85C",
+      "backgroundColor": "#F8FBFA",
+      "surfaceColor": "#FFFFFF",
+      "textColor": "#263238",
+      "textSecondaryColor": "#607D8B",
+      "borderColor": "#E0ECEA",
+      "successColor": "#16A34A",
+      "warningColor": "#F59E0B",
+      "errorColor": "#DC2626",
+      "fontBody": "Manrope",
+      "fontHeading": "Poppins",
+      "taglineText": "We take care of your Teeth",
+      "taglineColor": "#087F8C"
+    },
+    "_note_themeTokens": "Primary/secondary/accent/background/text/fonts from the content file's brand section. Hover/pressed/disabled shades derived (13%/25% darker, 60% tint); surface/border/status colours are platform-style defaults. WCAG check: primary #087F8C on white 4.75:1 (passes AA for normal text, white-on-primary buttons also 4.75:1). Secondary #56C5C0 on white 2.07:1 and accent #E7B85C 1.84:1 FAIL for text -- decorative use only.",
+    "businessHours": [
+      {
+        "dayOfWeek": "Monday",
+        "opens": "10:00",
+        "closes": "14:00"
+      },
+      {
+        "dayOfWeek": "Monday",
+        "opens": "17:00",
+        "closes": "20:00"
+      },
+      {
+        "dayOfWeek": "Tuesday",
+        "opens": "10:00",
+        "closes": "14:00"
+      },
+      {
+        "dayOfWeek": "Tuesday",
+        "opens": "17:00",
+        "closes": "20:00"
+      },
+      {
+        "dayOfWeek": "Wednesday",
+        "opens": "10:00",
+        "closes": "14:00"
+      },
+      {
+        "dayOfWeek": "Wednesday",
+        "opens": "17:00",
+        "closes": "20:00"
+      },
+      {
+        "dayOfWeek": "Thursday",
+        "opens": "10:00",
+        "closes": "14:00"
+      },
+      {
+        "dayOfWeek": "Thursday",
+        "opens": "17:00",
+        "closes": "20:00"
+      },
+      {
+        "dayOfWeek": "Friday",
+        "opens": "10:00",
+        "closes": "14:00"
+      },
+      {
+        "dayOfWeek": "Friday",
+        "opens": "17:00",
+        "closes": "20:00"
+      },
+      {
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "14:00"
+      }
+    ],
+    "_note_businessHours": "Split hours are two entries for the same day (schema.org openingHoursSpecification allows this). Display-only: slot generation comes from each doctor's weekly schedule, not from these. Known cosmetic gap: the tenant contact page keys list items by dayOfWeek, so duplicate days raise a React key warning in the console (renders correctly). Sunday closed per content file [verify].",
+    "socialLinks": {
+      "whatsapp": "https://wa.me/919441411629"
+    },
+    "whatsappNumber": "+919441411629",
+    "customDomain": null,
+    "coverPhotoUrl": null,
+    "description": "Suhasini Dental Clinic and Implant Centre in Tadepalle is led by Dr. Suhasini, BDS, with over 20 years of clinical experience, and a team of six MDS specialists covering gum care, root canal treatment, oral surgery, implants, dentures and orthodontics. We take care of your teeth with gentle, ethical, patient-centred treatment."
+  },
+  "owner": {
+    "email": "appsdevpreneur369+smsdc-admin@gmail.com",
+    "password": null,
+    "firstName": "Suhasini",
+    "lastName": "BDS",
+    "phone": null,
+    "_note": "CLINIC_ADMIN login (placeholder plus-alias of the account owner's Gmail; invite email sets the password). Replace with the clinic's real email later."
+  },
+  "_note_doctorEmails": "Test aliases of the account owner's own inboxes (27 Sep 2026): Dr. Suhasini -> appsdevpreneur369+drsuhasini@gmail.com (the bare address already belongs to a non-doctor account on staging -> DOCTOR_EMAIL_WRONG_ROLE); the six consultants -> Gmail plus-aliases of appsdevpreneur247@gmail.com (the API requires a unique email per account; plus-aliases all land in the same inbox). Replace with the doctors' real emails after the demo.",
+  "_note_doctorNames": "The API requires a non-blank lastName and renders 'Dr. <firstName> <lastName>'. Five doctors have only one name in the content file. PLACEHOLDER: lastName = 'MDS' so they display as 'Dr. Sindhu MDS'. Replace with real surnames when known.",
+  "doctors": [
+    {
+      "email": "appsdevpreneur369+drsuhasini@gmail.com",
+      "password": null,
+      "firstName": "Suhasini",
+      "lastName": "BDS",
+      "phone": null,
+      "mciRegistrationNumber": "PENDING-VERIFICATION-SUHASINI",
+      "specialization": "Oral & Maxillofacial Surgeon · Clinic Head",
+      "qualification": "BDS",
+      "bio": "Dr. Suhasini is a BDS-qualified dental surgeon with over 20 years of clinical experience in comprehensive dental care. With a strong focus on patient comfort, precision and personalised treatment, she has helped patients of all ages achieve and keep healthy, confident smiles. Her experience spans routine preventive and restorative care through to advanced dental and surgical procedures. She believes in understanding each patient's needs and treating them with a gentle, ethical, patient-centred approach, and she keeps up with modern advances so every visit is comfortable, transparent and stress-free. Expertise: Comprehensive Dental Care, Preventive Dentistry, Restorative Dentistry, Cosmetic Dentistry, Oral Surgery, Advanced Dental Procedures.",
+      "isOwner": true
+    },
+    {
+      "email": "appsdevpreneur247+sindhu@gmail.com",
+      "password": null,
+      "firstName": "Sindhu",
+      "lastName": "MDS",
+      "phone": null,
+      "mciRegistrationNumber": "PENDING-VERIFICATION-SINDHU",
+      "specialization": "Periodontist (Gum Specialist)",
+      "qualification": "MDS",
+      "bio": "Specialises in the health of the gums and the bone that supports the teeth: gum disease, bleeding gums, deep cleaning and gum surgery."
+    },
+    {
+      "email": "appsdevpreneur247+preethi@gmail.com",
+      "password": null,
+      "firstName": "Preethi",
+      "lastName": "MDS",
+      "phone": null,
+      "mciRegistrationNumber": "PENDING-VERIFICATION-PREETHI",
+      "specialization": "Oral & Maxillofacial Surgeon",
+      "qualification": "MDS",
+      "bio": "Handles wisdom-tooth removal, surgical extractions and minor oral surgery, with a focus on safe, comfortable procedures."
+    },
+    {
+      "email": "appsdevpreneur247+naveen@gmail.com",
+      "password": null,
+      "firstName": "Naveen",
+      "lastName": "Kumar",
+      "phone": null,
+      "mciRegistrationNumber": "PENDING-VERIFICATION-NAVEEN",
+      "specialization": "Root Canal Specialist (Endodontist)",
+      "qualification": "MDS (Conservative Dentistry & Endodontics)",
+      "_note_qualification": "[assumed] in the content file -- confirm at the demo.",
+      "bio": "Focuses on saving natural teeth through painless, precise root canal treatment and re-treatment."
+    },
+    {
+      "email": "appsdevpreneur247+varun@gmail.com",
+      "password": null,
+      "firstName": "Varun",
+      "lastName": "Krishna",
+      "phone": null,
+      "mciRegistrationNumber": "PENDING-VERIFICATION-VARUN",
+      "specialization": "Oral & Maxillofacial Surgeon",
+      "qualification": "MDS",
+      "bio": "Treats wisdom teeth, jaw and facial-bone problems, and performs surgical extractions and implant-site preparation."
+    },
+    {
+      "email": "appsdevpreneur247+phani@gmail.com",
+      "password": null,
+      "firstName": "Phani",
+      "lastName": "MDS",
+      "phone": null,
+      "mciRegistrationNumber": "PENDING-VERIFICATION-PHANI",
+      "specialization": "Prosthodontist (Implants & Dentures)",
+      "qualification": "MDS",
+      "bio": "Restores missing and damaged teeth with implants, crowns, bridges and dentures designed for comfort and a natural look."
+    },
+    {
+      "email": "appsdevpreneur247+praveen@gmail.com",
+      "password": null,
+      "firstName": "Praveen",
+      "lastName": "MDS",
+      "phone": null,
+      "mciRegistrationNumber": "PENDING-VERIFICATION-PRAVEEN",
+      "specialization": "Orthodontist & Aligners Specialist",
+      "qualification": "MDS",
+      "bio": "Straightens crooked and protruding teeth with braces and clear aligners for children and adults."
+    }
+  ],
+  "_note_doctorsNotInImporter": "The importer does NOT set appointmentDurationMinutes (API default 15) or weekly schedules. Both are applied afterwards via the admin API: PUT /clinics/{id}/doctors/{doctorId} {appointmentDurationMinutes: 30}, then POST /clinics/{id}/doctors/{doctorId}/schedules per day. No photos: initials avatars per the content file.",
+  "heroBanners": [],
+  "_note_heroBanners": "None: no hero imagery supplied yet (SMSDC_PendingItems.md 5.3/5.4).",
+  "testimonials": [],
+  "_note_testimonials": "None by policy: testimonials are live Google reviews only [given]. Never invent reviews.",
+  "faqs": [
+    {
+      "question": "What are the clinic timings?",
+      "answer": "Monday to Friday, 10:00 AM – 2:00 PM and 5:00 PM – 8:00 PM. Saturday, 10:00 AM – 2:00 PM. Closed on Sunday."
+    },
+    {
+      "question": "How much does treatment cost?",
+      "answer": "Consultation required — we'll explain costs before starting any treatment."
+    },
+    {
+      "question": "Can I book directly with a specialist?",
+      "answer": "Yes. Choose the specialist for your concern when you book. If you're not sure who to see, book with Dr. Suhasini and she will guide you."
+    },
+    {
+      "question": "When are the specialists available?",
+      "answer": "Our six consultant specialists see patients Monday to Friday, 5:00 PM – 8:00 PM."
+    },
+    {
+      "question": "Where is the clinic?",
+      "answer": "Aravinda High School Road, Tadepalle, Andhra Pradesh 522501. Call or WhatsApp +91 94414 11629 for directions."
+    }
+  ],
+  "_note_faqs": "The content file has no FAQ section. These 5 are PLACEHOLDERS written only from facts already in SMSDC_Site_Content_v0.1.md (timings, no-prices policy, direct-specialist booking, consultant hours, address). No clinical claims.",
+  "processSteps": [],
+  "videos": [],
+  "treatments": [
+    {
+      "title": "General Dentistry",
+      "category": "Dental Treatment",
+      "description": "Dental consultation & check-up · Tooth-coloured fillings · Tooth sensitivity treatment · Emergency toothache care · Children's dental check-ups. With Dr. Suhasini. Consultation required — we'll explain costs before starting.",
+      "displayOrder": 0
+    },
+    {
+      "title": "Root Canal Treatment",
+      "category": "Dental Treatment",
+      "description": "Root canal treatment (usually 1–3 sittings) · Re-root canal treatment · Pulp therapy for children's teeth · Crown after root canal (with Dr. Phani). With Dr. Naveen Kumar. Consultation required — we'll explain costs before starting.",
+      "displayOrder": 1
+    },
+    {
+      "title": "Dental Implants",
+      "category": "Implants & Prosthetics",
+      "description": "Single-tooth implant (usually 2–3 stages over 3–6 months) · Multiple implants / implant-supported bridge · Full-arch implant solutions · Implant-supported dentures · Bone grafting & sinus lift (oral surgery team). With Dr. Phani. Consultation required — we'll explain costs before starting.",
+      "displayOrder": 2
+    },
+    {
+      "title": "Orthodontics",
+      "category": "Braces & Aligners",
+      "description": "Metal braces · Ceramic (tooth-coloured) braces · Clear aligners · Retainers · Early orthodontic check for children (7+ years). With Dr. Praveen. Consultation required — we'll explain costs before starting.",
+      "displayOrder": 3
+    },
+    {
+      "title": "Oral & Dental Surgery",
+      "category": "Dental Surgery",
+      "description": "Wisdom tooth removal · Surgical & complex extractions · Minor oral surgery (cysts, biopsies) · Jaw & facial bone injury management · Jaw joint (TMJ) pain consultation. With Dr. Varun Krishna, Dr. Preethi and Dr. Suhasini. Consultation required — we'll explain costs before starting.",
+      "displayOrder": 4
+    },
+    {
+      "title": "Oral Hygiene & Prevention",
+      "category": "Oral Hygiene",
+      "description": "Scaling & polishing · Fluoride application · Pit & fissure sealants for children · Bad-breath (halitosis) care & hygiene counselling. With Dr. Suhasini. Consultation required — we'll explain costs before starting.",
+      "displayOrder": 5
+    },
+    {
+      "title": "Dentures",
+      "category": "Implants & Prosthetics",
+      "description": "Complete dentures (usually 4–5 sittings) · Partial dentures · Flexible dentures · Denture repair & relining. With Dr. Phani. Consultation required — we'll explain costs before starting.",
+      "displayOrder": 6
+    },
+    {
+      "title": "Cosmetic Dentistry",
+      "category": "Cosmetic",
+      "description": "Teeth whitening · Smile makeover · Veneers & laminates (Dr. Phani) · Tooth-coloured bonding · Gum contouring (Dr. Sindhu). With Dr. Suhasini and Dr. Phani. Consultation required — we'll explain costs before starting.",
+      "displayOrder": 7
+    },
+    {
+      "title": "Periodontology (Gum Care)",
+      "category": "Gum Care",
+      "description": "Gum treatment / deep cleaning (scaling & root planing) · Gum surgery (flap surgery) · Gum depigmentation · Crown lengthening · Periodontal maintenance. With Dr. Sindhu. Consultation required — we'll explain costs before starting.",
+      "displayOrder": 8
+    }
+  ],
+  "_note_treatments": "The 9 categories from content file §4; sub-treatments folded into description (no sub-treatment entity in core). No prices by instruction [given]. No imageUrl yet.",
+  "contentPages": [],
+  "_note_contentPages": "No legal drafts exist yet under D:\\SMSDC (content file §7 says they are still to be written) -- omitted, not missed.",
+  "flags": [
+    "SMSDC: all 7 doctors use placeholder mciRegistrationNumber PENDING-VERIFICATION-<NAME>; replace with Dental Council registration numbers before any real e-prescription (SMSDC_PendingItems.md 4.10).",
+    "SMSDC: five doctors (Suhasini, Sindhu, Preethi, Phani, Praveen) and the owner have placeholder lastName 'MDS' because the API requires a surname; replace with real surnames.",
+    "SMSDC: appointmentDurationMinutes (30) and weekly schedules are not set by this importer; they are applied by a separate admin-API step after import.",
+    "SMSDC: secondaryColor #56C5C0 (2.07:1) and accentColor #E7B85C (1.84:1) fail WCAG AA on white; decorative use only.",
+    "SMSDC: all 7 doctors share one treatment room but core has no chair/room capacity limit, so two consultants can be booked into the same 5–8 PM slot (SMSDC_PendingItems.md 2.5)."
+  ]
+}

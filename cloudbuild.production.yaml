@@ -1,0 +1,27 @@
+# PRODUCTION image for the Suhasini Dental Clinic website (owner approved 2026-11-03, live with placeholders).
+#   gcloud builds submit --project sincere-stock-499113-f1 --region asia-south1 \
+#     --config cloudbuild.production.yaml --substitutions _TAG=$(git rev-parse --short HEAD) .
+# Indexable, no Draft badges, books live against the PRODUCTION ClinicFlow API (real SMS OTP, no hint),
+# portal on clinicflow247.com. Served by Cloud Run service smsdc-frontend via Cloudflare.
+substitutions:
+  _IMAGE: asia-south1-docker.pkg.dev/sincere-stock-499113-f1/clinicflow/smsdc-frontend
+  _TAG: manual
+  _SITE_URL: https://suhasini.clinicflow247.com
+  _API_URL: https://api.clinicflow247.com/api/v1
+  _PORTAL_URL: https://clinicflow247.com
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - --build-arg=NEXT_PUBLIC_SITE_ENV=production
+      - --build-arg=NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES=false
+      - --build-arg=NEXT_PUBLIC_NOINDEX=false
+      - --build-arg=NEXT_PUBLIC_SITE_URL=${_SITE_URL}
+      - --build-arg=NEXT_PUBLIC_CLINICFLOW_API_URL=${_API_URL}
+      - --build-arg=NEXT_PUBLIC_CLINICFLOW_CLINIC_SLUG=suhasini-dental-clinic-and-implant-centre
+      - --build-arg=NEXT_PUBLIC_CLINICFLOW_PORTAL_URL=${_PORTAL_URL}
+      - -t
+      - ${_IMAGE}:${_TAG}-prod
+      - .
+images:
+  - ${_IMAGE}:${_TAG}-prod

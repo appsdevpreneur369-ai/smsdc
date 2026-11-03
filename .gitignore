@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Lighthouse HTML reports are large; scores are kept in docs/seo-reports/*/summary.json
 docs/seo-reports/**/*.html
+
+# production setup outputs (scripts/prod/setup-production.py)
+/scripts/prod/*.json
