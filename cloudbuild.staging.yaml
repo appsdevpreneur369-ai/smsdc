@@ -1,0 +1,26 @@
+# Staging image for the Suhasini Dental Clinic website. NEXT_PUBLIC_* values are baked in at build time.
+#   gcloud builds submit --project sincere-stock-499113-f1 --region asia-south1 \
+#     --config cloudbuild.staging.yaml --substitutions _TAG=$(git rev-parse --short HEAD) .
+# Badges OFF since 2026-11-03 (owner: remove every "Draft" marker before handing the site to the clinic).
+substitutions:
+  _IMAGE: asia-south1-docker.pkg.dev/sincere-stock-499113-f1/clinicflow/smsdc-frontend
+  _TAG: manual
+  _SITE_URL: https://smsdc-frontend-staging-1071497363324.asia-south1.run.app
+  _API_URL: https://clinicflow-api-staging-znvqdsvqkq-el.a.run.app/api/v1
+  _PORTAL_URL: https://clinicflow-frontend-staging-1071497363324.asia-south1.run.app
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - --build-arg=NEXT_PUBLIC_SITE_ENV=staging
+      - --build-arg=NEXT_PUBLIC_SHOW_PLACEHOLDER_BADGES=false
+      - --build-arg=NEXT_PUBLIC_NOINDEX=true
+      - --build-arg=NEXT_PUBLIC_SITE_URL=${_SITE_URL}
+      - --build-arg=NEXT_PUBLIC_CLINICFLOW_API_URL=${_API_URL}
+      - --build-arg=NEXT_PUBLIC_BOOKING_OTP_HINT=123456
+      - --build-arg=NEXT_PUBLIC_CLINICFLOW_PORTAL_URL=${_PORTAL_URL}
+      - -t
+      - ${_IMAGE}:${_TAG}
+      - .
+images:
+  - ${_IMAGE}:${_TAG}
