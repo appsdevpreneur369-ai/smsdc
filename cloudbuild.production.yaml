@@ -6,7 +6,7 @@
 substitutions:
   _IMAGE: asia-south1-docker.pkg.dev/sincere-stock-499113-f1/clinicflow/smsdc-frontend
   _TAG: manual
-  _SITE_URL: https://suhasini.clinicflow247.com
+  _SITE_URL: https://drsuhasini.clinicflow247.com
   _API_URL: https://api.clinicflow247.com/api/v1
   _PORTAL_URL: https://clinicflow247.com
 steps:
