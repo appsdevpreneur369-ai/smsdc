@@ -31,7 +31,7 @@ describe('normalizeIndianMobile', () => {
 });
 
 describe('isValidEmail', () => {
-  it.each(['a@b.co', 'dr.suhasini.mds@gmail.com', 'name+tag@clinic.in'])('accepts %s', (e) => expect(isValidEmail(e)).toBe(true));
+  it.each(['a@b.co', 'owner@example.invalid', 'name+tag@clinic.in'])('accepts %s', (e) => expect(isValidEmail(e)).toBe(true));
   it.each(['', 'a@b', 'a@b.c', 'a b@c.com', 'a@@b.com', 'a@b..com', '@b.com'])('rejects %s', (e) => expect(isValidEmail(e)).toBe(false));
 });
 
